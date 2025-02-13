@@ -887,6 +887,7 @@ void CConsole::Init()
 		Register(#ScriptName, "?r", Flags, StrVariableCommand, &Data, Desc); \
 	}
 
+#include <game/variables.h>
 #include "config_variables.h"
 
 #undef MACRO_CONFIG_INT

@@ -1103,7 +1103,7 @@ void CServer::GenerateServerInfo(CPacker *pPacker, int Token)
 
 	pPacker->AddInt(Config()->m_SvSkillLevel); // server skill level
 	pPacker->AddInt(PlayerCount); // num players
-	pPacker->AddInt(Config()->m_SvPlayerSlots); // max players
+	pPacker->AddInt(maximum(ClientCount, Config()->m_SvMaxClients)); // max players
 	pPacker->AddInt(ClientCount); // num clients
 	pPacker->AddInt(maximum(ClientCount, Config()->m_SvMaxClients)); // max clients
 
@@ -1629,25 +1629,12 @@ void CServer::ConchainSpecialInfoupdate(IConsole::IResult *pResult, void *pUserD
 	}
 }
 
-void CServer::ConchainPlayerSlotsUpdate(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
-{
-	pfnCallback(pResult, pCallbackUserData);
-	CServer *pSelf = (CServer *) pUserData;
-	if(pResult->NumArguments())
-	{
-		if(pSelf->Config()->m_SvMaxClients < pSelf->Config()->m_SvPlayerSlots)
-			pSelf->Config()->m_SvPlayerSlots = pSelf->Config()->m_SvMaxClients;
-	}
-}
-
 void CServer::ConchainMaxclientsUpdate(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData)
 {
 	pfnCallback(pResult, pCallbackUserData);
 	CServer *pSelf = (CServer *) pUserData;
 	if(pResult->NumArguments())
 	{
-		if(pSelf->Config()->m_SvMaxClients < pSelf->Config()->m_SvPlayerSlots)
-			pSelf->Config()->m_SvPlayerSlots = pSelf->Config()->m_SvMaxClients;
 		pSelf->m_NetServer.SetMaxClients(pResult->GetInteger(0));
 	}
 }
@@ -1733,7 +1720,6 @@ void CServer::RegisterCommands()
 	Console()->Chain("sv_name", ConchainSpecialInfoupdate, this);
 	Console()->Chain("password", ConchainSpecialInfoupdate, this);
 
-	Console()->Chain("sv_player_slots", ConchainPlayerSlotsUpdate, this);
 	Console()->Chain("sv_max_clients", ConchainMaxclientsUpdate, this);
 	Console()->Chain("sv_max_clients", ConchainSpecialInfoupdate, this);
 	Console()->Chain("sv_max_clients_per_ip", ConchainMaxclientsperipUpdate, this);

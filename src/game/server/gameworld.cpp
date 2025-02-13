@@ -12,14 +12,14 @@
 //////////////////////////////////////////////////
 CGameWorld::CGameWorld()
 {
-	m_pGameServer = 0x0;
-	m_pConfig = 0x0;
-	m_pServer = 0x0;
+	m_pGameServer = nullptr;
+	m_pConfig = nullptr;
+	m_pServer = nullptr;
 
 	m_Paused = false;
 	m_ResetRequested = false;
 	for(int i = 0; i < NUM_ENTTYPES; i++)
-		m_apFirstEntityTypes[i] = 0;
+		m_apFirstEntityTypes[i] = nullptr;
 }
 
 CGameWorld::~CGameWorld()
@@ -167,7 +167,7 @@ void CGameWorld::Tick()
 	if(m_ResetRequested)
 		Reset();
 
-	if(m_Paused || GameServer()->m_pController->IsGamePaused())
+	if(m_Paused)
 	{
 		// update all objects
 		for(int i = 0; i < NUM_ENTTYPES; i++)

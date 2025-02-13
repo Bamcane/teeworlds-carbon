@@ -48,12 +48,12 @@ void CEventHandler::Snap(int SnappingClient)
 	{
 		if(SnappingClient == -1 || CmaskIsSet(m_aClientMasks[i], SnappingClient))
 		{
-			CNetEvent_Common *ev = (CNetEvent_Common *) &m_aData[m_aOffsets[i]];
-			if(SnappingClient == -1 || distance(GameServer()->m_apPlayers[SnappingClient]->m_ViewPos, vec2(ev->m_X, ev->m_Y)) < 1500.0f)
+			CNetEvent_Common *pEvent = (CNetEvent_Common *) &m_aData[m_aOffsets[i]];
+			if(!NetworkClipped(SnappingClient, vec2(pEvent->m_X, pEvent->m_Y), GameServer()))
 			{
-				void *d = GameServer()->Server()->SnapNewItem(m_aTypes[i], i, m_aSizes[i]);
-				if(d)
-					mem_copy(d, &m_aData[m_aOffsets[i]], m_aSizes[i]);
+				void *pData = GameServer()->Server()->SnapNewItem(m_aTypes[i], i, m_aSizes[i]);
+				if(pData)
+					mem_copy(pData, &m_aData[m_aOffsets[i]], m_aSizes[i]);
 			}
 		}
 	}
