@@ -21,7 +21,7 @@ CLaser::CLaser(CGameWorld *pGameWorld, vec2 Pos, vec2 Direction, float StartEner
 bool CLaser::Hit(vec2 From, vec2 To)
 {
 	vec2 At;
-	CCharacter *pOwnerChar = GameServer()->GetPlayerChar(m_Owner);
+	CCharacter *pOwnerChar = GameServer()->GetPlayerChar(GetOwner());
 	CBaseDamageEntity *pHit = (CBaseDamageEntity *) GameWorld()->IntersectEntity(m_Pos, To, 0.f, EEntityFlag::ENTFLAG_DAMAGE, At, pOwnerChar);
 	if(!pHit)
 		return false;

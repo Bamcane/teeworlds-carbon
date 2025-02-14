@@ -319,7 +319,7 @@ CEntity *CGameWorld::ClosestEntity(vec2 Pos, float Radius, EEntityFlag Flag, CEn
 	{
 		for(CEntity *pEnt = m_apFirstEntityTypes[i]; pEnt; pEnt = pEnt->TypeNext())
 		{
-			if((pEnt->GetObjFlag() & Flag) || pEnt == pNotThis)
+			if(!(pEnt->GetObjFlag() & Flag) || pEnt == pNotThis)
 				continue;
 
 			float Len = distance(Pos, pEnt->m_Pos);

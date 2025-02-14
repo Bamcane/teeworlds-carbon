@@ -35,9 +35,9 @@ void CProjectile::Reset()
 void CProjectile::LoseOwner()
 {
 	if(m_OwnerTeam == TEAM_BLUE)
-		m_Owner = PLAYER_TEAM_BLUE;
+		SetOwner(PLAYER_TEAM_BLUE);
 	else
-		m_Owner = PLAYER_TEAM_RED;
+		SetOwner(PLAYER_TEAM_RED);
 }
 
 vec2 CProjectile::GetPos(float Time)
@@ -73,7 +73,7 @@ void CProjectile::Tick()
 	vec2 PrevPos = GetPos(Pt);
 	vec2 CurPos = GetPos(Ct);
 	int Collide = GameServer()->Collision()->IntersectLine(PrevPos, CurPos, &CurPos, 0);
-	CCharacter *OwnerChar = GameServer()->GetPlayerChar(m_Owner);
+	CCharacter *OwnerChar = GameServer()->GetPlayerChar(GetOwner());
 	CBaseDamageEntity *TargetEnt = (CBaseDamageEntity *) GameWorld()->IntersectEntity(PrevPos, CurPos, 6.0f, EEntityFlag::ENTFLAG_DAMAGE, CurPos, OwnerChar);
 
 	m_LifeSpan--;
