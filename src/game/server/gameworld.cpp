@@ -63,6 +63,27 @@ int CGameWorld::FindEntities(vec2 Pos, float Radius, CEntity **ppEnts, int Max, 
 	return Num;
 }
 
+int CGameWorld::FindEntities(vec2 Pos, float Radius, CEntity **ppEnts, int Max, EEntityFlag Flag)
+{
+	int Num = 0;
+	for(int i = 0; i < NUM_ENTTYPES; i++)
+	{
+		for(CEntity *pEnt = m_apFirstEntityTypes[i]; pEnt; pEnt = pEnt->TypeNext())
+		{
+			if((pEnt->GetObjFlag() & Flag) && distance(pEnt->m_Pos, Pos) < Radius + pEnt->m_ProximityRadius)
+			{
+				if(ppEnts)
+					ppEnts[Num] = pEnt;
+				Num++;
+				if(Num == Max)
+					break;
+			}
+		}
+	}
+
+	return Num;
+}
+
 void CGameWorld::InsertEntity(CEntity *pEnt)
 {
 #ifdef CONF_DEBUG
@@ -202,14 +223,14 @@ void CGameWorld::Tick()
 }
 
 // TODO: should be more general
-CCharacter *CGameWorld::IntersectCharacter(vec2 Pos0, vec2 Pos1, float Radius, vec2 &NewPos, CEntity *pNotThis)
+CEntity *CGameWorld::IntersectEntity(vec2 Pos0, vec2 Pos1, float Radius, int Type, vec2 &NewPos, CEntity *pNotThis)
 {
 	// Find other players
 	float ClosestLen = distance(Pos0, Pos1) * 100.0f;
-	CCharacter *pClosest = 0;
+	CEntity *pClosest = 0;
 
-	CCharacter *p = (CCharacter *) FindFirst(ENTTYPE_CHARACTER);
-	for(; p; p = (CCharacter *) p->TypeNext())
+	CEntity *p = (CEntity *) FindFirst(Type);
+	for(; p; p = (CEntity *) p->TypeNext())
 	{
 		if(p == pNotThis)
 			continue;
@@ -224,6 +245,37 @@ CCharacter *CGameWorld::IntersectCharacter(vec2 Pos0, vec2 Pos1, float Radius, v
 				NewPos = IntersectPos;
 				ClosestLen = Len;
 				pClosest = p;
+			}
+		}
+	}
+
+	return pClosest;
+}
+
+CEntity *CGameWorld::IntersectEntity(vec2 Pos0, vec2 Pos1, float Radius, EEntityFlag Flag, vec2 &NewPos, CEntity *pNotThis)
+{
+	// Find other players
+	float ClosestLen = distance(Pos0, Pos1) * 100.0f;
+	CEntity *pClosest = 0;
+
+	for(int i = 0; i < NUM_ENTTYPES; i++)
+	{
+		for(CEntity *pEnt = m_apFirstEntityTypes[i]; pEnt; pEnt = pEnt->TypeNext())
+		{
+			if(!(pEnt->GetObjFlag() & Flag) || pEnt == pNotThis)
+				continue;
+
+			vec2 IntersectPos = closest_point_on_line(Pos0, Pos1, pEnt->m_Pos);
+			float Len = distance(pEnt->m_Pos, IntersectPos);
+			if(Len < pEnt->m_ProximityRadius + Radius)
+			{
+				Len = distance(Pos0, IntersectPos);
+				if(Len < ClosestLen)
+				{
+					NewPos = IntersectPos;
+					ClosestLen = Len;
+					pClosest = pEnt;
+				}
 			}
 		}
 	}
@@ -250,6 +302,34 @@ CEntity *CGameWorld::ClosestEntity(vec2 Pos, float Radius, int Type, CEntity *pN
 			{
 				ClosestRange = Len;
 				pClosest = p;
+			}
+		}
+	}
+
+	return pClosest;
+}
+
+CEntity *CGameWorld::ClosestEntity(vec2 Pos, float Radius, EEntityFlag Flag, CEntity *pNotThis)
+{
+	// Find other players
+	float ClosestRange = Radius * 2;
+	CEntity *pClosest = 0;
+
+	for(int i = 0; i < NUM_ENTTYPES; i++)
+	{
+		for(CEntity *pEnt = m_apFirstEntityTypes[i]; pEnt; pEnt = pEnt->TypeNext())
+		{
+			if((pEnt->GetObjFlag() & Flag) || pEnt == pNotThis)
+				continue;
+
+			float Len = distance(Pos, pEnt->m_Pos);
+			if(Len < pEnt->m_ProximityRadius + Radius)
+			{
+				if(Len < ClosestRange)
+				{
+					ClosestRange = Len;
+					pClosest = pEnt;
+				}
 			}
 		}
 	}

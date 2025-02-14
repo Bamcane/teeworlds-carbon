@@ -8,7 +8,7 @@
 #include <game/gamecore.h>
 #include <game/server/entity.h>
 
-class CCharacter : public CEntity
+class CCharacter : public CDamageEntity<COwnerEntity<CEntity>>
 {
 	MACRO_ALLOC_POOL_ID()
 
@@ -45,14 +45,10 @@ public:
 	void ResetInput();
 	void FireWeapon();
 
-	void Die(int Killer, int Weapon);
-	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, int From, int Weapon);
+	void Die(CEntity *pKiller, int Weapon);
+	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon);
 
 	bool Spawn(class CPlayer *pPlayer, vec2 Pos);
-	bool Remove();
-
-	bool IncreaseHealth(int Amount);
-	bool IncreaseArmor(int Amount);
 
 	bool GiveWeapon(int Weapon, int Ammo);
 	void GiveNinja();
@@ -102,9 +98,6 @@ private:
 	CNetObj_PlayerInput m_Input;
 	int m_NumInputs;
 	int m_Jumped;
-
-	int m_Health;
-	int m_Armor;
 
 	int m_TriggeredEvents;
 

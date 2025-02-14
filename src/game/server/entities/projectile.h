@@ -11,7 +11,7 @@ enum
 	PLAYER_TEAM_RED = -1
 };
 
-class CProjectile : public CEntity
+class CProjectile : public CBaseOwnerEntity
 {
 public:
 	CProjectile(CGameWorld *pGameWorld, int Type, int Owner, vec2 Pos, vec2 Dir, int Span,

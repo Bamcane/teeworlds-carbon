@@ -397,8 +397,8 @@ bool CGameController::CanSpawn(int Team, vec2 *pOutPos) const
 float CGameController::EvaluateSpawnPos(CSpawnEval *pEval, vec2 Pos) const
 {
 	float Score = 0.0f;
-	CCharacter *pC = static_cast<CCharacter *>(GameServer()->m_World.FindFirst(CGameWorld::ENTTYPE_CHARACTER));
-	for(; pC; pC = (CCharacter *) pC->TypeNext())
+	CCharacter *pC = dynamic_cast<CCharacter *>(GameServer()->m_World.FindFirst(CGameWorld::ENTTYPE_CHARACTER));
+	for(; pC; pC = dynamic_cast<CCharacter *>(pC->TypeNext()))
 	{
 		// team mates are not as dangerous as enemies
 		float Scoremod = 1.0f;
@@ -418,8 +418,8 @@ void CGameController::EvaluateSpawnType(CSpawnEval *pEval, int Type) const
 	for(int i = 0; i < m_aNumSpawnPoints[Type]; i++)
 	{
 		// check if the position is occupado
-		CCharacter *aEnts[MAX_CLIENTS];
-		int Num = GameServer()->m_World.FindEntities(m_aaSpawnPoints[Type][i], 64, (CEntity **) aEnts, MAX_CLIENTS, CGameWorld::ENTTYPE_CHARACTER);
+		CBaseDamageEntity *apEnts[MAX_CHECK_ENTITY];
+		int Num = GameServer()->m_World.FindEntities(m_aaSpawnPoints[Type][i], 64, (CEntity **) apEnts, MAX_CHECK_ENTITY, EEntityFlag::ENTFLAG_DAMAGE);
 		vec2 Positions[5] = {vec2(0.0f, 0.0f), vec2(-32.0f, 0.0f), vec2(0.0f, -32.0f), vec2(32.0f, 0.0f), vec2(0.0f, 32.0f)}; // start, left, up, right, down
 		int Result = -1;
 		for(int Index = 0; Index < 5 && Result == -1; ++Index)
@@ -427,7 +427,7 @@ void CGameController::EvaluateSpawnType(CSpawnEval *pEval, int Type) const
 			Result = Index;
 			for(int c = 0; c < Num; ++c)
 				if(GameServer()->Collision()->CheckPoint(m_aaSpawnPoints[Type][i] + Positions[Index]) ||
-					distance(aEnts[c]->GetPos(), m_aaSpawnPoints[Type][i] + Positions[Index]) <= aEnts[c]->GetProximityRadius())
+					distance(apEnts[c]->GetPos(), m_aaSpawnPoints[Type][i] + Positions[Index]) <= apEnts[c]->GetProximityRadius())
 				{
 					Result = -1;
 					break;

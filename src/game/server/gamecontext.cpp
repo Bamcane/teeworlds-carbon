@@ -115,7 +115,7 @@ void CGameContext::CreateHammerHit(vec2 Pos)
 	}
 }
 
-void CGameContext::CreateExplosion(vec2 Pos, int Owner, int Weapon, int MaxDamage)
+void CGameContext::CreateExplosion(vec2 Pos, CEntity *pFrom, int Weapon, int MaxDamage)
 {
 	// create the event
 	CNetEvent_Explosion *pEvent = (CNetEvent_Explosion *) m_Events.Create(NETEVENTTYPE_EXPLOSION, sizeof(CNetEvent_Explosion));
@@ -126,11 +126,11 @@ void CGameContext::CreateExplosion(vec2 Pos, int Owner, int Weapon, int MaxDamag
 	}
 
 	// deal damage
-	CCharacter *apEnts[MAX_CLIENTS];
+	CBaseDamageEntity *apEnts[MAX_CHECK_ENTITY];
 	float Radius = g_pData->m_Explosion.m_Radius;
 	float InnerRadius = 48.0f;
 	float MaxForce = g_pData->m_Explosion.m_MaxForce;
-	int Num = m_World.FindEntities(Pos, Radius, (CEntity **) apEnts, MAX_CLIENTS, CGameWorld::ENTTYPE_CHARACTER);
+	int Num = m_World.FindEntities(Pos, Radius, (CEntity **) apEnts, MAX_CHECK_ENTITY, EEntityFlag::ENTFLAG_DAMAGE);
 	for(int i = 0; i < Num; i++)
 	{
 		vec2 Diff = apEnts[i]->GetPos() - Pos;
@@ -140,7 +140,7 @@ void CGameContext::CreateExplosion(vec2 Pos, int Owner, int Weapon, int MaxDamag
 			Force = normalize(Diff) * MaxForce;
 		float Factor = 1 - clamp((l - InnerRadius) / (Radius - InnerRadius), 0.0f, 1.0f);
 		if((int) (Factor * MaxDamage))
-			apEnts[i]->TakeDamage(Force * Factor, Diff * -1, (int) (Factor * MaxDamage), Owner, Weapon);
+			apEnts[i]->TakeDamage(Force * Factor, Diff * -1, (int) (Factor * MaxDamage), pFrom, Weapon);
 	}
 }
 
@@ -1488,7 +1488,6 @@ void CGameContext::OnInit()
 	Console()->Chain("sv_vote_kick", ConchainSettingUpdate, this);
 	Console()->Chain("sv_vote_kick_min", ConchainSettingUpdate, this);
 	Console()->Chain("sv_vote_spectate", ConchainSettingUpdate, this);
-	Console()->Chain("sv_teambalance_time", ConchainSettingUpdate, this);
 	Console()->Chain("sv_max_clients", ConchainSettingUpdate, this);
 
 #ifdef CONF_DEBUG
@@ -1568,7 +1567,7 @@ const char *CGameContext::NetVersionHashReal() const { return GAME_NETVERSION_HA
 
 IGameServer *CreateGameServer() { return new CGameContext; }
 
-int ::NetworkClipped(int SnappingClient, vec2 CheckPos, CGameContext *pGameServer)
+int NetworkClipped(int SnappingClient, vec2 CheckPos, CGameContext *pGameServer)
 {
 	if(SnappingClient == -1)
 		return 0;
