@@ -21,7 +21,7 @@ void CEventHandler::SetGameServer(CGameContext *pGameServer)
 
 void CEventHandler::Create(void *pData, int Type, int Size, int ClientID)
 {
-	int& NumEvent = m_aNumEvents[ClientID];
+	int &NumEvent = m_aNumEvents[ClientID];
 	if(m_aNumEvents[ClientID] == MAX_EVENTS)
 		return;
 	if(m_aCurrentOffset[ClientID] + Size >= MAX_DATASIZE)

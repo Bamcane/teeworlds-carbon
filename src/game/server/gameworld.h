@@ -14,12 +14,12 @@ enum class EEntityFlag : int
 	ENTFLAG_DAMAGE = 1 << 1,
 };
 
-inline EEntityFlag operator|(const EEntityFlag& A, const EEntityFlag& B)
+inline EEntityFlag operator|(const EEntityFlag &A, const EEntityFlag &B)
 {
 	return static_cast<EEntityFlag>(static_cast<int>(A) | static_cast<int>(B));
 }
 
-inline bool operator&(const EEntityFlag& A, const EEntityFlag& B)
+inline bool operator&(const EEntityFlag &A, const EEntityFlag &B)
 {
 	return static_cast<int>(A) & static_cast<int>(B);
 }

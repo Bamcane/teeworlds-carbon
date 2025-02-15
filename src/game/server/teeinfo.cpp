@@ -22,8 +22,7 @@ static STeeInfo g_aStdSkins[] = {
 	{{"standard", "twintri", "", "standard", "standard", "standard"}, {true, true, false, true, true, false}, {3447932, -14098717, 0, 185, 9634888, 0}},
 	{{"standard", "warpaint", "", "standard", "standard", "standard"}, {true, false, false, true, true, false}, {1944919, 0, 0, 750337, 1944919, 0}}};
 
-
 STeeInfo GenerateRandomSkin()
 {
-    return g_aStdSkins[random_int() % std::size(g_aStdSkins)];
+	return g_aStdSkins[random_int() % std::size(g_aStdSkins)];
 }

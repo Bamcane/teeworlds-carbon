@@ -150,8 +150,10 @@ template<class IBaseEntity>
 class COwnerEntity : public IBaseEntity
 {
 	int m_Owner;
+
 protected:
 	void SetOwner(int Owner) { m_Owner = Owner; }
+
 public:
 	COwnerEntity(CGameWorld *pGameWorld, int Objtype, vec2 Pos, int ProximityRadius = 0);
 
@@ -169,6 +171,7 @@ protected:
 
 	int m_Armor;
 	int m_MaxArmor;
+
 public:
 	CDamageEntity(CGameWorld *pGameWorld, int Objtype, vec2 Pos, int ProximityRadius = 0);
 
@@ -178,7 +181,7 @@ public:
 	virtual bool IsFriendlyDamage(CEntity *pFrom);
 	virtual bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon);
 
-	inline bool IncreaseHealth(int Amount) 
+	inline bool IncreaseHealth(int Amount)
 	{
 		if(m_Health >= m_MaxHealth)
 			return false;
@@ -186,7 +189,7 @@ public:
 		return true;
 	};
 
-	inline bool IncreaseArmor(int Amount) 
+	inline bool IncreaseArmor(int Amount)
 	{
 		if(m_Armor >= m_MaxArmor)
 			return false;

@@ -377,7 +377,7 @@ bool CGameController::CanSpawn(int Team, vec2 *pOutPos) const
 float CGameController::EvaluateSpawnPos(CSpawnEval *pEval, vec2 Pos) const
 {
 	float Score = 0.0f;
-	CCharacter *pC = (CCharacter *)GameServer()->m_World.FindFirst(CGameWorld::ENTTYPE_CHARACTER);
+	CCharacter *pC = (CCharacter *) GameServer()->m_World.FindFirst(CGameWorld::ENTTYPE_CHARACTER);
 	for(; pC; pC = (CCharacter *) pC->TypeNext())
 	{
 		// team mates are not as dangerous as enemies

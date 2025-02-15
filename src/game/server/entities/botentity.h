@@ -16,19 +16,19 @@ public:
 	~CBotEntity();
 
 	void Tick() override;
-    void TickDefered() override;
-    void Snap(int SnappingClient) override;
+	void TickDefered() override;
+	void Snap(int SnappingClient) override;
 
-    bool IsFriendlyDamage(CEntity *pFrom) override;
+	bool IsFriendlyDamage(CEntity *pFrom) override;
 	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon) override;
 	void Die(CEntity *pKiller, int Weapon) override;
 
-    int GetBotID() const { return m_BotID; }
-    STeeInfo *GetTeeInfos() { return &m_TeeInfos; }
+	int GetBotID() const { return m_BotID; }
+	STeeInfo *GetTeeInfos() { return &m_TeeInfos; }
 
 private:
-    STeeInfo m_TeeInfos;
-    int m_BotID;
+	STeeInfo m_TeeInfos;
+	int m_BotID;
 
 	int m_TriggeredEvents;
 	// the core for the physics

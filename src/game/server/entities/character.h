@@ -40,7 +40,7 @@ public:
 	void ResetInput();
 	void FireWeapon();
 
-    bool IsFriendlyDamage(CEntity *pFrom) override;
+	bool IsFriendlyDamage(CEntity *pFrom) override;
 	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon) override;
 	void Die(CEntity *pKiller, int Weapon) override;
 

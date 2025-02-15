@@ -85,7 +85,7 @@ enum
 
 	VANILLA_MAX_CLIENTS = 64,
 	MAX_CLIENTS = 24,
-	// which means the max number of bots display together, isn't the max number of bots. 
+	// which means the max number of bots display together, isn't the max number of bots.
 	MAX_BOTS = VANILLA_MAX_CLIENTS - MAX_CLIENTS,
 
 	MAX_INPUT_SIZE = 128,

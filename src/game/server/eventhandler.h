@@ -22,6 +22,7 @@ class CEventHandler
 	int m_aNumEvents[MAX_CLIENTS + 1];
 
 	void Create(void *pData, int Type, int Size, int ClientID);
+
 public:
 	CGameContext *GameServer() const { return m_pGameServer; }
 	void SetGameServer(CGameContext *pGameServer);

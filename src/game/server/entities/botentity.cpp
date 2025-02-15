@@ -10,10 +10,10 @@
 #include "botentity.h"
 
 CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfos) :
-    CDamageEntity(pWorld, CGameWorld::ENTTYPE_BOTENTITY, Pos, ms_PhysSize)
+	CDamageEntity(pWorld, CGameWorld::ENTTYPE_BOTENTITY, Pos, ms_PhysSize)
 {
-    m_BotID = BotID;
-    m_TeeInfos = TeeInfos;
+	m_BotID = BotID;
+	m_TeeInfos = TeeInfos;
 
 	m_Core.Reset();
 	m_Core.Init(GameServer()->BotManager()->BotWorldCore(), GameServer()->Collision());
@@ -23,7 +23,7 @@ CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfo
 	mem_zero(&m_SendCore, sizeof(m_SendCore));
 	mem_zero(&m_ReckoningCore, sizeof(m_ReckoningCore));
 
-    GameServer()->CreatePlayerSpawn(Pos);
+	GameServer()->CreatePlayerSpawn(Pos);
 	GameWorld()->InsertEntity(this);
 }
 
@@ -46,7 +46,7 @@ void CBotEntity::Tick()
 
 void CBotEntity::TickDefered()
 {
-    static const vec2 ColBox(CCharacterCore::PHYS_SIZE, CCharacterCore::PHYS_SIZE);
+	static const vec2 ColBox(CCharacterCore::PHYS_SIZE, CCharacterCore::PHYS_SIZE);
 	// advance the dummy
 	{
 		CWorldCore TempWorld;
@@ -128,11 +128,11 @@ void CBotEntity::TickDefered()
 
 void CBotEntity::Snap(int SnappingClient)
 {
-    int ClientID = GameServer()->BotManager()->FindClientID(SnappingClient, GetBotID());
-    if(ClientID == -1)
-        return;
+	int ClientID = GameServer()->BotManager()->FindClientID(SnappingClient, GetBotID());
+	if(ClientID == -1)
+		return;
 
-    CNetObj_Character *pCharacter = static_cast<CNetObj_Character *>(Server()->SnapNewItem(NETOBJTYPE_CHARACTER, ClientID, sizeof(CNetObj_Character)));
+	CNetObj_Character *pCharacter = static_cast<CNetObj_Character *>(Server()->SnapNewItem(NETOBJTYPE_CHARACTER, ClientID, sizeof(CNetObj_Character)));
 	if(!pCharacter)
 		return;
 
@@ -170,7 +170,7 @@ void CBotEntity::Snap(int SnappingClient)
 		pCharacter->m_AmmoCount = 0;
 	}
 
-    CNetObj_PlayerInfo *pPlayerInfo = static_cast<CNetObj_PlayerInfo *>(Server()->SnapNewItem(NETOBJTYPE_PLAYERINFO, ClientID, sizeof(CNetObj_PlayerInfo)));
+	CNetObj_PlayerInfo *pPlayerInfo = static_cast<CNetObj_PlayerInfo *>(Server()->SnapNewItem(NETOBJTYPE_PLAYERINFO, ClientID, sizeof(CNetObj_PlayerInfo)));
 	if(!pPlayerInfo)
 		return;
 
@@ -271,7 +271,6 @@ bool CBotEntity::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, in
 		GameServer()->CreateSound(m_Pos, SOUND_PLAYER_PAIN_LONG);
 	else
 		GameServer()->CreateSound(m_Pos, SOUND_PLAYER_PAIN_SHORT);
-
 
 	return Return;
 }
