@@ -628,6 +628,10 @@ set_src(ENGINE_SERVER GLOB src/engine/server
 )
 set_src(GAME_SERVER GLOB_RECURSE src/game/server
   alloc.h
+  botmanager.cpp
+  botmanager.h
+  entities/botentity.cpp
+  entities/botentity.h
   entities/character.cpp
   entities/character.h
   entities/flag.cpp
@@ -650,6 +654,8 @@ set_src(GAME_SERVER GLOB_RECURSE src/game/server
   gameworld.h
   player.cpp
   player.h
+  teeinfo.cpp
+  teeinfo.h
 )
 set(GAME_GENERATED_SERVER
   src/generated/server_data.cpp

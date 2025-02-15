@@ -54,7 +54,7 @@ void CFlag::TickDefered()
 		if((GameServer()->Collision()->GetCollisionAt(m_Pos.x, m_Pos.y) & CCollision::COLFLAG_DEATH) || GameLayerClipped(m_Pos))
 		{
 			Reset();
-			GameServer()->m_pController->OnFlagReturn(this);
+			GameServer()->GameController()->OnFlagReturn(this);
 		}
 
 		if(!m_AtStand)
@@ -62,7 +62,7 @@ void CFlag::TickDefered()
 			if(Server()->Tick() > m_DropTick + Server()->TickSpeed() * 30)
 			{
 				Reset();
-				GameServer()->m_pController->OnFlagReturn(this);
+				GameServer()->GameController()->OnFlagReturn(this);
 			}
 			else
 			{

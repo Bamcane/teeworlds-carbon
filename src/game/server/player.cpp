@@ -16,10 +16,9 @@ CPlayer::CPlayer(CGameContext *pGameServer, int ClientID, bool Dummy, bool AsSpe
 	m_pGameServer = pGameServer;
 	m_RespawnTick = Server()->Tick();
 	m_DieTick = Server()->Tick();
-	m_ScoreStartTick = Server()->Tick();
 	m_pCharacter = 0;
 	m_ClientID = ClientID;
-	m_Team = AsSpec ? TEAM_SPECTATORS : GameServer()->m_pController->GetStartTeam();
+	m_Team = AsSpec ? TEAM_SPECTATORS : GameServer()->GameController()->GetStartTeam();
 	m_SpecMode = SPEC_FREEVIEW;
 	m_SpectatorID = -1;
 	m_pSpecFlag = 0;
@@ -28,8 +27,8 @@ CPlayer::CPlayer(CGameContext *pGameServer, int ClientID, bool Dummy, bool AsSpe
 	m_TeamChangeTick = Server()->Tick();
 	m_InactivityTickCounter = 0;
 	m_Dummy = Dummy;
-	m_IsReadyToPlay = !GameServer()->m_pController->IsPlayerReadyMode();
-	m_RespawnDisabled = GameServer()->m_pController->GetStartRespawnState();
+	m_IsReadyToPlay = !GameServer()->GameController()->IsPlayerReadyMode();
+	m_RespawnDisabled = GameServer()->GameController()->GetStartRespawnState();
 	m_DeadSpecMode = false;
 	m_Spawning = false;
 	mem_zero(&m_Latency, sizeof(m_Latency));
@@ -46,7 +45,7 @@ void CPlayer::Tick()
 	if(!IsDummy() && !Server()->ClientIngame(m_ClientID))
 		return;
 
-	Server()->SetClientScore(m_ClientID, m_Score);
+	Server()->SetClientScore(m_ClientID, 0);
 
 	// do latency stuff
 	{
@@ -106,7 +105,6 @@ void CPlayer::Tick()
 	{
 		++m_RespawnTick;
 		++m_DieTick;
-		++m_ScoreStartTick;
 		++m_LastActionTick;
 		++m_TeamChangeTick;
 	}
@@ -146,7 +144,7 @@ void CPlayer::Snap(int SnappingClient)
 	pPlayerInfo->m_PlayerFlags = m_PlayerFlags & PLAYERFLAG_CHATTING;
 	if(Server()->IsAuthed(m_ClientID))
 		pPlayerInfo->m_PlayerFlags |= PLAYERFLAG_ADMIN;
-	if(!GameServer()->m_pController->IsPlayerReadyMode() || m_IsReadyToPlay)
+	if(!GameServer()->GameController()->IsPlayerReadyMode() || m_IsReadyToPlay)
 		pPlayerInfo->m_PlayerFlags |= PLAYERFLAG_READY;
 	if(m_RespawnDisabled && (!GetCharacter() || !GetCharacter()->IsAlive()))
 		pPlayerInfo->m_PlayerFlags |= PLAYERFLAG_DEAD;
@@ -154,7 +152,7 @@ void CPlayer::Snap(int SnappingClient)
 		pPlayerInfo->m_PlayerFlags |= PLAYERFLAG_WATCHING;
 
 	pPlayerInfo->m_Latency = SnappingClient == -1 ? m_Latency.m_Min : GameServer()->m_apPlayers[SnappingClient]->m_aActLatency[m_ClientID];
-	pPlayerInfo->m_Score = m_Score;
+	pPlayerInfo->m_Score = 0;
 
 	if(m_ClientID == SnappingClient && (m_Team == TEAM_SPECTATORS || m_DeadSpecMode))
 	{
@@ -268,7 +266,7 @@ void CPlayer::OnDirectInput(CNetObj_PlayerInput *NewInput)
 			m_ActiveSpecSwitch = true;
 			if(m_SpecMode == SPEC_FREEVIEW)
 			{
-				CCharacter *pChar = dynamic_cast<CCharacter *>(GameServer()->m_World.ClosestEntity(m_ViewPos, 6.0f * 32, CGameWorld::ENTTYPE_CHARACTER, 0));
+				CCharacter *pChar = (CCharacter *)(GameServer()->m_World.ClosestEntity(m_ViewPos, 6.0f * 32, CGameWorld::ENTTYPE_CHARACTER, 0));
 				CFlag *pFlag = (CFlag *) GameServer()->m_World.ClosestEntity(m_ViewPos, 6.0f * 32, CGameWorld::ENTTYPE_FLAG, 0);
 				if(pChar || pFlag)
 				{
@@ -462,7 +460,7 @@ void CPlayer::TryRespawn()
 {
 	vec2 SpawnPos;
 
-	if(!GameServer()->m_pController->CanSpawn(m_Team, &SpawnPos))
+	if(!GameServer()->GameController()->CanSpawn(m_Team, &SpawnPos))
 		return;
 
 	m_Spawning = false;

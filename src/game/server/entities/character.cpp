@@ -79,7 +79,7 @@ bool CCharacter::Spawn(CPlayer *pPlayer, vec2 Pos)
 	GameWorld()->InsertEntity(this);
 	m_Alive = true;
 
-	GameServer()->m_pController->OnCharacterSpawn(this);
+	GameServer()->GameController()->OnCharacterSpawn(this);
 
 	return true;
 }
@@ -640,16 +640,59 @@ void CCharacter::TickPaused()
 		++m_EmoteStop;
 }
 
+bool CCharacter::IsFriendlyDamage(CEntity *pFrom)
+{
+	if(!pFrom)
+		return true;
+
+	return false;
+}
+
+bool CCharacter::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon)
+{
+	m_Core.m_Vel += Force;
+	int Owner = -1;
+	if(pFrom && (pFrom->GetObjFlag() & EEntityFlag::ENTFLAG_OWNER))
+		Owner = ((COwnerEntity *) pFrom)->GetOwner();
+
+	int OldHealth = m_Health, OldArmor = m_Armor;
+	bool Return = CDamageEntity::TakeDamage(Force, Source, Dmg, pFrom, Weapon);
+
+	// create healthmod indicator
+	GameServer()->CreateDamage(m_Pos, m_pPlayer->GetCID(), Source, OldHealth - m_Health, OldArmor - m_Armor, pFrom == this);
+
+	// do damage Hit sound
+	if(pFrom && pFrom != this && Owner > -1 && GameServer()->m_apPlayers[Owner])
+	{
+		int64 Mask = CmaskOne(Owner);
+		for(int i = 0; i < MAX_CLIENTS; i++)
+		{
+			if(GameServer()->m_apPlayers[i] && (GameServer()->m_apPlayers[i]->GetTeam() == TEAM_SPECTATORS || GameServer()->m_apPlayers[i]->m_DeadSpecMode) &&
+				GameServer()->m_apPlayers[i]->GetSpectatorID() == Owner)
+				Mask |= CmaskOne(i);
+		}
+		GameServer()->CreateSound(GameServer()->m_apPlayers[Owner]->m_ViewPos, SOUND_HIT, Mask);
+	}
+
+	if(Dmg > 2)
+		GameServer()->CreateSound(m_Pos, SOUND_PLAYER_PAIN_LONG);
+	else
+		GameServer()->CreateSound(m_Pos, SOUND_PLAYER_PAIN_SHORT);
+
+	SetEmote(EMOTE_PAIN, Server()->Tick() + 500 * Server()->TickSpeed() / 1000);
+
+	return Return;
+}
+
 void CCharacter::Die(CEntity *pKiller, int Weapon)
 {
 	int Killer = -1;
-	if(dynamic_cast<COwnerEntity *>(pKiller))
-		Killer = dynamic_cast<COwnerEntity *>(pKiller)->GetOwner();
+	if(pKiller && (pKiller->GetObjFlag() & EEntityFlag::ENTFLAG_OWNER))
+		Killer = ((COwnerEntity *) pKiller)->GetOwner();
 
 	// we got to wait 0.5 secs before respawning
-	m_Alive = false;
 	m_pPlayer->m_RespawnTick = Server()->Tick() + Server()->TickSpeed() / 2;
-	int ModeSpecial = GameServer()->m_pController->OnCharacterDeath(this, Killer < 0 ? 0 : GameServer()->m_apPlayers[Killer], Weapon);
+	int ModeSpecial = GameServer()->GameController()->OnCharacterDeath(this, Killer < 0 ? 0 : GameServer()->m_apPlayers[Killer], Weapon);
 
 	char aBuf[256];
 	if(Killer < 0)
@@ -699,53 +742,6 @@ void CCharacter::Die(CEntity *pKiller, int Weapon)
 	GameServer()->CreateDeath(m_Pos, m_pPlayer->GetCID());
 }
 
-bool CCharacter::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon)
-{
-	m_Core.m_Vel += Force;
-	int Owner = -1;
-	if(pFrom && dynamic_cast<COwnerEntity *>(pFrom))
-		Owner = dynamic_cast<COwnerEntity *>(pFrom)->GetOwner();
-
-	int OldHealth = m_Health, OldArmor = m_Armor;
-	bool Return;
-	if(!(Return = CDamageEntity::TakeDamage(Force, Source, Dmg, pFrom, Weapon)) && !IsAlive())
-	{
-		// set attacker's face to happy (taunt!)
-		if(pFrom && pFrom != this && Owner > -1 && GameServer()->m_apPlayers[Owner])
-		{
-			CCharacter *pChr = dynamic_cast<CCharacter *>(pFrom);
-			if(pChr)
-			{
-				pChr->SetEmote(EMOTE_HAPPY, Server()->Tick() + Server()->TickSpeed());
-			}
-		}
-	}
-	// create healthmod indicator
-	GameServer()->CreateDamage(m_Pos, m_pPlayer->GetCID(), Source, OldHealth - m_Health, OldArmor - m_Armor, pFrom == this);
-
-	// do damage Hit sound
-	if(pFrom && pFrom != this && Owner > -1 && GameServer()->m_apPlayers[Owner])
-	{
-		int64 Mask = CmaskOne(Owner);
-		for(int i = 0; i < MAX_CLIENTS; i++)
-		{
-			if(GameServer()->m_apPlayers[i] && (GameServer()->m_apPlayers[i]->GetTeam() == TEAM_SPECTATORS || GameServer()->m_apPlayers[i]->m_DeadSpecMode) &&
-				GameServer()->m_apPlayers[i]->GetSpectatorID() == Owner)
-				Mask |= CmaskOne(i);
-		}
-		GameServer()->CreateSound(GameServer()->m_apPlayers[Owner]->m_ViewPos, SOUND_HIT, Mask);
-	}
-
-	if(Dmg > 2)
-		GameServer()->CreateSound(m_Pos, SOUND_PLAYER_PAIN_LONG);
-	else
-		GameServer()->CreateSound(m_Pos, SOUND_PLAYER_PAIN_SHORT);
-
-	SetEmote(EMOTE_PAIN, Server()->Tick() + 500 * Server()->TickSpeed() / 1000);
-
-	return Return;
-}
-
 void CCharacter::Snap(int SnappingClient)
 {
 	if(NetworkClipped(SnappingClient))
@@ -790,8 +786,8 @@ void CCharacter::Snap(int SnappingClient)
 	if(m_pPlayer->GetCID() == SnappingClient || SnappingClient == -1 ||
 		(!Config()->m_SvStrictSpectateMode && m_pPlayer->GetCID() == GameServer()->m_apPlayers[SnappingClient]->GetSpectatorID()))
 	{
-		pCharacter->m_Health = m_Health;
-		pCharacter->m_Armor = m_Armor;
+		pCharacter->m_Health = clamp((GetHealth() / GetMaxHealth()) * 10, 0, 10);
+		pCharacter->m_Armor = clamp((GetArmor() / GetMaxArmor()) * 10, 0, 10);
 		if(m_ActiveWeapon == WEAPON_NINJA)
 			pCharacter->m_AmmoCount = m_Ninja.m_ActivationTick + g_pData->m_Weapons.m_Ninja.m_Duration * Server()->TickSpeed() / 1000;
 		else if(m_aWeapons[m_ActiveWeapon].m_Ammo > 0)

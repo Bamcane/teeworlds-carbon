@@ -12,6 +12,7 @@
 #include <game/version.h>
 #include <generated/server_data.h>
 
+#include "botmanager.h"
 #include "entities/character.h"
 #include "entities/projectile.h"
 #include "gamecontext.h"
@@ -32,11 +33,12 @@ void CGameContext::Construct(int Resetting)
 	for(int i = 0; i < MAX_CLIENTS; i++)
 		m_apPlayers[i] = 0;
 
-	m_pController = 0;
+	m_pBotManager = nullptr;
+	m_pController = nullptr;
 	m_VoteCloseTime = 0;
 	m_VoteCancelTime = 0;
-	m_pVoteOptionFirst = 0;
-	m_pVoteOptionLast = 0;
+	m_pVoteOptionFirst = nullptr;
+	m_pVoteOptionLast = nullptr;
 	m_NumVoteOptions = 0;
 
 	if(Resetting == NO_RESET)
@@ -88,42 +90,36 @@ class CCharacter *CGameContext::GetPlayerChar(int ClientID)
 	return m_apPlayers[ClientID]->GetCharacter();
 }
 
-void CGameContext::CreateDamage(vec2 Pos, int Id, vec2 Source, int HealthAmount, int ArmorAmount, bool Self)
+void CGameContext::CreateDamage(vec2 Pos, int Id, vec2 Source, int HealthAmount, int ArmorAmount, bool Self, int64 Mask)
 {
 	float f = angle(Source);
-	CNetEvent_Damage *pEvent = (CNetEvent_Damage *) m_Events.Create(NETEVENTTYPE_DAMAGE, sizeof(CNetEvent_Damage));
-	if(pEvent)
-	{
-		pEvent->m_X = (int) Pos.x;
-		pEvent->m_Y = (int) Pos.y;
-		pEvent->m_ClientID = Id;
-		pEvent->m_Angle = (int) (f * 256.0f);
-		pEvent->m_HealthAmount = HealthAmount;
-		pEvent->m_ArmorAmount = ArmorAmount;
-		pEvent->m_Self = Self;
-	}
+	CNetEvent_Damage Event;
+	Event.m_X = (int) Pos.x;
+	Event.m_Y = (int) Pos.y;
+	Event.m_ClientID = Id;
+	Event.m_Angle = (int) (f * 256.0f);
+	Event.m_HealthAmount = HealthAmount;
+	Event.m_ArmorAmount = ArmorAmount;
+	Event.m_Self = Self;
+	m_Events.Create(&Event, NETEVENTTYPE_DAMAGE, sizeof(CNetEvent_Damage), Mask);
 }
 
-void CGameContext::CreateHammerHit(vec2 Pos)
+void CGameContext::CreateHammerHit(vec2 Pos, int64 Mask)
 {
 	// create the event
-	CNetEvent_HammerHit *pEvent = (CNetEvent_HammerHit *) m_Events.Create(NETEVENTTYPE_HAMMERHIT, sizeof(CNetEvent_HammerHit));
-	if(pEvent)
-	{
-		pEvent->m_X = (int) Pos.x;
-		pEvent->m_Y = (int) Pos.y;
-	}
+	CNetEvent_HammerHit Event;
+	Event.m_X = (int) Pos.x;
+	Event.m_Y = (int) Pos.y;
+	m_Events.Create(&Event, NETEVENTTYPE_HAMMERHIT, sizeof(CNetEvent_HammerHit), Mask);
 }
 
-void CGameContext::CreateExplosion(vec2 Pos, CEntity *pFrom, int Weapon, int MaxDamage)
+void CGameContext::CreateExplosion(vec2 Pos, CEntity *pFrom, int Weapon, int MaxDamage, int64 Mask)
 {
 	// create the event
-	CNetEvent_Explosion *pEvent = (CNetEvent_Explosion *) m_Events.Create(NETEVENTTYPE_EXPLOSION, sizeof(CNetEvent_Explosion));
-	if(pEvent)
-	{
-		pEvent->m_X = (int) Pos.x;
-		pEvent->m_Y = (int) Pos.y;
-	}
+	CNetEvent_Explosion Event;
+	Event.m_X = (int) Pos.x;
+	Event.m_Y = (int) Pos.y;
+	m_Events.Create(&Event, NETEVENTTYPE_EXPLOSION, sizeof(CNetEvent_Explosion), Mask);
 
 	// deal damage
 	CBaseDamageEntity *apEnts[MAX_CHECK_ENTITY];
@@ -144,42 +140,32 @@ void CGameContext::CreateExplosion(vec2 Pos, CEntity *pFrom, int Weapon, int Max
 	}
 }
 
-void CGameContext::CreatePlayerSpawn(vec2 Pos)
+void CGameContext::CreatePlayerSpawn(vec2 Pos, int64 Mask)
 {
-	// create the event
-	CNetEvent_Spawn *ev = (CNetEvent_Spawn *) m_Events.Create(NETEVENTTYPE_SPAWN, sizeof(CNetEvent_Spawn));
-	if(ev)
-	{
-		ev->m_X = (int) Pos.x;
-		ev->m_Y = (int) Pos.y;
-	}
+	CNetEvent_Spawn Event;
+	Event.m_X = (int) Pos.x;
+	Event.m_Y = (int) Pos.y;
+	m_Events.Create(&Event, NETEVENTTYPE_SPAWN, sizeof(CNetEvent_Spawn), Mask);
 }
 
-void CGameContext::CreateDeath(vec2 Pos, int ClientID)
+void CGameContext::CreateDeath(vec2 Pos, int ClientID, int64 Mask)
 {
-	// create the event
-	CNetEvent_Death *pEvent = (CNetEvent_Death *) m_Events.Create(NETEVENTTYPE_DEATH, sizeof(CNetEvent_Death));
-	if(pEvent)
-	{
-		pEvent->m_X = (int) Pos.x;
-		pEvent->m_Y = (int) Pos.y;
-		pEvent->m_ClientID = ClientID;
-	}
+	CNetEvent_Death Event;
+	Event.m_X = (int) Pos.x;
+	Event.m_Y = (int) Pos.y;
+	Event.m_ClientID = ClientID;
+	m_Events.Create(&Event, NETEVENTTYPE_DEATH, sizeof(CNetEvent_Death), Mask);
 }
 
 void CGameContext::CreateSound(vec2 Pos, int Sound, int64 Mask)
 {
 	if(Sound < 0)
 		return;
-
-	// create a sound
-	CNetEvent_SoundWorld *pEvent = (CNetEvent_SoundWorld *) m_Events.Create(NETEVENTTYPE_SOUNDWORLD, sizeof(CNetEvent_SoundWorld), Mask);
-	if(pEvent)
-	{
-		pEvent->m_X = (int) Pos.x;
-		pEvent->m_Y = (int) Pos.y;
-		pEvent->m_SoundID = Sound;
-	}
+	CNetEvent_SoundWorld Event;
+	Event.m_X = (int) Pos.x;
+	Event.m_Y = (int) Pos.y;
+	Event.m_SoundID = Sound;
+	m_Events.Create(&Event, NETEVENTTYPE_SOUNDWORLD, sizeof(CNetEvent_SoundWorld), Mask);
 }
 
 // ----- send functions -----
@@ -459,9 +445,13 @@ void CGameContext::SendVoteOptions(int ClientID)
 
 void CGameContext::SendTuningParams(int ClientID)
 {
+	CTuningParams Tuning = m_Tuning;
+	Tuning.m_PlayerCollision = 0;
+	Tuning.m_PlayerHooking = 0;
+
 	CMsgPacker Msg(NETMSGTYPE_SV_TUNEPARAMS);
-	int *pParams = (int *) &m_Tuning;
-	for(unsigned i = 0; i < sizeof(m_Tuning) / sizeof(int); i++)
+	int *pParams = (int *) &Tuning;
+	for(unsigned i = 0; i < sizeof(Tuning) / sizeof(int); i++)
 		Msg.AddInt(pParams[i]);
 	Server()->SendMsg(&Msg, MSGFLAG_VITAL, ClientID);
 }
@@ -489,10 +479,13 @@ void CGameContext::OnTick()
 {
 	// copy tuning
 	m_World.m_Core.m_Tuning = m_Tuning;
+	BotManager()->BotWorldCore()->m_Tuning = m_Tuning;
+
 	m_World.Tick();
 
+	BotManager()->Tick();
 	// if(world.paused) // make sure that the game object always updates
-	m_pController->Tick();
+	GameController()->Tick();
 
 	for(int i = 0; i < MAX_CLIENTS; i++)
 	{
@@ -624,7 +617,7 @@ void CGameContext::OnClientEnter(int ClientID)
 	// send chat commands
 	SendChatCommands(ClientID);
 
-	m_pController->OnPlayerConnect(m_apPlayers[ClientID]);
+	GameController()->OnPlayerConnect(m_apPlayers[ClientID]);
 
 	m_VoteUpdate = true;
 
@@ -726,7 +719,7 @@ void CGameContext::OnClientTeamChange(int ClientID)
 void CGameContext::OnClientDrop(int ClientID, const char *pReason)
 {
 	AbortVoteOnDisconnect(ClientID);
-	m_pController->OnPlayerDisconnect(m_apPlayers[ClientID]);
+	GameController()->OnPlayerDisconnect(m_apPlayers[ClientID]);
 
 	// update clients on drop
 	if(Server()->ClientIngame(ClientID) || IsClientBot(ClientID))
@@ -895,7 +888,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 			}
 			else if(str_comp_nocase(pMsg->m_Type, "kick") == 0)
 			{
-				if(!Config()->m_SvVoteKick || m_pController->GetRealPlayerNum() < Config()->m_SvVoteKickMin)
+				if(!Config()->m_SvVoteKick || GameController()->GetRealPlayerNum() < Config()->m_SvVoteKickMin)
 					return;
 
 				int KickID = str_toint(pMsg->m_Value);
@@ -989,7 +982,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 				m_VoteCloseTime = -1;
 			}
 		}
-		else if(MsgID == NETMSGTYPE_CL_SETTEAM && m_pController->IsTeamChangeAllowed())
+		else if(MsgID == NETMSGTYPE_CL_SETTEAM && GameController()->IsTeamChangeAllowed())
 		{
 			CNetMsg_Cl_SetTeam *pMsg = (CNetMsg_Cl_SetTeam *) pRawMsg;
 
@@ -1001,12 +994,12 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 			pPlayer->m_LastSetTeamTick = Server()->Tick();
 
 			// Switch team on given client and kill/respawn him
-			if(m_pController->CanJoinTeam(pMsg->m_Team, ClientID) && m_pController->CanChangeTeam(pPlayer, pMsg->m_Team))
+			if(GameController()->CanJoinTeam(pMsg->m_Team, ClientID) && GameController()->CanChangeTeam(pPlayer, pMsg->m_Team))
 			{
 				if(pPlayer->GetTeam() == TEAM_SPECTATORS || pMsg->m_Team == TEAM_SPECTATORS)
 					m_VoteUpdate = true;
 				pPlayer->m_TeamChangeTick = Server()->Tick() + Server()->TickSpeed() * 3;
-				m_pController->DoTeamChange(pPlayer, pMsg->m_Team);
+				GameController()->DoTeamChange(pPlayer, pMsg->m_Team);
 			}
 		}
 		else if(MsgID == NETMSGTYPE_CL_SETSPECTATORMODE && !m_World.m_Paused)
@@ -1045,7 +1038,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 				return;
 
 			pPlayer->m_LastReadyChangeTick = Server()->Tick();
-			m_pController->OnPlayerReadyChange(pPlayer);
+			GameController()->OnPlayerReadyChange(pPlayer);
 		}
 		else if(MsgID == NETMSGTYPE_CL_SKINCHANGE)
 		{
@@ -1071,7 +1064,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 				SendSkinChange(pPlayer->GetCID(), i);
 			}
 
-			m_pController->OnPlayerInfoChange(pPlayer);
+			GameController()->OnPlayerInfoChange(pPlayer);
 		}
 		else if(MsgID == NETMSGTYPE_CL_COMMAND)
 		{
@@ -1101,7 +1094,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 				pPlayer->m_TeeInfos.m_aSkinPartColors[p] = pMsg->m_aSkinPartColors[p];
 			}
 
-			m_pController->OnPlayerInfoChange(pPlayer);
+			GameController()->OnPlayerInfoChange(pPlayer);
 
 			SendVoteClearOptions(ClientID);
 			SendVoteOptions(ClientID);
@@ -1205,7 +1198,7 @@ void CGameContext::ConSetTeam(IConsole::IResult *pResult, void *pUserData)
 	int ClientID = clamp(pResult->GetInteger(0), 0, (int) MAX_CLIENTS - 1);
 	int Team = clamp(pResult->GetInteger(1), -1, 1);
 	int Delay = pResult->NumArguments() > 2 ? pResult->GetInteger(2) : 0;
-	if(!pSelf->m_apPlayers[ClientID] || !pSelf->m_pController->CanJoinTeam(Team, ClientID))
+	if(!pSelf->m_apPlayers[ClientID] || !pSelf->GameController()->CanJoinTeam(Team, ClientID))
 		return;
 
 	char aBuf[256];
@@ -1213,7 +1206,7 @@ void CGameContext::ConSetTeam(IConsole::IResult *pResult, void *pUserData)
 	pSelf->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "server", aBuf);
 
 	pSelf->m_apPlayers[ClientID]->m_TeamChangeTick = pSelf->Server()->Tick() + pSelf->Server()->TickSpeed() * Delay * 60;
-	pSelf->m_pController->DoTeamChange(pSelf->m_apPlayers[ClientID], Team);
+	pSelf->GameController()->DoTeamChange(pSelf->m_apPlayers[ClientID], Team);
 }
 
 void CGameContext::ConSetTeamAll(IConsole::IResult *pResult, void *pUserData)
@@ -1224,8 +1217,8 @@ void CGameContext::ConSetTeamAll(IConsole::IResult *pResult, void *pUserData)
 	pSelf->SendGameMsg(GAMEMSG_TEAM_ALL, Team, -1);
 
 	for(int i = 0; i < MAX_CLIENTS; ++i)
-		if(pSelf->m_apPlayers[i] && pSelf->m_pController->CanJoinTeam(Team, i))
-			pSelf->m_pController->DoTeamChange(pSelf->m_apPlayers[i], Team, false);
+		if(pSelf->m_apPlayers[i] && pSelf->GameController()->CanJoinTeam(Team, i))
+			pSelf->GameController()->DoTeamChange(pSelf->m_apPlayers[i], Team, false);
 }
 
 void CGameContext::ConAddVote(IConsole::IResult *pResult, void *pUserData)
@@ -1462,9 +1455,10 @@ void CGameContext::OnInit()
 	m_Layers.Init(Kernel());
 	m_Collision.Init(&m_Layers);
 
+	m_pBotManager = new CBotManager(this);
 	// select gametype
 	m_pController = new CGameController(this);
-	m_pController->RegisterChatCommands(CommandManager());
+	GameController()->RegisterChatCommands(CommandManager());
 
 	// create all entities from the game layer
 	CMapItemLayerTilemap *pTileMap = m_Layers.GameLayer();
@@ -1478,7 +1472,7 @@ void CGameContext::OnInit()
 			if(Index >= ENTITY_OFFSET)
 			{
 				vec2 Pos(x * 32.0f + 16.0f, y * 32.0f + 16.0f);
-				m_pController->OnEntity(Index - ENTITY_OFFSET, Pos);
+				GameController()->OnEntity(Index - ENTITY_OFFSET, Pos);
 			}
 		}
 	}
@@ -1505,7 +1499,10 @@ void CGameContext::OnInit()
 void CGameContext::OnShutdown()
 {
 	delete m_pController;
-	m_pController = 0;
+	m_pController = nullptr;
+
+	delete m_pBotManager;
+	m_pBotManager = nullptr;
 	Clear();
 }
 
@@ -1523,7 +1520,7 @@ void CGameContext::OnSnap(int ClientID)
 	}
 
 	m_World.Snap(ClientID);
-	m_pController->Snap(ClientID);
+	GameController()->Snap(ClientID);
 	m_Events.Snap(ClientID);
 
 	for(int i = 0; i < MAX_CLIENTS; i++)
@@ -1559,7 +1556,7 @@ bool CGameContext::IsClientSpectator(int ClientID) const
 	return m_apPlayers[ClientID] && m_apPlayers[ClientID]->GetTeam() == TEAM_SPECTATORS;
 }
 
-const char *CGameContext::GameType() const { return m_pController && m_pController->GetGameType() ? m_pController->GetGameType() : ""; }
+const char *CGameContext::GameType() const { return GameController() && GameController()->GetGameType() ? GameController()->GetGameType() : ""; }
 const char *CGameContext::Version() const { return GAME_VERSION; }
 const char *CGameContext::NetVersion() const { return GAME_NETVERSION; }
 const char *CGameContext::NetVersionHashUsed() const { return GAME_NETVERSION_HASH_FORCED; }

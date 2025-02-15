@@ -45,6 +45,9 @@ class CGameContext : public IGameServer
 	CNetObjHandler m_NetObjHandler;
 	CTuningParams m_Tuning;
 
+	class CBotManager *m_pBotManager;
+	class CGameController *m_pController;
+
 	static void ConTuneParam(IConsole::IResult *pResult, void *pUserData);
 	static void ConTuneReset(IConsole::IResult *pResult, void *pUserData);
 	static void ConTunes(IConsole::IResult *pResult, void *pUserData);
@@ -69,11 +72,14 @@ class CGameContext : public IGameServer
 
 public:
 	IServer *Server() const { return m_pServer; }
-	class CConfig *Config() { return m_pConfig; }
-	class IConsole *Console() { return m_pConsole; }
-	class IStorage *Storage() { return m_pStorage; }
+	class CConfig *Config() const { return m_pConfig; }
+	class IConsole *Console() const { return m_pConsole; }
+	class IStorage *Storage() const { return m_pStorage; }
 	CCollision *Collision() { return &m_Collision; }
 	CTuningParams *Tuning() { return &m_Tuning; }
+
+	class CBotManager *BotManager() const { return m_pBotManager; }
+	class CGameController *GameController() const { return m_pController; }
 
 	CGameContext();
 	~CGameContext();
@@ -83,7 +89,6 @@ public:
 	CEventHandler m_Events;
 	class CPlayer *m_apPlayers[MAX_CLIENTS];
 
-	class CGameController *m_pController;
 	CGameWorld m_World;
 	CCommandManager m_CommandManager;
 
@@ -123,12 +128,12 @@ public:
 	CVoteOptionServer *m_pVoteOptionLast;
 
 	// helper functions
-	void CreateDamage(vec2 Pos, int Id, vec2 Source, int HealthAmount, int ArmorAmount, bool Self);
-	void CreateExplosion(vec2 Pos, CEntity *pFrom, int Weapon, int MaxDamage);
-	void CreateHammerHit(vec2 Pos);
-	void CreatePlayerSpawn(vec2 Pos);
-	void CreateDeath(vec2 Pos, int Who);
-	void CreateSound(vec2 Pos, int Sound, int64 Mask = -1);
+	void CreateDamage(vec2 Pos, int Id, vec2 Source, int HealthAmount, int ArmorAmount, bool Self, int64 Mask = -1LL);
+	void CreateExplosion(vec2 Pos, CEntity *pFrom, int Weapon, int MaxDamage, int64 Mask = -1LL);
+	void CreateHammerHit(vec2 Pos, int64 Mask = -1LL);
+	void CreatePlayerSpawn(vec2 Pos, int64 Mask = -1LL);
+	void CreateDeath(vec2 Pos, int Who, int64 Mask = -1LL);
+	void CreateSound(vec2 Pos, int Sound, int64 Mask = -1LL);
 
 	// ----- send functions -----
 	void SendChat(int ChatterClientID, int Mode, int To, const char *pText);
@@ -193,4 +198,5 @@ inline int64 CmaskAllExceptOne(int ClientID) { return CmaskAll() ^ CmaskOne(Clie
 inline bool CmaskIsSet(int64 Mask, int ClientID) { return (Mask & CmaskOne(ClientID)) != 0; }
 
 int NetworkClipped(int SnappingClient, vec2 CheckPos, CGameContext *pGameServer);
-#endif
+
+#endif // GAME_SERVER_GAMECONTEXT_H

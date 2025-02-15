@@ -32,6 +32,10 @@ enum
 
 enum
 {
+	WEAPON_GAME = -3, // team switching etc
+	WEAPON_SELF = -2, // console kill command
+	WEAPON_WORLD = -1, // death tiles etc
+
 	TEAM_SPECTATORS=-1,
 	TEAM_RED,
 	TEAM_BLUE,
@@ -57,7 +61,9 @@ enum
 
 	VOTE_CHOICE_NO = -1,
 	VOTE_CHOICE_PASS = 0,
-	VOTE_CHOICE_YES = 1
+	VOTE_CHOICE_YES = 1,
+
+	MIN_KILLMESSAGE_CLIENTVERSION = 0x0704 // todo 0.8: remove me
 };
 '''
 

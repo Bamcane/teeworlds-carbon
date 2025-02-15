@@ -8,7 +8,7 @@
 #include <game/gamecore.h>
 #include <game/server/entity.h>
 
-class CCharacter : public CDamageEntity<COwnerEntity<CEntity>>
+class CCharacter : public CDamageEntity<CBaseOwnerEntity>
 {
 	MACRO_ALLOC_POOL_ID()
 
@@ -16,20 +16,15 @@ public:
 	// character's size
 	static const int ms_PhysSize = 28;
 
-	enum
-	{
-		MIN_KILLMESSAGE_CLIENTVERSION = 0x0704, // todo 0.8: remove me
-	};
-
 	CCharacter(CGameWorld *pWorld);
 
-	virtual void Reset();
-	virtual void Destroy();
-	virtual void Tick();
-	virtual void TickDefered();
-	virtual void TickPaused();
-	virtual void Snap(int SnappingClient);
-	virtual void PostSnap();
+	void Reset() override;
+	void Destroy() override;
+	void Tick() override;
+	void TickDefered() override;
+	void TickPaused() override;
+	void Snap(int SnappingClient) override;
+	void PostSnap() override;
 
 	bool IsGrounded();
 
@@ -45,8 +40,9 @@ public:
 	void ResetInput();
 	void FireWeapon();
 
-	void Die(CEntity *pKiller, int Weapon);
-	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon);
+    bool IsFriendlyDamage(CEntity *pFrom) override;
+	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon) override;
+	void Die(CEntity *pKiller, int Weapon) override;
 
 	bool Spawn(class CPlayer *pPlayer, vec2 Pos);
 
@@ -55,15 +51,11 @@ public:
 
 	void SetEmote(int Emote, int Tick);
 
-	bool IsAlive() const { return m_Alive; }
 	class CPlayer *GetPlayer() { return m_pPlayer; }
 
 private:
 	// player controlling this character
 	class CPlayer *m_pPlayer;
-
-	bool m_Alive;
-
 	// weapon info
 	CEntity *m_apHitObjects[MAX_CLIENTS];
 	int m_NumObjectsHit;

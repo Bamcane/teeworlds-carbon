@@ -110,15 +110,7 @@ int CGameController::OnCharacterDeath(CCharacter *pVictim, CPlayer *pKiller, int
 	// do scoreing
 	if(!pKiller || Weapon == WEAPON_GAME)
 		return 0;
-	if(pKiller == pVictim->GetPlayer())
-		pVictim->GetPlayer()->m_Score--; // suicide or world
-	else
-	{
-		if(IsTeamplay() && pVictim->GetPlayer()->GetTeam() == pKiller->GetTeam())
-			pKiller->m_Score--; // teamkill
-		else
-			pKiller->m_Score++; // normal kill
-	}
+
 	if(Weapon == WEAPON_SELF)
 		pVictim->GetPlayer()->m_RespawnTick = Server()->Tick() + Server()->TickSpeed() * 3.0f;
 
@@ -249,8 +241,6 @@ void CGameController::OnReset()
 			GameServer()->m_apPlayers[i]->m_RespawnDisabled = false;
 			GameServer()->m_apPlayers[i]->Respawn();
 			GameServer()->m_apPlayers[i]->m_RespawnTick = Server()->Tick() + Server()->TickSpeed() / 2;
-			GameServer()->m_apPlayers[i]->m_Score = 0;
-			GameServer()->m_apPlayers[i]->m_ScoreStartTick = Server()->Tick();
 			GameServer()->m_apPlayers[i]->m_IsReadyToPlay = true;
 		}
 	}
@@ -368,26 +358,16 @@ bool CGameController::CanSpawn(int Team, vec2 *pOutPos) const
 		return false;
 
 	CSpawnEval Eval;
-	Eval.m_RandomSpawn = IsSurvival();
+	Eval.m_RandomSpawn = true;
+	Eval.m_FriendlyTeam = Team;
 
-	if(IsTeamplay())
-	{
-		Eval.m_FriendlyTeam = Team;
-
-		// first try own team spawn, then normal spawn and then enemy
-		EvaluateSpawnType(&Eval, 1 + (Team & 1));
-		if(!Eval.m_Got)
-		{
-			EvaluateSpawnType(&Eval, 0);
-			if(!Eval.m_Got)
-				EvaluateSpawnType(&Eval, 1 + ((Team + 1) & 1));
-		}
-	}
-	else
+	// first try own team spawn, then normal spawn and then enemy
+	EvaluateSpawnType(&Eval, 1 + (Team & 1));
+	if(!Eval.m_Got)
 	{
 		EvaluateSpawnType(&Eval, 0);
-		EvaluateSpawnType(&Eval, 1);
-		EvaluateSpawnType(&Eval, 2);
+		if(!Eval.m_Got)
+			EvaluateSpawnType(&Eval, 1 + ((Team + 1) & 1));
 	}
 
 	*pOutPos = Eval.m_Pos;
@@ -397,8 +377,8 @@ bool CGameController::CanSpawn(int Team, vec2 *pOutPos) const
 float CGameController::EvaluateSpawnPos(CSpawnEval *pEval, vec2 Pos) const
 {
 	float Score = 0.0f;
-	CCharacter *pC = dynamic_cast<CCharacter *>(GameServer()->m_World.FindFirst(CGameWorld::ENTTYPE_CHARACTER));
-	for(; pC; pC = dynamic_cast<CCharacter *>(pC->TypeNext()))
+	CCharacter *pC = (CCharacter *)GameServer()->m_World.FindFirst(CGameWorld::ENTTYPE_CHARACTER);
+	for(; pC; pC = (CCharacter *) pC->TypeNext())
 	{
 		// team mates are not as dangerous as enemies
 		float Scoremod = 1.0f;
@@ -415,7 +395,7 @@ float CGameController::EvaluateSpawnPos(CSpawnEval *pEval, vec2 Pos) const
 void CGameController::EvaluateSpawnType(CSpawnEval *pEval, int Type) const
 {
 	// get spawn point
-	for(int i = 0; i < m_aNumSpawnPoints[Type]; i++)
+	for(unsigned i = 0; i < m_aNumSpawnPoints[Type]; i++)
 	{
 		// check if the position is occupado
 		CBaseDamageEntity *apEnts[MAX_CHECK_ENTITY];

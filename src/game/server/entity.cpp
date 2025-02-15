@@ -71,7 +71,8 @@ CDamageEntity<IBaseEntity>::~CDamageEntity()
 template<class IBaseEntity>
 void CDamageEntity<IBaseEntity>::Die(CEntity *pKiller, int Weapon)
 {
-	(IBaseEntity::GameWorld())->RemoveEntity(this);
+	m_Alive = false;
+	(IBaseEntity::GameWorld())->DestroyEntity(this);
 }
 
 template<class IBaseEntity>
@@ -91,7 +92,6 @@ bool CDamageEntity<IBaseEntity>::TakeDamage(vec2 Force, vec2 Source, int Dmg, CE
 	if(pFrom == this)
 		Dmg = maximum(1, Dmg / 2);
 
-	int OldHealth = m_Health, OldArmor = m_Armor;
 	if(Dmg)
 	{
 		if(m_Armor)

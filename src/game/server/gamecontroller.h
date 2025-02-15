@@ -17,6 +17,8 @@
 */
 class CGameController
 {
+	friend class CBotManager;
+
 	class CGameContext *m_pGameServer;
 	class CConfig *m_pConfig;
 	class IServer *m_pServer;
@@ -52,7 +54,7 @@ class CGameController
 		float m_Score;
 	};
 	vec2 m_aaSpawnPoints[3][64];
-	int m_aNumSpawnPoints[3];
+	unsigned m_aNumSpawnPoints[3];
 
 	float EvaluateSpawnPos(CSpawnEval *pEval, vec2 Pos) const;
 	void EvaluateSpawnType(CSpawnEval *pEval, int Type) const;
