@@ -3,7 +3,9 @@
 
 #include <base/vmath.h>
 #include <engine/shared/protocol.h>
+
 #include <unordered_map>
+#include <vector>
 
 class CGameContext;
 class CGameController;
@@ -14,6 +16,8 @@ class CBotManager
 	CGameContext *m_pGameServer;
 	class CWorldCore *m_pWorldCore;
 	int m_aaBotIDMaps[MAX_CLIENTS][MAX_BOTS];
+
+	std::vector<int> m_vMarkedAsDestroy;
 	std::unordered_map<int, class CBotEntity *> m_vpBots;
 
 	void ClearPlayerMap(int ClientID);

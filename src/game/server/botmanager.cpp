@@ -10,7 +10,6 @@
 #include "botmanager.h"
 
 #include <algorithm>
-#include <vector>
 
 CConfig *CBotManager::Config() const { return GameServer()->Config(); }
 CGameContext *CBotManager::GameServer() const { return m_pGameServer; }
@@ -24,6 +23,7 @@ CBotManager::CBotManager(CGameContext *pGameServer)
 	m_pGameServer = pGameServer;
 	m_pWorldCore = new CWorldCore();
 
+	m_vMarkedAsDestroy.clear();
 	m_vpBots.clear();
 	ClearPlayerMap(-1);
 }
@@ -195,6 +195,12 @@ void CBotManager::Tick()
 	if(Server()->Tick() % Config()->m_SvIdMapRefreshRate)
 		return;
 
+	for(auto& DestroyID : m_vMarkedAsDestroy)
+	{
+		m_vpBots.erase(DestroyID);
+	}
+	m_vMarkedAsDestroy.clear();
+
 	for(int i = 0; i < MAX_CLIENTS; i++)
 	{
 		if(Server()->ClientIngame(i) && GameServer()->m_apPlayers[i])
@@ -250,15 +256,6 @@ int CBotManager::FindClientID(int ClientID, int BotID)
 
 void CBotManager::OnBotDeath(int BotID)
 {
-	m_vpBots.erase(BotID);
-	for(auto &aBotMap : m_aaBotIDMaps)
-	{
-		for(auto &ID : aBotMap)
-		{
-			if(ID != BotID)
-				continue;
-			ID = -1;
-			break;
-		}
-	}
+	m_vMarkedAsDestroy.push_back(BotID);
+	m_vpBots[BotID] = nullptr;
 }

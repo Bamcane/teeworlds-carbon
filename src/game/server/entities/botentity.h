@@ -13,7 +13,6 @@ public:
 	// same as character's size
 	static const int ms_PhysSize = 28;
 	CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfos);
-	~CBotEntity();
 
 	void Tick() override;
 	void TickDefered() override;

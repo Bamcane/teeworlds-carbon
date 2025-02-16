@@ -27,12 +27,6 @@ CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfo
 	GameWorld()->InsertEntity(this);
 }
 
-CBotEntity::~CBotEntity()
-{
-	if(GameServer()->BotManager())
-		GameServer()->BotManager()->OnBotDeath(GetBotID());
-}
-
 void CBotEntity::Tick()
 {
 	m_Core.Tick(false);
@@ -157,7 +151,7 @@ void CBotEntity::Snap(int SnappingClient)
 	pCharacter->m_Armor = 0;
 	pCharacter->m_TriggeredEvents = m_TriggeredEvents;
 
-	pCharacter->m_Weapon = WEAPON_HAMMER;
+	pCharacter->m_Weapon = -1;
 	pCharacter->m_AttackTick = 0;
 
 	pCharacter->m_Direction = m_Core.m_Direction;
@@ -232,6 +226,9 @@ void CBotEntity::Die(CEntity *pKiller, int Weapon)
 
 	CDamageEntity::Die(pKiller, Weapon);
 	GameServer()->BotManager()->CreateDeath(m_Pos, GetBotID());
+
+	if(GameServer()->BotManager())
+		GameServer()->BotManager()->OnBotDeath(GetBotID());
 }
 
 bool CBotEntity::IsFriendlyDamage(CEntity *pFrom)
