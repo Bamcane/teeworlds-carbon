@@ -272,6 +272,8 @@ public:
 	static void ConchainRconPasswordSet(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData);
 	static void ConchainMapUpdate(IConsole::IResult *pResult, void *pUserData, IConsole::FCommandCallback pfnCallback, void *pCallbackUserData);
 
+	static void ConNetworkStats(IConsole::IResult *pResult, void *pUser);
+
 	void RegisterCommands();
 
 	virtual int SnapNewID();

@@ -1704,6 +1704,18 @@ void CServer::ConchainMapUpdate(IConsole::IResult *pResult, void *pUserData, ICo
 	}
 }
 
+void CServer::ConNetworkStats(IConsole::IResult *pResult, void *pUser)
+{
+	CServer *pServer = (CServer *) pUser;
+	NETSTATS Stats;
+	net_stats(&Stats);
+
+	char aBuf[256];
+	str_format(aBuf, sizeof(aBuf), "send packets=%d, send bytes=%d;recv packets=%d, recv bytes=%d", 
+		Stats.sent_packets, Stats.sent_bytes, Stats.recv_packets, Stats.recv_bytes);
+	pServer->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "network", aBuf);
+}
+
 void CServer::RegisterCommands()
 {
 	// register console commands
@@ -1727,6 +1739,8 @@ void CServer::RegisterCommands()
 	Console()->Chain("console_output_level", ConchainConsoleOutputLevelUpdate, this);
 	Console()->Chain("sv_rcon_password", ConchainRconPasswordSet, this);
 	Console()->Chain("sv_map", ConchainMapUpdate, this);
+
+	Console()->Register("network_stats", "", CFGFLAG_SERVER, ConNetworkStats, this, "Print network stats");
 
 	// register console commands in sub parts
 	m_ServerBan.InitServerBan(Console(), Storage(), this);
