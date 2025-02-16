@@ -13,6 +13,7 @@ CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfo
 	CDamageEntity(pWorld, CGameWorld::ENTTYPE_BOTENTITY, Pos, ms_PhysSize)
 {
 	m_BotID = BotID;
+	m_Emote = random_int() % NUM_EMOTES;
 	m_TeeInfos = TeeInfos;
 
 	m_Core.Reset();
@@ -144,14 +145,14 @@ void CBotEntity::Snap(int SnappingClient)
 		m_SendCore.Write(pCharacter);
 	}
 
-	pCharacter->m_Emote = EMOTE_NORMAL;
+	pCharacter->m_Emote = m_Emote;
 
 	pCharacter->m_AmmoCount = 0;
 	pCharacter->m_Health = 0;
 	pCharacter->m_Armor = 0;
 	pCharacter->m_TriggeredEvents = m_TriggeredEvents;
 
-	pCharacter->m_Weapon = -1;
+	pCharacter->m_Weapon = WEAPON_HAMMER;
 	pCharacter->m_AttackTick = 0;
 
 	pCharacter->m_Direction = m_Core.m_Direction;
@@ -159,8 +160,8 @@ void CBotEntity::Snap(int SnappingClient)
 	if(ClientID == SnappingClient || SnappingClient == -1 ||
 		(!Config()->m_SvStrictSpectateMode && ClientID == GameServer()->m_apPlayers[SnappingClient]->GetSpectatorID()))
 	{
-		pCharacter->m_Health = clamp((GetHealth() / GetMaxHealth()) * 10, 0, 10);
-		pCharacter->m_Armor = clamp((GetArmor() / GetMaxArmor()) * 10, 0, 10);
+		pCharacter->m_Health = clamp(round_to_int(GetHealth() / (float) GetMaxHealth() * 10), 0, 10);
+		pCharacter->m_Armor = clamp(round_to_int(GetArmor() / (float) GetMaxArmor() * 10), 0, 10);
 		pCharacter->m_AmmoCount = 0;
 	}
 

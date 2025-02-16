@@ -28,6 +28,7 @@ public:
 private:
 	STeeInfo m_TeeInfos;
 	int m_BotID;
+	int m_Emote;
 
 	int m_TriggeredEvents;
 	// the core for the physics
