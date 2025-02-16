@@ -719,6 +719,7 @@ void CGameContext::OnClientTeamChange(int ClientID)
 void CGameContext::OnClientDrop(int ClientID, const char *pReason)
 {
 	AbortVoteOnDisconnect(ClientID);
+	BotManager()->OnClientRefresh(ClientID);
 	GameController()->OnPlayerDisconnect(m_apPlayers[ClientID]);
 
 	// update clients on drop

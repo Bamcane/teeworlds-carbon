@@ -259,3 +259,11 @@ void CBotManager::OnBotDeath(int BotID)
 	m_vMarkedAsDestroy.push_back(BotID);
 	m_vpBots[BotID] = nullptr;
 }
+
+void CBotManager::OnClientRefresh(int ClientID)
+{
+	if(ClientID == -1)
+		return;
+
+	ClearPlayerMap(ClientID);
+}

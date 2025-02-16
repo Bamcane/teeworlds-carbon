@@ -44,6 +44,7 @@ public:
 	int FindClientID(int ClientID, int BotID);
 
 	void OnBotDeath(int BotID);
+	void OnClientRefresh(int ClientID);
 };
 
 #endif // GAME_SERVER_BOTMANAGER_H

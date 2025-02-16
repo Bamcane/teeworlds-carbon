@@ -17,6 +17,7 @@ public:
 	void Tick() override;
 	void TickDefered() override;
 	void Snap(int SnappingClient) override;
+	void PostSnap() override;
 
 	bool IsFriendlyDamage(CEntity *pFrom) override;
 	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon) override;
@@ -38,6 +39,20 @@ private:
 	int m_ReckoningTick; // tick that we are performing dead reckoning From
 	CCharacterCore m_SendCore; // core that we should send
 	CCharacterCore m_ReckoningCore; // the dead reckoning core
+
+	int m_AttackTick;
+	int m_ReloadTimer;
+
+	CNetObj_PlayerInput m_Input;
+	CNetObj_PlayerInput m_PrevInput;
+
+	vec2 m_CursorTarget;
+
+	void RandomAction();
+	void TargetAction(CDamageEntity *pTarget);
+
+	void Action();
+	void DoWeapon();
 };
 
 #endif

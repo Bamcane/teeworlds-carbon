@@ -6,36 +6,11 @@
 #include <game/server/gamecontroller.h>
 #include <game/server/player.h>
 #include <generated/server_data.h>
+#include <generated/protocol.h>
 
 #include "character.h"
 #include "laser.h"
 #include "projectile.h"
-
-// input count
-struct CInputCount
-{
-	int m_Presses;
-	int m_Releases;
-};
-
-CInputCount CountInput(int Prev, int Cur)
-{
-	CInputCount c = {0, 0};
-	Prev &= INPUT_STATE_MASK;
-	Cur &= INPUT_STATE_MASK;
-	int i = Prev;
-
-	while(i != Cur)
-	{
-		i = (i + 1) & INPUT_STATE_MASK;
-		if(i & 1)
-			c.m_Presses++;
-		else
-			c.m_Releases++;
-	}
-
-	return c;
-}
 
 MACRO_ALLOC_POOL_ID_IMPL(CCharacter, MAX_CLIENTS)
 

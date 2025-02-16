@@ -16,13 +16,21 @@ CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfo
 	m_Emote = random_int() % NUM_EMOTES;
 	m_TeeInfos = TeeInfos;
 
+	m_AttackTick = 0;
+	m_ReloadTimer = 0;
+
 	m_Core.Reset();
 	m_Core.Init(GameServer()->BotManager()->BotWorldCore(), GameServer()->Collision());
 	m_Core.m_Pos = m_Pos;
 
+	m_CursorTarget = vec2(100.f, 0.f);
+
 	m_ReckoningTick = 0;
 	mem_zero(&m_SendCore, sizeof(m_SendCore));
 	mem_zero(&m_ReckoningCore, sizeof(m_ReckoningCore));
+
+	mem_zero(&m_Input, sizeof(m_Input));
+	mem_zero(&m_PrevInput, sizeof(m_PrevInput));
 
 	GameServer()->CreatePlayerSpawn(Pos);
 	GameWorld()->InsertEntity(this);
@@ -30,13 +38,19 @@ CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfo
 
 void CBotEntity::Tick()
 {
-	m_Core.Tick(false);
+	Action();
+
+	m_Core.m_Input = m_Input;
+	m_Core.Tick(true);
 
 	// handle leaving gamelayer
 	if(GameLayerClipped(m_Pos))
 	{
 		Die(this, WEAPON_WORLD);
+		return;
 	}
+
+	DoWeapon();
 }
 
 void CBotEntity::TickDefered()
@@ -153,9 +167,9 @@ void CBotEntity::Snap(int SnappingClient)
 	pCharacter->m_TriggeredEvents = m_TriggeredEvents;
 
 	pCharacter->m_Weapon = WEAPON_HAMMER;
-	pCharacter->m_AttackTick = 0;
+	pCharacter->m_AttackTick = m_AttackTick;
 
-	pCharacter->m_Direction = m_Core.m_Direction;
+	pCharacter->m_Direction = m_Input.m_Direction;
 
 	if(ClientID == SnappingClient || SnappingClient == -1 ||
 		(!Config()->m_SvStrictSpectateMode && ClientID == GameServer()->m_apPlayers[SnappingClient]->GetSpectatorID()))
@@ -193,6 +207,11 @@ void CBotEntity::Snap(int SnappingClient)
 			pClientInfo->m_aSkinPartColors[p] = m_TeeInfos.m_aSkinPartColors[p];
 		}
 	}
+}
+
+void CBotEntity::PostSnap()
+{
+	m_TriggeredEvents = 0;
 }
 
 void CBotEntity::Die(CEntity *pKiller, int Weapon)
@@ -271,4 +290,128 @@ bool CBotEntity::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, in
 		GameServer()->CreateSound(m_Pos, SOUND_PLAYER_PAIN_SHORT);
 
 	return Return;
+}
+
+void CBotEntity::RandomAction()
+{
+	// random jump
+	if(random_int() % 1000 < 25)
+		m_Input.m_Jump = 1;
+
+	// random move
+	if(random_int() % 1000 < 55)
+	{
+		m_Input.m_Direction = random_int() % 3 - 1;
+		if(m_Input.m_Direction)
+			m_CursorTarget = vec2(length(m_CursorTarget) * m_Input.m_Direction, 0.f);
+	}
+}
+
+void CBotEntity::TargetAction(CDamageEntity *pTarget)
+{
+	vec2 MoveTo = pTarget->GetPos();
+	if(abs(MoveTo.x - m_Pos.x) > 48.f)
+		m_Input.m_Direction = (int) sign(MoveTo.x - m_Pos.x);
+	else
+		m_Input.m_Direction = 0;
+
+	if((MoveTo.y - m_Pos.y < -48.f) && !(m_Core.m_Jumped & 1) && (m_Core.m_Vel.y > -1.25f))
+	{
+		m_Input.m_Jump = 1;
+	}
+
+	if(distance(MoveTo, m_Pos) < 48.f && ((random_int() % 100) < 8) && m_ReloadTimer <= 0)
+		m_Input.m_Fire = 1;
+
+	m_CursorTarget = MoveTo - m_Pos;
+}
+
+void CBotEntity::Action()
+{
+	mem_copy(&m_PrevInput, &m_Input, sizeof(m_Input));
+	// reset some input
+	m_Input.m_Jump = 0;
+	m_Input.m_Fire = 0;
+
+	CDamageEntity *pTarget = (CDamageEntity *) GameWorld()->ClosestEntity(GetPos(), 320.f, EEntityFlag::ENTFLAG_DAMAGE, this);
+	if(pTarget && GameServer()->Collision()->IntersectLine(GetPos(), pTarget->GetPos(), nullptr, nullptr))
+		pTarget = nullptr;
+
+	if(pTarget)
+		TargetAction(pTarget);
+	else
+		RandomAction();
+
+	// move cursor
+	vec2 Target = vec2(m_Input.m_TargetX, m_Input.m_TargetY);
+	float MouseSpeed = random_float() * 32.f + 8.f;
+	if(distance(Target, m_CursorTarget) > MouseSpeed)
+	{
+		vec2 Direction = normalize(m_CursorTarget - Target);
+		Target += Direction * MouseSpeed;
+		Target = normalize(Target) * clamp(length(m_CursorTarget), 0.f, 400.f);
+		m_Input.m_TargetX = Target.x;
+		m_Input.m_TargetY = Target.y;
+	}
+}
+
+void CBotEntity::DoWeapon()
+{
+	if(m_ReloadTimer > 0)
+	{
+		m_ReloadTimer--;
+		return;
+	}
+
+	vec2 Direction = normalize(vec2(m_Input.m_TargetX, m_Input.m_TargetY));
+
+	// check if we gonna fire
+	bool WillFire = false;
+	if(CountInput(m_PrevInput.m_Fire, m_Input.m_Fire).m_Presses)
+		WillFire = true;
+
+	if(!WillFire)
+		return;
+
+	vec2 ProjStartPos = m_Pos + Direction * GetProximityRadius() * 0.75f;
+
+	GameServer()->CreateSound(m_Pos, SOUND_HAMMER_FIRE);
+
+	CDamageEntity *apEnts[MAX_CHECK_ENTITY];
+	int Hits = 0;
+	int Num = GameWorld()->FindEntities(ProjStartPos, GetProximityRadius() * 0.5f, (CEntity **) apEnts,
+		MAX_CHECK_ENTITY, EEntityFlag::ENTFLAG_DAMAGE);
+
+	for(int i = 0; i < Num; ++i)
+	{
+		CDamageEntity *pTarget = apEnts[i];
+
+		if((pTarget == this) || GameServer()->Collision()->IntersectLine(ProjStartPos, pTarget->GetPos(), NULL, NULL))
+			continue;
+
+		// set his velocity to fast upward (for now)
+		if(length(pTarget->GetPos() - ProjStartPos) > 0.0f)
+			GameServer()->CreateHammerHit(pTarget->GetPos() - normalize(pTarget->GetPos() - ProjStartPos) * GetProximityRadius() * 0.5f);
+		else
+			GameServer()->CreateHammerHit(ProjStartPos);
+
+		vec2 Dir;
+		if(length(pTarget->GetPos() - GetPos()) > 0.0f)
+			Dir = normalize(pTarget->GetPos() - GetPos());
+		else
+			Dir = vec2(0.f, -1.f);
+
+		pTarget->TakeDamage(vec2(0.f, -1.f) + normalize(Dir + vec2(0.f, -1.1f)) * 10.0f, Dir * -1, g_pData->m_Weapons.m_Hammer.m_pBase->m_Damage,
+			this, WEAPON_HAMMER);
+		Hits++;
+	}
+
+	// if we Hit anything, we have to wait for the reload
+	if(Hits)
+		m_ReloadTimer = Server()->TickSpeed() / 3;
+
+	m_AttackTick = Server()->Tick();
+
+	if(!m_ReloadTimer)
+		m_ReloadTimer = g_pData->m_Weapons.m_aId[WEAPON_HAMMER].m_Firedelay * Server()->TickSpeed() / 1000;
 }
