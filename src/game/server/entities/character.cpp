@@ -661,7 +661,7 @@ bool CCharacter::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, in
 
 void CCharacter::Die(CEntity *pKiller, int Weapon)
 {
-	int Killer = -1;
+	int Killer = pKiller ? m_pPlayer->GetCID() : -1;
 	if(pKiller && (pKiller->GetObjFlag() & EEntityFlag::ENTFLAG_OWNER))
 		Killer = ((COwnerEntity *) pKiller)->GetOwner();
 
