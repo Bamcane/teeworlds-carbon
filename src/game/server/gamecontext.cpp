@@ -1535,6 +1535,7 @@ void CGameContext::OnPostSnap()
 {
 	m_World.PostSnap();
 	m_Events.Clear();
+	BotManager()->PostSnap();
 }
 
 bool CGameContext::IsClientBot(int ClientID) const

@@ -45,6 +45,8 @@ public:
 
 	void OnBotDeath(int BotID);
 	void OnClientRefresh(int ClientID);
+
+	void PostSnap();
 };
 
 #endif // GAME_SERVER_BOTMANAGER_H

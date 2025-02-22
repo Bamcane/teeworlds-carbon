@@ -216,31 +216,6 @@ void CBotEntity::PostSnap()
 
 void CBotEntity::Die(CEntity *pKiller, int Weapon)
 {
-	int Killer = -1;
-	if(pKiller && (pKiller->GetObjFlag() & EEntityFlag::ENTFLAG_OWNER))
-		Killer = ((CBaseOwnerEntity *) pKiller)->GetOwner();
-
-	// send the kill message
-	CNetMsg_Sv_KillMsg Msg;
-	Msg.m_ModeSpecial = 0;
-	for(int i = 0; i < MAX_CLIENTS; i++)
-	{
-		if(!Server()->ClientIngame(i))
-			continue;
-
-		if(Killer < 0 && Server()->GetClientVersion(i) < MIN_KILLMESSAGE_CLIENTVERSION)
-		{
-			Msg.m_Killer = 0;
-			Msg.m_Weapon = WEAPON_WORLD;
-		}
-		else
-		{
-			Msg.m_Killer = Killer;
-			Msg.m_Weapon = Weapon;
-		}
-		Server()->SendPackMsg(&Msg, MSGFLAG_VITAL, i);
-	}
-
 	// a nice sound
 	GameServer()->CreateSound(m_Pos, SOUND_PLAYER_DIE);
 

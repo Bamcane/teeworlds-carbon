@@ -71,6 +71,9 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 	std::vector<std::pair<float, int>> Distances;
 	for(auto &[BotID, pBot] : m_vpBots)
 	{
+		if(!pBot)
+			continue;
+
 		std::pair<float, int> Temp;
 		Temp.first = distance(GameServer()->m_apPlayers[ClientID]->m_ViewPos, pBot->GetPos());
 		Temp.second = BotID;
@@ -191,21 +194,6 @@ void CBotManager::Tick()
 		if(!CreateBot())
 			break;
 	}
-
-	if(Server()->Tick() % Config()->m_SvIdMapRefreshRate)
-		return;
-
-	for(auto& DestroyID : m_vMarkedAsDestroy)
-	{
-		m_vpBots.erase(DestroyID);
-	}
-	m_vMarkedAsDestroy.clear();
-
-	for(int i = 0; i < MAX_CLIENTS; i++)
-	{
-		if(Server()->ClientIngame(i) && GameServer()->m_apPlayers[i])
-			UpdatePlayerMap(i);
-	}
 }
 
 void CBotManager::CreateDamage(vec2 Pos, int BotID, vec2 Source, int HealthAmount, int ArmorAmount, bool Self)
@@ -266,4 +254,21 @@ void CBotManager::OnClientRefresh(int ClientID)
 		return;
 
 	ClearPlayerMap(ClientID);
+}
+
+void CBotManager::PostSnap()
+{
+	if(m_vMarkedAsDestroy.size())
+	{
+		for(auto& DestroyID : m_vMarkedAsDestroy)
+		{
+			m_vpBots.erase(DestroyID);
+		}
+		m_vMarkedAsDestroy.clear();
+	}
+	for(int i = 0; i < MAX_CLIENTS; i++)
+	{
+		if(Server()->ClientIngame(i) && GameServer()->m_apPlayers[i])
+			UpdatePlayerMap(i);
+	}
 }
