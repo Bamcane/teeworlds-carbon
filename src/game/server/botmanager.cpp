@@ -260,7 +260,7 @@ void CBotManager::PostSnap()
 {
 	if(m_vMarkedAsDestroy.size())
 	{
-		for(auto& DestroyID : m_vMarkedAsDestroy)
+		for(auto &DestroyID : m_vMarkedAsDestroy)
 		{
 			m_vpBots.erase(DestroyID);
 		}

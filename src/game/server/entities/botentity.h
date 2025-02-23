@@ -55,4 +55,4 @@ private:
 	void DoWeapon();
 };
 
-#endif
+#endif // GAME_SERVER_ENTITIES_BOTENTITY_H

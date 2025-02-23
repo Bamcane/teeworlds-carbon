@@ -1711,7 +1711,7 @@ void CServer::ConNetworkStats(IConsole::IResult *pResult, void *pUser)
 	net_stats(&Stats);
 
 	char aBuf[256];
-	str_format(aBuf, sizeof(aBuf), "send packets=%d, send bytes=%d;recv packets=%d, recv bytes=%d", 
+	str_format(aBuf, sizeof(aBuf), "send packets=%d, send bytes=%d;recv packets=%d, recv bytes=%d",
 		Stats.sent_packets, Stats.sent_bytes, Stats.recv_packets, Stats.recv_bytes);
 	pServer->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "network", aBuf);
 }
