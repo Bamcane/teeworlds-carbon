@@ -9,5 +9,8 @@
 #define CLIENT_VERSION 0x0705
 #define PREV_CLIENT_VERSION 0x0704
 #define SETTINGS_FILENAME "settings07"
-static const char GAME_RELEASE_VERSION[8] = "0.7.5";
+#define GAME_NAME "Teeworlds"
+#define MOD_NAME "Carbon"
+#define GAME_RELEASE_VERSION "0.7.5"
+#define MOD_VERSION "0.1.0"
 #endif

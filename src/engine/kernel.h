@@ -20,6 +20,7 @@ protected:
 public:
 	IInterface() :
 		m_pKernel(0) {}
+	virtual void Shutdown() {}
 	virtual ~IInterface() {}
 
 	// virtual unsigned InterfaceID() = 0;

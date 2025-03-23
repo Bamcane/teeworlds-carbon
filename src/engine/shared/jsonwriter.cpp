@@ -3,6 +3,8 @@
 
 #include "jsonwriter.h"
 
+#include <base/system.h>
+
 static char EscapeJsonChar(char c)
 {
 	switch(c)
@@ -18,22 +20,14 @@ static char EscapeJsonChar(char c)
 	}
 }
 
-CJsonWriter::CJsonWriter(IOHANDLE IO)
+CJsonWriter::CJsonWriter()
 {
-	m_IO = IO;
-	m_NumStates = 0; // no root created yet
 	m_Indentation = 0;
-}
-
-CJsonWriter::~CJsonWriter()
-{
-	io_write_newline(m_IO);
-	io_close(m_IO);
 }
 
 void CJsonWriter::BeginObject()
 {
-	dbg_assert(CanWriteDatatype(), "Cannot write object at this position");
+	dbg_assert(CanWriteDatatype(), "Cannot write object here");
 	WriteIndent(false);
 	WriteInternal("{");
 	PushState(STATE_OBJECT);
@@ -50,7 +44,7 @@ void CJsonWriter::EndObject()
 
 void CJsonWriter::BeginArray()
 {
-	dbg_assert(CanWriteDatatype(), "Cannot write array at this position");
+	dbg_assert(CanWriteDatatype(), "Cannot write array here");
 	WriteIndent(false);
 	WriteInternal("[");
 	PushState(STATE_ARRAY);
@@ -67,7 +61,7 @@ void CJsonWriter::EndArray()
 
 void CJsonWriter::WriteAttribute(const char *pName)
 {
-	dbg_assert(TopState()->m_Kind == STATE_OBJECT, "Attribute can only be written inside of objects");
+	dbg_assert(TopState()->m_Kind == STATE_OBJECT, "Cannot write attribute here");
 	WriteIndent(false);
 	WriteInternalEscaped(pName);
 	WriteInternal(": ");
@@ -76,7 +70,7 @@ void CJsonWriter::WriteAttribute(const char *pName)
 
 void CJsonWriter::WriteStrValue(const char *pValue)
 {
-	dbg_assert(CanWriteDatatype(), "Cannot write value at this position");
+	dbg_assert(CanWriteDatatype(), "Cannot write value here");
 	WriteIndent(false);
 	WriteInternalEscaped(pValue);
 	CompleteDataType();
@@ -84,7 +78,7 @@ void CJsonWriter::WriteStrValue(const char *pValue)
 
 void CJsonWriter::WriteIntValue(int Value)
 {
-	dbg_assert(CanWriteDatatype(), "Cannot write value at this position");
+	dbg_assert(CanWriteDatatype(), "Cannot write value here");
 	WriteIndent(false);
 	char aBuf[32];
 	str_format(aBuf, sizeof(aBuf), "%d", Value);
@@ -94,7 +88,7 @@ void CJsonWriter::WriteIntValue(int Value)
 
 void CJsonWriter::WriteBoolValue(bool Value)
 {
-	dbg_assert(CanWriteDatatype(), "Cannot write value at this position");
+	dbg_assert(CanWriteDatatype(), "Cannot write value here");
 	WriteIndent(false);
 	WriteInternal(Value ? "true" : "false");
 	CompleteDataType();
@@ -102,7 +96,7 @@ void CJsonWriter::WriteBoolValue(bool Value)
 
 void CJsonWriter::WriteNullValue()
 {
-	dbg_assert(CanWriteDatatype(), "Cannot write value at this position");
+	dbg_assert(CanWriteDatatype(), "Cannot write value here");
 	WriteIndent(false);
 	WriteInternal("null");
 	CompleteDataType();
@@ -110,12 +104,7 @@ void CJsonWriter::WriteNullValue()
 
 bool CJsonWriter::CanWriteDatatype()
 {
-	return m_NumStates == 0 || TopState()->m_Kind == STATE_ARRAY || TopState()->m_Kind == STATE_ATTRIBUTE;
-}
-
-inline void CJsonWriter::WriteInternal(const char *pStr)
-{
-	io_write(m_IO, pStr, str_length(pStr));
+	return m_States.empty() || TopState()->m_Kind == STATE_ARRAY || TopState()->m_Kind == STATE_ATTRIBUTE;
 }
 
 void CJsonWriter::WriteInternalEscaped(const char *pStr)
@@ -128,12 +117,12 @@ void CJsonWriter::WriteInternalEscaped(const char *pStr)
 		char SimpleEscape = EscapeJsonChar(pStr[i]);
 		// Assuming ASCII/UTF-8, exactly everything below 0x20 is a
 		// control character.
-		bool NeedsEscape = SimpleEscape || (unsigned char) pStr[i] < 0x20;
+		bool NeedsEscape = SimpleEscape || (unsigned char)pStr[i] < 0x20;
 		if(NeedsEscape)
 		{
 			if(i - UnwrittenFrom > 0)
 			{
-				io_write(m_IO, pStr + UnwrittenFrom, i - UnwrittenFrom);
+				WriteInternal(pStr + UnwrittenFrom, i - UnwrittenFrom);
 			}
 
 			if(SimpleEscape)
@@ -141,7 +130,7 @@ void CJsonWriter::WriteInternalEscaped(const char *pStr)
 				char aStr[2];
 				aStr[0] = '\\';
 				aStr[1] = SimpleEscape;
-				io_write(m_IO, aStr, sizeof(aStr));
+				WriteInternal(aStr, sizeof(aStr));
 			}
 			else
 			{
@@ -154,63 +143,94 @@ void CJsonWriter::WriteInternalEscaped(const char *pStr)
 	}
 	if(Length - UnwrittenFrom > 0)
 	{
-		io_write(m_IO, pStr + UnwrittenFrom, Length - UnwrittenFrom);
+		WriteInternal(pStr + UnwrittenFrom, Length - UnwrittenFrom);
 	}
 	WriteInternal("\"");
 }
 
 void CJsonWriter::WriteIndent(bool EndElement)
 {
-	const bool NotRootOrAttribute = m_NumStates != 0 && TopState()->m_Kind != STATE_ATTRIBUTE;
+	const bool NotRootOrAttribute = !m_States.empty() && TopState()->m_Kind != STATE_ATTRIBUTE;
 
 	if(NotRootOrAttribute && !TopState()->m_Empty && !EndElement)
 		WriteInternal(",");
 
 	if(NotRootOrAttribute || EndElement)
-		io_write_newline(m_IO);
+		WriteInternal("\n");
 
 	if(NotRootOrAttribute)
 		for(int i = 0; i < m_Indentation; i++)
 			WriteInternal("\t");
 }
 
-void CJsonWriter::PushState(unsigned char NewState)
+void CJsonWriter::PushState(EJsonStateKind NewState)
 {
-	dbg_assert(m_NumStates < MAX_DEPTH, "max json depth exceeded");
-	if(m_NumStates != 0)
+	if(!m_States.empty())
 	{
-		m_aStates[m_NumStates - 1].m_Empty = false;
+		m_States.top().m_Empty = false;
 	}
-	m_aStates[m_NumStates] = CState(NewState);
-	m_NumStates++;
+	m_States.emplace(NewState);
 	if(NewState != STATE_ATTRIBUTE)
 	{
 		m_Indentation++;
 	}
 }
 
-CJsonWriter::CState *CJsonWriter::TopState()
+CJsonWriter::SState *CJsonWriter::TopState()
 {
-	dbg_assert(m_NumStates != 0, "json stack is empty");
-	return &m_aStates[m_NumStates - 1];
+	dbg_assert(!m_States.empty(), "json stack is empty");
+	return &m_States.top();
 }
 
-unsigned char CJsonWriter::PopState()
+CJsonWriter::EJsonStateKind CJsonWriter::PopState()
 {
-	dbg_assert(m_NumStates != 0, "json stack is empty");
-	m_NumStates--;
-	if(m_aStates[m_NumStates].m_Kind != STATE_ATTRIBUTE)
+	dbg_assert(!m_States.empty(), "json stack is empty");
+	SState TopState = m_States.top();
+	m_States.pop();
+	if(TopState.m_Kind != STATE_ATTRIBUTE)
 	{
 		m_Indentation--;
 	}
-	return m_aStates[m_NumStates].m_Kind;
+	return TopState.m_Kind;
 }
 
 void CJsonWriter::CompleteDataType()
 {
-	if(m_NumStates != 0 && m_aStates[m_NumStates - 1].m_Kind == STATE_ATTRIBUTE)
+	if(!m_States.empty() && TopState()->m_Kind == STATE_ATTRIBUTE)
 		PopState(); // automatically complete the attribute
 
-	if(m_NumStates != 0)
-		m_aStates[m_NumStates - 1].m_Empty = false;
+	if(!m_States.empty())
+		TopState()->m_Empty = false;
+}
+
+CJsonFileWriter::CJsonFileWriter(IOHANDLE IO)
+{
+	dbg_assert((bool)IO, "IO handle invalid");
+	m_IO = IO;
+}
+
+CJsonFileWriter::~CJsonFileWriter()
+{
+	// Ensure newline at the end
+	WriteInternal("\n");
+	io_close(m_IO);
+}
+
+void CJsonFileWriter::WriteInternal(const char *pStr, int Length)
+{
+	io_write(m_IO, pStr, Length < 0 ? str_length(pStr) : Length);
+}
+
+void CJsonStringWriter::WriteInternal(const char *pStr, int Length)
+{
+	dbg_assert(!m_RetrievedOutput, "Writer output has already been retrieved");
+	m_OutputString += Length < 0 ? pStr : std::string(pStr, Length);
+}
+
+std::string &&CJsonStringWriter::GetOutputString()
+{
+	// Ensure newline at the end. Modify member variable so we can move it when returning.
+	WriteInternal("\n");
+	m_RetrievedOutput = true; // prevent further usage of this writer
+	return std::move(m_OutputString);
 }

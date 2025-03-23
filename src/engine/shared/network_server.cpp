@@ -87,6 +87,11 @@ int CNetServer::Update()
 	return 0;
 }
 
+TOKEN CNetServer::GetGlobalToken()
+{
+	return m_TokenManager.GetGlobalToken();
+}
+
 /*
 	TODO: chopp up this function into smaller working parts
 */

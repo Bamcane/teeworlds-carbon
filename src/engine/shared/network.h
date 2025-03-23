@@ -237,6 +237,7 @@ public:
 	TOKEN GenerateToken(const NETADDR *pAddr) const;
 	static TOKEN GenerateToken(const NETADDR *pAddr, int64 Seed);
 
+	TOKEN GetGlobalToken() { return m_GlobalToken; };
 private:
 	CNetBase *m_pNetBase;
 
@@ -484,7 +485,9 @@ public:
 	const NETADDR *ClientAddr(int ClientID) const { return m_aSlots[ClientID].m_Connection.PeerAddress(); }
 	class CNetBan *NetBan() const { return m_pNetBan; }
 
+	TOKEN GetGlobalToken();
 	//
+	int MaxClients() const { return m_MaxClients; }
 	void SetMaxClients(int MaxClients);
 	void SetMaxClientsPerIP(int MaxClientsPerIP);
 };

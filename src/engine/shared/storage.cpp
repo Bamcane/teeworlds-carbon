@@ -288,7 +288,7 @@ public:
 		dbg_msg("storage", "warning no data directory found");
 	}
 
-	virtual void ListDirectory(int Type, const char *pPath, FS_LISTDIR_CALLBACK pfnCallback, void *pUser)
+	void ListDirectory(int Type, const char *pPath, FS_LISTDIR_CALLBACK pfnCallback, void *pUser) override
 	{
 		char aBuffer[IO_MAX_PATH_LENGTH];
 		if(Type == TYPE_ALL)
@@ -304,7 +304,7 @@ public:
 		}
 	}
 
-	virtual void ListDirectoryFileInfo(int Type, const char *pPath, FS_LISTDIR_CALLBACK_FILEINFO pfnCallback, void *pUser)
+	void ListDirectoryFileInfo(int Type, const char *pPath, FS_LISTDIR_CALLBACK_FILEINFO pfnCallback, void *pUser) override
 	{
 		char aBuffer[IO_MAX_PATH_LENGTH];
 		if(Type == TYPE_ALL)
@@ -328,7 +328,7 @@ public:
 
 	// Open a file. This checks that the path appears to be a subdirectory
 	// of one of the storage paths.
-	virtual IOHANDLE OpenFile(const char *pFilename, int Flags, int Type, char *pBuffer = 0, int BufferSize = 0, FCheckCallback pfnCheckCB = 0, const void *pCheckCBData = 0)
+	IOHANDLE OpenFile(const char *pFilename, int Flags, int Type, char *pBuffer = 0, int BufferSize = 0, FCheckCallback pfnCheckCB = 0, const void *pCheckCBData = 0) override
 	{
 		char aBuffer[IO_MAX_PATH_LENGTH];
 		if(!pBuffer)
@@ -498,7 +498,7 @@ public:
 		return pCBData->m_pBuffer[0] != 0;
 	}
 
-	virtual bool FindFile(const char *pFilename, const char *pPath, int Type, char *pBuffer, int BufferSize)
+	bool FindFile(const char *pFilename, const char *pPath, int Type, char *pBuffer, int BufferSize) override
 	{
 		CFindCBData Data;
 		Data.m_pStorage = this;
@@ -513,7 +513,7 @@ public:
 		return FindFileImpl(Type, &Data);
 	}
 
-	virtual bool FindFile(const char *pFilename, const char *pPath, int Type, char *pBuffer, int BufferSize, const SHA256_DIGEST *pWantedSha256, unsigned WantedCrc, unsigned WantedSize)
+	bool FindFile(const char *pFilename, const char *pPath, int Type, char *pBuffer, int BufferSize, const SHA256_DIGEST *pWantedSha256, unsigned WantedCrc, unsigned WantedSize) override
 	{
 		CFindCBData Data;
 		Data.m_pStorage = this;
@@ -528,7 +528,7 @@ public:
 		return FindFileImpl(Type, &Data);
 	}
 
-	virtual bool RemoveFile(const char *pFilename, int Type)
+	bool RemoveFile(const char *pFilename, int Type) override
 	{
 		if(Type < 0 || Type >= m_NumPaths)
 			return false;
@@ -537,7 +537,7 @@ public:
 		return !fs_remove(GetPath(Type, pFilename, aBuffer, sizeof(aBuffer)));
 	}
 
-	virtual bool RenameFile(const char *pOldFilename, const char *pNewFilename, int Type)
+	bool RenameFile(const char *pOldFilename, const char *pNewFilename, int Type) override
 	{
 		if(Type < 0 || Type >= m_NumPaths)
 			return false;
@@ -546,7 +546,7 @@ public:
 		return !fs_rename(GetPath(Type, pOldFilename, aOldBuffer, sizeof(aOldBuffer)), GetPath(Type, pNewFilename, aNewBuffer, sizeof(aNewBuffer)));
 	}
 
-	virtual bool CreateFolder(const char *pFoldername, int Type)
+	bool CreateFolder(const char *pFoldername, int Type) override
 	{
 		if(Type < 0 || Type >= m_NumPaths)
 			return false;
@@ -555,7 +555,7 @@ public:
 		return !fs_makedir(GetPath(Type, pFoldername, aBuffer, sizeof(aBuffer)));
 	}
 
-	virtual void GetCompletePath(int Type, const char *pDir, char *pBuffer, unsigned BufferSize)
+	void GetCompletePath(int Type, const char *pDir, char *pBuffer, unsigned BufferSize) override
 	{
 		if(Type < 0 || Type >= m_NumPaths)
 		{
@@ -567,7 +567,13 @@ public:
 		GetPath(Type, pDir, pBuffer, BufferSize);
 	}
 
-	virtual bool GetHashAndSize(const char *pFilename, int StorageType, SHA256_DIGEST *pSha256, unsigned *pCrc, unsigned *pSize)
+	const char *GetBinaryPath(const char *pFilename, char *pBuffer, unsigned BufferSize) override
+	{
+		str_format(pBuffer, BufferSize, "%s%s%s", m_aAppDir, !m_aAppDir[0] ? "" : "/", pFilename);
+		return pBuffer;
+	}
+
+	bool GetHashAndSize(const char *pFilename, int StorageType, SHA256_DIGEST *pSha256, unsigned *pCrc, unsigned *pSize) override
 	{
 		IOHANDLE File = OpenFile(pFilename, IOFLAG_READ, StorageType);
 		if(!File)
@@ -597,7 +603,7 @@ public:
 		return true;
 	}
 
-	virtual bool GetFileTime(const char *pFilename, int StorageType, time_t *pCreated, time_t *pModified)
+	bool GetFileTime(const char *pFilename, int StorageType, time_t *pCreated, time_t *pModified) override
 	{
 		char aBuf[IO_MAX_PATH_LENGTH];
 		GetCompletePath(StorageType, pFilename, aBuf, sizeof(aBuf));
@@ -628,6 +634,12 @@ public:
 		return p;
 	}
 };
+
+const char *IStorage::FormatTmpPath(char *aBuf, unsigned BufSize, const char *pPath)
+{
+	str_format(aBuf, BufSize, "%s.%d.tmp", pPath, pid());
+	return aBuf;
+}
 
 IStorage *CreateStorage(const char *pApplicationName, int StorageType, int NumArgs, const char **ppArguments) { return CStorage::Create(pApplicationName, StorageType, NumArgs, ppArguments); }
 IStorage *CreateTestStorage() { return CStorage::CreateTest(); }

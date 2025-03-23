@@ -8,7 +8,6 @@
 #include <engine/console.h>
 #include <engine/engine.h>
 #include <engine/map.h>
-#include <engine/masterserver.h>
 #include <engine/server.h>
 #include <engine/storage.h>
 
@@ -18,6 +17,7 @@
 #include <engine/shared/demo.h>
 #include <engine/shared/econ.h>
 #include <engine/shared/filecollection.h>
+#include <engine/shared/jsonwriter.h>
 #include <engine/shared/masterserver.h>
 #include <engine/shared/netban.h>
 #include <engine/shared/network.h>
@@ -265,6 +265,9 @@ CServer::CServer() :
 	m_RconPasswordSet = 0;
 	m_GeneratedRconPassword = 0;
 
+	m_ServerInfoNeedsUpdate = false;
+	m_pRegister = nullptr;
+
 	Init();
 }
 
@@ -298,6 +301,8 @@ void CServer::SetClientScore(int ClientID, int Score)
 {
 	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY)
 		return;
+	if(m_aClients[ClientID].m_Score != Score)
+		ExpireServerInfo();
 	m_aClients[ClientID].m_Score = Score;
 }
 
@@ -1139,6 +1144,126 @@ void CServer::SendServerInfo(int ClientID)
 		SendMsg(&Msg, MSGFLAG_VITAL | MSGFLAG_FLUSH, ClientID);
 }
 
+void CServer::ExpireServerInfo()
+{
+	m_ServerInfoNeedsUpdate = true;
+}
+
+void CServer::UpdateRegisterServerInfo()
+{
+	// count the players
+	int PlayerCount = 0, ClientCount = 0;
+	for(int i = 0; i < MAX_CLIENTS; i++)
+	{
+		if(m_aClients[i].IncludedInServerInfo())
+		{
+			if(GameServer()->IsClientPlayer(i))
+				PlayerCount++;
+
+			ClientCount++;
+		}
+	}
+
+	int MaxPlayers = maximum(m_NetServer.MaxClients(), PlayerCount);
+	int MaxClients = maximum(m_NetServer.MaxClients(), ClientCount);
+	char aMapSha256[SHA256_MAXSTRSIZE];
+
+	sha256_str(m_CurrentMapSha256, aMapSha256, sizeof(aMapSha256));
+
+	CJsonStringWriter JsonWriter;
+
+	JsonWriter.BeginObject();
+	JsonWriter.WriteAttribute("max_clients");
+	JsonWriter.WriteIntValue(MaxClients);
+
+	JsonWriter.WriteAttribute("max_players");
+	JsonWriter.WriteIntValue(MaxPlayers);
+
+	JsonWriter.WriteAttribute("passworded");
+	JsonWriter.WriteBoolValue(Config()->m_Password[0]);
+
+	JsonWriter.WriteAttribute("game_type");
+	JsonWriter.WriteStrValue(GameServer()->GameType());
+
+	JsonWriter.WriteAttribute("name");
+	JsonWriter.WriteStrValue(Config()->m_SvName);
+
+	JsonWriter.WriteAttribute("map");
+	JsonWriter.BeginObject();
+	JsonWriter.WriteAttribute("name");
+	JsonWriter.WriteStrValue(GetMapName());
+	JsonWriter.WriteAttribute("sha256");
+	JsonWriter.WriteStrValue(aMapSha256);
+	JsonWriter.WriteAttribute("size");
+	JsonWriter.WriteIntValue(m_CurrentMapSize);
+	JsonWriter.EndObject();
+
+	JsonWriter.WriteAttribute("version");
+	JsonWriter.WriteStrValue(GameServer()->Version());
+
+	JsonWriter.WriteAttribute("client_score_kind");
+	JsonWriter.WriteStrValue("points"); // "points" or "time"
+
+	JsonWriter.WriteAttribute("requires_login");
+	JsonWriter.WriteBoolValue(false);
+
+	JsonWriter.WriteAttribute("clients");
+	JsonWriter.BeginArray();
+
+	for(int i = 0; i < MAX_CLIENTS; i++)
+	{
+		if(m_aClients[i].IncludedInServerInfo())
+		{
+			JsonWriter.BeginObject();
+
+			JsonWriter.WriteAttribute("name");
+			JsonWriter.WriteStrValue(ClientName(i));
+
+			JsonWriter.WriteAttribute("clan");
+			JsonWriter.WriteStrValue(ClientClan(i));
+
+			JsonWriter.WriteAttribute("country");
+			JsonWriter.WriteIntValue(m_aClients[i].m_Country); // ISO 3166-1 numeric
+
+			JsonWriter.WriteAttribute("score");
+			JsonWriter.WriteIntValue(m_aClients[i].m_Score);
+
+			JsonWriter.WriteAttribute("is_player");
+			JsonWriter.WriteBoolValue(GameServer()->IsClientPlayer(i));
+
+			GameServer()->OnUpdatePlayerServerInfo(&JsonWriter, i);
+
+			JsonWriter.EndObject();
+		}
+	}
+
+	JsonWriter.EndArray();
+	JsonWriter.EndObject();
+
+	m_pRegister->OnNewInfo(JsonWriter.GetOutputString().c_str());
+}
+
+void CServer::UpdateServerInfo(bool Resend)
+{
+	if(m_RunServer == false)
+		return;
+
+	UpdateRegisterServerInfo();
+
+	if(Resend)
+	{
+		for(int i = 0; i < m_NetServer.MaxClients(); ++i)
+		{
+			if(m_aClients[i].m_State != CClient::STATE_EMPTY)
+			{
+				SendServerInfo(i);
+			}
+		}
+	}
+
+	m_ServerInfoNeedsUpdate = false;
+}
+
 void CServer::PumpNetwork()
 {
 	CNetChunk Packet;
@@ -1151,7 +1276,7 @@ void CServer::PumpNetwork()
 	{
 		if(Packet.m_Flags & NETSENDFLAG_CONNLESS)
 		{
-			if(m_Register.RegisterProcessPacket(&Packet, ResponseToken))
+			if(ResponseToken == NET_TOKEN_NONE && m_pRegister->OnPacket(&Packet))
 				continue;
 			if(Packet.m_DataSize >= int(sizeof(SERVERBROWSE_GETINFO)) &&
 				mem_comp(Packet.m_pData, SERVERBROWSE_GETINFO, sizeof(SERVERBROWSE_GETINFO)) == 0)
@@ -1242,11 +1367,6 @@ int CServer::LoadMap(const char *pMapName)
 	return 1;
 }
 
-void CServer::InitRegister(CNetServer *pNetServer, IEngineMasterServer *pMasterServer, CConfig *pConfig, IConsole *pConsole)
-{
-	m_Register.Init(pNetServer, pMasterServer, pConfig, pConsole);
-}
-
 void CServer::InitInterfaces(IKernel *pKernel)
 {
 	m_pConfig = pKernel->RequestInterface<IConfigManager>()->Values();
@@ -1254,6 +1374,7 @@ void CServer::InitInterfaces(IKernel *pKernel)
 	m_pGameServer = pKernel->RequestInterface<IGameServer>();
 	m_pMap = pKernel->RequestInterface<IEngineMap>();
 	m_pStorage = pKernel->RequestInterface<IStorage>();
+	Kernel()->RegisterInterface(static_cast<IHttp *>(&m_Http));
 }
 
 int CServer::Run()
@@ -1295,6 +1416,13 @@ int CServer::Run()
 		return -1;
 	}
 
+	if(!m_Http.Init(std::chrono::seconds{2}, Config()))
+	{
+		dbg_msg("server", "Failed to initialize the HTTP client.");
+		return -1;
+	}
+
+	m_pRegister = CreateRegister(Config(), m_pConsole, Kernel()->RequestInterface<IEngine>(), &m_Http, Config()->m_SvPort, m_NetServer.GetGlobalToken());
 	m_Econ.Init(Config(), Console(), &m_ServerBan);
 
 	char aBuf[256];
@@ -1313,6 +1441,7 @@ int CServer::Run()
 
 	// process pending commands
 	m_pConsole->StoreCommands(false);
+	m_pRegister->OnConfigChange();
 
 	if(m_GeneratedRconPassword)
 	{
@@ -1325,6 +1454,7 @@ int CServer::Run()
 	{
 		m_GameStartTime = time_get();
 
+		UpdateServerInfo();
 		while(m_RunServer)
 		{
 			// load new map
@@ -1356,6 +1486,7 @@ int CServer::Run()
 					m_CurrentGameTick = 0;
 					Kernel()->ReregisterInterface(GameServer());
 					GameServer()->OnInit();
+					UpdateServerInfo(true);
 				}
 				else
 				{
@@ -1402,10 +1533,13 @@ int CServer::Run()
 
 				UpdateClientRconCommands();
 				UpdateClientMapListEntries();
-			}
 
-			// master server stuff
-			m_Register.RegisterUpdate(m_NetServer.NetType());
+				// master server stuff
+				m_pRegister->Update();
+
+				if(m_ServerInfoNeedsUpdate)
+					UpdateServerInfo();
+			}
 
 			PumpNetwork();
 
@@ -1421,7 +1555,9 @@ int CServer::Run()
 	}
 	// disconnect all clients on shutdown
 	m_NetServer.Close(m_aShutdownReason);
+	m_pRegister->OnShutdown();
 	m_Econ.Shutdown();
+	m_Http.Shutdown();
 
 	GameServer()->OnShutdown();
 	Free();
@@ -1434,6 +1570,11 @@ void CServer::Free()
 	if(m_pMap)
 	{
 		m_pMap->Unload();
+	}
+
+	if(m_pRegister)
+	{
+		delete m_pRegister;
 	}
 
 	if(m_pCurrentMapData)
@@ -1625,7 +1766,7 @@ void CServer::ConchainSpecialInfoupdate(IConsole::IResult *pResult, void *pUserD
 	if(pResult->NumArguments())
 	{
 		str_clean_whitespaces(pSelf->Config()->m_SvName);
-		pSelf->SendServerInfo(-1);
+		pSelf->UpdateServerInfo(true);
 	}
 }
 
@@ -1823,11 +1964,8 @@ int main(int argc, const char **argv)
 	IEngineMap *pEngineMap = CreateEngineMap();
 	IGameServer *pGameServer = CreateGameServer();
 	IConsole *pConsole = CreateConsole(CFGFLAG_SERVER | CFGFLAG_ECON);
-	IEngineMasterServer *pEngineMasterServer = CreateEngineMasterServer();
 	IStorage *pStorage = CreateStorage("Teeworlds", IStorage::STORAGETYPE_SERVER, argc, argv);
 	IConfigManager *pConfigManager = CreateConfigManager();
-
-	pServer->InitRegister(&pServer->m_NetServer, pEngineMasterServer, pConfigManager->Values(), pConsole);
 
 	{
 		bool RegisterFail = false;
@@ -1840,8 +1978,6 @@ int main(int argc, const char **argv)
 		RegisterFail = RegisterFail || !pKernel->RegisterInterface(pConsole);
 		RegisterFail = RegisterFail || !pKernel->RegisterInterface(pStorage);
 		RegisterFail = RegisterFail || !pKernel->RegisterInterface(pConfigManager);
-		RegisterFail = RegisterFail || !pKernel->RegisterInterface(static_cast<IEngineMasterServer *>(pEngineMasterServer)); // register as both
-		RegisterFail = RegisterFail || !pKernel->RegisterInterface(static_cast<IMasterServer *>(pEngineMasterServer));
 
 		if(RegisterFail)
 			return -1;
@@ -1850,8 +1986,6 @@ int main(int argc, const char **argv)
 	pEngine->Init();
 	pConfigManager->Init(FlagMask);
 	pConsole->Init();
-	pEngineMasterServer->Init();
-	pEngineMasterServer->Load();
 
 	pServer->InitInterfaces(pKernel);
 	if(!UseDefaultConfig)
@@ -1885,7 +2019,6 @@ int main(int argc, const char **argv)
 	delete pEngineMap;
 	delete pGameServer;
 	delete pConsole;
-	delete pEngineMasterServer;
 	delete pStorage;
 	delete pConfigManager;
 

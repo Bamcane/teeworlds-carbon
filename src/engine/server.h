@@ -68,6 +68,8 @@ public:
 
 	virtual void DemoRecorder_HandleAutoStart() = 0;
 	virtual bool DemoRecorder_IsRecording() = 0;
+
+	virtual void ExpireServerInfo() = 0;
 };
 
 class IGameServer : public IInterface
@@ -104,6 +106,13 @@ public:
 	virtual const char *NetVersionHashReal() const = 0;
 
 	virtual bool TimeScore() const { return false; }
+	/**
+	 * Used to report custom player info to master servers.
+	 *
+	 * @param pJsonWriter A pointer to a CJsonStringWriter which the custom data will be added to.
+	 * @param i The client id.
+	 */
+	virtual void OnUpdatePlayerServerInfo(class CJsonStringWriter *pJSonWriter, int Id) = 0;
 };
 
 extern IGameServer *CreateGameServer();

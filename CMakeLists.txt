@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.12...3.27.4)
 
 file(STRINGS src/game/version.h VERSION_LINE
   LIMIT_COUNT 1
-  REGEX GAME_RELEASE_VERSION
+  REGEX "^#define MOD_VERSION "
 )
 
 if(VERSION_LINE MATCHES "\"([0-9]+)\\.([0-9]+)\\.([0-9]+|[0-9]+\\.[0-9]+)\"")
@@ -84,7 +84,7 @@ set_property(DIRECTORY APPEND PROPERTY CMAKE_CONFIGURE_DEPENDS
   src/game/version.h
 )
 
-set(SERVER_EXECUTABLE teeworlds_srv CACHE STRING "Name of the built server executable")
+set(SERVER_EXECUTABLE Carbon-Server CACHE STRING "Name of the built server executable")
 
 ########################################################################
 # Compiler flags
@@ -271,6 +271,7 @@ find_package(Git)
 find_package(GTest)
 find_package(Threads)
 find_package(Python3)
+find_package(Curl)
 
 
 if(TARGET_OS AND TARGET_OS STREQUAL "mac")
@@ -310,6 +311,7 @@ function(show_dependency_status OUTPUT_NAME NAME)
   endif()
 endfunction()
 
+show_dependency_status("Curl" CURL)
 if(TARGET_OS AND TARGET_OS STREQUAL "mac")
   show_dependency_status("Dmg tools" DMGTOOLS)
 endif()
@@ -320,6 +322,9 @@ show_dependency_status("OpenSSL Crypto" CRYPTO)
 show_dependency_status("Python3" Python3)
 show_dependency_status("Zlib" ZLIB)
 
+if(NOT(CURL_FOUND))
+  message(SEND_ERROR "You must install Curl to compile Teeworlds Carbon")
+endif()
 if(NOT(Python3_FOUND))
   message(SEND_ERROR "You must install Python to compile Teeworlds")
 endif()
@@ -505,6 +510,7 @@ set_src(BASE GLOB_RECURSE src/base
   hash_ctxt.h
   hash_libtomcrypt.c
   hash_openssl.c
+  lock.h
   math.h
   system.c
   system.h
@@ -522,9 +528,9 @@ set_src(ENGINE_INTERFACE GLOB src/engine
   console.h
   demo.h
   engine.h
+  http.h
   kernel.h
   map.h
-  masterserver.h
   message.h
   server.h
   storage.h
@@ -546,6 +552,8 @@ set_src(ENGINE_SHARED GLOB src/engine/shared
   engine.cpp
   filecollection.cpp
   filecollection.h
+  http.cpp
+  http.h
   huffman.cpp
   huffman.h
   jobs.cpp
@@ -558,7 +566,6 @@ set_src(ENGINE_SHARED GLOB src/engine/shared
   linereader.cpp
   linereader.h
   map.cpp
-  masterserver.cpp
   masterserver.h
   memheap.cpp
   memheap.h
@@ -579,6 +586,8 @@ set_src(ENGINE_SHARED GLOB src/engine/shared
   snapshot.cpp
   snapshot.h
   storage.cpp
+  uuid.cpp
+  uuid.h
 )
 set(ENGINE_GENERATED_SHARED src/generated/nethash.cpp src/generated/protocol.cpp src/generated/protocol.h)
 set_src(GAME_SHARED GLOB src/game
@@ -604,7 +613,13 @@ set(GAME_GENERATED_SHARED
 set(DEPS ${DEP_JSON} ${DEP_MD5} ${ZLIB_DEP})
 
 # Libraries
-set(LIBS ${CMAKE_THREAD_LIBS_INIT} ${ZLIB_LIBRARIES} ${CRYPTO_LIBRARIES} ${PLATFORM_LIBS})
+set(LIBS 
+  ${CMAKE_THREAD_LIBS_INIT}
+  ${ZLIB_LIBRARIES}
+  ${CRYPTO_LIBRARIES} 
+  ${CURL_LIBRARIES}
+  ${PLATFORM_LIBS}
+)
 
 # Targets
 add_library(engine-shared EXCLUDE_FROM_ALL OBJECT ${ENGINE_INTERFACE} ${ENGINE_SHARED} ${ENGINE_GENERATED_SHARED} ${BASE})
@@ -1005,6 +1020,7 @@ foreach(target ${TARGETS_LINK})
   if(TARGET_OS STREQUAL "mac")
     target_link_libraries(${target} -stdlib=libc++)
     target_link_libraries(${target} -mmacosx-version-min=10.7)
+    target_link_libraries(${target} "-framework SystemConfiguration") # Required by curl 7.79.0
   endif()
   if((MINGW OR TARGET_OS STREQUAL "linux") AND PREFER_BUNDLED_LIBS)
     # Statically link the standard libraries with on MinGW/Linux so we don't

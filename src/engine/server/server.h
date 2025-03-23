@@ -6,6 +6,7 @@
 #include <base/tl/sorted_array.h>
 
 #include <engine/server.h>
+#include <engine/shared/http.h>
 #include <engine/shared/memheap.h>
 
 class CSnapIDPool
@@ -65,6 +66,7 @@ class CServer : public IServer
 	class CConfig *m_pConfig;
 	class IConsole *m_pConsole;
 	class IStorage *m_pStorage;
+	class IRegister *m_pRegister;
 
 public:
 	class IGameServer *GameServer() { return m_pGameServer; }
@@ -137,6 +139,11 @@ public:
 		const IConsole::CCommandInfo *m_pRconCmdToSend;
 		int m_MapListEntryToSend;
 
+		bool IncludedInServerInfo() const
+		{
+			return m_State != STATE_EMPTY;
+		}
+
 		void Reset();
 	};
 
@@ -148,6 +155,7 @@ public:
 	CNetServer m_NetServer;
 	CEcon m_Econ;
 	CServerBan m_ServerBan;
+	CHttp m_Http;
 
 	IEngineMap *m_pMap;
 
@@ -187,7 +195,7 @@ public:
 	int m_GeneratedRconPassword;
 
 	CDemoRecorder m_DemoRecorder;
-	CRegister m_Register;
+	bool m_ServerInfoNeedsUpdate;
 
 	CServer();
 
@@ -239,6 +247,10 @@ public:
 
 	void ProcessClientPacket(CNetChunk *pPacket);
 
+	void ExpireServerInfo() override;
+	void UpdateRegisterServerInfo();
+	void UpdateServerInfo(bool Resend = false);
+
 	void SendServerInfo(int ClientID);
 	void GenerateServerInfo(CPacker *pPacker, int Token);
 
@@ -248,7 +260,6 @@ public:
 	const char *GetMapName();
 	int LoadMap(const char *pMapName);
 
-	void InitRegister(CNetServer *pNetServer, IEngineMasterServer *pMasterServer, CConfig *pConfig, IConsole *pConsole);
 	void InitInterfaces(IKernel *pKernel);
 	int Run();
 	void Free();

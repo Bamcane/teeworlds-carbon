@@ -190,6 +190,8 @@ public:
 	virtual const char *NetVersion() const;
 	virtual const char *NetVersionHashUsed() const;
 	virtual const char *NetVersionHashReal() const;
+
+	void OnUpdatePlayerServerInfo(class CJsonStringWriter *pJSonWriter, int Id) override;
 };
 
 inline int64 CmaskAll() { return -1; }

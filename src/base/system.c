@@ -2163,9 +2163,9 @@ int fs_makedir_recursive(const char *path)
 	for(i = 1; i < len; i++)
 	{
 		char b = buffer[i];
-		if(b == '/' || (b == '\\' && buffer[i - 1] != ':'))
+		if((buffer[i] == '/' || buffer[i] == '\\') && buffer[i + 1] != '\0' && buffer[i - 1] != ':')
 		{
-			buffer[i] = 0;
+			buffer[i] = '\0';
 			if(fs_makedir(buffer) < 0)
 			{
 				return -1;
@@ -2911,6 +2911,65 @@ const char *str_find(const char *haystack, const char *needle)
 	return 0;
 }
 
+static int hexval(char x)
+{
+	switch(x)
+	{
+	case '0': return 0;
+	case '1': return 1;
+	case '2': return 2;
+	case '3': return 3;
+	case '4': return 4;
+	case '5': return 5;
+	case '6': return 6;
+	case '7': return 7;
+	case '8': return 8;
+	case '9': return 9;
+	case 'a':
+	case 'A': return 10;
+	case 'b':
+	case 'B': return 11;
+	case 'c':
+	case 'C': return 12;
+	case 'd':
+	case 'D': return 13;
+	case 'e':
+	case 'E': return 14;
+	case 'f':
+	case 'F': return 15;
+	default: return -1;
+	}
+}
+
+static int byteval(const char *hex, unsigned char *dst)
+{
+	int v1 = hexval(hex[0]);
+	int v2 = hexval(hex[1]);
+
+	if(v1 < 0 || v2 < 0)
+		return 1;
+
+	*dst = v1 * 16 + v2;
+	return 0;
+}
+
+int str_hex_decode(void *dst, int dst_size, const char *src)
+{
+	unsigned char *cdst = (unsigned char *)dst;
+	int slen = str_length(src);
+	int len = slen / 2;
+	int i;
+	if(slen != dst_size * 2)
+		return 2;
+
+	for(i = 0; i < len && dst_size; i++, dst_size--)
+	{
+		if(byteval(src + i * 2, cdst++))
+			return 1;
+	}
+	return 0;
+}
+
 void str_hex(char *dst, int dst_size, const void *data, int data_size)
 {
 	static const char hex[] = "0123456789ABCDEF";
@@ -3261,6 +3320,37 @@ unsigned str_quickhash(const char *str)
 	for(; *str; str++)
 		hash = ((hash << 5) + hash) + (*str); /* hash * 33 + c */
 	return hash;
+}
+
+static const char *str_token_get(const char *str, const char *delim, int *length)
+{
+	size_t len = strspn(str, delim);
+	if(len > 1)
+		str++;
+	else
+		str += len;
+	if(!*str)
+		return NULL;
+
+	*length = strcspn(str, delim);
+	return str;
+}
+
+const char *str_next_token(const char *str, const char *delim, char *buffer, int buffer_size)
+{
+	int len = 0;
+	const char *tok = str_token_get(str, delim, &len);
+	if(len < 0 || tok == NULL)
+	{
+		buffer[0] = '\0';
+		return NULL;
+	}
+
+	len = buffer_size > len ? len : buffer_size - 1;
+	mem_copy(buffer, tok, len);
+	buffer[len] = '\0';
+
+	return tok + len;
 }
 
 struct SECURE_RANDOM_DATA
