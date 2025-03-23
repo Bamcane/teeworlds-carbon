@@ -9,7 +9,7 @@
 
 #include "botentity.h"
 
-CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfos) :
+CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, Uuid BotID, STeeInfo TeeInfos) :
 	CDamageEntity(pWorld, CGameWorld::ENTTYPE_BOTENTITY, Pos, ms_PhysSize)
 {
 	m_BotID = BotID;

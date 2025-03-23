@@ -521,8 +521,11 @@ set_src(BASE GLOB_RECURSE src/base
   tl/sorted_array.h
   tl/string.h
   tl/threading.h
+  uuid.cpp
+  uuid.h
   vmath.h
 )
+
 set_src(ENGINE_INTERFACE GLOB src/engine
   config.h
   console.h
@@ -586,8 +589,6 @@ set_src(ENGINE_SHARED GLOB src/engine/shared
   snapshot.cpp
   snapshot.h
   storage.cpp
-  uuid.cpp
-  uuid.h
 )
 set(ENGINE_GENERATED_SHARED src/generated/nethash.cpp src/generated/protocol.cpp src/generated/protocol.h)
 set_src(GAME_SHARED GLOB src/game

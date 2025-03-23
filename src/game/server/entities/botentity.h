@@ -1,6 +1,8 @@
 #ifndef GAME_SERVER_ENTITIES_BOTENTITY_H
 #define GAME_SERVER_ENTITIES_BOTENTITY_H
 
+#include <base/uuid.h>
+
 #include <generated/protocol.h>
 
 #include <game/gamecore.h>
@@ -12,7 +14,7 @@ class CBotEntity : public CDamageEntity<CEntity>
 public:
 	// same as character's size
 	static const int ms_PhysSize = 28;
-	CBotEntity(CGameWorld *pWorld, vec2 Pos, int BotID, STeeInfo TeeInfos);
+	CBotEntity(CGameWorld *pWorld, vec2 Pos, Uuid BotID, STeeInfo TeeInfos);
 
 	void Tick() override;
 	void TickDefered() override;
@@ -23,12 +25,12 @@ public:
 	bool TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon) override;
 	void Die(CEntity *pKiller, int Weapon) override;
 
-	int GetBotID() const { return m_BotID; }
+	Uuid GetBotID() const { return m_BotID; }
 	STeeInfo *GetTeeInfos() { return &m_TeeInfos; }
 
 private:
 	STeeInfo m_TeeInfos;
-	int m_BotID;
+	Uuid m_BotID;
 	int m_Emote;
 
 	int m_TriggeredEvents;

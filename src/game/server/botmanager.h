@@ -2,6 +2,7 @@
 #define GAME_SERVER_BOTMANAGER_H
 
 #include <base/vmath.h>
+#include <base/uuid.h>
 #include <engine/shared/protocol.h>
 
 #include <unordered_map>
@@ -15,10 +16,10 @@ class CBotManager
 {
 	CGameContext *m_pGameServer;
 	class CWorldCore *m_pWorldCore;
-	int m_aaBotIDMaps[MAX_CLIENTS][MAX_BOTS];
+	Uuid m_aaBotIDMaps[MAX_CLIENTS][MAX_BOTS];
 
-	std::vector<int> m_vMarkedAsDestroy;
-	std::unordered_map<int, class CBotEntity *> m_vpBots;
+	std::vector<Uuid> m_vMarkedAsDestroy;
+	std::unordered_map<Uuid, class CBotEntity *> m_vpBots;
 
 	void ClearPlayerMap(int ClientID);
 	void UpdatePlayerMap(int ClientID);
@@ -38,12 +39,12 @@ public:
 
 	void Tick();
 
-	void CreateDamage(vec2 Pos, int BotID, vec2 Source, int HealthAmount, int ArmorAmount, bool Self);
-	void CreateDeath(vec2 Pos, int BotID);
+	void CreateDamage(vec2 Pos, Uuid BotID, vec2 Source, int HealthAmount, int ArmorAmount, bool Self);
+	void CreateDeath(vec2 Pos, Uuid BotID);
 
-	int FindClientID(int ClientID, int BotID);
+	int FindClientID(int ClientID, Uuid BotID);
 
-	void OnBotDeath(int BotID);
+	void OnBotDeath(Uuid BotID);
 	void OnClientRefresh(int ClientID);
 
 	void PostSnap();

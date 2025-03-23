@@ -47,34 +47,34 @@ void CBotManager::ClearPlayerMap(int ClientID)
 
 	for(int i = 0; i < MAX_BOTS; i++)
 	{
-		m_aaBotIDMaps[ClientID][i] = -1;
+		m_aaBotIDMaps[ClientID][i] = UUID_ZEROED;
 	}
 }
 
-bool DistanceCompare(std::pair<float, int> a, std::pair<float, int> b)
+bool DistanceCompare(std::pair<float, Uuid> a, std::pair<float, Uuid> b)
 {
 	return (a.first < b.first);
 }
 
 void CBotManager::UpdatePlayerMap(int ClientID)
 {
-	int aLastMap[MAX_BOTS];
+	Uuid aLastMap[MAX_BOTS];
 	mem_copy(aLastMap, m_aaBotIDMaps[ClientID], sizeof(m_aaBotIDMaps[ClientID]));
 
-	int *pMap = m_aaBotIDMaps[ClientID];
+	Uuid *pMap = m_aaBotIDMaps[ClientID];
 	for(int i = 0; i < MAX_BOTS; i++)
 	{
-		if(pMap[i] > 0 && !m_vpBots.count(i))
-			pMap[i] = -1;
+		if(pMap[i] != UUID_ZEROED && !m_vpBots.count(pMap[i]))
+			pMap[i] = UUID_ZEROED;
 	}
 
-	std::vector<std::pair<float, int>> Distances;
+	std::vector<std::pair<float, Uuid>> Distances;
 	for(auto &[BotID, pBot] : m_vpBots)
 	{
 		if(!pBot)
 			continue;
 
-		std::pair<float, int> Temp;
+		std::pair<float, Uuid> Temp;
 		Temp.first = distance(GameServer()->m_apPlayers[ClientID]->m_ViewPos, pBot->GetPos());
 		Temp.second = BotID;
 
@@ -84,7 +84,7 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 
 	for(int i = 0; i < MAX_BOTS; i++)
 	{
-		if(pMap[i] == -1)
+		if(pMap[i] == UUID_ZEROED)
 			continue;
 
 		bool Found = false;
@@ -105,7 +105,7 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 		}
 		else
 		{
-			pMap[i] = -1;
+			pMap[i] = UUID_ZEROED;
 		}
 	}
 
@@ -115,7 +115,7 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 		if(Index >= (int) Distances.size())
 			break;
 
-		if(pMap[i] == -1)
+		if(pMap[i] == UUID_ZEROED)
 		{
 			pMap[i] = Distances[Index].second;
 			Index++;
@@ -128,7 +128,8 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 		if(aLastMap[i] != pMap[i])
 		{
 			// the id is removed, we need to send drop message
-			if(pMap[i] == -1 || aLastMap[i] != -1)
+			bool SendDrop = pMap[i] != UUID_ZEROED;
+			if(!SendDrop || aLastMap[i] != UUID_ZEROED)
 			{
 				CNetMsg_Sv_ClientDrop DropInfo;
 				DropInfo.m_ClientID = i + MAX_CLIENTS;
@@ -137,7 +138,7 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 
 				Server()->SendPackMsg(&DropInfo, MSGFLAG_VITAL | MSGFLAG_NORECORD, ClientID);
 
-				if(pMap[i] == -1)
+				if(!SendDrop)
 					continue;
 			}
 
@@ -171,8 +172,8 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 bool CBotManager::CreateBot()
 {
 	// find first free bot id
-	int FreeID = 0;
-	for(; m_vpBots.count(FreeID); FreeID++) {}
+	Uuid FreeID = RandomUuid();
+	for(; m_vpBots.count(FreeID); FreeID = RandomUuid()) {}
 
 	vec2 SpawnPos;
 	if(!GameServer()->GameController()->CanSpawn(TEAM_BLUE, &SpawnPos))
@@ -196,7 +197,7 @@ void CBotManager::Tick()
 	}
 }
 
-void CBotManager::CreateDamage(vec2 Pos, int BotID, vec2 Source, int HealthAmount, int ArmorAmount, bool Self)
+void CBotManager::CreateDamage(vec2 Pos, Uuid BotID, vec2 Source, int HealthAmount, int ArmorAmount, bool Self)
 {
 	for(int i = 0; i < MAX_CLIENTS; i++)
 	{
@@ -206,12 +207,9 @@ void CBotManager::CreateDamage(vec2 Pos, int BotID, vec2 Source, int HealthAmoun
 
 		GameServer()->CreateDamage(Pos, ClientID, Source, HealthAmount, ArmorAmount, Self, CmaskOne(i));
 	}
-
-	if(BotID < MAX_BOTS)
-		GameServer()->CreateDamage(Pos, BotID, Source, HealthAmount, ArmorAmount, Self, CmaskOne(MAX_CLIENTS));
 }
 
-void CBotManager::CreateDeath(vec2 Pos, int BotID)
+void CBotManager::CreateDeath(vec2 Pos, Uuid BotID)
 {
 	for(int i = 0; i < MAX_CLIENTS; i++)
 	{
@@ -223,12 +221,9 @@ void CBotManager::CreateDeath(vec2 Pos, int BotID)
 	}
 }
 
-int CBotManager::FindClientID(int ClientID, int BotID)
+int CBotManager::FindClientID(int ClientID, Uuid BotID)
 {
-	if(ClientID == -1)
-	{
-		return BotID < MAX_BOTS ? BotID : -1;
-	}
+	dbg_assert(ClientID >= 0, "Server demo is hard-coded disabled now.");
 
 	int FindID = -1 - MAX_CLIENTS;
 	for(int i = 0; i < MAX_BOTS; i++)
@@ -242,7 +237,7 @@ int CBotManager::FindClientID(int ClientID, int BotID)
 	return FindID + MAX_CLIENTS;
 }
 
-void CBotManager::OnBotDeath(int BotID)
+void CBotManager::OnBotDeath(Uuid BotID)
 {
 	m_vMarkedAsDestroy.push_back(BotID);
 	m_vpBots[BotID] = nullptr;
