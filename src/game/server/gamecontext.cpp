@@ -1409,7 +1409,7 @@ void CGameContext::RemoveCommandHook(const CCommandManager::CCommand *pCommand, 
 	pSelf->SendRemoveChatCommand(pCommand, -1);
 }
 
-bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus& VoteStatus, class CGameMenu *pMenu, void *pUserData)
+bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus &VoteStatus, class CGameMenu *pMenu, void *pUserData)
 {
 	CGameContext *pSelf = (CGameContext *) pUserData;
 	CPlayer *pPlayer = pSelf->m_apPlayers[ClientID];
@@ -1428,7 +1428,7 @@ bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus& VoteStatus, cla
 		{
 			int64 Now = pSelf->Server()->Tick();
 			if((pSelf->Config()->m_SvSpamprotection && ((pPlayer->m_LastVoteTryTick && pPlayer->m_LastVoteTryTick + pSelf->Server()->TickSpeed() * 3 > Now) ||
-									(pPlayer->m_LastVoteCallTick && pPlayer->m_LastVoteCallTick + pSelf->Server()->TickSpeed() * VOTE_COOLDOWN > Now))) ||
+									   (pPlayer->m_LastVoteCallTick && pPlayer->m_LastVoteCallTick + pSelf->Server()->TickSpeed() * VOTE_COOLDOWN > Now))) ||
 				pPlayer->GetTeam() == TEAM_SPECTATORS || pSelf->m_VoteCloseTime)
 				return false;
 
@@ -1461,9 +1461,9 @@ bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus& VoteStatus, cla
 		}
 	}
 
-    pMenu->ClearOptions(ClientID);
-    pMenu->AddPageTitle(ClientID);
-    {
+	pMenu->ClearOptions(ClientID);
+	pMenu->AddPageTitle(ClientID);
+	{
 		if(pSelf->m_pVoteOptionFirst)
 		{
 			for(CVoteOptionServer *pOption = pSelf->m_pVoteOptionFirst; pOption; pOption = pOption->m_pNext)
@@ -1475,8 +1475,8 @@ bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus& VoteStatus, cla
 		{
 			pMenu->AddOptionTo(ClientID, "There's no any server vote", "NONE");
 		}
-    }
-	
+	}
+
 	return true;
 }
 

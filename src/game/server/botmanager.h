@@ -1,8 +1,8 @@
 #ifndef GAME_SERVER_BOTMANAGER_H
 #define GAME_SERVER_BOTMANAGER_H
 
-#include <base/vmath.h>
 #include <base/uuid.h>
+#include <base/vmath.h>
 #include <engine/shared/protocol.h>
 
 #include <unordered_map>
