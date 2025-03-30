@@ -28,6 +28,7 @@ public:
 	virtual const char *ClientName(int ClientID) const = 0;
 	virtual const char *ClientClan(int ClientID) const = 0;
 	virtual int ClientCountry(int ClientID) const = 0;
+	virtual int ClientScore(int ClientID) const = 0;
 	virtual bool ClientIngame(int ClientID) const = 0;
 	virtual int GetClientInfo(int ClientID, CClientInfo *pInfo) const = 0;
 	virtual void GetClientAddr(int ClientID, char *pAddrStr, int Size) const = 0;

@@ -11,8 +11,10 @@
 #include <game/voting.h>
 
 #include "eventhandler.h"
+#include "gamemenu.h"
 #include "gameworld.h"
 
+#include <vector>
 /*
 	Tick
 		Game Context (CGameContext::tick)
@@ -48,6 +50,8 @@ class CGameContext : public IGameServer
 	class CBotManager *m_pBotManager;
 	class CGameController *m_pController;
 
+	CGameMenu *m_pGameMenu;
+
 	static void ConTuneParam(IConsole::IResult *pResult, void *pUserData);
 	static void ConTuneReset(IConsole::IResult *pResult, void *pUserData);
 	static void ConTunes(IConsole::IResult *pResult, void *pUserData);
@@ -65,6 +69,8 @@ class CGameContext : public IGameServer
 	static void NewCommandHook(const CCommandManager::CCommand *pCommand, void *pContext);
 	static void RemoveCommandHook(const CCommandManager::CCommand *pCommand, void *pContext);
 
+    static bool MenuServerVote(int ClientID, SCallVoteStatus& VoteStatus, class CGameMenu *pMenu, void *pUserData);
+
 	CGameContext(int Resetting);
 	void Construct(int Resetting);
 
@@ -80,6 +86,7 @@ public:
 
 	class CBotManager *BotManager() const { return m_pBotManager; }
 	class CGameController *GameController() const { return m_pController; }
+	CGameMenu *GameMenu() const { return m_pGameMenu; }
 
 	CGameContext();
 	~CGameContext();
@@ -144,6 +151,7 @@ public:
 	void SendSettings(int ClientID);
 	void SendSkinChange(int ClientID, int TargetID);
 	void SendTuningParams(int ClientID);
+	void SendSoundTarget(int ClientID, int SoundID);
 	void SendReadyToEnter(CPlayer *pPlayer);
 
 	void SendGameMsg(int GameMsgID, int ClientID);
@@ -158,7 +166,8 @@ public:
 	void SendVoteSet(int Type, int ToClientID);
 	void SendVoteStatus(int ClientID, int Total, int Yes, int No);
 	void SendVoteClearOptions(int ClientID);
-	void SendVoteOptions(int ClientID);
+
+	void OnGameMenuInit();
 
 	// engine events
 	virtual void OnInit();

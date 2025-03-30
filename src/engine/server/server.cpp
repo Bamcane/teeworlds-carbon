@@ -420,6 +420,16 @@ int CServer::ClientCountry(int ClientID) const
 		return -1;
 }
 
+int CServer::ClientScore(int ClientID) const
+{
+	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+		return 0;
+	if(m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME)
+		return m_aClients[ClientID].m_Score;
+	else
+		return 0;
+}
+
 bool CServer::ClientIngame(int ClientID) const
 {
 	return ClientID >= 0 && ClientID < MAX_CLIENTS && m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME;

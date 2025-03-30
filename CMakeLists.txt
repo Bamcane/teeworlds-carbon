@@ -662,6 +662,8 @@ set_src(GAME_SERVER GLOB_RECURSE src/game/server
   gamecontext.h
   gamecontroller.cpp
   gamecontroller.h
+  gamemenu.cpp
+  gamemenu.h
   gameworld.cpp
   gameworld.h
   player.cpp
