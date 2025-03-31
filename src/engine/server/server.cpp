@@ -18,6 +18,7 @@
 #include <engine/shared/econ.h>
 #include <engine/shared/filecollection.h>
 #include <engine/shared/jsonwriter.h>
+#include <engine/shared/localization.h>
 #include <engine/shared/masterserver.h>
 #include <engine/shared/netban.h>
 #include <engine/shared/network.h>
@@ -267,8 +268,16 @@ CServer::CServer() :
 
 	m_ServerInfoNeedsUpdate = false;
 	m_pRegister = nullptr;
+	m_pLocalization = nullptr;
 
 	Init();
+}
+
+void CServer::SetClientLanguage(int ClientID, const char *pLanguage)
+{
+	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY || !pLanguage)
+		return;
+	str_copy(m_aClients[ClientID].m_aLanguage, pLanguage, sizeof(m_aClients[ClientID].m_aLanguage, pLanguage));
 }
 
 void CServer::SetClientName(int ClientID, const char *pName)
@@ -388,6 +397,16 @@ int CServer::GetClientVersion(int ClientID) const
 	if(ClientID >= 0 && ClientID < MAX_CLIENTS && m_aClients[ClientID].m_State == CClient::STATE_INGAME)
 		return m_aClients[ClientID].m_Version;
 	return 0;
+}
+
+const char *CServer::ClientLanguage(int ClientID) const
+{
+	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+		return Config()->m_SvDefaultLanguage;
+	if(m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME)
+		return m_aClients[ClientID].m_aLanguage;
+	else
+		return Config()->m_SvDefaultLanguage;
 }
 
 const char *CServer::ClientName(int ClientID) const
@@ -669,6 +688,8 @@ int CServer::NewClientCallback(int ClientID, void *pUser)
 	pThis->m_aClients[ClientID].m_Quitting = false;
 	pThis->m_aClients[ClientID].m_Latency = 0;
 	pThis->m_aClients[ClientID].Reset();
+
+	str_copy(pThis->m_aClients[ClientID].m_aLanguage, pThis->Config()->m_SvDefaultLanguage, sizeof(pThis->m_aClients[ClientID].m_aLanguage));
 
 	return 0;
 }
@@ -1432,8 +1453,11 @@ int CServer::Run()
 		return -1;
 	}
 
-	m_pRegister = CreateRegister(Config(), m_pConsole, Kernel()->RequestInterface<IEngine>(), &m_Http, Config()->m_SvPort, m_NetServer.GetGlobalToken());
+	m_pRegister = CreateRegister(Config(), Console(), Kernel()->RequestInterface<IEngine>(), &m_Http, Config()->m_SvPort, m_NetServer.GetGlobalToken());
 	m_Econ.Init(Config(), Console(), &m_ServerBan);
+
+	m_pLocalization = CreateLocalization(Storage(), Console(), Config());
+	m_pLocalization->Init();
 
 	char aBuf[256];
 	str_format(aBuf, sizeof(aBuf), "server name is '%s'", Config()->m_SvName);
@@ -1585,6 +1609,10 @@ void CServer::Free()
 	if(m_pRegister)
 	{
 		delete m_pRegister;
+	}
+	if(m_pLocalization)
+	{
+		delete m_pLocalization;
 	}
 
 	if(m_pCurrentMapData)
@@ -1919,6 +1947,16 @@ void *CServer::SnapNewItem(int Type, int ID, int Size)
 void CServer::SnapSetStaticsize(int ItemType, int Size)
 {
 	m_SnapshotDelta.SetStaticsize(ItemType, Size);
+}
+
+const char *CServer::Localize(const char *pCode, const char *pStr, const char *pContext)
+{
+	return m_pLocalization->Localize(pCode, pStr, pContext);
+}
+
+const char *CServer::Localize(int ClientID, const char *pStr, const char *pContext)
+{
+	return m_pLocalization->Localize(ClientLanguage(ClientID), pStr, pContext);
 }
 
 static CServer *CreateServer() { return new CServer(); }

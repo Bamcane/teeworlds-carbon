@@ -21,6 +21,10 @@ extern "C" {
 #define GNUC_ATTRIBUTE(x)
 #endif
 
+// Localization
+#define _(TEXT) TEXT
+#define _C(TEXT, CONTEXT) TEXT, CONTEXT
+
 /* Group: Debug */
 /*
 

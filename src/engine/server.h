@@ -25,6 +25,7 @@ public:
 	int Tick() const { return m_CurrentGameTick; }
 	int TickSpeed() const { return m_TickSpeed; }
 
+	virtual const char *ClientLanguage(int ClientID) const = 0;
 	virtual const char *ClientName(int ClientID) const = 0;
 	virtual const char *ClientClan(int ClientID) const = 0;
 	virtual int ClientCountry(int ClientID) const = 0;
@@ -45,6 +46,7 @@ public:
 		return SendMsg(&Packer, Flags, ClientID);
 	}
 
+	virtual void SetClientLanguage(int ClientID, char const *pLanguage) = 0;
 	virtual void SetClientName(int ClientID, char const *pName) = 0;
 	virtual void SetClientClan(int ClientID, char const *pClan) = 0;
 	virtual void SetClientCountry(int ClientID, int Country) = 0;
@@ -71,6 +73,9 @@ public:
 	virtual bool DemoRecorder_IsRecording() = 0;
 
 	virtual void ExpireServerInfo() = 0;
+
+	virtual const char *Localize(const char *pCode, const char *pStr, const char *pContext = "") = 0;
+	virtual const char *Localize(int ClientID, const char *pStr, const char *pContext = "") = 0;
 };
 
 class IGameServer : public IInterface

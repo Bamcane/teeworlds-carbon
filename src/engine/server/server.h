@@ -4,6 +4,7 @@
 #define ENGINE_SERVER_SERVER_H
 
 #include <base/tl/sorted_array.h>
+#include <base/uuid.h>
 
 #include <engine/server.h>
 #include <engine/shared/http.h>
@@ -69,10 +70,10 @@ class CServer : public IServer
 	class IRegister *m_pRegister;
 
 public:
-	class IGameServer *GameServer() { return m_pGameServer; }
-	class CConfig *Config() { return m_pConfig; }
-	class IConsole *Console() { return m_pConsole; }
-	class IStorage *Storage() { return m_pStorage; }
+	class IGameServer *GameServer() const { return m_pGameServer; }
+	class CConfig *Config() const { return m_pConfig; }
+	class IConsole *Console() const { return m_pConsole; }
+	class IStorage *Storage() const { return m_pStorage; }
 
 	enum
 	{
@@ -125,6 +126,7 @@ public:
 		CInput m_aInputs[200]; // TODO: handle input better
 		int m_CurrentInput;
 
+		char m_aLanguage[8];
 		char m_aName[MAX_NAME_ARRAY_SIZE];
 		char m_aClan[MAX_CLAN_ARRAY_SIZE];
 		int m_Version;
@@ -158,6 +160,7 @@ public:
 	CHttp m_Http;
 
 	IEngineMap *m_pMap;
+	class ILocalization *m_pLocalization;
 
 	int64 m_GameStartTime;
 	bool m_RunServer;
@@ -199,6 +202,7 @@ public:
 
 	CServer();
 
+	void SetClientLanguage(int ClientID, const char *pLanguage) override;
 	void SetClientName(int ClientID, const char *pName) override;
 	void SetClientClan(int ClientID, char const *pClan) override;
 	void SetClientCountry(int ClientID, int Country) override;
@@ -221,6 +225,7 @@ public:
 	int GetClientInfo(int ClientID, CClientInfo *pInfo) const override;
 	void GetClientAddr(int ClientID, char *pAddrStr, int Size) const override;
 	int GetClientVersion(int ClientID) const override;
+	const char *ClientLanguage(int ClientID) const override;
 	const char *ClientName(int ClientID) const override;
 	const char *ClientClan(int ClientID) const override;
 	int ClientCountry(int ClientID) const override;
@@ -292,6 +297,9 @@ public:
 	void SnapFreeID(int ID) override;
 	void *SnapNewItem(int Type, int ID, int Size) override;
 	void SnapSetStaticsize(int ItemType, int Size) override;
+
+	const char *Localize(const char *pCode, const char *pStr, const char *pContext = "") override;
+	const char *Localize(int ClientID, const char *pStr, const char *pContext = "") override;
 };
 
 #endif

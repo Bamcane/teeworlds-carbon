@@ -30,6 +30,8 @@ MACRO_CONFIG_INT(SvRconBantime, sv_rcon_bantime, 5, 0, 1440, CFGFLAG_SAVE | CFGF
 MACRO_CONFIG_INT(SvAutoDemoRecord, sv_auto_demo_record, 0, 0, 1, CFGFLAG_SAVE | CFGFLAG_SERVER, "Automatically record demos")
 MACRO_CONFIG_INT(SvAutoDemoMax, sv_auto_demo_max, 10, 0, 1000, CFGFLAG_SAVE | CFGFLAG_SERVER, "Maximum number of automatically recorded demos (0 = no limit)")
 
+MACRO_CONFIG_STR(SvDefaultLanguage, sv_default_language, 8, "en", CFGFLAG_SAVE | CFGFLAG_SERVER, "Server default language")
+
 MACRO_CONFIG_STR(EcBindaddr, ec_bindaddr, 128, "localhost", CFGFLAG_SAVE | CFGFLAG_ECON, "Address to bind the external console to. Anything but 'localhost' is dangerous")
 MACRO_CONFIG_INT(EcPort, ec_port, 0, 0, 0, CFGFLAG_SAVE | CFGFLAG_ECON, "Port to use for the external console")
 MACRO_CONFIG_STR(EcPassword, ec_password, 32, "", CFGFLAG_SAVE | CFGFLAG_ECON, "External console password")

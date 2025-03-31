@@ -618,6 +618,7 @@ void CGameContext::OnClientEnter(int ClientID)
 	SendChatCommands(ClientID);
 
 	GameController()->OnPlayerConnect(m_apPlayers[ClientID]);
+	GameMenu()->OnClientEntered(ClientID);
 
 	m_VoteUpdate = true;
 
@@ -1079,7 +1080,6 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 			}
 
 			GameController()->OnPlayerInfoChange(pPlayer);
-			GameMenu()->OnClientEntered(ClientID);
 
 			SendTuningParams(ClientID);
 			SendReadyToEnter(pPlayer);
@@ -1462,18 +1462,18 @@ bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus &VoteStatus, cla
 	}
 
 	pMenu->ClearOptions(ClientID);
-	pMenu->AddPageTitle(ClientID);
+	pMenu->AddPageTitle();
 	{
 		if(pSelf->m_pVoteOptionFirst)
 		{
 			for(CVoteOptionServer *pOption = pSelf->m_pVoteOptionFirst; pOption; pOption = pOption->m_pNext)
 			{
-				pMenu->AddOptionTo(ClientID, pOption->m_aDescription, pOption->m_aCommand);
+				pMenu->AddOption(pOption->m_aDescription, pOption->m_aCommand);
 			}
 		}
 		else
 		{
-			pMenu->AddOptionTo(ClientID, "There's no any server vote", "NONE");
+			pMenu->AddOption(_("There's no any server vote"), "NONE");
 		}
 	}
 
@@ -1482,7 +1482,7 @@ bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus &VoteStatus, cla
 
 void CGameContext::OnGameMenuInit()
 {
-	GameMenu()->Register("SERVER VOTE", "Server Vote", MenuServerVote, this);
+	GameMenu()->Register("SERVER VOTE", _("Server Vote"), MenuServerVote, this);
 }
 
 void CGameContext::OnInit()

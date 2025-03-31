@@ -568,6 +568,8 @@ set_src(ENGINE_SHARED GLOB src/engine/shared
   kernel.cpp
   linereader.cpp
   linereader.h
+  localization.cpp
+  localization.h
   map.cpp
   masterserver.h
   memheap.cpp

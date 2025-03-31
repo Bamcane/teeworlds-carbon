@@ -52,12 +52,14 @@ public:
 	void SetPlayerPage(int ClientID, const char *pPage);
 
 	// generate menu
-	void AddPageTitle(int ClientID);
-	void AddSpace(int ClientID);
-	void AddHorizontalRule(int ClientID);
-	void AddOptionTo(int ClientID, const char *pDesc, const char *pCommand, const char *pPrefix = "");
+	void AddPageTitle();
+	void AddSpace();
+	void AddHorizontalRule();
+	void AddOption(const char *pDesc, const char *pCommand, const char *pPrefix = "", bool Translate = true);
 
+	const char *Localize(const char *pStr, const char *pContext = "");
 private:
+	int m_CurrentClientID;
 	static bool MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameMenu *pMenu, void *pUserData);
 
 	std::unordered_map<Uuid, std::shared_ptr<SMenuPage>> m_vpMenuPages;

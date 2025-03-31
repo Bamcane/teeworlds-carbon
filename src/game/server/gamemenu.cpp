@@ -16,7 +16,9 @@ CGameMenu::CGameMenu(CGameContext *pGameServer) :
 		Data.Reset();
 	}
 
-	Register("MAIN", "Main Menu", MenuMain, nullptr);
+	m_CurrentClientID = -1;
+
+	Register("MAIN", _("Main Menu"), MenuMain, nullptr);
 }
 
 void CGameMenu::Register(const char *pPageName, const char *pTitle, MenuCallback pfnFunc, void *pUser, const char *pParent)
@@ -46,6 +48,8 @@ void CGameMenu::OnMenuVote(int ClientID, SCallVoteStatus &VoteStatus, bool Sound
 
 	if(VoteStatus.m_Force && !Server()->IsAuthed(ClientID))
 		return;
+
+	m_CurrentClientID = ClientID;
 
 	Uuid &CurrentPage = m_aPlayerData[ClientID].m_CurrentPage;
 	if(!m_vpMenuPages.count(CurrentPage))
@@ -84,9 +88,9 @@ void CGameMenu::OnMenuVote(int ClientID, SCallVoteStatus &VoteStatus, bool Sound
 	// add back page
 	if(CurrentPage != MENU_MAIN_PAGE_UUID)
 	{
-		AddSpace(ClientID);
-		AddHorizontalRule(ClientID);
-		AddOptionTo(ClientID, "Previous Page", "PREPAGE", "=");
+		AddSpace();
+		AddHorizontalRule();
+		AddOption(_("Previous Page"), "PREPAGE", "=");
 	}
 
 	CVoteOptionServer *pCurrent = m_aPlayerData[ClientID].m_pVoteOptionFirst;
@@ -174,87 +178,88 @@ bool CGameMenu::MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameM
 	}
 
 	pMenu->ClearOptions(ClientID);
-	pMenu->AddPageTitle(ClientID);
+	pMenu->AddPageTitle();
 	// player stats
 	{
 		char aBuf[VOTE_DESC_LENGTH];
-		str_format(aBuf, sizeof(aBuf), "%s: %s", "Name", pMenu->Server()->ClientName(ClientID));
-		pMenu->AddOptionTo(ClientID, aBuf, "DISPLAY", "-");
-		str_format(aBuf, sizeof(aBuf), "%s: %d", "Level", pMenu->Server()->ClientScore(ClientID));
-		pMenu->AddOptionTo(ClientID, aBuf, "DISPLAY", "-");
+		str_format(aBuf, sizeof(aBuf), "%s: %s", pMenu->Localize(_("Name")), pMenu->Server()->ClientName(ClientID));
+		pMenu->AddOption(aBuf, "DISPLAY", "-");
+		str_format(aBuf, sizeof(aBuf), "%s: %d", pMenu->Localize(_("Level")), pMenu->Server()->ClientScore(ClientID));
+		pMenu->AddOption(aBuf, "DISPLAY", "-");
 		if(DisplayAddr)
 		{
 			char aAddr[NETADDR_MAXSTRSIZE];
 			pMenu->Server()->GetClientAddr(ClientID, aAddr, sizeof(aAddr));
-			str_format(aBuf, sizeof(aBuf), "%s: %s %s", "IP Address", aAddr, "(Click to hide)");
+			str_format(aBuf, sizeof(aBuf), "%s: %s %s", pMenu->Localize(_("IP Address")), aAddr, pMenu->Localize(_("(Click to hide)")));
 		}
 		else
 		{
-			str_format(aBuf, sizeof(aBuf), "%s: %s", "IP Address", "Hidden (Click to display)");
+			str_format(aBuf, sizeof(aBuf), "%s: %s", pMenu->Localize(_("IP Address")), pMenu->Localize(_("Hidden (Click to display)")));
 		}
-		pMenu->AddOptionTo(ClientID, aBuf, DisplayAddr ? "DISPLAY" : "DISPLAY ADDR", "-");
+		pMenu->AddOption(aBuf, DisplayAddr ? "DISPLAY" : "DISPLAY ADDR", "-");
 	}
-	pMenu->AddHorizontalRule(ClientID);
+	pMenu->AddHorizontalRule();
 	// options
 	{
-		pMenu->AddOptionTo(ClientID, "Server Vote", "PAGE SERVER VOTE", "★");
+		pMenu->AddOption("Server Vote", "PAGE SERVER VOTE", "★");
 	}
 
 	return true;
 }
 
-void CGameMenu::AddPageTitle(int ClientID)
+void CGameMenu::AddPageTitle()
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS)
+	if(m_CurrentClientID < 0 || m_CurrentClientID >= MAX_CLIENTS)
 		return;
-	if(!m_vpMenuPages.count(m_aPlayerData[ClientID].m_CurrentPage))
+	if(!m_vpMenuPages.count(m_aPlayerData[m_CurrentClientID].m_CurrentPage))
 		return;
 
-	AddOptionTo(ClientID, "===============================", "NONE");
-	AddOptionTo(ClientID, m_vpMenuPages[m_aPlayerData[ClientID].m_CurrentPage]->m_aTitle, "NONE", "=");
-	AddOptionTo(ClientID, "===============================", "NONE");
+	AddOption("===============================", "NONE", "", false);
+	AddOption(m_vpMenuPages[m_aPlayerData[m_CurrentClientID].m_CurrentPage]->m_aTitle, "NONE", "=");
+	AddOption("===============================", "NONE", "", false);
 }
 
-void CGameMenu::AddSpace(int ClientID)
+void CGameMenu::AddSpace()
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS)
-		return;
-	AddOptionTo(ClientID, " ", "NONE");
+	AddOption(" ", "NONE");
 }
 
-void CGameMenu::AddHorizontalRule(int ClientID)
+void CGameMenu::AddHorizontalRule()
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS)
-		return;
-	AddOptionTo(ClientID, "-------------------------------------------", "NONE");
+	AddOption("-------------------------------------------", "NONE");
 }
 
-void CGameMenu::AddOptionTo(int ClientID, const char *pDesc, const char *pCommand, const char *pPrefix)
+void CGameMenu::AddOption(const char *pDesc, const char *pCommand, const char *pPrefix, bool Translate)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS)
+	if(m_CurrentClientID < 0 || m_CurrentClientID >= MAX_CLIENTS)
 		return;
 	if(!pDesc || !pCommand)
 		return;
 	if(!pDesc[0] || !pCommand[0])
 		return;
 	// add the option
-	++m_aPlayerData[ClientID].m_NumVoteOptions;
+	++m_aPlayerData[m_CurrentClientID].m_NumVoteOptions;
 	int Len = str_length(pCommand);
 
-	CVoteOptionServer *pOption = (CVoteOptionServer *) m_aPlayerData[ClientID].m_pVoteOptionHeap->Allocate(sizeof(CVoteOptionServer) + Len);
+	CVoteOptionServer *pOption = (CVoteOptionServer *) m_aPlayerData[m_CurrentClientID].m_pVoteOptionHeap->Allocate(sizeof(CVoteOptionServer) + Len);
 	pOption->m_pNext = 0;
-	pOption->m_pPrev = m_aPlayerData[ClientID].m_pVoteOptionLast;
+	pOption->m_pPrev = m_aPlayerData[m_CurrentClientID].m_pVoteOptionLast;
 	if(pOption->m_pPrev)
 		pOption->m_pPrev->m_pNext = pOption;
-	m_aPlayerData[ClientID].m_pVoteOptionLast = pOption;
-	if(!m_aPlayerData[ClientID].m_pVoteOptionFirst)
-		m_aPlayerData[ClientID].m_pVoteOptionFirst = pOption;
+	m_aPlayerData[m_CurrentClientID].m_pVoteOptionLast = pOption;
+	if(!m_aPlayerData[m_CurrentClientID].m_pVoteOptionFirst)
+		m_aPlayerData[m_CurrentClientID].m_pVoteOptionFirst = pOption;
 
 	if(pPrefix && pPrefix[0])
-		str_format(pOption->m_aDescription, sizeof(pOption->m_aDescription), "%s %s", pPrefix, pDesc);
+		str_format(pOption->m_aDescription, sizeof(pOption->m_aDescription), "%s %s", pPrefix, Translate ? Localize(pDesc) : pDesc);
 	else
-		str_copy(pOption->m_aDescription, pDesc, sizeof(pOption->m_aDescription));
+		str_copy(pOption->m_aDescription, Translate ? Localize(pDesc) : pDesc, sizeof(pOption->m_aDescription));
 	mem_copy(pOption->m_aCommand, pCommand, Len + 1);
+}
+
+const char *CGameMenu::Localize(const char *pStr, const char *pContext)
+{
+	return Server()->Localize(m_CurrentClientID, pStr, pContext);
 }
 
 CGameMenu::CPlayerData::CPlayerData()

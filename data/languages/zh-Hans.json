@@ -1,0 +1,40 @@
+{
+	"translated strings": [
+		{
+			"key": "There's no any server vote",
+			"value": "没有任何服务器投票"
+		},
+		{
+			"key": "Server Vote",
+			"value": "服务器投票"
+		},
+		{
+			"key": "Main Menu",
+			"value": "主菜单"
+		},
+		{
+			"key": "Previous Page",
+			"value": "返回"
+		},
+		{
+			"key": "Name",
+			"value": "名称"
+		},
+		{
+			"key": "Level",
+			"value": "等级"
+		},
+		{
+			"key": "IP Address",
+			"value": "IP地址"
+		},
+		{
+			"key": "(Click to hide)",
+			"value": "(双击以隐藏)"
+		},
+		{
+			"key": "Hidden (Click to display)",
+			"value": "隐藏 (双击以显示)"
+		}
+	]
+}
