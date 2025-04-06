@@ -7,6 +7,7 @@
 #include <engine/config.h>
 #include <engine/console.h>
 #include <engine/engine.h>
+#include <engine/localization.h>
 #include <engine/map.h>
 #include <engine/server.h>
 #include <engine/storage.h>
@@ -18,7 +19,6 @@
 #include <engine/shared/econ.h>
 #include <engine/shared/filecollection.h>
 #include <engine/shared/jsonwriter.h>
-#include <engine/shared/localization.h>
 #include <engine/shared/masterserver.h>
 #include <engine/shared/netban.h>
 #include <engine/shared/network.h>
@@ -1405,6 +1405,7 @@ void CServer::InitInterfaces(IKernel *pKernel)
 	m_pGameServer = pKernel->RequestInterface<IGameServer>();
 	m_pMap = pKernel->RequestInterface<IEngineMap>();
 	m_pStorage = pKernel->RequestInterface<IStorage>();
+	m_pLocalization = pKernel->RequestInterface<ILocalization>();
 	Kernel()->RegisterInterface(static_cast<IHttp *>(&m_Http));
 }
 
@@ -1455,9 +1456,6 @@ int CServer::Run()
 
 	m_pRegister = CreateRegister(Config(), Console(), Kernel()->RequestInterface<IEngine>(), &m_Http, Config()->m_SvPort, m_NetServer.GetGlobalToken());
 	m_Econ.Init(Config(), Console(), &m_ServerBan);
-
-	m_pLocalization = CreateLocalization(Storage(), Console(), Config());
-	m_pLocalization->Init();
 
 	char aBuf[256];
 	str_format(aBuf, sizeof(aBuf), "server name is '%s'", Config()->m_SvName);
@@ -1959,6 +1957,11 @@ const char *CServer::Localize(int ClientID, const char *pStr, const char *pConte
 	return m_pLocalization->Localize(ClientLanguage(ClientID), pStr, pContext);
 }
 
+int CServer::GetLanguagesInfo(SLanguageInfo **ppInfo)
+{
+	return m_pLocalization->GetLanguagesInfo(ppInfo);
+}
+
 static CServer *CreateServer() { return new CServer(); }
 
 void HandleSigIntTerm(int Param)
@@ -2014,6 +2017,7 @@ int main(int argc, const char **argv)
 	IConsole *pConsole = CreateConsole(CFGFLAG_SERVER | CFGFLAG_ECON);
 	IStorage *pStorage = CreateStorage("Teeworlds", IStorage::STORAGETYPE_SERVER, argc, argv);
 	IConfigManager *pConfigManager = CreateConfigManager();
+	ILocalization *pLocalization = CreateLocalization(pStorage, pConsole, pConfigManager->Values());
 
 	{
 		bool RegisterFail = false;
@@ -2026,6 +2030,7 @@ int main(int argc, const char **argv)
 		RegisterFail = RegisterFail || !pKernel->RegisterInterface(pConsole);
 		RegisterFail = RegisterFail || !pKernel->RegisterInterface(pStorage);
 		RegisterFail = RegisterFail || !pKernel->RegisterInterface(pConfigManager);
+		RegisterFail = RegisterFail || !pKernel->RegisterInterface(pLocalization);
 
 		if(RegisterFail)
 			return -1;
@@ -2034,6 +2039,7 @@ int main(int argc, const char **argv)
 	pEngine->Init();
 	pConfigManager->Init(FlagMask);
 	pConsole->Init();
+	pLocalization->Init();
 
 	pServer->InitInterfaces(pKernel);
 	if(!UseDefaultConfig)

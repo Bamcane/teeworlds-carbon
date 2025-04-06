@@ -300,6 +300,7 @@ public:
 
 	const char *Localize(const char *pCode, const char *pStr, const char *pContext = "") override;
 	const char *Localize(int ClientID, const char *pStr, const char *pContext = "") override;
+	int GetLanguagesInfo(SLanguageInfo **ppInfo) override;
 };
 
 #endif

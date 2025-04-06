@@ -3,10 +3,10 @@
 
 #include <engine/console.h>
 #include <engine/storage.h>
+#include <engine/localization.h>
 
 #include "config.h"
 #include "jsonparser.h"
-#include "localization.h"
 #include "memheap.h"
 
 #include <memory>
@@ -39,8 +39,9 @@ public:
 	~CLocalization() = default;
 
     void Init() override;
-	const char *Localize(const char *pCode, const char *pStr, const char *pContext);
+	const char *Localize(const char *pCode, const char *pStr, const char *pContext) override;
 
+	int GetLanguagesInfo(SLanguageInfo **ppInfo) override;
 private:
     class CLanguage
     {
@@ -114,7 +115,10 @@ const char *CLocalization::Localize(const char *pCode, const char *pStr, const c
 		return pStr;
 	if(!m_vpLanguages[LanguageUuid]->IsLoaded())
 		m_vpLanguages[LanguageUuid]->Load(Storage(), Console());
-	return m_vpLanguages[LanguageUuid]->Localize(pStr, pContext);
+	const char *pNewStr = m_vpLanguages[LanguageUuid]->Localize(pStr, pContext);
+	if(!pNewStr)
+		return Localize(m_vpLanguages[LanguageUuid]->Parent(), pStr, pContext);
+	return pNewStr;
 }
 
 CLocalization::CLanguage::CLanguage(const char *pCode, const char *pName, const char *pParent)
@@ -220,7 +224,21 @@ const char *CLocalization::CLanguage::FindString(unsigned Hash, unsigned Context
 const char *CLocalization::CLanguage::Localize(const char *pStr, const char *pContext) const
 {
     const char *pNewStr = FindString(str_quickhash(pStr), str_quickhash(pContext));
-    return pNewStr ? pNewStr : pStr;
+    return pNewStr;
+}
+
+int CLocalization::GetLanguagesInfo(SLanguageInfo **ppInfo)
+{
+	if(*ppInfo)
+		return 0; // should be a null pointer
+	*ppInfo = new SLanguageInfo[m_vpLanguages.size()];
+	size_t Index = 0;
+	for(auto &[Uuid, pLanguage] : m_vpLanguages)
+	{
+		(*ppInfo)[Index] = SLanguageInfo{pLanguage->Code(), pLanguage->Name()};
+		Index++;
+	}
+	return Index;
 }
 
 void CLocalization::AddLanguage(const char *pCode, const char *pName, const char *pParent)
@@ -231,6 +249,10 @@ void CLocalization::AddLanguage(const char *pCode, const char *pName, const char
 
     std::shared_ptr<CLanguage> pLanguage = std::make_shared<CLanguage>(pCode, pName, pParent);
     m_vpLanguages[LanguageUuid] = pLanguage;
+
+    char aBuf[256];
+	str_format(aBuf, sizeof(aBuf), "loaded language '%s'(%s)", pCode, pName);
+	Console()->Print(IConsole::OUTPUT_LEVEL_ADDINFO, "l10n", aBuf);
 
 	if(str_comp(Config()->m_SvDefaultLanguage, pCode) == 0)
 		pLanguage->Load(Storage(), Console());

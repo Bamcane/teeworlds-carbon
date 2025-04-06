@@ -1473,7 +1473,7 @@ bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus &VoteStatus, cla
 		}
 		else
 		{
-			pMenu->AddOption(_("There's no any server vote"), "NONE");
+			pMenu->AddTranslatedOption(_("There's no any server vote"), "NONE");
 		}
 	}
 

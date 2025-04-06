@@ -55,12 +55,14 @@ public:
 	void AddPageTitle();
 	void AddSpace();
 	void AddHorizontalRule();
-	void AddOption(const char *pDesc, const char *pCommand, const char *pPrefix = "", bool Translate = true);
+	void AddOption(const char *pDesc, const char *pCommand, const char *pPrefix = "");
+	void AddTranslatedOption(const char *pDesc, const char *pCommand, const char *pPrefix = "");
 
 	const char *Localize(const char *pStr, const char *pContext = "");
 private:
 	int m_CurrentClientID;
 	static bool MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameMenu *pMenu, void *pUserData);
+	static bool MenuLanguage(int ClientID, SCallVoteStatus &VoteStatus, class CGameMenu *pMenu, void *pUserData);
 
 	std::unordered_map<Uuid, std::shared_ptr<SMenuPage>> m_vpMenuPages;
 

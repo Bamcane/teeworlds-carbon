@@ -1,4 +1,5 @@
 #include <engine/config.h>
+#include <engine/localization.h>
 #include <engine/shared/memheap.h>
 
 #include "gamecontext.h"
@@ -19,6 +20,7 @@ CGameMenu::CGameMenu(CGameContext *pGameServer) :
 	m_CurrentClientID = -1;
 
 	Register("MAIN", _("Main Menu"), MenuMain, nullptr);
+	Register("LANGUAGE", _("Language Settings"), MenuLanguage, nullptr);
 }
 
 void CGameMenu::Register(const char *pPageName, const char *pTitle, MenuCallback pfnFunc, void *pUser, const char *pParent)
@@ -88,9 +90,8 @@ void CGameMenu::OnMenuVote(int ClientID, SCallVoteStatus &VoteStatus, bool Sound
 	// add back page
 	if(CurrentPage != MENU_MAIN_PAGE_UUID)
 	{
-		AddSpace();
 		AddHorizontalRule();
-		AddOption(_("Previous Page"), "PREPAGE", "=");
+		AddTranslatedOption(_("Previous Page"), "PREPAGE", "=");
 	}
 
 	CVoteOptionServer *pCurrent = m_aPlayerData[ClientID].m_pVoteOptionFirst;
@@ -167,6 +168,11 @@ bool CGameMenu::MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameM
 			pMenu->SetPlayerPage(ClientID, "SERVER VOTE");
 			return false;
 		}
+		else if(str_comp(VoteStatus.m_aCmd, "PAGE LANGUAGE") == 0)
+		{
+			pMenu->SetPlayerPage(ClientID, "LANGUAGE");
+			return false;
+		}
 		else if(str_comp(VoteStatus.m_aCmd, "NONE") == 0)
 		{
 			return false;
@@ -201,7 +207,52 @@ bool CGameMenu::MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameM
 	pMenu->AddHorizontalRule();
 	// options
 	{
-		pMenu->AddOption("Server Vote", "PAGE SERVER VOTE", "★");
+		pMenu->AddTranslatedOption("Server Vote", "PAGE SERVER VOTE", "★");
+		pMenu->AddTranslatedOption("Language Settings", "PAGE LANGUAGE", "★");
+	}
+
+	return true;
+}
+
+bool CGameMenu::MenuLanguage(int ClientID, SCallVoteStatus &VoteStatus, class CGameMenu *pMenu, void *pUserData)
+{
+	// refresh
+	if(VoteStatus.m_aCmd[0])
+	{
+		if(str_startswith(VoteStatus.m_aCmd, "LANGUAGE "))
+		{
+			const char *pCode = VoteStatus.m_aCmd + str_length("LANGUAGE ");
+			if(str_comp(pMenu->Server()->ClientLanguage(ClientID), pCode) == 0)
+				return false;
+			pMenu->Server()->SetClientLanguage(ClientID, pCode);
+		}
+		else if(str_comp(VoteStatus.m_aCmd, "NONE") == 0)
+		{
+			return false;
+		}
+	}
+
+	pMenu->ClearOptions(ClientID);
+	pMenu->AddPageTitle();
+	{
+		SLanguageInfo *pInfo = nullptr;
+		if(size_t LanguagesNum = pMenu->Server()->GetLanguagesInfo(&pInfo))
+		{
+			char aCommand[VOTE_CMD_LENGTH];
+			for(size_t Index = 0; Index < LanguagesNum; Index++)
+			{
+				str_format(aCommand, sizeof(aCommand), "LANGUAGE %s", pInfo[Index].m_pCode);
+				if(str_comp(pMenu->Server()->ClientLanguage(ClientID), pInfo[Index].m_pCode) == 0)
+					pMenu->AddOption(pInfo[Index].m_pName, aCommand, ">");
+				else
+					pMenu->AddOption(pInfo[Index].m_pName, aCommand, "-");
+			}
+			delete[] pInfo;
+		}
+		else
+		{
+			pMenu->AddTranslatedOption("Oops, couldn't find any language. (Click to refresh)", "DISPLAY");
+		}
 	}
 
 	return true;
@@ -214,9 +265,9 @@ void CGameMenu::AddPageTitle()
 	if(!m_vpMenuPages.count(m_aPlayerData[m_CurrentClientID].m_CurrentPage))
 		return;
 
-	AddOption("===============================", "NONE", "", false);
-	AddOption(m_vpMenuPages[m_aPlayerData[m_CurrentClientID].m_CurrentPage]->m_aTitle, "NONE", "=");
-	AddOption("===============================", "NONE", "", false);
+	AddOption("===============================", "NONE", "");
+	AddTranslatedOption(m_vpMenuPages[m_aPlayerData[m_CurrentClientID].m_CurrentPage]->m_aTitle, "NONE", "=");
+	AddOption("===============================", "NONE", "");
 }
 
 void CGameMenu::AddSpace()
@@ -229,7 +280,7 @@ void CGameMenu::AddHorizontalRule()
 	AddOption("-------------------------------------------", "NONE");
 }
 
-void CGameMenu::AddOption(const char *pDesc, const char *pCommand, const char *pPrefix, bool Translate)
+void CGameMenu::AddOption(const char *pDesc, const char *pCommand, const char *pPrefix)
 {
 	if(m_CurrentClientID < 0 || m_CurrentClientID >= MAX_CLIENTS)
 		return;
@@ -251,14 +302,28 @@ void CGameMenu::AddOption(const char *pDesc, const char *pCommand, const char *p
 		m_aPlayerData[m_CurrentClientID].m_pVoteOptionFirst = pOption;
 
 	if(pPrefix && pPrefix[0])
-		str_format(pOption->m_aDescription, sizeof(pOption->m_aDescription), "%s %s", pPrefix, Translate ? Localize(pDesc) : pDesc);
+		str_format(pOption->m_aDescription, sizeof(pOption->m_aDescription), "%s %s", pPrefix, pDesc);
 	else
-		str_copy(pOption->m_aDescription, Translate ? Localize(pDesc) : pDesc, sizeof(pOption->m_aDescription));
+		str_copy(pOption->m_aDescription, pDesc, sizeof(pOption->m_aDescription));
 	mem_copy(pOption->m_aCommand, pCommand, Len + 1);
+}
+
+void CGameMenu::AddTranslatedOption(const char *pDesc, const char *pCommand, const char *pPrefix)
+{
+	if(m_CurrentClientID < 0 || m_CurrentClientID >= MAX_CLIENTS)
+		return;
+	if(!pDesc || !pCommand)
+		return;
+	if(!pDesc[0] || !pCommand[0])
+		return;
+	return AddOption(Localize(pDesc), pCommand, pPrefix);
 }
 
 const char *CGameMenu::Localize(const char *pStr, const char *pContext)
 {
+	if(m_CurrentClientID == -1)
+		return pStr;
+
 	return Server()->Localize(m_CurrentClientID, pStr, pContext);
 }
 
