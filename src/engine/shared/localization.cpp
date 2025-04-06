@@ -2,8 +2,8 @@
 #include <base/uuid.h>
 
 #include <engine/console.h>
-#include <engine/storage.h>
 #include <engine/localization.h>
+#include <engine/storage.h>
 
 #include "config.h"
 #include "jsonparser.h"
@@ -15,93 +15,97 @@
 class CString
 {
 public:
-    unsigned m_Hash;
-    unsigned m_ContextHash;
-    const char *m_pReplacement;
+	unsigned m_Hash;
+	unsigned m_ContextHash;
+	const char *m_pReplacement;
 
-    bool operator <(const CString &Other) const { return m_Hash < Other.m_Hash || (m_Hash == Other.m_Hash && m_ContextHash < Other.m_ContextHash); }
-    bool operator <=(const CString &Other) const { return m_Hash < Other.m_Hash || (m_Hash == Other.m_Hash && m_ContextHash <= Other.m_ContextHash); }
-    bool operator ==(const CString &Other) const { return m_Hash == Other.m_Hash && m_ContextHash == Other.m_ContextHash; }
+	bool operator<(const CString &Other) const { return m_Hash < Other.m_Hash || (m_Hash == Other.m_Hash && m_ContextHash < Other.m_ContextHash); }
+	bool operator<=(const CString &Other) const { return m_Hash < Other.m_Hash || (m_Hash == Other.m_Hash && m_ContextHash <= Other.m_ContextHash); }
+	bool operator==(const CString &Other) const { return m_Hash == Other.m_Hash && m_ContextHash == Other.m_ContextHash; }
 };
 
 class CLocalization : public ILocalization
 {
-    IConsole *m_pConsole;
+	IConsole *m_pConsole;
 	IStorage *m_pStorage;
 	CConfig *m_pConfig;
+
 protected:
-    IConsole *Console() const { return m_pConsole; }
-    IStorage *Storage() const { return m_pStorage; }
-    CConfig *Config() const { return m_pConfig; }
+	IConsole *Console() const { return m_pConsole; }
+	IStorage *Storage() const { return m_pStorage; }
+	CConfig *Config() const { return m_pConfig; }
 
 public:
-    CLocalization(IStorage *pStorage, IConsole *pConsole, CConfig *pConfig);
+	CLocalization(IStorage *pStorage, IConsole *pConsole, CConfig *pConfig);
 	~CLocalization() = default;
 
-    void Init() override;
+	void Init() override;
 	const char *Localize(const char *pCode, const char *pStr, const char *pContext) override;
 
 	int GetLanguagesInfo(SLanguageInfo **ppInfo) override;
+
 private:
-    class CLanguage
-    {
-        sorted_array<CString> m_Strings;
-        CHeap m_StringsHeap;
+	class CLanguage
+	{
+		sorted_array<CString> m_Strings;
+		CHeap m_StringsHeap;
 
-        char m_aCode[8];
-        char m_aParent[8];
-        char m_aName[32];
-        bool m_Loaded;
-    public:
-        CLanguage(const char *pCode, const char *pName, const char *pParent);
+		char m_aCode[8];
+		char m_aParent[8];
+		char m_aName[32];
+		bool m_Loaded;
 
-        void AddString(const char *pKey, const char *pValue, const char *pContext);
-        void Load(IStorage *pStorage, IConsole *pConsole);
+	public:
+		CLanguage(const char *pCode, const char *pName, const char *pParent);
 
-        const char *FindString(unsigned Hash, unsigned ContextHash) const;
-        const char *Localize(const char *pStr, const char *pContext) const;
+		void AddString(const char *pKey, const char *pValue, const char *pContext);
+		void Load(IStorage *pStorage, IConsole *pConsole);
 
-        const char *Code() { return m_aCode; }
-        const char *Name() { return m_aName; }
-        const char *Parent() { return m_aParent; }
+		const char *FindString(unsigned Hash, unsigned ContextHash) const;
+		const char *Localize(const char *pStr, const char *pContext) const;
+
+		const char *Code() { return m_aCode; }
+		const char *Name() { return m_aName; }
+		const char *Parent() { return m_aParent; }
 		inline bool IsLoaded() { return m_Loaded; }
-    };
-    std::unordered_map<Uuid, std::shared_ptr<CLanguage>> m_vpLanguages;
+	};
+	std::unordered_map<Uuid, std::shared_ptr<CLanguage>> m_vpLanguages;
 
-    void AddLanguage(const char *pCode, const char *pName, const char *pParent);
+	void AddLanguage(const char *pCode, const char *pName, const char *pParent);
 };
 
-CLocalization::CLocalization(IStorage *pStorage, IConsole *pConsole, CConfig *pConfig) : ILocalization()
+CLocalization::CLocalization(IStorage *pStorage, IConsole *pConsole, CConfig *pConfig) :
+	ILocalization()
 {
 	m_pStorage = pStorage;
-    m_pConsole = pConsole;
+	m_pConsole = pConsole;
 	m_pConfig = pConfig;
 
-    m_vpLanguages.clear();
+	m_vpLanguages.clear();
 }
 
 void CLocalization::Init()
 {
-    CJsonParser JsonParser;
-    const json_value *pJsonData = JsonParser.ParseFile("data/languages/index.json", Storage());
+	CJsonParser JsonParser;
+	const json_value *pJsonData = JsonParser.ParseFile("data/languages/index.json", Storage());
 	if(pJsonData == nullptr)
 	{
 		Console()->Print(IConsole::OUTPUT_LEVEL_ADDINFO, "l10n", JsonParser.Error());
 		return;
 	}
-    const json_value &rStart = (*pJsonData)["languages"];
+	const json_value &rStart = (*pJsonData)["languages"];
 	if(rStart.type == json_array)
 	{
 		for(unsigned i = 0; i < rStart.u.array.length; ++i)
 		{
-			const char *pCode = (const char *)rStart[i]["code"];
-			const char *pName = (const char *)rStart[i]["name"];
+			const char *pCode = (const char *) rStart[i]["code"];
+			const char *pName = (const char *) rStart[i]["name"];
 			const char *pParent = nullptr;
 			if(rStart[i]["parent"].type == json_string)
-				pParent = (const char *)rStart[i]["parent"];
+				pParent = (const char *) rStart[i]["parent"];
 			AddLanguage(pCode, pName, pParent);
-        }
-    }
+		}
+	}
 	Console()->Print(IConsole::OUTPUT_LEVEL_ADDINFO, "l10n", "initialized l10n");
 }
 
@@ -123,13 +127,13 @@ const char *CLocalization::Localize(const char *pCode, const char *pStr, const c
 
 CLocalization::CLanguage::CLanguage(const char *pCode, const char *pName, const char *pParent)
 {
-    str_copy(m_aCode, pCode, sizeof(m_aCode));
-    str_copy(m_aName, pName, sizeof(m_aName));
-    str_copy(m_aParent, pParent ? pParent : "en", sizeof(m_aParent));
-    m_Loaded = false;
+	str_copy(m_aCode, pCode, sizeof(m_aCode));
+	str_copy(m_aName, pName, sizeof(m_aName));
+	str_copy(m_aParent, pParent ? pParent : "en", sizeof(m_aParent));
+	m_Loaded = false;
 
-    m_Strings.clear();
-    m_StringsHeap.Reset();
+	m_Strings.clear();
+	m_StringsHeap.Reset();
 }
 
 void CLocalization::CLanguage::AddString(const char *pKey, const char *pValue, const char *pContext)
@@ -143,18 +147,18 @@ void CLocalization::CLanguage::AddString(const char *pKey, const char *pValue, c
 
 void CLocalization::CLanguage::Load(IStorage *pStorage, IConsole *pConsole)
 {
-    char aPath[IO_MAX_PATH_LENGTH];
-    str_format(aPath, sizeof(aPath), "data/languages/%s.json", m_aCode);
+	char aPath[IO_MAX_PATH_LENGTH];
+	str_format(aPath, sizeof(aPath), "data/languages/%s.json", m_aCode);
 
-    CJsonParser JsonParser;
-    const json_value *pJsonData = JsonParser.ParseFile(aPath, pStorage);
+	CJsonParser JsonParser;
+	const json_value *pJsonData = JsonParser.ParseFile(aPath, pStorage);
 	if(pJsonData == nullptr)
 	{
 		pConsole->Print(IConsole::OUTPUT_LEVEL_ADDINFO, "l10n", JsonParser.Error());
 		return;
 	}
 
-    char aBuf[256];
+	char aBuf[256];
 	str_format(aBuf, sizeof(aBuf), "loaded '%s'", aPath);
 	pConsole->Print(IConsole::OUTPUT_LEVEL_ADDINFO, "l10n", aBuf);
 	m_Strings.clear();
@@ -167,18 +171,20 @@ void CLocalization::CLanguage::Load(IStorage *pStorage, IConsole *pConsole)
 		for(unsigned i = 0; i < rStart.u.array.length; ++i)
 		{
 			bool Valid = true;
-			const char *pKey = (const char *)rStart[i]["key"];
-			const char *pValue = (const char *)rStart[i]["value"];
+			const char *pKey = (const char *) rStart[i]["key"];
+			const char *pValue = (const char *) rStart[i]["value"];
 			while(pKey[0] && pValue[0])
 			{
-				for(; pKey[0] && pKey[0] != '%'; ++pKey);
-				for(; pValue[0] && pValue[0] != '%'; ++pValue);
-				if(pKey[0] && pValue[0] && ((pKey[1] == ' ' && pValue[1] == 0) || (pKey[1] == 0 && pValue[1] == ' ')))	// skip  false positive
+				for(; pKey[0] && pKey[0] != '%'; ++pKey)
+					;
+				for(; pValue[0] && pValue[0] != '%'; ++pValue)
+					;
+				if(pKey[0] && pValue[0] && ((pKey[1] == ' ' && pValue[1] == 0) || (pKey[1] == 0 && pValue[1] == ' '))) // skip  false positive
 					break;
 				if((pKey[0] && (!pValue[0] || pKey[1] != pValue[1])) || (pValue[0] && (!pKey[0] || pValue[1] != pKey[1])))
 				{
 					Valid = false;
-					str_format(aBuf, sizeof(aBuf), "skipping invalid entry key:'%s', value:'%s'", (const char *)rStart[i]["key"], (const char *)rStart[i]["value"]);
+					str_format(aBuf, sizeof(aBuf), "skipping invalid entry key:'%s', value:'%s'", (const char *) rStart[i]["key"], (const char *) rStart[i]["value"]);
 					pConsole->Print(IConsole::OUTPUT_LEVEL_ADDINFO, "l10n", aBuf);
 					break;
 				}
@@ -188,11 +194,11 @@ void CLocalization::CLanguage::Load(IStorage *pStorage, IConsole *pConsole)
 					++pValue;
 			}
 			if(Valid)
-				AddString((const char *)rStart[i]["key"], (const char *)rStart[i]["value"], (const char *)rStart[i]["context"]);
+				AddString((const char *) rStart[i]["key"], (const char *) rStart[i]["value"], (const char *) rStart[i]["context"]);
 		}
 	}
 
-    m_Loaded = true;
+	m_Loaded = true;
 
 	return;
 }
@@ -217,14 +223,14 @@ const char *CLocalization::CLanguage::FindString(unsigned Hash, unsigned Context
 		else if(rStr.m_ContextHash == DefaultHash)
 			DefaultIndex = i;
 	}
-	
-    return r.index(DefaultIndex).m_pReplacement;
+
+	return r.index(DefaultIndex).m_pReplacement;
 }
 
 const char *CLocalization::CLanguage::Localize(const char *pStr, const char *pContext) const
 {
-    const char *pNewStr = FindString(str_quickhash(pStr), str_quickhash(pContext));
-    return pNewStr;
+	const char *pNewStr = FindString(str_quickhash(pStr), str_quickhash(pContext));
+	return pNewStr;
 }
 
 int CLocalization::GetLanguagesInfo(SLanguageInfo **ppInfo)
@@ -243,14 +249,14 @@ int CLocalization::GetLanguagesInfo(SLanguageInfo **ppInfo)
 
 void CLocalization::AddLanguage(const char *pCode, const char *pName, const char *pParent)
 {
-    Uuid LanguageUuid = CalculateUuid(pCode);
-    if(m_vpLanguages.count(LanguageUuid))
-        return;
+	Uuid LanguageUuid = CalculateUuid(pCode);
+	if(m_vpLanguages.count(LanguageUuid))
+		return;
 
-    std::shared_ptr<CLanguage> pLanguage = std::make_shared<CLanguage>(pCode, pName, pParent);
-    m_vpLanguages[LanguageUuid] = pLanguage;
+	std::shared_ptr<CLanguage> pLanguage = std::make_shared<CLanguage>(pCode, pName, pParent);
+	m_vpLanguages[LanguageUuid] = pLanguage;
 
-    char aBuf[256];
+	char aBuf[256];
 	str_format(aBuf, sizeof(aBuf), "loaded language '%s'(%s)", pCode, pName);
 	Console()->Print(IConsole::OUTPUT_LEVEL_ADDINFO, "l10n", aBuf);
 
@@ -260,5 +266,5 @@ void CLocalization::AddLanguage(const char *pCode, const char *pName, const char
 
 ILocalization *CreateLocalization(IStorage *pStorage, IConsole *pConsole, CConfig *pConfig)
 {
-    return new CLocalization(pStorage, pConsole, pConfig);
+	return new CLocalization(pStorage, pConsole, pConfig);
 }

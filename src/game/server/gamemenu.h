@@ -59,6 +59,7 @@ public:
 	void AddTranslatedOption(const char *pDesc, const char *pCommand, const char *pPrefix = "");
 
 	const char *Localize(const char *pStr, const char *pContext = "");
+
 private:
 	int m_CurrentClientID;
 	static bool MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameMenu *pMenu, void *pUserData);

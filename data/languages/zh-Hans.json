@@ -39,6 +39,10 @@
 		{
 			"key": "Hidden (Click to display)",
 			"value": "隐藏 (双击以显示)"
+		},
+		{
+			"key": "Oops, couldn't find any language. (Click to refresh)",
+			"value": "噢不!没有找到任何语言! (双击以刷新)"
 		}
 	]
 }

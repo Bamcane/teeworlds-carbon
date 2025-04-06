@@ -251,7 +251,7 @@ bool CGameMenu::MenuLanguage(int ClientID, SCallVoteStatus &VoteStatus, class CG
 		}
 		else
 		{
-			pMenu->AddTranslatedOption("Oops, couldn't find any language. (Click to refresh)", "DISPLAY");
+			pMenu->AddTranslatedOption(_("Oops, couldn't find any language. (Click to refresh)"), "DISPLAY");
 		}
 	}
 
