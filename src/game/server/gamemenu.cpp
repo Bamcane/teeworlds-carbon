@@ -83,6 +83,10 @@ void CGameMenu::OnMenuVote(int ClientID, SCallVoteStatus &VoteStatus, bool Sound
 		SetPlayerPage(ClientID, m_vpMenuPages[CurrentPage]->m_ParentUuid);
 		return;
 	}
+	else if(str_comp(VoteStatus.m_aCmd, "NONE") == 0)
+	{
+		return;
+	}
 
 	// call back
 	if(!m_vpMenuPages[CurrentPage]->m_pfnCallback(ClientID, VoteStatus, this, m_vpMenuPages[CurrentPage]->m_pUserData))
@@ -173,10 +177,6 @@ bool CGameMenu::MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameM
 			pMenu->SetPlayerPage(ClientID, "LANGUAGE");
 			return false;
 		}
-		else if(str_comp(VoteStatus.m_aCmd, "NONE") == 0)
-		{
-			return false;
-		}
 		else if(str_comp(VoteStatus.m_aCmd, "DISPLAY ADDR") == 0)
 		{
 			DisplayAddr = true;
@@ -225,10 +225,6 @@ bool CGameMenu::MenuLanguage(int ClientID, SCallVoteStatus &VoteStatus, class CG
 			if(str_comp(pMenu->Server()->ClientLanguage(ClientID), pCode) == 0)
 				return false;
 			pMenu->Server()->SetClientLanguage(ClientID, pCode);
-		}
-		else if(str_comp(VoteStatus.m_aCmd, "NONE") == 0)
-		{
-			return false;
 		}
 	}
 

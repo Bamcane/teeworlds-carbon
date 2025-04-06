@@ -1417,11 +1417,7 @@ bool CGameContext::MenuServerVote(int ClientID, SCallVoteStatus &VoteStatus, cla
 		return false;
 	if(VoteStatus.m_aCmd[0])
 	{
-		if(str_comp(VoteStatus.m_aCmd, "NONE") == 0)
-		{
-			return false;
-		}
-		else if(str_comp(VoteStatus.m_aCmd, "DISPLAY") == 0)
+		if(str_comp(VoteStatus.m_aCmd, "DISPLAY") == 0)
 		{
 		}
 		else if(VoteStatus.m_aDesc[0])
