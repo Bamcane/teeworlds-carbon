@@ -207,8 +207,8 @@ bool CGameMenu::MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameM
 	pMenu->AddHorizontalRule();
 	// options
 	{
-		pMenu->AddTranslatedOption("Server Vote", "PAGE SERVER VOTE", "★");
-		pMenu->AddTranslatedOption("Language Settings", "PAGE LANGUAGE", "★");
+		pMenu->AddTranslatedOption(_("Server Vote"), "PAGE SERVER VOTE", "★");
+		pMenu->AddTranslatedOption(_("Language Settings"), "PAGE LANGUAGE", "★");
 	}
 
 	return true;
