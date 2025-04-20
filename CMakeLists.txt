@@ -533,6 +533,7 @@ set_src(ENGINE_INTERFACE GLOB src/engine
   engine.h
   http.h
   kernel.h
+  localization.h
   map.h
   message.h
   server.h
@@ -569,7 +570,6 @@ set_src(ENGINE_SHARED GLOB src/engine/shared
   linereader.cpp
   linereader.h
   localization.cpp
-  localization.h
   map.cpp
   masterserver.h
   memheap.cpp

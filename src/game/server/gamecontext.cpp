@@ -1007,6 +1007,8 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 			pPlayer->m_LastEmoteTick = Server()->Tick();
 
 			SendEmoticon(ClientID, pMsg->m_Emoticon);
+			// hook
+			GameController()->OnPlayerSendEmoticon(pMsg->m_Emoticon, pPlayer);
 		}
 		else if(MsgID == NETMSGTYPE_CL_KILL && !m_World.m_Paused)
 		{
@@ -1515,7 +1517,12 @@ void CGameContext::OnInit()
 		{
 			int Index = pTiles[y * pTileMap->m_Width + x].m_Index;
 
-			if(Index >= ENTITY_OFFSET)
+			if(Index > TILE_NOHOOK && Index < ENTITY_OFFSET)
+			{
+				vec2 Pos(x * 32.0f + 16.0f, y * 32.0f + 16.0f);
+				GameController()->OnExtraTile(Index, Pos);
+			}
+			else if(Index >= ENTITY_OFFSET)
 			{
 				vec2 Pos(x * 32.0f + 16.0f, y * 32.0f + 16.0f);
 				GameController()->OnEntity(Index - ENTITY_OFFSET, Pos);

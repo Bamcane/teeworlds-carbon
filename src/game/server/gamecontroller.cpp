@@ -190,6 +190,15 @@ bool CGameController::OnEntity(int Index, vec2 Pos)
 	return false;
 }
 
+bool CGameController::OnExtraTile(int Index, vec2 Pos)
+{
+	switch(Index)
+	{
+		case TILE_BENCH: m_aSitPoints.add(Pos + vec2(0.f, -12.f)); return true;
+	}
+	return false;
+}
+
 void CGameController::OnPlayerConnect(CPlayer *pPlayer)
 {
 	int ClientID = pPlayer->GetCID();
@@ -229,6 +238,32 @@ void CGameController::OnPlayerReadyChange(CPlayer *pPlayer)
 	{
 		// change players ready state
 		pPlayer->m_IsReadyToPlay ^= 1;
+	}
+}
+
+void CGameController::OnPlayerSendEmoticon(int Emoticon, CPlayer *pPlayer)
+{
+	if(!pPlayer || !pPlayer->GetCharacter())
+	{
+		return;
+	}
+
+	CCharacter *pChr = pPlayer->GetCharacter();
+	float ClosestDistance = 32.f;
+	int ClosestPoint = -1;
+	for(int i = 0; i < m_aSitPoints.size(); ++i)
+	{
+		vec2 SitPos = m_aSitPoints[i];
+		if(distance(pChr->GetPos(), SitPos) < ClosestDistance + pChr->GetProximityRadius())
+		{
+			ClosestDistance = distance(pChr->GetPos(), SitPos);
+			ClosestPoint = i;
+		}
+	}
+	if(ClosestPoint != -1)
+	{
+		pChr->SetSitting(true);
+		pChr->SetSitPos(m_aSitPoints[ClosestPoint]);
 	}
 }
 

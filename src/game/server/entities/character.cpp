@@ -501,8 +501,52 @@ void CCharacter::ResetInput()
 
 void CCharacter::Tick()
 {
+	bool MoveAction = false;
+	{
+		MoveAction = MoveAction || (m_Input.m_Jump && !(m_Core.m_Jumped & 1));
+		MoveAction = MoveAction || (m_Input.m_Direction != 0);
+	}
+	// handle sit
+	if(IsSitting())
+	{
+		if(length(m_Core.m_Vel) > 1.0f || MoveAction)
+		{
+			SetSitting(false);
+		}
+		else
+		{
+			m_Core.m_Vel = vec2(0.f, 0.f);
+			if(m_HealthRegenStart + (Config()->m_SvHealthRegenTime * Server()->TickSpeed() / 1000) < Server()->Tick())
+			{
+				m_HealthRegenStart = Server()->Tick();
+				IncreaseHealth(1);
+				GameServer()->CreateSound(m_Pos, SOUND_PICKUP_HEALTH, CmaskOne(m_pPlayer->GetCID()));
+			}
+		}
+	}
+
 	m_Core.m_Input = m_Input;
 	m_Core.Tick(true);
+
+	// handle sit
+	if(IsSitting())
+	{
+		m_Core.m_Jumped &= ~2;
+		m_Core.m_Vel = vec2(0.f, 0.f);
+		if(length(m_SitPos - m_Pos) > 4.0f)
+		{
+			vec2 PosTo = m_Pos;
+			PosTo += normalize(m_SitPos - m_Pos) * 4.0f;
+
+			m_Core.m_Pos = PosTo;
+			m_Pos = PosTo;
+		}
+		else
+		{
+			m_Core.m_Pos = m_SitPos;
+			m_Pos = m_SitPos;
+		}
+	}
 
 	// handle leaving gamelayer
 	if(GameLayerClipped(m_Pos))
@@ -528,7 +572,7 @@ void CCharacter::TickDefered()
 
 	// apply drag velocity when the player is not firing ninja
 	// and set it back to 0 for the next tick
-	if(m_ActiveWeapon != WEAPON_NINJA || m_Ninja.m_CurrentMoveTime < 0)
+	if(m_ActiveWeapon != WEAPON_NINJA || m_Ninja.m_CurrentMoveTime < 0 || IsSitting())
 		m_Core.AddDragVelocity();
 	m_Core.ResetDragVelocity();
 

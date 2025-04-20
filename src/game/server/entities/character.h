@@ -89,7 +89,6 @@ private:
 	// input
 	CNetObj_PlayerInput m_Input;
 	int m_NumInputs;
-	int m_Jumped;
 
 	int m_TriggeredEvents;
 
@@ -109,6 +108,14 @@ private:
 	int m_ReckoningTick; // tick that we are performing dead reckoning From
 	CCharacterCore m_SendCore; // core that we should send
 	CCharacterCore m_ReckoningCore; // the dead reckoning core
+
+	bool m_IsSitting;
+	int m_HealthRegenStart;
+	vec2 m_SitPos;
+public:
+	inline bool IsSitting() { return m_IsSitting; }
+	void SetSitting(bool Flag) { m_IsSitting = Flag; }
+	void SetSitPos(vec2 Pos) { m_SitPos = Pos; }
 };
 
 #endif

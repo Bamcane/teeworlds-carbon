@@ -76,6 +76,7 @@ protected:
 
 	void SendGameInfo(int ClientID);
 
+	array<vec2> m_aSitPoints;
 public:
 	CGameController(class CGameContext *pGameServer);
 	~CGameController() {}
@@ -84,11 +85,14 @@ public:
 	void OnCharacterSpawn(class CCharacter *pChr);
 	void OnFlagReturn(class CFlag *pFlag);
 	bool OnEntity(int Index, vec2 Pos);
+	bool OnExtraTile(int Index, vec2 Pos);
 
 	void OnPlayerConnect(class CPlayer *pPlayer);
 	void OnPlayerDisconnect(class CPlayer *pPlayer);
 	void OnPlayerInfoChange(class CPlayer *pPlayer);
 	void OnPlayerReadyChange(class CPlayer *pPlayer);
+
+	void OnPlayerSendEmoticon(int Emoticon, class CPlayer *pPlayer);
 
 	void OnReset();
 
