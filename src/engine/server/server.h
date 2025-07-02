@@ -258,7 +258,7 @@ public:
 	void UpdateServerInfo(bool Resend = false);
 
 	void SendServerInfo(int ClientID);
-	void GenerateServerInfo(CPacker *pPacker, int Token);
+	void GenerateServerInfo(CPacker *pPacker, bool IncludeClientInfo);
 
 	void PumpNetwork();
 
