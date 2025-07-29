@@ -1,4 +1,4 @@
-Teeworlds Carbon ![GitHub Actions](https://github.com/Bamcane/teeworlds-carbon/workflows/Check%20style/badge.svg)
+Teeworlds Carbon ![GitHub Actions](https://github.com/Bamcane/teeworlds-carbon/workflows/Build/badge.svg)
 =========
 A survival teeworlds mod.
 

@@ -231,14 +231,14 @@ public:
 	void FindDataDir()
 	{
 		// 1) use data-dir in PWD if present
-		if(fs_is_dir("data/mapres"))
+		if(fs_is_dir("data/languages"))
 		{
 			str_copy(m_aDataDir, "data", sizeof(m_aDataDir));
 			return;
 		}
 
 		// 2) use compiled-in data-dir if present
-		if(fs_is_dir(DATA_DIR "/mapres"))
+		if(fs_is_dir(DATA_DIR "/languages"))
 		{
 			str_copy(m_aDataDir, DATA_DIR, sizeof(m_aDataDir));
 			return;
@@ -249,40 +249,13 @@ public:
 			char aBaseDir[IO_MAX_PATH_LENGTH];
 			str_copy(aBaseDir, m_aAppDir, sizeof(aBaseDir));
 			str_format(m_aDataDir, sizeof(m_aDataDir), "%s/data", aBaseDir);
-			str_append(aBaseDir, "/data/mapres", sizeof(aBaseDir));
+			str_append(aBaseDir, "/data/languages", sizeof(aBaseDir));
 
 			if(fs_is_dir(aBaseDir))
 				return;
 			else
 				m_aDataDir[0] = 0;
 		}
-
-#if defined(CONF_FAMILY_UNIX)
-		// 4) check for all default locations
-		{
-			const char *aDirs[] = {
-				"/usr/share/teeworlds/data",
-				"/usr/share/games/teeworlds/data",
-				"/usr/local/share/teeworlds/data",
-				"/usr/local/share/games/teeworlds/data",
-				"/usr/pkg/share/teeworlds/data",
-				"/usr/pkg/share/games/teeworlds/data",
-				"/opt/teeworlds/data"};
-			const int DirsCount = sizeof(aDirs) / sizeof(aDirs[0]);
-
-			int i;
-			for(i = 0; i < DirsCount; i++)
-			{
-				char aBuf[128];
-				str_format(aBuf, sizeof(aBuf), "%s/mapres", aDirs[i]);
-				if(fs_is_dir(aBuf))
-				{
-					str_copy(m_aDataDir, aDirs[i], sizeof(m_aDataDir));
-					return;
-				}
-			}
-		}
-#endif
 
 		// no data-dir found
 		dbg_msg("storage", "warning no data directory found");
@@ -390,7 +363,7 @@ public:
 		return 0;
 	}
 
-	bool ReadFile(const char *pFilename, int Type, void **ppResult, unsigned *pResultLen)
+	bool ReadFile(const char *pFilename, int Type, void **ppResult, unsigned *pResultLen) override
 	{
 		IOHANDLE File = OpenFile(pFilename, IOFLAG_READ, Type);
 		if(!File)
@@ -404,7 +377,7 @@ public:
 		return true;
 	}
 
-	char *ReadFileStr(const char *pFilename, int Type)
+	char *ReadFileStr(const char *pFilename, int Type) override
 	{
 		IOHANDLE File = OpenFile(pFilename, IOFLAG_READ | IOFLAG_SKIP_BOM, Type);
 		if(!File)

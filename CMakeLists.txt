@@ -17,6 +17,9 @@ else()
   message(FATAL_ERROR "Couldn't parse version from src/game/version.h")
 endif()
 
+set(CXX_STANDARD 17)
+set(CXX_STANDARD_REQUIRED ON)
+
 # Extra support for CMake pre-3.0
 if(NOT POLICY CMP0048)
   set(PROJECT_VERSION_MAJOR ${VERSION_MAJOR})
@@ -26,6 +29,7 @@ if(NOT POLICY CMP0048)
 endif()
 
 project(teeworlds VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH})
+project(teeworlds LANGUAGES C CXX)
 
 set(ORIGINAL_CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH})
 set(ORIGINAL_CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES})
@@ -98,6 +102,23 @@ function(add_c_compiler_flag_if_supported VARIABLE FLAG)
   endif()
   string(REGEX REPLACE "[^A-Za-z0-9]" "_" CONFIG_VARIABLE "FLAG_SUPPORTED${CHECKED_FLAG}")
   check_c_compiler_flag("${CHECKED_FLAG}" ${CONFIG_VARIABLE})
+  if(${CONFIG_VARIABLE})
+    if(${VARIABLE})
+      set("${VARIABLE}" "${${VARIABLE}};${FLAG}" PARENT_SCOPE)
+    else()
+      set("${VARIABLE}" "${FLAG}" PARENT_SCOPE)
+    endif()
+  endif()
+endfunction()
+
+function(add_cxx_compiler_flag_if_supported VARIABLE FLAG)
+  if(ARGC GREATER 2)
+    set(CHECKED_FLAG "${ARGV2}")
+  else()
+    set(CHECKED_FLAG "${FLAG}")
+  endif()
+  string(REGEX REPLACE "[^A-Za-z0-9]" "_" CONFIG_VARIABLE "FLAG_SUPPORTED${CHECKED_FLAG}")
+  check_cxx_compiler_flag("${CHECKED_FLAG}" ${CONFIG_VARIABLE})
   if(${CONFIG_VARIABLE})
     if(${VARIABLE})
       set("${VARIABLE}" "${${VARIABLE}};${FLAG}" PARENT_SCOPE)
@@ -346,7 +367,8 @@ if(TARGET_OS STREQUAL "windows")
   set(PLATFORM_LIBS ws2_32) # Windows sockets
 elseif(TARGET_OS STREQUAL "mac")
   find_library(CARBON Carbon)
-  set(PLATFORM_LIBS ${CARBON})
+  find_library(COCOA Cocoa)
+  set(PLATFORM_LIBS ${CARBON} ${COCOA})
 else()
   if(TARGET_OS STREQUAL "linux")
     set(PLATFORM_LIBS rt) # clock_gettime for glibc < 2.17
@@ -360,7 +382,7 @@ endif()
 ########################################################################
 
 if(NOT(GTEST_FOUND) AND DOWNLOAD_GTEST)
-  set(TEEWORLDS_GTEST_VERSION v1.13.0)
+  set(TEEWORLDS_GTEST_VERSION v1.17.0)
   configure_file(cmake/Download_GTest_CMakeLists.txt.in googletest-download/CMakeLists.txt)
   execute_process(COMMAND ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" .
     RESULT_VARIABLE result
@@ -431,6 +453,11 @@ endif()
 ########################################################################
 # COPY DATA
 ########################################################################
+
+set(COPY_FILES
+  ${CURL_COPY_FILES}
+)
+file(COPY ${COPY_FILES} DESTINATION .)
 
 file(COPY ${PROJECT_SOURCE_DIR}/data DESTINATION .)
 
@@ -914,6 +941,54 @@ endif()
 
 set(PACKAGE_TARGETS)
 
+if(DMGTOOLS_FOUND OR HDIUTIL)
+  file(MAKE_DIRECTORY bundle/server/)
+  configure_file(other/bundle/server/Info.plist.in bundle/server/Info.plist)
+
+  if(HDIUTIL)
+    set(DMG_PARAMS --hdiutil ${HDIUTIL})
+  elseif(DMGTOOLS_FOUND)
+    set(DMG_PARAMS --dmgtools ${DMG} ${HFSPLUS} ${NEWFS_HFS})
+  endif()
+  set(DMG_TMPDIR pack_${CPACK_PACKAGE_FILE_NAME}_dmg)
+  set(DMG_MKDIRS
+    ${TARGET_SERVER}.app
+    ${TARGET_SERVER}.app/Contents
+    ${TARGET_SERVER}.app/Contents/MacOS
+    ${TARGET_SERVER}.app/Contents/Resources
+    ${TARGET_SERVER}.app/Contents/Resources/data
+    # Needed so the server recognizes the data directory.
+    ${TARGET_SERVER}.app/Contents/Resources/data/mapres
+  )
+  set(DMG_MKDIR_COMMANDS)
+  foreach(dir ${DMG_MKDIRS})
+    list(APPEND DMG_MKDIR_COMMANDS COMMAND ${CMAKE_COMMAND} -E make_directory ${DMG_TMPDIR}/${dir})
+  endforeach()
+  add_custom_command(OUTPUT ${CPACK_PACKAGE_FILE_NAME}.dmg
+    COMMAND ${CMAKE_COMMAND} -E remove_directory ${DMG_TMPDIR}
+    ${DMG_MKDIR_COMMANDS}
+
+    # SERVER
+    COMMAND ${CMAKE_COMMAND} -E copy_directory data/maps ${DMG_TMPDIR}/${TARGET_SERVER}.app/Contents/Resources/data/maps
+    COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_SOURCE_DIR}/other/icons/${TARGET_SERVER}.icns ${DMG_TMPDIR}/${TARGET_SERVER}.app/Contents/Resources/
+    COMMAND ${CMAKE_COMMAND} -E copy bundle/server/Info.plist ${PROJECT_SOURCE_DIR}/other/bundle/server/PkgInfo ${DMG_TMPDIR}/${TARGET_SERVER}.app/Contents/
+    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:${TARGET_SERVER}> $<TARGET_FILE:${TARGET_SERVER_LAUNCHER}> ${DMG_TMPDIR}/${TARGET_SERVER}.app/Contents/MacOS/
+
+    # DMG
+    COMMAND ${Python3_EXECUTABLE} ${PROJECT_SOURCE_DIR}/scripts/dmg.py create ${DMG_PARAMS} ${CPACK_PACKAGE_FILE_NAME}.dmg ${CPACK_PACKAGE_FILE_NAME} ${DMG_TMPDIR}
+
+    DEPENDS
+      ${TARGET_SERVER_LAUNCHER}
+      ${TARGET_SERVER}
+      ${PROJECT_BINARY_DIR}/bundle/server/Info.plist
+      other/bundle/server/PkgInfo
+      other/icons/${TARGET_SERVER}.icns
+      scripts/dmg.py
+  )
+  add_custom_target(package_dmg DEPENDS ${CPACK_PACKAGE_FILE_NAME}.dmg)
+  list(APPEND PACKAGE_TARGETS package_dmg)
+endif()
+
 foreach(ext zip tar.gz tar.xz)
   set(TAR_MODE c)
   set(TAR_EXTRA_ARGS)
@@ -1048,7 +1123,13 @@ foreach(target ${TARGETS_OWN})
     target_compile_options(${target} PRIVATE /wd4800) # Implicit conversion of int to bool.
   endif()
   if(TARGET_OS STREQUAL "windows")
-    target_compile_definitions(${target} PRIVATE _WIN32_WINNT=0x0501)
+    # See https://learn.microsoft.com/en-us/windows/win32/winprog/using-the-windows-headers
+    target_compile_definitions(${target} PRIVATE NOMINMAX) # windows.h shouldn't define min/max macros
+    target_compile_definitions(${target} PRIVATE WIN32_LEAN_AND_MEAN) # windows.h shouldn't define the name IStorage
+    # 0x0501 (Windows XP) is required for mingw to get getaddrinfo to work
+    # 0x0600 (Windows Vista) is required to use RegGetValueW and RegDeleteTreeW
+    target_compile_definitions(${target} PRIVATE NTDDI_VERSION=0x06000000) # Minimum OS version (new macro, since Vista)
+    target_compile_definitions(${target} PRIVATE _WIN32_WINNT=0x0600) # Minimum OS version (old macro, both must be defined)
     target_compile_definitions(${target} PRIVATE UNICODE) # Windows headers
     target_compile_definitions(${target} PRIVATE _UNICODE) # C-runtime
   endif()
@@ -1064,6 +1145,7 @@ foreach(target ${TARGETS_OWN})
     target_compile_definitions(${target} PRIVATE CONF_OPENSSL)
     target_include_directories(${target} PRIVATE ${CRYPTO_INCLUDE_DIRS})
   endif()
+  target_compile_features(${target} PRIVATE cxx_std_17)
 endforeach()
 
 foreach(target ${TARGETS_DEP})

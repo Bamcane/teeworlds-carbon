@@ -26,7 +26,7 @@ protected:
 			"-got.json");
 		IOHANDLE File = io_open(m_aOutputFilename, IOFLAG_WRITE);
 		EXPECT_TRUE(File);
-		m_pJson = new CJsonWriter(File);
+		m_pJson = new CJsonFileWriter(File);
 	}
 
 	void Expect(const char *pExpected)

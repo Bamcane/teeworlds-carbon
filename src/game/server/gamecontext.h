@@ -170,35 +170,35 @@ public:
 	void OnGameMenuInit();
 
 	// engine events
-	virtual void OnInit();
-	virtual void OnConsoleInit();
-	virtual void OnShutdown();
+	void OnInit() override;
+	void OnConsoleInit() override;
+	void OnShutdown() override;
 
-	virtual void OnTick();
-	virtual void OnPreSnap();
-	virtual void OnSnap(int ClientID);
-	virtual void OnPostSnap();
+	void OnTick() override;
+	void OnPreSnap() override;
+	void OnSnap(int ClientID) override;
+	void OnPostSnap() override;
 
-	virtual void OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID);
+	void OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID) override;
 
-	virtual void OnClientConnected(int ClientID, bool AsSpec) { OnClientConnected(ClientID, false, AsSpec); }
+	void OnClientConnected(int ClientID, bool AsSpec) override { OnClientConnected(ClientID, false, AsSpec); }
 	void OnClientConnected(int ClientID, bool Dummy, bool AsSpec);
 	void OnClientTeamChange(int ClientID);
-	virtual void OnClientEnter(int ClientID);
-	virtual void OnClientDrop(int ClientID, const char *pReason);
-	virtual void OnClientDirectInput(int ClientID, void *pInput);
-	virtual void OnClientPredictedInput(int ClientID, void *pInput);
+	void OnClientEnter(int ClientID) override;
+	void OnClientDrop(int ClientID, const char *pReason) override;
+	void OnClientDirectInput(int ClientID, void *pInput) override;
+	void OnClientPredictedInput(int ClientID, void *pInput) override;
 
-	virtual bool IsClientBot(int ClientID) const;
-	virtual bool IsClientReady(int ClientID) const;
-	virtual bool IsClientPlayer(int ClientID) const;
-	virtual bool IsClientSpectator(int ClientID) const;
+	bool IsClientBot(int ClientID) const override;
+	bool IsClientReady(int ClientID) const override;
+	bool IsClientPlayer(int ClientID) const override;
+	bool IsClientSpectator(int ClientID) const override;
 
-	virtual const char *GameType() const;
-	virtual const char *Version() const;
-	virtual const char *NetVersion() const;
-	virtual const char *NetVersionHashUsed() const;
-	virtual const char *NetVersionHashReal() const;
+	const char *GameType() const override;
+	const char *Version() const override;
+	const char *NetVersion() const override;
+	const char *NetVersionHashUsed() const override;
+	const char *NetVersionHashReal() const override;
 
 	void OnUpdatePlayerServerInfo(class CJsonStringWriter *pJSonWriter, int Id) override;
 };
