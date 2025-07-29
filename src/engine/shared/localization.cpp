@@ -147,6 +147,9 @@ void CLocalization::CLanguage::AddString(const char *pKey, const char *pValue, c
 
 void CLocalization::CLanguage::Load(IStorage *pStorage, IConsole *pConsole)
 {
+	if(str_comp(m_aCode, "en") == 0)
+		return;
+
 	char aPath[IO_MAX_PATH_LENGTH];
 	str_format(aPath, sizeof(aPath), "data/languages/%s.json", m_aCode);
 

@@ -112,6 +112,7 @@ private:
 	bool m_IsSitting;
 	int m_HealthRegenStart;
 	vec2 m_SitPos;
+
 public:
 	inline bool IsSitting() { return m_IsSitting; }
 	void SetSitting(bool Flag) { m_IsSitting = Flag; }

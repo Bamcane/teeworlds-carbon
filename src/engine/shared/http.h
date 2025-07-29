@@ -187,14 +187,14 @@ public:
 	{
 		m_Type = REQUEST::POST;
 		m_BodyLength = DataLength;
-		m_pBody = (unsigned char *) malloc(std::max((size_t) 1, DataLength));
+		m_pBody = (unsigned char *) mem_alloc(maximum((size_t) 1, DataLength));
 		mem_copy(m_pBody, pData, DataLength);
 	}
 	void PostJson(const char *pJson)
 	{
 		m_Type = REQUEST::POST_JSON;
 		m_BodyLength = str_length(pJson);
-		m_pBody = (unsigned char *) malloc(m_BodyLength);
+		m_pBody = (unsigned char *) mem_alloc(m_BodyLength);
 		mem_copy(m_pBody, pJson, m_BodyLength);
 	}
 	void Header(const char *pNameColonValue);
@@ -297,12 +297,6 @@ inline std::unique_ptr<CHttpRequest> HttpPostJson(const char *pUrl, CConfig *pCo
 }
 
 void EscapeUrl(char *pBuf, int Size, const char *pStr);
-
-template<int N>
-void EscapeUrl(char (&aBuf)[N], const char *pStr)
-{
-	EscapeUrl(aBuf, N, pStr);
-}
 
 bool HttpHasIpresolveBug();
 

@@ -21,6 +21,18 @@
 			"value": "返回"
 		},
 		{
+			"key": "If you don't want to close menu when you use a option,",
+			"value": "如果你不想要在使用选项时关闭菜单"
+		},
+		{
+			"key": "then you can input this in your console:",
+			"value": "那么你可以在控制台输入这些:"
+		},
+		{
+			"key": "(Click this to hide this tip)",
+			"value": "(双击隐藏提示)"
+		},
+		{
 			"key": "Name",
 			"value": "名称"
 		},
@@ -33,8 +45,8 @@
 			"value": "IP地址"
 		},
 		{
-			"key": "(Click to hide)",
-			"value": "(双击以隐藏)"
+			"key": "(Click any option to hide)",
+			"value": "(双击任意选项隐藏)"
 		},
 		{
 			"key": "Hidden (Click to display)",

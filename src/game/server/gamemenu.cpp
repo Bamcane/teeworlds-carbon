@@ -181,10 +181,25 @@ bool CGameMenu::MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameM
 		{
 			DisplayAddr = true;
 		}
+		else if(str_comp(VoteStatus.m_aCmd, "HIDDEN") == 0)
+		{
+			pMenu->GameServer()->m_apPlayers[ClientID]->m_HideTip = true;
+		}
 	}
 
 	pMenu->ClearOptions(ClientID);
 	pMenu->AddPageTitle();
+	// TIP
+	if(!pMenu->GameServer()->m_apPlayers[ClientID]->m_HideTip)
+	{
+		pMenu->AddOption(pMenu->Localize(_("If you don't want to close menu when you use a option,")), "DISPLAY", "");
+		pMenu->AddOption(pMenu->Localize(_("then you can input this in your console:")), "DISPLAY", "");
+		pMenu->AddOption("ui_close_window_after_changing_setting 0", "DISPLAY", "");
+
+		pMenu->AddOption(pMenu->Localize(_("(Click this to hide this tip)")), "HIDDEN", "");
+
+		pMenu->AddHorizontalRule();
+	}
 	// player stats
 	{
 		char aBuf[VOTE_DESC_LENGTH];
@@ -196,7 +211,7 @@ bool CGameMenu::MenuMain(int ClientID, SCallVoteStatus &VoteStatus, class CGameM
 		{
 			char aAddr[NETADDR_MAXSTRSIZE];
 			pMenu->Server()->GetClientAddr(ClientID, aAddr, sizeof(aAddr));
-			str_format(aBuf, sizeof(aBuf), "%s: %s %s", pMenu->Localize(_("IP Address")), aAddr, pMenu->Localize(_("(Click to hide)")));
+			str_format(aBuf, sizeof(aBuf), "%s: %s %s", pMenu->Localize(_("IP Address")), aAddr, pMenu->Localize(_("(Click any option to hide)")));
 		}
 		else
 		{

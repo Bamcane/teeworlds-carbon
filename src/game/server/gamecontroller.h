@@ -77,6 +77,7 @@ protected:
 	void SendGameInfo(int ClientID);
 
 	array<vec2> m_aSitPoints;
+
 public:
 	CGameController(class CGameContext *pGameServer);
 	~CGameController() {}

@@ -194,7 +194,7 @@ bool CGameController::OnExtraTile(int Index, vec2 Pos)
 {
 	switch(Index)
 	{
-		case TILE_BENCH: m_aSitPoints.add(Pos + vec2(0.f, -12.f)); return true;
+	case TILE_BENCH: m_aSitPoints.add(Pos + vec2(0.f, -12.f)); return true;
 	}
 	return false;
 }
