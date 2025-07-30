@@ -31,9 +31,6 @@ void CCollision::Init(class CLayers *pLayers)
 	{
 		int Index = m_pTiles[i].m_Index;
 
-		if(Index > TILE_NOHOOK)
-			continue;
-
 		switch(Index)
 		{
 		case TILE_DEATH:
@@ -44,6 +41,9 @@ void CCollision::Init(class CLayers *pLayers)
 			break;
 		case TILE_NOHOOK:
 			m_pTiles[i].m_Index = COLFLAG_SOLID | COLFLAG_NOHOOK;
+			break;
+		case TILE_BENCH:
+			m_pTiles[i].m_Index = TILE_BENCH;
 			break;
 		default:
 			m_pTiles[i].m_Index = 0;

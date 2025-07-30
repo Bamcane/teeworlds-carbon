@@ -32,6 +32,7 @@ packetgen*
 !teeworlds.manifest
 !teeworlds.rc
 /Carbon-Server*
+/Carbon-Client*
 !other/bash-completion/teeworlds_srv
 testrunner
 versionsrv*

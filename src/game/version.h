@@ -8,7 +8,7 @@
 #define GAME_NETVERSION "0.7 " GAME_NETVERSION_HASH_FORCED
 #define CLIENT_VERSION 0x0705
 #define PREV_CLIENT_VERSION 0x0704
-#define SETTINGS_FILENAME "settings07"
+#define SETTINGS_FILENAME "settings_carbon"
 #define GAME_NAME "Teeworlds"
 #define MOD_NAME "Carbon"
 #define GAME_RELEASE_VERSION "0.7.5"

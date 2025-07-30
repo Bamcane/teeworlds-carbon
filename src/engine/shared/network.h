@@ -5,6 +5,7 @@
 
 #include "huffman.h"
 #include "ringbuffer.h"
+#include "protocol.h"
 
 /*
 
@@ -105,7 +106,7 @@ enum
 	NET_TOKENREQUEST_DATASIZE = 512,
 
 	//
-	NET_MAX_CLIENTS = 64,
+	NET_MAX_CLIENTS = SERVER_MAX_CLIENTS,
 	NET_MAX_CONSOLE_CLIENTS = 4,
 
 	NET_MAX_SEQUENCE = 1 << 10,

@@ -83,10 +83,10 @@ enum
 	SERVERINFO_LEVEL_MIN = 0,
 	SERVERINFO_LEVEL_MAX = 2,
 
-	VANILLA_MAX_CLIENTS = 64,
-	MAX_CLIENTS = 24,
+	MAX_CLIENTS = 64,
 	// which means the max number of bots display together, isn't the max number of bots.
-	MAX_BOTS = VANILLA_MAX_CLIENTS - MAX_CLIENTS,
+	MAX_BOTS = 32,
+	SERVER_MAX_CLIENTS = MAX_CLIENTS - MAX_BOTS,
 
 	MAX_INPUT_SIZE = 128,
 	MAX_SNAPSHOT_PACKSIZE = 900,

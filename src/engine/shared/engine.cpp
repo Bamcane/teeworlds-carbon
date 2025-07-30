@@ -10,6 +10,11 @@
 #include <engine/shared/network.h>
 #include <engine/storage.h>
 
+void CHostLookup::CJob::Run()
+{
+	m_pParent->m_Result = net_host_lookup(m_pParent->m_aHostname, &m_pParent->m_Addr, m_pParent->m_Nettype);
+}
+
 class CEngine : public IEngine
 {
 public:
@@ -156,6 +161,14 @@ public:
 		if(m_pConfig->m_Debug)
 			dbg_msg("engine", "job added");
 		m_JobPool.Add(std::move(pJob));
+	}
+
+	void HostLookup(CHostLookup *pLookup, const char *pHostname, int Nettype)
+	{
+		str_copy(pLookup->m_aHostname, pHostname, sizeof(pLookup->m_aHostname));
+		pLookup->m_Nettype = Nettype;
+		pLookup->m_pJob = std::make_shared<CHostLookup::CJob>(pLookup);
+		AddJob(pLookup->m_pJob);
 	}
 };
 
