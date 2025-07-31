@@ -103,7 +103,7 @@ void CMenus::RenderStartMenu(CUIRect MainView)
 	CUIRect Version;
 	MainView.HSplitBottom(50.0f, 0, &Version);
 	Version.VMargin(50.0f, &Version);
-	UI()->DoLabel(&Version, GAME_RELEASE_VERSION, 14.0f, TEXTALIGN_TR);
+	UI()->DoLabel(&Version, GAME_RELEASE_VERSION ", Carbon " MOD_VERSION, 14.0f, TEXTALIGN_TR);
 
 	if(str_comp(Client()->LatestVersion(), "0") != 0)
 	{

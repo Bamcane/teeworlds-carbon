@@ -126,7 +126,7 @@ bool CServerInfo2::FromJsonRaw(CServerInfo2 *pOut, const json_value *pJson)
 		{
 			CClient *pClient = &pOut->m_aClients[i];
 			str_copy(pClient->m_aName, ClientName.u.string.ptr, sizeof(pClient->m_aName));
-			if(Clan.type == json_string)
+			if(Clan.type == json_object)
 				str_copy(pClient->m_aClan, Clan["name"].u.string.ptr, sizeof(pClient->m_aClan));
 			pClient->m_Country = Country["code"].u.integer;
 			pClient->m_Score = Score.u.integer;
