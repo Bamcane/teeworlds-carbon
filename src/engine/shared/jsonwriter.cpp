@@ -5,6 +5,12 @@
 
 #include <base/system.h>
 
+#if defined(CONF_FAMILY_WINDOWS)
+#define LINE_ENDING "\r\n"
+#else
+#define LINE_ENDING "\n"
+#endif
+
 static char EscapeJsonChar(char c)
 {
 	switch(c)
@@ -156,7 +162,7 @@ void CJsonWriter::WriteIndent(bool EndElement)
 		WriteInternal(",");
 
 	if(NotRootOrAttribute || EndElement)
-		WriteInternal("\n");
+		WriteInternal(LINE_ENDING);
 
 	if(NotRootOrAttribute)
 		for(int i = 0; i < m_Indentation; i++)
@@ -212,7 +218,7 @@ CJsonFileWriter::CJsonFileWriter(IOHANDLE IO)
 CJsonFileWriter::~CJsonFileWriter()
 {
 	// Ensure newline at the end
-	WriteInternal("\n");
+	WriteInternal(LINE_ENDING);
 	io_close(m_IO);
 }
 
@@ -230,7 +236,7 @@ void CJsonStringWriter::WriteInternal(const char *pStr, int Length)
 std::string &&CJsonStringWriter::GetOutputString()
 {
 	// Ensure newline at the end. Modify member variable so we can move it when returning.
-	WriteInternal("\n");
+	WriteInternal(LINE_ENDING);
 	m_RetrievedOutput = true; // prevent further usage of this writer
 	return std::move(m_OutputString);
 }
