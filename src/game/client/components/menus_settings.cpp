@@ -1869,6 +1869,12 @@ void CMenus::RenderSettingsSound(CUIRect MainView)
 		if(DoButton_CheckBox(&Config()->m_SndNonactiveMute, Localize("Mute when window is inactive"), Config()->m_SndNonactiveMute, &Button))
 			Config()->m_SndNonactiveMute ^= 1;
 
+		Sound.HSplitTop(Spacing, 0, &Sound);
+		Sound.HSplitTop(ButtonHeight, &Button, &Sound);
+		Button.VSplitLeft(ButtonHeight, 0, &Button);
+		if(DoButton_CheckBox(&Config()->m_ClOldStyleChatSound, Localize("Use old style chat sound"), Config()->m_ClOldStyleChatSound, &Button))
+			Config()->m_ClOldStyleChatSound ^= 1;
+
 		// render detail menu
 		Detail.HSplitTop(ButtonHeight, &Label, &Detail);
 		UI()->DoLabel(&Label, Localize("Detail"), ButtonHeight * CUI::ms_FontmodHeight * 0.8f, TEXTALIGN_MC);

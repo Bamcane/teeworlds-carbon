@@ -1,1042 +1,1909 @@
 {
-"authors": {
-	"modified by": [
-		"khubajsn        2010-05-31 16:54:03",
-		"Petr            2011-04-02 23:02:33",
-		"Medik & Petr    2011-07-02 19:37:05",
-		"TeeWorlds-org    2011-07-15 00:34:19",
-		"Jan Novák, 2016 (Transifex)",
-		"Kryštof Herold, 2014 (Transifex)",
-		"Mamlas Mamlasovič, 2018 (Transifex)"
-	],
-	"originally created by": ""
-},
-"translated strings": [
-	{
-		"or": "%.3f KiB",
-		"tr": "%.3f KiB"
-	},
-	{
-		"or": "%d players not ready",
-		"tr": "Počet nepřipravených hráčů: %d"
-	},
-	{
-		"or": "%d%% loaded",
-		"tr": "%d%% načteno"
-	},
-	{
-		"or": "%ds left",
-		"tr": "zbývá %ds"
-	},
-	{
-		"or": "%i minute left",
-		"tr": "Zbývá minuta: %i"
-	},
-	{
-		"or": "%i minutes left",
-		"tr": "Zbývá minut: %i"
-	},
-	{
-		"or": "%i second left",
-		"tr": "Zbývá sekund: %i"
-	},
-	{
-		"or": "%i seconds left",
-		"tr": "Zbývá sekund: %i"
-	},
-	{
-		"or": "%s wins!",
-		"tr": "Vítězí %s!"
-	},
-	{
-		"or": "'%s' called for vote to kick '%s' (%s)",
-		"tr": "Hráč '%s' vyvolal hlasování o vykopnutí hráče '%s' (%s)"
-	},
-	{
-		"or": "'%s' called for vote to move '%s' to spectators (%s)",
-		"tr": "Hráč '%s' vyvolal hlasování o přesunutí hráče '%s' mezi pozorovatele (%s)"
-	},
-	{
-		"or": "'%s' called vote to change server option '%s' (%s)",
-		"tr": "Hráč '%s' vyvolal hlasování o změně nastavení serveru  '%s' (%s)"
-	},
-	{
-		"or": "'%s' has left the game (%s)",
-		"tr": "Hráč '%s' opustil hru (%s)"
-	},
-	{
-		"or": "-Page %d-",
-		"tr": "-Strana %d-"
-	},
-	{
-		"or": "Abort",
-		"tr": "Přerušit"
-	},
-	{
-		"or": "Add",
-		"tr": "Přidat"
-	},
-	{
-		"or": "Address",
-		"tr": "Adresa"
-	},
-	{
-		"or": "Admin forced server option '%s' (%s)",
-		"tr": "Administrátor vynutil nastavení serveru '%s' (%s)"
-	},
-	{
-		"or": "Admin moved '%s' to spectator (%s)",
-		"tr": "Administrátor přesunul hráče '%s' mezi pozorovatele (%s)"
-	},
-	{
-		"or": "All",
-		"tr": "Všem"
-	},
-	{
-		"or": "Always show name plates",
-		"tr": "Vždy zobrazovat"
-	},
-	{
-		"or": "Anti Aliasing",
-		"tr": "Vyhlazování"
-	},
-	{
-		"or": "Are you sure that you want to delete the demo?",
-		"tr": "Opravdu chcete smazat tento záznam?"
-	},
-	{
-		"or": "Are you sure that you want to delete the skin?",
-		"tr": "Opravdu chcete tento vzhled smazat?"
-	},
-	{
-		"or": "Are you sure that you want to quit?",
-		"tr": "Opravdu chcete ukončit Teeworlds?"
-	},
-	{
-		"or": "Are you sure that you want to remove the player from your friends list?",
-		"tr": "Opravdu chcete tohoto hráče odebrat ze seznamu přátel?"
-	},
-	{
-		"or": "Are you sure you want to rename the demo?",
-		"tr": "Opravdu chcete přejmenovat tento záznam?"
-	},
-	{
-		"or": "Are you sure you want to save your skin? If a skin with this name already exists, it will be replaced.",
-		"tr": "Opravdu chcete vzhled uložit? Pokud už skin s tímto názvem existuje, bude nahrazen."
-	},
-	{
-		"or": "As this is the first time you launch the game, please enter your nick name below. It's recommended that you check the settings to adjust them to your liking before joining a server.",
-		"tr": "Jelikož je toto Vaše první spuštění hry, zadejte prosím svou přezdívku. Než začnete hrát, doporučujeme upravit nastavení tak, aby Vám vyhovovalo."
-	},
-	{
-		"or": "Automatically record demos",
-		"tr": "Automaticky nahrávat záznamy"
-	},
-	{
-		"or": "Automatically take game over screenshot",
-		"tr": "Na konci kola vyfotit obrazovku"
-	},
-	{
-		"or": "Back",
-		"tr": "Zpět"
-	},
-	{
-		"or": "Basic",
-		"tr": "Základní"
-	},
-	{
-		"or": "Blue team",
-		"tr": "Modří"
-	},
-	{
-		"or": "Borderless window",
-		"tr": "Okno bez rámečku"
-	},
-	{
-		"or": "Browser",
-		"tr": "Prohlížeč"
-	},
-	{
-		"or": "Call vote",
-		"tr": "Hlasovat"
-	},
-	{
-		"or": "Change settings",
-		"tr": "Změnit nastavení"
-	},
-	{
-		"or": "Chat",
-		"tr": "Chat"
-	},
-	{
-		"or": "Clan",
-		"tr": "Herní klan"
-	},
-	{
-		"or": "Client",
-		"tr": "Klient"
-	},
-	{
-		"or": "Close",
-		"tr": "Zavřít"
-	},
-	{
-		"or": "Compatible version",
-		"tr": "Kompatibilní verze"
-	},
-	{
-		"or": "Connect",
-		"tr": "Připojit"
-	},
-	{
-		"or": "Connecting to",
-		"tr": "Připojuji na"
-	},
-	{
-		"or": "Connection Problems...",
-		"tr": "Chyba spojení..."
-	},
-	{
-		"or": "Console",
-		"tr": "Konzola"
-	},
-	{
-		"or": "Controls",
-		"tr": "Ovládání"
-	},
-	{
-		"or": "Count players only",
-		"tr": "Započítat hrající hráče"
-	},
-	{
-		"or": "Country",
-		"tr": "Země"
-	},
-	{
-		"or": "Created",
-		"tr": "Vytvořeno"
-	},
-	{
-		"or": "Custom",
-		"tr": "Vlastní"
-	},
-	{
-		"or": "Custom colors",
-		"tr": "Vlastní barvy"
-	},
-	{
-		"or": "Customize",
-		"tr": "Vlastní úpravy"
-	},
-	{
-		"or": "Delete",
-		"tr": "Smazat"
-	},
-	{
-		"or": "Delete demo",
-		"tr": "Smazat záznam"
-	},
-	{
-		"or": "Delete skin",
-		"tr": "Smazat vzhled"
-	},
-	{
-		"or": "Demo details",
-		"tr": "Detaily záznamu:"
-	},
-	{
-		"or": "Demofile: %s",
-		"tr": "Soubor záznamu: %s"
-	},
-	{
-		"or": "Demos",
-		"tr": "Záznamy"
-	},
-	{
-		"or": "Detail",
-		"tr": "Detail"
-	},
-	{
-		"or": "Disconnect",
-		"tr": "Odpojit"
-	},
-	{
-		"or": "Disconnected",
-		"tr": "Odpojeno"
-	},
-	{
-		"or": "Downloading map",
-		"tr": "Stahování mapy"
-	},
-	{
-		"or": "Draw!",
-		"tr": "Remíza!"
-	},
-	{
-		"or": "Dynamic Camera",
-		"tr": "Pohyblivá kamera"
-	},
-	{
-		"or": "Editor",
-		"tr": "Editor"
-	},
-	{
-		"or": "Emoticon",
-		"tr": "Emotikony"
-	},
-	{
-		"or": "Enter",
-		"tr": "Vstoupit"
-	},
-	{
-		"or": "Error",
-		"tr": "Chyba"
-	},
-	{
-		"or": "Error loading demo",
-		"tr": "Chyba načítání záznamu"
-	},
-	{
-		"or": "Favorite",
-		"tr": "Oblíbený"
-	},
-	{
-		"or": "Favorites",
-		"tr": "Oblíbené"
-	},
-	{
-		"or": "Fire",
-		"tr": "Střelba"
-	},
-	{
-		"or": "Folder",
-		"tr": "Složka"
-	},
-	{
-		"or": "Force vote",
-		"tr": "Vynutit hlasování"
-	},
-	{
-		"or": "Free-View",
-		"tr": "Volný pohled"
-	},
-	{
-		"or": "Fullscreen",
-		"tr": "Celá obrazovka"
-	},
-	{
-		"or": "Game",
-		"tr": "Hra"
-	},
-	{
-		"or": "Game info",
-		"tr": "Info o hře"
-	},
-	{
-		"or": "Game over",
-		"tr": "Konec hry"
-	},
-	{
-		"or": "Game starts in",
-		"tr": "Hra začíná za"
-	},
-	{
-		"or": "Game type",
-		"tr": "Herní mód"
-	},
-	{
-		"or": "Game types:",
-		"tr": "Herní mód:"
-	},
-	{
-		"or": "General",
-		"tr": "Hlavní"
-	},
-	{
-		"or": "Global",
-		"tr": "Globální"
-	},
-	{
-		"or": "Graphics",
-		"tr": "Video"
-	},
-	{
-		"or": "Grenade",
-		"tr": "Granátomet"
-	},
-	{
-		"or": "Hammer",
-		"tr": "Palice"
-	},
-	{
-		"or": "Has people playing",
-		"tr": "Hráči na serveru"
-	},
-	{
-		"or": "High Detail",
-		"tr": "Vysoké detaily"
-	},
-	{
-		"or": "Hook",
-		"tr": "Hák"
-	},
-	{
-		"or": "Host address:",
-		"tr": "Adresa hostitele:"
-	},
-	{
-		"or": "Hue:",
-		"tr": "Odstín:"
-	},
-	{
-		"or": "Invalid Demo",
-		"tr": "Neplatný záznam"
-	},
-	{
-		"or": "Join",
-		"tr": "Vstoupit"
-	},
-	{
-		"context": "Join a server",
-		"or": "Join",
-		"tr": "Vstoupit"
-	},
-	{
-		"or": "Join blue",
-		"tr": "Modří"
-	},
-	{
-		"or": "Join red",
-		"tr": "Červení"
-	},
-	{
-		"or": "Joined blue",
-		"tr": "Připojili jste se k modrým"
-	},
-	{
-		"or": "Jump",
-		"tr": "Skok"
-	},
-	{
-		"or": "Kick player",
-		"tr": "Vyhodit hráče"
-	},
-	{
-		"or": "Language",
-		"tr": "Jazyk"
-	},
-	{
-		"or": "Laser",
-		"tr": "Laser"
-	},
-	{
-		"or": "Lgt:",
-		"tr": "Světl.:"
-	},
-	{
-		"or": "Limit Fps",
-		"tr": "Limit FPS"
-	},
-	{
-		"or": "Loading",
-		"tr": "Načítání"
-	},
-	{
-		"or": "Local",
-		"tr": "Lokální"
-	},
-	{
-		"or": "Local server",
-		"tr": "Lokální server"
-	},
-	{
-		"or": "MOTD",
-		"tr": "MOTD"
-	},
-	{
-		"or": "Map",
-		"tr": "Mapa"
-	},
-	{
-		"context": "rounds (scoreboard)",
-		"or": "Match",
-		"tr": "Zápas"
-	},
-	{
-		"or": "Max fps",
-		"tr": "Max FPS"
-	},
-	{
-		"or": "Maximum ping:",
-		"tr": "Maximální ping:"
-	},
-	{
-		"or": "Misc",
-		"tr": "Různé"
-	},
-	{
-		"or": "Move left",
-		"tr": "Pohyb doleva"
-	},
-	{
-		"or": "Move player to spectators",
-		"tr": "Poslat hráče pozorovat"
-	},
-	{
-		"or": "Move right",
-		"tr": "Pohyb doprava"
-	},
-	{
-		"or": "Movement",
-		"tr": "Pohyb"
-	},
-	{
-		"or": "Mute when not active",
-		"tr": "Při nečinnosti ztlumit zvuk"
-	},
-	{
-		"or": "Name",
-		"tr": "Jméno"
-	},
-	{
-		"or": "Next weapon",
-		"tr": "Další zbraň"
-	},
-	{
-		"or": "Nickname",
-		"tr": "Přezdívka"
-	},
-	{
-		"or": "No",
-		"tr": "Ne"
-	},
-	{
-		"context": "Without/None",
-		"or": "No",
-		"tr": "Ne"
-	},
-	{
-		"or": "No password",
-		"tr": "Bez hesla"
-	},
-	{
-		"or": "No servers found",
-		"tr": "Žádný server nenalezen"
-	},
-	{
-		"or": "No servers match your filter criteria",
-		"tr": "Žádný server neodpovídá požadavkům filtru"
-	},
-	{
-		"or": "Normal:",
-		"tr": "Normální:"
-	},
-	{
-		"or": "Ok",
-		"tr": "OK"
-	},
-	{
-		"or": "Open",
-		"tr": "Otevřít"
-	},
-	{
-		"or": "Other",
-		"tr": "Ostatní"
-	},
-	{
-		"or": "Parent Folder",
-		"tr": "Nadřazená složka"
-	},
-	{
-		"or": "Password",
-		"tr": "Heslo"
-	},
-	{
-		"or": "Password incorrect",
-		"tr": "Špatné heslo"
-	},
-	{
-		"or": "Personal",
-		"tr": "Osobní"
-	},
-	{
-		"or": "Ping",
-		"tr": "Ping"
-	},
-	{
-		"or": "Pistol",
-		"tr": "Pistol"
-	},
-	{
-		"or": "Play",
-		"tr": "Hrát"
-	},
-	{
-		"context": "DemoBrowser",
-		"or": "Play",
-		"tr": "Hrát"
-	},
-	{
-		"or": "Play background music",
-		"tr": "Přehrávat hudbu na pozadí"
-	},
-	{
-		"or": "Player",
-		"tr": "Hráč"
-	},
-	{
-		"or": "Player options",
-		"tr": "Nastavení hráče"
-	},
-	{
-		"or": "Players",
-		"tr": "Hráči"
-	},
-	{
-		"or": "Please balance teams!",
-		"tr": "Prosím vyrovnejte týmy!"
-	},
-	{
-		"or": "Prev. weapon",
-		"tr": "Předchozí zbraň"
-	},
-	{
-		"or": "Quality Textures",
-		"tr": "Kvalitní textury"
-	},
-	{
-		"or": "Quit",
-		"tr": "Konec"
-	},
-	{
-		"or": "REC %3d:%02d",
-		"tr": "REC %3d:%02d"
-	},
-	{
-		"or": "Reason:",
-		"tr": "Důvod:"
-	},
-	{
-		"or": "Recommended",
-		"tr": "Doporučeno"
-	},
-	{
-		"or": "Recorded",
-		"tr": "Nahráno"
-	},
-	{
-		"or": "Red team",
-		"tr": "Červení"
-	},
-	{
-		"or": "Refresh",
-		"tr": "Obnovit"
-	},
-	{
-		"or": "Refreshing master servers",
-		"tr": "Aktualizování hlavních serverů"
-	},
-	{
-		"or": "Remote console",
-		"tr": "Vzdálená konzola"
-	},
-	{
-		"or": "Remove",
-		"tr": "Odstranit"
-	},
-	{
-		"or": "Remove friend",
-		"tr": "Odebrat přítele"
-	},
-	{
-		"or": "Rename",
-		"tr": "Přejmenovat"
-	},
-	{
-		"or": "Rename demo",
-		"tr": "Přejmenovat záznam"
-	},
-	{
-		"or": "Reset",
-		"tr": "Resetovat"
-	},
-	{
-		"or": "Reset filter",
-		"tr": "Vymazat filtr"
-	},
-	{
-		"or": "Resolution",
-		"tr": "Rozlišení"
-	},
-	{
-		"or": "Respawn",
-		"tr": "Obživit"
-	},
-	{
-		"or": "Round over",
-		"tr": "Konec kola"
-	},
-	{
-		"or": "Round over!",
-		"tr": "Kolo skončilo!"
-	},
-	{
-		"or": "Sample rate",
-		"tr": "Vzorkování:"
-	},
-	{
-		"or": "Save",
-		"tr": "Uložit"
-	},
-	{
-		"or": "Save skin",
-		"tr": "Uložit vzhled"
-	},
-	{
-		"or": "Score",
-		"tr": "Skóre"
-	},
-	{
-		"or": "Score limit",
-		"tr": "Skóre"
-	},
-	{
-		"or": "Scoreboard",
-		"tr": "Tabulka výsledků"
-	},
-	{
-		"or": "Screen",
-		"tr": "Obrazovka"
-	},
-	{
-		"or": "Screenshot",
-		"tr": "Vyfotit obrazovku"
-	},
-	{
-		"or": "Search:",
-		"tr": "Hledat:"
-	},
-	{
-		"or": "Server address:",
-		"tr": "Adresa serveru:"
-	},
-	{
-		"or": "Server details",
-		"tr": "Detaily serveru"
-	},
-	{
-		"or": "Server filter",
-		"tr": "Filtr serverů"
-	},
-	{
-		"or": "Server info",
-		"tr": "Informace o serveru"
-	},
-	{
-		"or": "Server not full",
-		"tr": "Server není plný"
-	},
-	{
-		"or": "Servers",
-		"tr": "Servery"
-	},
-	{
-		"or": "Settings",
-		"tr": "Nastavení"
-	},
-	{
-		"or": "Shotgun",
-		"tr": "Brokovnice"
-	},
-	{
-		"or": "Show chat",
-		"tr": "Zobrazit chat"
-	},
-	{
-		"or": "Show friends only",
-		"tr": "Zobrazit pouze přátele"
-	},
-	{
-		"or": "Show ingame HUD",
-		"tr": "Zobrazit HUD"
-	},
-	{
-		"or": "Show name plates",
-		"tr": "Zobrazovat jména hráčů"
-	},
-	{
-		"or": "Size",
-		"tr": "Velikost"
-	},
-	{
-		"or": "Skin",
-		"tr": "Vzhled"
-	},
-	{
-		"or": "Skins",
-		"tr": "Vzhledy"
-	},
-	{
-		"or": "Sound",
-		"tr": "Zvuk"
-	},
-	{
-		"or": "Sound error",
-		"tr": "Chyba zvuku"
-	},
-	{
-		"or": "Spectate",
-		"tr": "Pozorovat"
-	},
-	{
-		"or": "Spectate next",
-		"tr": "Pozorovat dalšího"
-	},
-	{
-		"or": "Spectate previous",
-		"tr": "Pozorovat minulého"
-	},
-	{
-		"or": "Spectating",
-		"tr": "Pozorovat"
-	},
-	{
-		"or": "Spectator mode",
-		"tr": "Nastavit pozorování"
-	},
-	{
-		"or": "Spectators",
-		"tr": "Pozorovatelé"
-	},
-	{
-		"or": "Spectators aren't allowed to start a vote.",
-		"tr": "Pozorovatelé nemohou vyvolat hlasování"
-	},
-	{
-		"or": "Standard gametype",
-		"tr": "Základní herní módy"
-	},
-	{
-		"or": "Standard map",
-		"tr": "Základní mapy"
-	},
-	{
-		"or": "Stop record",
-		"tr": "Ukončit záznam"
-	},
-	{
-		"or": "Sudden Death",
-		"tr": "Náhlá smrt"
-	},
-	{
-		"or": "Switch weapon on pickup",
-		"tr": "Přehazovat zbraň na nově sebranou"
-	},
-	{
-		"or": "Team",
-		"tr": "Týmu"
-	},
-	{
-		"or": "Team chat",
-		"tr": "Týmový chat"
-	},
-	{
-		"or": "Team:",
-		"tr": "Tým:"
-	},
-	{
-		"or": "Teams are locked",
-		"tr": "Týmy jsou zamčené"
-	},
-	{
-		"or": "Teams are locked. Time to wait before changing team: %02d:%02d",
-		"tr": "Týmy jsou zamčené. Chcete-li změnit tým, počkejte: %02d:%02d"
-	},
-	{
-		"or": "Teams were locked",
-		"tr": "Týmy byly uzamčeny"
-	},
-	{
-		"or": "Teams were unlocked",
-		"tr": "Týmy jsou otevřené"
-	},
-	{
-		"or": "Tee",
-		"tr": "Tee"
-	},
-	{
-		"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-		"tr": "Stáhněte si nové Teeworlds %s na www.teeworlds.com!"
-	},
-	{
-		"or": "Texture",
-		"tr": "Textury"
-	},
-	{
-		"or": "Texture Compression",
-		"tr": "Komprese textur"
-	},
-	{
-		"or": "The audio device couldn't be initialised.",
-		"tr": "Zvukové zařízení nelze inicializovat."
-	},
-	{
-		"or": "The server is running a non-standard tuning on a pure game type.",
-		"tr": "Server používá nestandartní nastavení (tuning) pro základní módy."
-	},
-	{
-		"or": "There's an unsaved map in the editor, you might want to save it before you quit the game.",
-		"tr": "V editoru map je neuložená mapa, možná ji chcete před ukončením hry uložit."
-	},
-	{
-		"or": "Time limit",
-		"tr": "Časový limit"
-	},
-	{
-		"or": "Time limit: %d min",
-		"tr": "Časový limit: %d min"
-	},
-	{
-		"or": "Try again",
-		"tr": "Zkusit znovu"
-	},
-	{
-		"or": "Type",
-		"tr": "Typ"
-	},
-	{
-		"or": "Unable to delete the demo",
-		"tr": "Záznam se nepodařilo smazat"
-	},
-	{
-		"or": "Unable to delete the skin",
-		"tr": "Vzhled se nepodařilo smazat"
-	},
-	{
-		"or": "Unable to rename the demo",
-		"tr": "Záznam nelze přejmenovat"
-	},
-	{
-		"or": "Use sounds",
-		"tr": "Povolit zvuk"
-	},
-	{
-		"or": "Use team colors for name plates",
-		"tr": "Obarvit jména hráčů podle týmu"
-	},
-	{
-		"or": "V-Sync",
-		"tr": "Vertikální synchronizace"
-	},
-	{
-		"or": "Version",
-		"tr": "Verze"
-	},
-	{
-		"or": "Volume",
-		"tr": "Hlasitost"
-	},
-	{
-		"or": "Vote aborted",
-		"tr": "Hlasování bylo přerušeno"
-	},
-	{
-		"or": "Vote command:",
-		"tr": "Příkaz:"
-	},
-	{
-		"or": "Vote description:",
-		"tr": "Popisek hlasování:"
-	},
-	{
-		"or": "Vote failed",
-		"tr": "Hlasování se nezdařilo"
-	},
-	{
-		"or": "Vote no",
-		"tr": "NE"
-	},
-	{
-		"or": "Vote passed",
-		"tr": "Hlasování se zdařilo"
-	},
-	{
-		"or": "Vote yes",
-		"tr": "ANO"
-	},
-	{
-		"or": "Voting",
-		"tr": "Hlasování"
-	},
-	{
-		"or": "Wait for current vote to end before calling a new one.",
-		"tr": "Než vyvoláte hlasování, počkejte na konec toho aktuálního"
-	},
-	{
-		"or": "Wait for next round",
-		"tr": "Počkat na další kolo"
-	},
-	{
-		"or": "Warmup",
-		"tr": "Zahřívací kolo"
-	},
-	{
-		"or": "Weapon",
-		"tr": "Zbraň"
-	},
-	{
-		"or": "Welcome to Teeworlds",
-		"tr": "Vítejte v Teeworlds"
-	},
-	{
-		"or": "Yes",
-		"tr": "Ano"
-	},
-	{
-		"context": "With",
-		"or": "Yes",
-		"tr": "Ano"
-	},
-	{
-		"or": "You must restart the game for all settings to take effect.",
-		"tr": "Změna nastavení se projeví až po restartu hry."
-	},
-	{
-		"or": "blue flag",
-		"tr": "modrá vlajka"
-	},
-	{
-		"context": "Show chat messages from:",
-		"or": "everyone",
-		"tr": "všichni"
-	},
-	{
-		"context": "skins",
-		"or": "eyes",
-		"tr": "oči"
-	},
-	{
-		"context": "Show chat messages from:",
-		"or": "friends only",
-		"tr": "pouze přátelé"
-	},
-	{
-		"context": "Show chat messages from:",
-		"or": "no one",
-		"tr": "nikdo"
-	},
-	{
-		"context": "server browser message",
-		"or": "no players",
-		"tr": "žádní hráči"
-	},
-	{
-		"or": "red flag",
-		"tr": "červená vlajka"
-	},
-	{
-		"or": "wait for more players",
-		"tr": "čekat na více hráčů"
-	}
-]
+	"authors": {
+		"modified by": [
+			"khubajsn        2010-05-31 16:54:03",
+			"Petr            2011-04-02 23:02:33",
+			"Medik & Petr    2011-07-02 19:37:05",
+			"TeeWorlds-org    2011-07-15 00:34:19",
+			"Jan Novák, 2016 (Transifex)",
+			"Kryštof Herold, 2014 (Transifex)",
+			"Mamlas Mamlasovič, 2018 (Transifex)"
+		],
+		"originally created by": ""
+	},
+	"translated strings": [
+		{
+			"or": "Teams were swapped",
+			"tr": ""
+		},
+		{
+			"or": "Teams were shuffled",
+			"tr": ""
+		},
+		{
+			"or": "Teams have been balanced",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the game",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the red team",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the blue team",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the spectators",
+			"tr": ""
+		},
+		{
+			"or": "You were moved to the red team due to team balancing",
+			"tr": ""
+		},
+		{
+			"or": "You were moved to the blue team due to team balancing",
+			"tr": ""
+		},
+		{
+			"or": "'%s' initiated a pause",
+			"tr": ""
+		},
+		{
+			"or": "The blue flag was captured by '%s' (%.2f seconds)",
+			"tr": ""
+		},
+		{
+			"or": "The red flag was captured by '%s' (%.2f seconds)",
+			"tr": ""
+		},
+		{
+			"or": "The blue flag was captured by '%s'",
+			"tr": ""
+		},
+		{
+			"or": "The red flag was captured by '%s'",
+			"tr": ""
+		},
+		{
+			"or": "%s is muted by you",
+			"tr": ""
+		},
+		{
+			"or": "Teams were locked",
+			"tr": "Týmy byly uzamčeny"
+		},
+		{
+			"or": "Teams were unlocked",
+			"tr": "Týmy jsou otevřené"
+		},
+		{
+			"or": "'%s' entered and joined the game",
+			"tr": ""
+		},
+		{
+			"or": "'%s' entered and joined the red team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' entered and joined the blue team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' entered and joined the spectators",
+			"tr": ""
+		},
+		{
+			"or": "'%s' has left the game (%s)",
+			"tr": "Hráč '%s' opustil hru (%s)"
+		},
+		{
+			"or": "'%s' has left the game",
+			"tr": ""
+		},
+		{
+			"or": "'%s' joined the game",
+			"tr": ""
+		},
+		{
+			"or": "'%s' joined the red team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' joined the blue team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' joined the spectators",
+			"tr": ""
+		},
+		{
+			"or": "Search:",
+			"tr": "Hledat:"
+		},
+		{
+			"or": "key not found",
+			"tr": ""
+		},
+		{
+			"or": "Map changed to '%s'",
+			"tr": ""
+		},
+		{
+			"or": "All",
+			"tr": "Všem"
+		},
+		{
+			"or": "Spectators",
+			"tr": "Pozorovatelé"
+		},
+		{
+			"or": "Team",
+			"tr": "Týmu"
+		},
+		{
+			"or": "Chat",
+			"tr": "Chat"
+		},
+		{
+			"or": "Press %s to resume chatting",
+			"tr": ""
+		},
+		{
+			"or": "Press Tab to cycle chat recipients",
+			"tr": ""
+		},
+		{
+			"or": "-Page %d/%d-",
+			"tr": ""
+		},
+		{
+			"or": "Press Enter to confirm or Esc to cancel",
+			"tr": ""
+		},
+		{
+			"or": "Press Tab to select or Esc to cancel",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was muted",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was unmuted",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was added as a friend",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was removed as a friend",
+			"tr": ""
+		},
+		{
+			"or": "-Page %d-",
+			"tr": "-Strana %d-"
+		},
+		{
+			"or": "Sudden Death",
+			"tr": "Náhlá smrt"
+		},
+		{
+			"or": "Game paused",
+			"tr": ""
+		},
+		{
+			"or": "%d player not ready",
+			"tr": ""
+		},
+		{
+			"or": "%d players not ready",
+			"tr": "Počet nepřipravených hráčů: %d"
+		},
+		{
+			"or": "Game starts in",
+			"tr": "Hra začíná za"
+		},
+		{
+			"or": "Wait for next round",
+			"tr": "Počkat na další kolo"
+		},
+		{
+			"or": "%d player left",
+			"tr": ""
+		},
+		{
+			"or": "%d players left",
+			"tr": ""
+		},
+		{
+			"or": "Warmup",
+			"tr": "Zahřívací kolo"
+		},
+		{
+			"or": "waiting for more players",
+			"tr": ""
+		},
+		{
+			"or": "Connection Problems...",
+			"tr": "Chyba spojení..."
+		},
+		{
+			"or": "Please balance teams!",
+			"tr": "Prosím vyrovnejte týmy!"
+		},
+		{
+			"or": "%ds left",
+			"tr": "zbývá %ds"
+		},
+		{
+			"or": "Reason:",
+			"tr": "Důvod:"
+		},
+		{
+			"or": "Vote Yes",
+			"tr": ""
+		},
+		{
+			"or": "Vote No",
+			"tr": ""
+		},
+		{
+			"or": "Spectate",
+			"tr": "Pozorovat"
+		},
+		{
+			"or": "Free View",
+			"tr": ""
+		},
+		{
+			"or": "Red Flag",
+			"tr": ""
+		},
+		{
+			"or": "Blue Flag",
+			"tr": ""
+		},
+		{
+			"or": "Click on a player or flag to follow it",
+			"tr": ""
+		},
+		{
+			"or": "When ready, press <%s>",
+			"tr": ""
+		},
+		{
+			"or": "'%s' has set a new map record: %s",
+			"tr": ""
+		},
+		{
+			"or": "'%s' has set a new personal record: %s",
+			"tr": ""
+		},
+		{
+			"or": " (%s seconds faster)",
+			"tr": ""
+		},
+		{
+			"or": "'%s' finished in: %s",
+			"tr": ""
+		},
+		{
+			"or": "Game",
+			"tr": "Hra"
+		},
+		{
+			"or": "Players",
+			"tr": "Hráči"
+		},
+		{
+			"or": "Server info",
+			"tr": "Informace o serveru"
+		},
+		{
+			"or": "Call vote",
+			"tr": "Hlasovat"
+		},
+		{
+			"or": "Settings",
+			"tr": "Nastavení"
+		},
+		{
+			"or": "General",
+			"tr": "Hlavní"
+		},
+		{
+			"or": "Player",
+			"tr": "Hráč"
+		},
+		{
+			"or": "Controls",
+			"tr": "Ovládání"
+		},
+		{
+			"or": "Graphics",
+			"tr": "Video"
+		},
+		{
+			"or": "Sound",
+			"tr": "Zvuk"
+		},
+		{
+			"or": "Global",
+			"tr": "Globální"
+		},
+		{
+			"or": "Local",
+			"tr": "Lokální"
+		},
+		{
+			"or": "Demos",
+			"tr": "Záznamy"
+		},
+		{
+			"or": "Back",
+			"tr": "Zpět"
+		},
+		{
+			"or": "Sound error",
+			"tr": "Chyba zvuku"
+		},
+		{
+			"or": "The audio device couldn't be initialised.",
+			"tr": "Zvukové zařízení nelze inicializovat."
+		},
+		{
+			"or": "Ok",
+			"tr": "OK"
+		},
+		{
+			"or": "Connecting to",
+			"tr": "Připojuji na"
+		},
+		{
+			"or": "Downloading map",
+			"tr": "Stahování mapy"
+		},
+		{
+			"or": "Loading demo",
+			"tr": ""
+		},
+		{
+			"or": "Language",
+			"tr": "Jazyk"
+		},
+		{
+			"or": "Flag",
+			"tr": ""
+		},
+		{
+			"or": "Rename demo",
+			"tr": "Přejmenovat záznam"
+		},
+		{
+			"or": "Save skin",
+			"tr": "Uložit vzhled"
+		},
+		{
+			"or": "Password incorrect",
+			"tr": "Špatné heslo"
+		},
+		{
+			"or": "Quit",
+			"tr": "Konec"
+		},
+		{
+			"or": "Welcome to Teeworlds",
+			"tr": "Vítejte v Teeworlds"
+		},
+		{
+			"or": "There's an unsaved map in the editor; you may want to save it before you quit the game.",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to quit?",
+			"tr": "Opravdu chcete ukončit Teeworlds?"
+		},
+		{
+			"or": "No",
+			"tr": "Ne"
+		},
+		{
+			"or": "Yes",
+			"tr": "Ano"
+		},
+		{
+			"or": "Please enter the password.",
+			"tr": ""
+		},
+		{
+			"or": "Password",
+			"tr": "Heslo"
+		},
+		{
+			"or": "Save password",
+			"tr": ""
+		},
+		{
+			"or": "Save password and server as favorite",
+			"tr": ""
+		},
+		{
+			"or": "Abort",
+			"tr": "Přerušit"
+		},
+		{
+			"or": "Try again",
+			"tr": "Zkusit znovu"
+		},
+		{
+			"or": "%i minute left",
+			"tr": "Zbývá minuta: %i"
+		},
+		{
+			"or": "%i minutes left",
+			"tr": "Zbývá minut: %i"
+		},
+		{
+			"or": "%i second left",
+			"tr": "Zbývá sekund: %i"
+		},
+		{
+			"or": "%i seconds left",
+			"tr": "Zbývá sekund: %i"
+		},
+		{
+			"or": "Error loading demo",
+			"tr": "Chyba načítání záznamu"
+		},
+		{
+			"or": "Cancel",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure you want to rename the demo?",
+			"tr": "Opravdu chcete přejmenovat tento záznam?"
+		},
+		{
+			"or": "Name",
+			"tr": "Jméno"
+		},
+		{
+			"or": "Error",
+			"tr": "Chyba"
+		},
+		{
+			"or": "Unable to rename the demo",
+			"tr": "Záznam nelze přejmenovat"
+		},
+		{
+			"or": "Are you sure you want to save your skin? If a skin with this name already exists, it will be replaced.",
+			"tr": "Opravdu chcete vzhled uložit? Pokud už skin s tímto názvem existuje, bude nahrazen."
+		},
+		{
+			"or": "Unable to save the skin",
+			"tr": ""
+		},
+		{
+			"or": "Unable to save the skin with a reserved name",
+			"tr": ""
+		},
+		{
+			"or": "As this is the first time you launch the game, please enter your nick name below. It's recommended that you check the settings to adjust them to your liking before joining a server.",
+			"tr": "Jelikož je toto Vaše první spuštění hry, zadejte prosím svou přezdívku. Než začnete hrát, doporučujeme upravit nastavení tak, aby Vám vyhovovalo."
+		},
+		{
+			"or": "Nickname",
+			"tr": "Přezdívka"
+		},
+		{
+			"or": "Enter",
+			"tr": "Vstoupit"
+		},
+		{
+			"or": "Nickname is empty.",
+			"tr": ""
+		},
+		{
+			"or": "Disconnected",
+			"tr": "Odpojeno"
+		},
+		{
+			"or": "The server is running a non-standard tuning on a pure game type.",
+			"tr": "Server používá nestandartní nastavení (tuning) pro základní módy."
+		},
+		{
+			"or": "Server",
+			"tr": ""
+		},
+		{
+			"or": "Type",
+			"tr": "Typ"
+		},
+		{
+			"or": "Map",
+			"tr": "Mapa"
+		},
+		{
+			"or": "Ping",
+			"tr": "Ping"
+		},
+		{
+			"or": "Race",
+			"tr": ""
+		},
+		{
+			"or": "Favorites",
+			"tr": "Oblíbené"
+		},
+		{
+			"or": "This server is protected by a password.",
+			"tr": ""
+		},
+		{
+			"or": "Click to remove server from favorites.",
+			"tr": ""
+		},
+		{
+			"or": "Click to add server to favorites.",
+			"tr": ""
+		},
+		{
+			"or": "Friends are online on this server.",
+			"tr": ""
+		},
+		{
+			"or": "%d servers, %d players",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to remove the filter '%s' from the server browser?",
+			"tr": ""
+		},
+		{
+			"or": "Remove filter",
+			"tr": ""
+		},
+		{
+			"or": "No filter category is selected",
+			"tr": ""
+		},
+		{
+			"or": "Fetching server info",
+			"tr": ""
+		},
+		{
+			"or": "No servers found",
+			"tr": "Žádný server nenalezen"
+		},
+		{
+			"or": "No local servers found (ports %d–%d)",
+			"tr": ""
+		},
+		{
+			"or": "No servers match your filter criteria",
+			"tr": "Žádný server neodpovídá požadavkům filtru"
+		},
+		{
+			"or": "Host address:",
+			"tr": "Adresa hostitele:"
+		},
+		{
+			"or": "%d%% loaded",
+			"tr": "%d%% načteno"
+		},
+		{
+			"or": "%d servers",
+			"tr": ""
+		},
+		{
+			"or": "%d players",
+			"tr": ""
+		},
+		{
+			"or": "Double click to join your friend.",
+			"tr": ""
+		},
+		{
+			"context": "Playing '(gametype)' on '(map)'",
+			"or": "Playing '%s' on '%s'",
+			"tr": ""
+		},
+		{
+			"context": "Watching '(gametype)' on '(map)'",
+			"or": "Watching '%s' on '%s'",
+			"tr": ""
+		},
+		{
+			"or": "Click to delete this friend.",
+			"tr": ""
+		},
+		{
+			"or": "Online players (%d)",
+			"tr": ""
+		},
+		{
+			"or": "Online clanmates (%d)",
+			"tr": ""
+		},
+		{
+			"context": "friends (server browser)",
+			"or": "Offline (%d)",
+			"tr": ""
+		},
+		{
+			"or": "Clan",
+			"tr": "Herní klan"
+		},
+		{
+			"or": "Add friend/clan",
+			"tr": ""
+		},
+		{
+			"or": "Add friend",
+			"tr": ""
+		},
+		{
+			"or": "Add clan",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to remove the player '%s' from your friends list?",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to remove the clan '%s' from your friends list?",
+			"tr": ""
+		},
+		{
+			"or": "Remove friend",
+			"tr": "Odebrat přítele"
+		},
+		{
+			"or": "New filter",
+			"tr": ""
+		},
+		{
+			"or": "Server filter",
+			"tr": "Filtr serverů"
+		},
+		{
+			"or": "Has people playing",
+			"tr": "Hráči na serveru"
+		},
+		{
+			"or": "Count players only",
+			"tr": "Započítat hrající hráče"
+		},
+		{
+			"or": "Server not full",
+			"tr": "Server není plný"
+		},
+		{
+			"or": "Show friends only",
+			"tr": "Zobrazit pouze přátele"
+		},
+		{
+			"or": "Hide bots",
+			"tr": ""
+		},
+		{
+			"or": "No password",
+			"tr": "Bez hesla"
+		},
+		{
+			"or": "Compatible version",
+			"tr": "Kompatibilní verze"
+		},
+		{
+			"or": "Standard gametype",
+			"tr": "Základní herní módy"
+		},
+		{
+			"or": "Standard map",
+			"tr": "Základní mapy"
+		},
+		{
+			"or": "Game types:",
+			"tr": "Herní mód:"
+		},
+		{
+			"or": "Include servers with this gametype.",
+			"tr": ""
+		},
+		{
+			"or": "Exclude servers with this gametype.",
+			"tr": ""
+		},
+		{
+			"context": "clear gametype filters",
+			"or": "Clear",
+			"tr": ""
+		},
+		{
+			"or": "Maximum ping:",
+			"tr": "Maximální ping:"
+		},
+		{
+			"or": "Server address:",
+			"tr": "Adresa serveru:"
+		},
+		{
+			"or": "Flag:",
+			"tr": ""
+		},
+		{
+			"or": "Difficulty:",
+			"tr": ""
+		},
+		{
+			"or": "Reset filter",
+			"tr": "Vymazat filtr"
+		},
+		{
+			"or": "Server details",
+			"tr": "Detaily serveru"
+		},
+		{
+			"or": "Map:",
+			"tr": ""
+		},
+		{
+			"or": "Game type:",
+			"tr": ""
+		},
+		{
+			"or": "Version:",
+			"tr": ""
+		},
+		{
+			"context": "Server difficulty",
+			"or": "Casual",
+			"tr": ""
+		},
+		{
+			"context": "Server difficulty",
+			"or": "Normal",
+			"tr": ""
+		},
+		{
+			"context": "Server difficulty",
+			"or": "Competitive",
+			"tr": ""
+		},
+		{
+			"or": "Click to remove the player from your friends.",
+			"tr": ""
+		},
+		{
+			"or": "Click to add the player to your friends.",
+			"tr": ""
+		},
+		{
+			"or": "Scoreboard",
+			"tr": "Tabulka výsledků"
+		},
+		{
+			"or": "Refresh",
+			"tr": "Obnovit"
+		},
+		{
+			"or": "Connect",
+			"tr": "Připojit"
+		},
+		{
+			"or": "Move left",
+			"tr": "Pohyb doleva"
+		},
+		{
+			"or": "Move right",
+			"tr": "Pohyb doprava"
+		},
+		{
+			"or": "Jump",
+			"tr": "Skok"
+		},
+		{
+			"or": "Fire",
+			"tr": "Střelba"
+		},
+		{
+			"or": "Hook",
+			"tr": "Hák"
+		},
+		{
+			"or": "Hammer",
+			"tr": "Palice"
+		},
+		{
+			"or": "Pistol",
+			"tr": "Pistol"
+		},
+		{
+			"or": "Shotgun",
+			"tr": "Brokovnice"
+		},
+		{
+			"or": "Grenade",
+			"tr": "Granátomet"
+		},
+		{
+			"or": "Laser",
+			"tr": "Laser"
+		},
+		{
+			"or": "Next weapon",
+			"tr": "Další zbraň"
+		},
+		{
+			"or": "Prev. weapon",
+			"tr": "Předchozí zbraň"
+		},
+		{
+			"or": "Vote yes",
+			"tr": "ANO"
+		},
+		{
+			"or": "Vote no",
+			"tr": "NE"
+		},
+		{
+			"or": "Team chat",
+			"tr": "Týmový chat"
+		},
+		{
+			"or": "Whisper",
+			"tr": ""
+		},
+		{
+			"or": "Show chat",
+			"tr": "Zobrazit chat"
+		},
+		{
+			"or": "Emoticon",
+			"tr": "Emotikony"
+		},
+		{
+			"or": "Spectator mode",
+			"tr": "Nastavit pozorování"
+		},
+		{
+			"or": "Spectate next",
+			"tr": "Pozorovat dalšího"
+		},
+		{
+			"or": "Spectate previous",
+			"tr": "Pozorovat minulého"
+		},
+		{
+			"or": "Console",
+			"tr": "Konzola"
+		},
+		{
+			"or": "Remote console",
+			"tr": "Vzdálená konzola"
+		},
+		{
+			"or": "Screenshot",
+			"tr": "Vyfotit obrazovku"
+		},
+		{
+			"or": "Statboard",
+			"tr": ""
+		},
+		{
+			"or": "Respawn",
+			"tr": "Obživit"
+		},
+		{
+			"or": "Ready",
+			"tr": ""
+		},
+		{
+			"or": "Add demo marker",
+			"tr": ""
+		},
+		{
+			"or": "Toggle sounds",
+			"tr": ""
+		},
+		{
+			"or": "Toggle dynamic camera",
+			"tr": ""
+		},
+		{
+			"or": "Use OS mouse acceleration",
+			"tr": ""
+		},
+		{
+			"or": "In-game mouse sens.",
+			"tr": ""
+		},
+		{
+			"or": "Menu mouse sens.",
+			"tr": ""
+		},
+		{
+			"or": "Enable joystick",
+			"tr": ""
+		},
+		{
+			"or": "Click to cycle through all available joysticks.",
+			"tr": ""
+		},
+		{
+			"context": "In-game joystick mode",
+			"or": "Relative",
+			"tr": ""
+		},
+		{
+			"context": "In-game joystick mode",
+			"or": "Absolute",
+			"tr": ""
+		},
+		{
+			"or": "In-game joystick mode",
+			"tr": ""
+		},
+		{
+			"or": "In-game joystick sensitivity",
+			"tr": ""
+		},
+		{
+			"or": "Menu/Editor joystick sensitivity",
+			"tr": ""
+		},
+		{
+			"or": "Joystick jitter tolerance",
+			"tr": ""
+		},
+		{
+			"or": "No joysticks found. Plug in a joystick and restart the game.",
+			"tr": ""
+		},
+		{
+			"or": "Configure statboard",
+			"tr": ""
+		},
+		{
+			"or": "Device",
+			"tr": ""
+		},
+		{
+			"or": "Status",
+			"tr": ""
+		},
+		{
+			"or": "Aim bind",
+			"tr": ""
+		},
+		{
+			"or": "Joystick Axis #%d",
+			"tr": ""
+		},
+		{
+			"or": "Length",
+			"tr": ""
+		},
+		{
+			"or": "Date",
+			"tr": ""
+		},
+		{
+			"or": "Close",
+			"tr": "Zavřít"
+		},
+		{
+			"or": "Demofile: %s",
+			"tr": "Soubor záznamu: %s"
+		},
+		{
+			"or": "Parent Folder",
+			"tr": "Nadřazená složka"
+		},
+		{
+			"or": "Folder",
+			"tr": "Složka"
+		},
+		{
+			"or": "Invalid Demo",
+			"tr": "Neplatný záznam"
+		},
+		{
+			"or": "Demo details",
+			"tr": "Detaily záznamu:"
+		},
+		{
+			"or": "Recorded",
+			"tr": "Nahráno"
+		},
+		{
+			"or": "Delete",
+			"tr": "Smazat"
+		},
+		{
+			"or": "Are you sure that you want to delete the demo '%s'?",
+			"tr": ""
+		},
+		{
+			"or": "Delete demo",
+			"tr": "Smazat záznam"
+		},
+		{
+			"or": "Rename",
+			"tr": "Přejmenovat"
+		},
+		{
+			"or": "Fetch Info",
+			"tr": ""
+		},
+		{
+			"or": "Open",
+			"tr": "Otevřít"
+		},
+		{
+			"context": "DemoBrowser",
+			"or": "Play",
+			"tr": "Hrát"
+		},
+		{
+			"or": "Unable to delete the demo",
+			"tr": "Záznam se nepodařilo smazat"
+		},
+		{
+			"or": "Created",
+			"tr": "Vytvořeno"
+		},
+		{
+			"or": "Version",
+			"tr": "Verze"
+		},
+		{
+			"or": "Netversion",
+			"tr": ""
+		},
+		{
+			"or": "Markers",
+			"tr": ""
+		},
+		{
+			"or": "%.3f KiB",
+			"tr": "%.3f KiB"
+		},
+		{
+			"or": "Size",
+			"tr": "Velikost"
+		},
+		{
+			"or": "Crc",
+			"tr": ""
+		},
+		{
+			"or": "Teams are locked",
+			"tr": "Týmy jsou zamčené"
+		},
+		{
+			"or": "Only %d active players are allowed",
+			"tr": ""
+		},
+		{
+			"or": "Teams are locked. Time to wait before changing team: %02d:%02d",
+			"tr": "Týmy jsou zamčené. Chcete-li změnit tým, počkejte: %02d:%02d"
+		},
+		{
+			"or": "Game options",
+			"tr": ""
+		},
+		{
+			"or": "locked",
+			"tr": ""
+		},
+		{
+			"or": "Spectating",
+			"tr": "Pozorovat"
+		},
+		{
+			"or": "Join red",
+			"tr": "Červení"
+		},
+		{
+			"or": "Joined red",
+			"tr": ""
+		},
+		{
+			"or": "Join blue",
+			"tr": "Modří"
+		},
+		{
+			"or": "Joined blue",
+			"tr": "Připojili jste se k modrým"
+		},
+		{
+			"or": "Join",
+			"tr": "Vstoupit"
+		},
+		{
+			"or": "Joined",
+			"tr": ""
+		},
+		{
+			"or": "Disconnect",
+			"tr": "Odpojit"
+		},
+		{
+			"or": "Stop record",
+			"tr": "Ukončit záznam"
+		},
+		{
+			"or": "Record",
+			"tr": ""
+		},
+		{
+			"or": "Player options",
+			"tr": "Nastavení hráče"
+		},
+		{
+			"or": "Address",
+			"tr": "Adresa"
+		},
+		{
+			"context": "With",
+			"or": "Yes",
+			"tr": "Ano"
+		},
+		{
+			"context": "Without/None",
+			"or": "No",
+			"tr": "Ne"
+		},
+		{
+			"or": "Favorite",
+			"tr": "Oblíbený"
+		},
+		{
+			"or": "Mute broadcasts",
+			"tr": ""
+		},
+		{
+			"or": "Game info",
+			"tr": "Info o hře"
+		},
+		{
+			"or": "Game type",
+			"tr": "Herní mód"
+		},
+		{
+			"or": "Difficulty",
+			"tr": ""
+		},
+		{
+			"or": "Score limit",
+			"tr": "Skóre"
+		},
+		{
+			"or": "Time limit",
+			"tr": "Časový limit"
+		},
+		{
+			"or": "MOTD",
+			"tr": "MOTD"
+		},
+		{
+			"or": "Option",
+			"tr": ""
+		},
+		{
+			"or": "Wait for current vote to end before calling a new one.",
+			"tr": "Než vyvoláte hlasování, počkejte na konec toho aktuálního"
+		},
+		{
+			"or": "You must wait %d seconds before making another vote",
+			"tr": ""
+		},
+		{
+			"or": "Spectators aren't allowed to start a vote.",
+			"tr": "Pozorovatelé nemohou vyvolat hlasování"
+		},
+		{
+			"or": "Change settings",
+			"tr": "Změnit nastavení"
+		},
+		{
+			"or": "Kick player",
+			"tr": "Vyhodit hráče"
+		},
+		{
+			"or": "Move player to spectators",
+			"tr": "Poslat hráče pozorovat"
+		},
+		{
+			"or": "Server does not allow voting to kick players",
+			"tr": ""
+		},
+		{
+			"or": "Kick voting requires %d players on the server",
+			"tr": ""
+		},
+		{
+			"or": "Server does not allow voting to move players to spectators",
+			"tr": ""
+		},
+		{
+			"or": "Force vote",
+			"tr": "Vynutit hlasování"
+		},
+		{
+			"or": "Remove",
+			"tr": "Odstranit"
+		},
+		{
+			"or": "Vote description:",
+			"tr": "Popisek hlasování:"
+		},
+		{
+			"or": "Vote command:",
+			"tr": "Příkaz:"
+		},
+		{
+			"or": "Add",
+			"tr": "Přidat"
+		},
+		{
+			"or": "Hue:",
+			"tr": "Odstín:"
+		},
+		{
+			"or": "Sat:",
+			"tr": ""
+		},
+		{
+			"or": "Lgt:",
+			"tr": "Světl.:"
+		},
+		{
+			"or": "Alp:",
+			"tr": ""
+		},
+		{
+			"or": "Skins",
+			"tr": "Vzhledy"
+		},
+		{
+			"or": "Theme",
+			"tr": ""
+		},
+		{
+			"or": "Dynamic Camera",
+			"tr": "Pohyblivá kamera"
+		},
+		{
+			"or": "Smooth Camera",
+			"tr": ""
+		},
+		{
+			"or": "Switch weapon on pickup",
+			"tr": "Přehazovat zbraň na nově sebranou"
+		},
+		{
+			"or": "Show name plates",
+			"tr": "Zobrazovat jména hráčů"
+		},
+		{
+			"or": "Always show name plates",
+			"tr": "Vždy zobrazovat"
+		},
+		{
+			"or": "Use team colors for name plates",
+			"tr": "Obarvit jména hráčů podle týmu"
+		},
+		{
+			"or": "Show in-game HUD",
+			"tr": ""
+		},
+		{
+			"or": "Hide player's score",
+			"tr": ""
+		},
+		{
+			"or": "Show user IDs",
+			"tr": ""
+		},
+		{
+			"or": "Show social",
+			"tr": ""
+		},
+		{
+			"context": "Show chat messages from",
+			"or": "everyone",
+			"tr": ""
+		},
+		{
+			"context": "Show chat messages from",
+			"or": "friends only",
+			"tr": ""
+		},
+		{
+			"context": "Show chat messages from",
+			"or": "no one",
+			"tr": ""
+		},
+		{
+			"or": "Show chat messages from",
+			"tr": ""
+		},
+		{
+			"or": "Enable colored server broadcasts",
+			"tr": ""
+		},
+		{
+			"or": "Disable whisper feature",
+			"tr": ""
+		},
+		{
+			"or": "Client",
+			"tr": "Klient"
+		},
+		{
+			"or": "Skip the main menu",
+			"tr": ""
+		},
+		{
+			"or": "Wide menu",
+			"tr": ""
+		},
+		{
+			"or": "Menu background opacity",
+			"tr": ""
+		},
+		{
+			"or": "Automatically record demos",
+			"tr": "Automaticky nahrávat záznamy"
+		},
+		{
+			"or": "Max",
+			"tr": ""
+		},
+		{
+			"or": "Automatically take game over screenshot",
+			"tr": "Na konci kola vyfotit obrazovku"
+		},
+		{
+			"or": "Reset",
+			"tr": "Resetovat"
+		},
+		{
+			"or": "Reset general settings",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the general settings to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "Customize",
+			"tr": "Vlastní úpravy"
+		},
+		{
+			"or": "Custom colors",
+			"tr": "Vlastní barvy"
+		},
+		{
+			"or": "Tee",
+			"tr": "Tee"
+		},
+		{
+			"or": "Normal:",
+			"tr": "Normální:"
+		},
+		{
+			"or": "Team:",
+			"tr": "Tým:"
+		},
+		{
+			"or": "Personal",
+			"tr": "Osobní"
+		},
+		{
+			"or": "Save",
+			"tr": "Uložit"
+		},
+		{
+			"or": "Randomize",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to delete the skin '%s'?",
+			"tr": ""
+		},
+		{
+			"or": "Delete skin",
+			"tr": "Smazat vzhled"
+		},
+		{
+			"or": "Basic",
+			"tr": "Základní"
+		},
+		{
+			"or": "Custom",
+			"tr": "Vlastní"
+		},
+		{
+			"or": "Unable to delete the skin",
+			"tr": "Vzhled se nepodařilo smazat"
+		},
+		{
+			"or": "Mouse",
+			"tr": ""
+		},
+		{
+			"or": "Joystick",
+			"tr": ""
+		},
+		{
+			"or": "Movement",
+			"tr": "Pohyb"
+		},
+		{
+			"or": "Weapon",
+			"tr": "Zbraň"
+		},
+		{
+			"or": "Voting",
+			"tr": "Hlasování"
+		},
+		{
+			"or": "Misc",
+			"tr": "Různé"
+		},
+		{
+			"or": "Reset controls",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the controls to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "Kills",
+			"tr": ""
+		},
+		{
+			"or": "Deaths",
+			"tr": ""
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"or": "The ratio of kills to deaths.",
+			"tr": ""
+		},
+		{
+			"or": "Net score",
+			"tr": ""
+		},
+		{
+			"or": "The number of kills minus the number of deaths.",
+			"tr": ""
+		},
+		{
+			"or": "Kills per minute",
+			"tr": ""
+		},
+		{
+			"or": "Current spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"or": "Weapons stats",
+			"tr": ""
+		},
+		{
+			"or": "The proportion of kills gotten with each weapon.",
+			"tr": ""
+		},
+		{
+			"or": "Flag grabs",
+			"tr": ""
+		},
+		{
+			"or": "The number of times that the flag was touched in CTF (1 point).",
+			"tr": ""
+		},
+		{
+			"or": "Flag captures",
+			"tr": ""
+		},
+		{
+			"or": "The number of times that the flag was captured in CTF (100 points).",
+			"tr": ""
+		},
+		{
+			"or": "Screen",
+			"tr": "Obrazovka"
+		},
+		{
+			"or": "Fullscreen",
+			"tr": "Celá obrazovka"
+		},
+		{
+			"or": "Borderless window",
+			"tr": "Okno bez rámečku"
+		},
+		{
+			"or": "Screen:",
+			"tr": ""
+		},
+		{
+			"or": "Anti Aliasing",
+			"tr": "Vyhlazování"
+		},
+		{
+			"or": "V-Sync",
+			"tr": "Vertikální synchronizace"
+		},
+		{
+			"or": "Limit Fps",
+			"tr": "Limit FPS"
+		},
+		{
+			"or": "Max fps",
+			"tr": "Max FPS"
+		},
+		{
+			"or": "Texture",
+			"tr": "Textury"
+		},
+		{
+			"or": "Quality Textures",
+			"tr": "Kvalitní textury"
+		},
+		{
+			"or": "Texture Compression",
+			"tr": "Komprese textur"
+		},
+		{
+			"or": "High Detail",
+			"tr": "Vysoké detaily"
+		},
+		{
+			"or": "Resolution",
+			"tr": "Rozlišení"
+		},
+		{
+			"or": "Recommended",
+			"tr": "Doporučeno"
+		},
+		{
+			"or": "Other",
+			"tr": "Ostatní"
+		},
+		{
+			"or": "Current: %dx%d (%d:%d)",
+			"tr": ""
+		},
+		{
+			"or": "Reset graphics settings",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the graphics settings to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "Play background music",
+			"tr": "Přehrávat hudbu na pozadí"
+		},
+		{
+			"or": "Mute when window is inactive",
+			"tr": ""
+		},
+		{
+			"or": "Use old style chat sound",
+			"tr": ""
+		},
+		{
+			"or": "Detail",
+			"tr": "Detail"
+		},
+		{
+			"or": "Sample rate",
+			"tr": "Vzorkování:"
+		},
+		{
+			"or": "Volume",
+			"tr": "Hlasitost"
+		},
+		{
+			"or": "Load the sound system",
+			"tr": ""
+		},
+		{
+			"or": "Use sounds",
+			"tr": "Povolit zvuk"
+		},
+		{
+			"or": "Reset sound settings",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the sound settings to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "You must restart the game for all settings to take effect.",
+			"tr": "Změna nastavení se projeví až po restartu hry."
+		},
+		{
+			"or": "You must reconnect to change identity.",
+			"tr": ""
+		},
+		{
+			"or": "You have to wait %1.0f seconds to change identity.",
+			"tr": ""
+		},
+		{
+			"or": "Local server",
+			"tr": "Lokální server"
+		},
+		{
+			"or": "Editor",
+			"tr": "Editor"
+		},
+		{
+			"or": "Play",
+			"tr": "Hrát"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Stáhněte si nové Teeworlds %s na www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Časový limit: %d min"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Zápas"
+		},
+		{
+			"or": "Game over",
+			"tr": "Konec hry"
+		},
+		{
+			"or": "Round over",
+			"tr": "Konec kola"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Skóre"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Červení"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Modří"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "Vítězí %s!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Remíza!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Kolo skončilo!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "oči"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Volný pohled"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "Hráč '%s' vyvolal hlasování o změně nastavení serveru  '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "Hráč '%s' vyvolal hlasování o vykopnutí hráče '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "Hráč '%s' vyvolal hlasování o přesunutí hráče '%s' mezi pozorovatele (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Administrátor vynutil nastavení serveru '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Administrátor přesunul hráče '%s' mezi pozorovatele (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Hlasování bylo přerušeno"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": ""
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Hlasování se zdařilo"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": ""
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Hlasování se nezdařilo"
+		},
+		{
+			"or": "Are you sure that you want to delete the demo?",
+			"tr": "Opravdu chcete smazat tento záznam?"
+		},
+		{
+			"or": "Are you sure that you want to delete the skin?",
+			"tr": "Opravdu chcete tento vzhled smazat?"
+		},
+		{
+			"or": "Are you sure that you want to remove the player from your friends list?",
+			"tr": "Opravdu chcete tohoto hráče odebrat ze seznamu přátel?"
+		},
+		{
+			"or": "Browser",
+			"tr": "Prohlížeč"
+		},
+		{
+			"or": "Country",
+			"tr": "Země"
+		},
+		{
+			"context": "Join a server",
+			"or": "Join",
+			"tr": "Vstoupit"
+		},
+		{
+			"or": "Loading",
+			"tr": "Načítání"
+		},
+		{
+			"or": "Mute when not active",
+			"tr": "Při nečinnosti ztlumit zvuk"
+		},
+		{
+			"or": "Refreshing master servers",
+			"tr": "Aktualizování hlavních serverů"
+		},
+		{
+			"or": "Servers",
+			"tr": "Servery"
+		},
+		{
+			"or": "Show ingame HUD",
+			"tr": "Zobrazit HUD"
+		},
+		{
+			"or": "Skin",
+			"tr": "Vzhled"
+		},
+		{
+			"or": "There's an unsaved map in the editor, you might want to save it before you quit the game.",
+			"tr": "V editoru map je neuložená mapa, možná ji chcete před ukončením hry uložit."
+		},
+		{
+			"or": "blue flag",
+			"tr": "modrá vlajka"
+		},
+		{
+			"context": "Show chat messages from:",
+			"or": "everyone",
+			"tr": "všichni"
+		},
+		{
+			"context": "Show chat messages from:",
+			"or": "friends only",
+			"tr": "pouze přátelé"
+		},
+		{
+			"context": "Show chat messages from:",
+			"or": "no one",
+			"tr": "nikdo"
+		},
+		{
+			"context": "server browser message",
+			"or": "no players",
+			"tr": "žádní hráči"
+		},
+		{
+			"or": "red flag",
+			"tr": "červená vlajka"
+		},
+		{
+			"or": "wait for more players",
+			"tr": "čekat na více hráčů"
+		}
+	]
 }

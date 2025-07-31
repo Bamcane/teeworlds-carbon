@@ -36,6 +36,7 @@ MACRO_CONFIG_INT(ClCameraStabilizing, cl_camera_stabilizing, 0, 0, 100, CFGFLAG_
 MACRO_CONFIG_INT(ClCustomizeSkin, cl_customize_skin, 0, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Use a customized skin")
 
 MACRO_CONFIG_INT(ClShowUserId, cl_show_user_id, 0, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Show the ID for every user")
+MACRO_CONFIG_INT(ClOldStyleChatSound, cl_old_style_chat_sound, 1, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Use old style chat sound for DDNet players")
 
 MACRO_CONFIG_INT(EdZoomTarget, ed_zoom_target, 1, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Zoom to the current mouse target")
 MACRO_CONFIG_INT(EdShowkeys, ed_showkeys, 0, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Editor shows which keys are pressed")

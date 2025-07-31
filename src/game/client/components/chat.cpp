@@ -734,8 +734,8 @@ int CChat::GetChatSound(int ChatType)
 	switch(ChatType)
 	{
 	case CHAT_SERVER: return SOUND_CHAT_SERVER;
-	case CHAT_HIGHLIGHT: return SOUND_CHAT_HIGHLIGHT;
-	case CHAT_CLIENT: return SOUND_CHAT_CLIENT;
+	case CHAT_HIGHLIGHT: return Config()->m_ClOldStyleChatSound ? SOUND_CHAT_CLIENT : SOUND_CHAT_HIGHLIGHT;
+	case CHAT_CLIENT: return Config()->m_ClOldStyleChatSound ? SOUND_CHAT_HIGHLIGHT : SOUND_CHAT_CLIENT;
 	default: return -1;
 	}
 }

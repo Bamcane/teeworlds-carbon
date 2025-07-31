@@ -1,1088 +1,1880 @@
 {
-"authors": {
-	"modified by": [
-		"Gwenn M, 2014-2015 (Transifex)"
-	],
-	"originally created by": "Gwenn M"
-},
-"translated strings": [
-	{
-		"or": "%.3f KiB",
-		"tr": "%.3f KiB"
-	},
-	{
-		"or": "%d player left",
-		"tr": "%d c'hoarier o chom"
-	},
-	{
-		"or": "%d player not ready",
-		"tr": "%d c'hoarier n'int ket prest"
-	},
-	{
-		"or": "%d players left",
-		"tr": "%d c'hoarier o chom"
-	},
-	{
-		"or": "%d players not ready",
-		"tr": "%d c'hoarier n'int ket prest"
-	},
-	{
-		"or": "%d servers, %d players",
-		"tr": "%d servijer, %d c'hoarier"
-	},
-	{
-		"or": "%d%% loaded",
-		"tr": "%d%% karget"
-	},
-	{
-		"or": "%ds left",
-		"tr": "Kuitaet en deus %ds"
-	},
-	{
-		"or": "%i minute left",
-		"tr": "%i munutenn a chom"
-	},
-	{
-		"or": "%i minutes left",
-		"tr": "%i munutenn a chom"
-	},
-	{
-		"or": "%i second left",
-		"tr": "%i eilenn a chom"
-	},
-	{
-		"or": "%i seconds left",
-		"tr": "%i eilenn a chom"
-	},
-	{
-		"or": "%s wins!",
-		"tr": "Aet eo ar maout gant %s !"
-	},
-	{
-		"or": "'%s' called for vote to kick '%s' (%s)",
-		"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit skarzhañ '%s' (%s)"
-	},
-	{
-		"or": "'%s' called for vote to move '%s' to spectators (%s)",
-		"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit lakaat '%s' da vezañ un arvester (%s)"
-	},
-	{
-		"or": "'%s' called vote to change server option '%s' (%s)",
-		"tr": "'%s' en deus galvet ur mouezhiadeg evit cheñch an dibarzh servijer '%s' (%s)"
-	},
-	{
-		"or": "'%s' has left the game",
-		"tr": "Kuitaet eo bet ar c'hoari gant '%s'"
-	},
-	{
-		"or": "'%s' has left the game (%s)",
-		"tr": "'%s' en/he deus kuitaet ar c'hoari (%s)"
-	},
-	{
-		"or": "-Page %d-",
-		"tr": "-Pajenn %d-"
-	},
-	{
-		"or": "Abort",
-		"tr": "Dilezel"
-	},
-	{
-		"or": "Add",
-		"tr": "Ouzhpennañ"
-	},
-	{
-		"or": "Address",
-		"tr": "Chomlec'h"
-	},
-	{
-		"or": "Admin forced server option '%s' (%s)",
-		"tr": "Rediet eo bet an arventenn servijer '%s gant ar merour (%s)"
-	},
-	{
-		"or": "Admin forced vote no",
-		"tr": "Rediet eo bet mouezhiañ nann gant ar merour"
-	},
-	{
-		"or": "Admin forced vote yes",
-		"tr": "Rediet eo bet mouezhiañ ya gant ar merour"
-	},
-	{
-		"or": "Admin moved '%s' to spectator (%s)",
-		"tr": "Lakaet eo bet '%s' da vezañ un arvester gant ar merour (%s)"
-	},
-	{
-		"or": "All",
-		"tr": "Pep tra"
-	},
-	{
-		"or": "Alp:",
-		"tr": "Alfa :"
-	},
-	{
-		"or": "Always show name plates",
-		"tr": "Diskouez ar plakennoù anv bepred"
-	},
-	{
-		"or": "Anti Aliasing",
-		"tr": "Enep Aliasing"
-	},
-	{
-		"or": "Are you sure that you want to delete the demo?",
-		"tr": "Ha sur oc'h kaout c'hoant diverkañ an demo ?"
-	},
-	{
-		"or": "Are you sure that you want to delete the skin?",
-		"tr": "Ha sur oc'h kaout c'hoant diverkañ an neuz ?"
-	},
-	{
-		"or": "Are you sure that you want to quit?",
-		"tr": "Ha sur oc'h kaout c'hoant kuitaat ?"
-	},
-	{
-		"or": "Are you sure that you want to remove the player from your friends list?",
-		"tr": "Ha sur oc'h kaout c'hoant skarzhañ ar c'hoarier eus ho listenn mignoned ?"
-	},
-	{
-		"or": "Are you sure you want to rename the demo?",
-		"tr": "Ha sur oc'h e fell deoc'h adenvel an demo ?"
-	},
-	{
-		"or": "Are you sure you want to save your skin? If a skin with this name already exists, it will be replaced.",
-		"tr": "Ha sur oc'h kaout c'hoant da saveteiñ ho neuz ? Ma 'z eus un neuz gant an hevelep anv e vo eillec'hiet."
-	},
-	{
-		"or": "As this is the first time you launch the game, please enter your nick name below. It's recommended that you check the settings to adjust them to your liking before joining a server.",
-		"tr": "Dre m'eo ar wech kentañ ma lañsit ar c'hoari, enlakait hoc'h anv mar plij. Aliet eo gwiriekaat an arventennoù evit lakaat anezhe evel m'ho 'peus c'hoant a-raok kennaskañ d'ur servijer."
-	},
-	{
-		"or": "Automatically record demos",
-		"tr": "Enrollañ an demo ent emgefreek"
-	},
-	{
-		"or": "Automatically take game over screenshot",
-		"tr": "Kemer un tapadenn skramm game over ent emgefreek"
-	},
-	{
-		"or": "Back",
-		"tr": "Distro"
-	},
-	{
-		"or": "Basic",
-		"tr": "Simpl"
-	},
-	{
-		"or": "Blue team",
-		"tr": "Skipailh glas"
-	},
-	{
-		"or": "Borderless window",
-		"tr": "Prenestr hep vord"
-	},
-	{
-		"or": "Browser",
-		"tr": "Merdeer"
-	},
-	{
-		"or": "Call vote",
-		"tr": "Goulenn ur mouezhiadeg"
-	},
-	{
-		"or": "Change settings",
-		"tr": "Kemmañ an arventennoù"
-	},
-	{
-		"or": "Chat",
-		"tr": "Flap"
-	},
-	{
-		"or": "Clan",
-		"tr": "Meuriad"
-	},
-	{
-		"or": "Client",
-		"tr": "Arval"
-	},
-	{
-		"or": "Close",
-		"tr": "Serriñ"
-	},
-	{
-		"or": "Compatible version",
-		"tr": "Handelv kenglotus"
-	},
-	{
-		"or": "Connect",
-		"tr": "Kennaskañ"
-	},
-	{
-		"or": "Connecting to",
-		"tr": "O kennaskañ da"
-	},
-	{
-		"or": "Connection Problems...",
-		"tr": "Kudennoù kennaskañ..."
-	},
-	{
-		"or": "Console",
-		"tr": "Koñsolenn"
-	},
-	{
-		"or": "Controls",
-		"tr": "Touchennoù"
-	},
-	{
-		"or": "Count players only",
-		"tr": "Kontañ ar c'hoarierien nemetken"
-	},
-	{
-		"or": "Country",
-		"tr": "Bro"
-	},
-	{
-		"or": "Crc",
-		"tr": "Crc"
-	},
-	{
-		"or": "Created",
-		"tr": "Krouet"
-	},
-	{
-		"or": "Custom",
-		"tr": "Personelaet"
-	},
-	{
-		"or": "Custom colors",
-		"tr": "Livioù personelaet"
-	},
-	{
-		"or": "Customize",
-		"tr": "Personelaat"
-	},
-	{
-		"or": "Delete",
-		"tr": "Diverkañ"
-	},
-	{
-		"or": "Delete demo",
-		"tr": "Diverkañ an demo"
-	},
-	{
-		"or": "Delete skin",
-		"tr": "Diverkañ an neuz"
-	},
-	{
-		"or": "Demo details",
-		"tr": "Munudoù an demo"
-	},
-	{
-		"or": "Demofile: %s",
-		"tr": "Restr demo : %s"
-	},
-	{
-		"or": "Demos",
-		"tr": "Demoioù"
-	},
-	{
-		"or": "Detail",
-		"tr": "Munudoù"
-	},
-	{
-		"or": "Disconnect",
-		"tr": "Digennaskañ"
-	},
-	{
-		"or": "Disconnected",
-		"tr": "Digennasket"
-	},
-	{
-		"or": "Downloading map",
-		"tr": "O pellgargañ ar gartenn"
-	},
-	{
-		"or": "Draw!",
-		"tr": "Rampo !"
-	},
-	{
-		"or": "Dynamic Camera",
-		"tr": "Kamera dialuskel"
-	},
-	{
-		"or": "Editor",
-		"tr": "Embanner"
-	},
-	{
-		"or": "Emoticon",
-		"tr": "Fromlun"
-	},
-	{
-		"or": "Enter",
-		"tr": "Mont e-barzh"
-	},
-	{
-		"or": "Error",
-		"tr": "Kudenn"
-	},
-	{
-		"or": "Error loading demo",
-		"tr": "Kudenn en ur gargañ an demo"
-	},
-	{
-		"or": "Favorite",
-		"tr": "Plijet"
-	},
-	{
-		"or": "Favorites",
-		"tr": "Plijet"
-	},
-	{
-		"or": "Fire",
-		"tr": "Tennañ"
-	},
-	{
-		"or": "Folder",
-		"tr": "Doser"
-	},
-	{
-		"or": "Force vote",
-		"tr": "Rediañ ar mouezhiadeg"
-	},
-	{
-		"or": "Free-View",
-		"tr": "Gwel-dieub"
-	},
-	{
-		"or": "Fullscreen",
-		"tr": "Skramm leun"
-	},
-	{
-		"or": "Game",
-		"tr": "C'hoari"
-	},
-	{
-		"or": "Game info",
-		"tr": "Titouroù ar c'hoari"
-	},
-	{
-		"or": "Game over",
-		"tr": "Game over"
-	},
-	{
-		"or": "Game paused",
-		"tr": "Ehanet ar c'hoari"
-	},
-	{
-		"or": "Game starts in",
-		"tr": "Kregiñ a ra ar c'hoari a-benn"
-	},
-	{
-		"or": "Game type",
-		"tr": "Doare c'hoari"
-	},
-	{
-		"or": "Game types:",
-		"tr": "Doareoù c'hoari :"
-	},
-	{
-		"or": "General",
-		"tr": "Hollek"
-	},
-	{
-		"or": "Global",
-		"tr": "Hollek"
-	},
-	{
-		"or": "Graphics",
-		"tr": "Grafegoù"
-	},
-	{
-		"or": "Grenade",
-		"tr": "Greunadenn"
-	},
-	{
-		"or": "Hammer",
-		"tr": "Morzol "
-	},
-	{
-		"or": "Has people playing",
-		"tr": "Gant tud o c'hoari"
-	},
-	{
-		"or": "High Detail",
-		"tr": "Munudoù uhel"
-	},
-	{
-		"or": "Hook",
-		"tr": "Krog"
-	},
-	{
-		"or": "Host address:",
-		"tr": "Chomlec'h an herberc'hier :"
-	},
-	{
-		"or": "Hue:",
-		"tr": "Livad :"
-	},
-	{
-		"or": "Invalid Demo",
-		"tr": "Demo direizh"
-	},
-	{
-		"or": "Join",
-		"tr": "Mont"
-	},
-	{
-		"context": "Join a server",
-		"or": "Join",
-		"tr": "Mont"
-	},
-	{
-		"or": "Join blue",
-		"tr": "Mont gant ar re c'hlas"
-	},
-	{
-		"or": "Join red",
-		"tr": "Mont gant ar re ruz"
-	},
-	{
-		"or": "Joined",
-		"tr": "Kevreet"
-	},
-	{
-		"or": "Joined blue",
-		"tr": "Deuet gant ar re c'hlas"
-	},
-	{
-		"or": "Joined red",
-		"tr": "Deuet gant ar re ruz"
-	},
-	{
-		"or": "Jump",
-		"tr": "Lammat"
-	},
-	{
-		"or": "Kick player",
-		"tr": "Skarzhañ ar c'hoarier"
-	},
-	{
-		"or": "Kick voting requires %d players on the server",
-		"tr": "Evit mouezhiañ skarzhadenn ur c'hoarier eo ret kaout %d c'hoarier war ar servijer"
-	},
-	{
-		"or": "Language",
-		"tr": "Yezh"
-	},
-	{
-		"or": "Laser",
-		"tr": "Laser"
-	},
-	{
-		"or": "Length",
-		"tr": "Hirder"
-	},
-	{
-		"or": "Lgt:",
-		"tr": "Gouloù :"
-	},
-	{
-		"or": "Loading",
-		"tr": "O kargañ"
-	},
-	{
-		"or": "Local",
-		"tr": "Lec'hel"
-	},
-	{
-		"or": "Local server",
-		"tr": "Servijer lec'hel"
-	},
-	{
-		"or": "MOTD",
-		"tr": "KAD"
-	},
-	{
-		"or": "Map",
-		"tr": "Kartenn"
-	},
-	{
-		"context": "rounds (scoreboard)",
-		"or": "Match",
-		"tr": "Krogad"
-	},
-	{
-		"or": "Max",
-		"tr": "Maks"
-	},
-	{
-		"or": "Maximum ping:",
-		"tr": "Ping uhelañ :"
-	},
-	{
-		"or": "Misc",
-		"tr": "Lies."
-	},
-	{
-		"or": "Move left",
-		"tr": "Fiñval a-gleiz"
-	},
-	{
-		"or": "Move player to spectators",
-		"tr": "Lakaat ar c'hoarier e-touez an arvesterien"
-	},
-	{
-		"or": "Move right",
-		"tr": "Fiñval a-zehou"
-	},
-	{
-		"or": "Movement",
-		"tr": "Fiñv"
-	},
-	{
-		"or": "Mute when not active",
-		"tr": "Mut pa n'eo ket gweredekaet"
-	},
-	{
-		"or": "Name",
-		"tr": "Anv"
-	},
-	{
-		"or": "Netversion",
-		"tr": "Netstumm"
-	},
-	{
-		"or": "Next weapon",
-		"tr": "Arm o tont"
-	},
-	{
-		"or": "Nickname",
-		"tr": "Lesanv"
-	},
-	{
-		"or": "Nickname is empty.",
-		"tr": "Goulo eo al lesanv"
-	},
-	{
-		"or": "No",
-		"tr": "Nann"
-	},
-	{
-		"context": "Without/None",
-		"or": "No",
-		"tr": "Nann"
-	},
-	{
-		"or": "No password",
-		"tr": "Ger-tremen ebet"
-	},
-	{
-		"or": "No servers found",
-		"tr": "N'eo bet kavet servijer ebet"
-	},
-	{
-		"or": "No servers match your filter criteria",
-		"tr": "N'eus servijer ebet a glot gant ho sil"
-	},
-	{
-		"or": "Normal:",
-		"tr": "Boutin :"
-	},
-	{
-		"or": "Ok",
-		"tr": "Ok"
-	},
-	{
-		"or": "Only %d active players are allowed",
-		"tr": "%d c'hoarier aotreet nemetken"
-	},
-	{
-		"or": "Open",
-		"tr": "Digeriñ"
-	},
-	{
-		"or": "Parent Folder",
-		"tr": "Doser tad"
-	},
-	{
-		"or": "Password",
-		"tr": "Ger-tremen"
-	},
-	{
-		"or": "Password incorrect",
-		"tr": "Ger-tremen direizh"
-	},
-	{
-		"or": "Personal",
-		"tr": "Personel"
-	},
-	{
-		"or": "Ping",
-		"tr": "Ping"
-	},
-	{
-		"or": "Pistol",
-		"tr": "Pistolenn"
-	},
-	{
-		"or": "Play",
-		"tr": "C'hoari"
-	},
-	{
-		"context": "DemoBrowser",
-		"or": "Play",
-		"tr": "C'hoari"
-	},
-	{
-		"or": "Play background music",
-		"tr": "Seniñ sonerezh an drekleur"
-	},
-	{
-		"or": "Player",
-		"tr": "C'hoarier"
-	},
-	{
-		"or": "Player options",
-		"tr": "Arventennoù ar c'hoarier"
-	},
-	{
-		"or": "Players",
-		"tr": "C'hoarierien"
-	},
-	{
-		"or": "Please balance teams!",
-		"tr": "Kempouezit ar skipailhoù mar plij !"
-	},
-	{
-		"or": "Prev. weapon",
-		"tr": "Arm a-raok"
-	},
-	{
-		"or": "Quality Textures",
-		"tr": "Gwiadezh a galite"
-	},
-	{
-		"or": "Quit",
-		"tr": "Kuitaat"
-	},
-	{
-		"or": "REC %3d:%02d",
-		"tr": "REC %3d:%02d"
-	},
-	{
-		"or": "Ready",
-		"tr": "Prest"
-	},
-	{
-		"or": "Reason:",
-		"tr": "Abegoù :"
-	},
-	{
-		"or": "Record",
-		"tr": "Enrollañ"
-	},
-	{
-		"or": "Recorded",
-		"tr": "Enrollet"
-	},
-	{
-		"or": "Red team",
-		"tr": "Skipailh ruz"
-	},
-	{
-		"or": "Refresh",
-		"tr": "Adkargañ"
-	},
-	{
-		"or": "Refreshing master servers",
-		"tr": "Adkargañ ar servijerien mestr"
-	},
-	{
-		"or": "Remote console",
-		"tr": "Koñsolenn a-bell"
-	},
-	{
-		"or": "Remove",
-		"tr": "Tennañ"
-	},
-	{
-		"or": "Remove friend",
-		"tr": "Lemel ar mignon"
-	},
-	{
-		"or": "Rename",
-		"tr": "Adenvel"
-	},
-	{
-		"or": "Rename demo",
-		"tr": "Adenvel demo"
-	},
-	{
-		"or": "Reset",
-		"tr": "Adderaouekaat"
-	},
-	{
-		"or": "Reset filter",
-		"tr": "Adderaouekaat ar sil"
-	},
-	{
-		"or": "Respawn",
-		"tr": "Advevañ"
-	},
-	{
-		"or": "Round over",
-		"tr": "Krogad echu"
-	},
-	{
-		"or": "Round over!",
-		"tr": "Echuet ar c'hrogad!"
-	},
-	{
-		"or": "Sample rate",
-		"tr": "Feur standilhoniñ"
-	},
-	{
-		"or": "Sat:",
-		"tr": "Peurvec'h :"
-	},
-	{
-		"or": "Save",
-		"tr": "Saveteiñ"
-	},
-	{
-		"or": "Save skin",
-		"tr": "Enrollañ an neuz"
-	},
-	{
-		"or": "Score",
-		"tr": "Poentoù"
-	},
-	{
-		"or": "Score limit",
-		"tr": "Bevenn poentoù"
-	},
-	{
-		"or": "Scoreboard",
-		"tr": "Taolenn ar poentoù"
-	},
-	{
-		"or": "Screen",
-		"tr": "Skramm"
-	},
-	{
-		"or": "Screenshot",
-		"tr": "Tapadenn skramm"
-	},
-	{
-		"or": "Search:",
-		"tr": "Klask :"
-	},
-	{
-		"or": "Server address:",
-		"tr": "Chomlec'h servijer :"
-	},
-	{
-		"or": "Server details",
-		"tr": "Munudoù ar servijer"
-	},
-	{
-		"or": "Server does not allow voting to kick players",
-		"tr": "N'eo ket aotreet mouezhiadegoù evit skarzhañ ur c'hoarier gant ar servijer"
-	},
-	{
-		"or": "Server does not allow voting to move players to spectators",
-		"tr": "N'eo ket aotreet gant ar servijer ar mouezhiadegoù evit lakaat tud da vezañ arvester"
-	},
-	{
-		"or": "Server filter",
-		"tr": "Sil servijer"
-	},
-	{
-		"or": "Server info",
-		"tr": "Titouroù ar servijer"
-	},
-	{
-		"or": "Server not full",
-		"tr": "N'eo ket leun ar servijer"
-	},
-	{
-		"or": "Servers",
-		"tr": "Servijerien"
-	},
-	{
-		"or": "Settings",
-		"tr": "Arventennoù"
-	},
-	{
-		"or": "Shotgun",
-		"tr": "Fuzuilh bangounell"
-	},
-	{
-		"or": "Show chat",
-		"tr": "Diskouez ar flaperez"
-	},
-	{
-		"or": "Show friends only",
-		"tr": "Diskouez ar mignoned hepken"
-	},
-	{
-		"or": "Show ingame HUD",
-		"tr": "Diskouez an etrefas er c'hoari"
-	},
-	{
-		"or": "Show name plates",
-		"tr": "Diskouez ar plakennoù anv"
-	},
-	{
-		"or": "Size",
-		"tr": "Ment"
-	},
-	{
-		"or": "Skin",
-		"tr": "euz"
-	},
-	{
-		"or": "Skins",
-		"tr": "Neuzioù"
-	},
-	{
-		"or": "Sound",
-		"tr": "Son"
-	},
-	{
-		"or": "Sound error",
-		"tr": "Kudenn son"
-	},
-	{
-		"or": "Spectate",
-		"tr": "Arvestiñ"
-	},
-	{
-		"or": "Spectate next",
-		"tr": "Arvestiñ ar c'hrogad o tont"
-	},
-	{
-		"or": "Spectate previous",
-		"tr": "Arvestiñ ar c'hrogad kent"
-	},
-	{
-		"or": "Spectating",
-		"tr": "Oc'h arvestiñ"
-	},
-	{
-		"or": "Spectator mode",
-		"tr": "Doare arvestiñ"
-	},
-	{
-		"or": "Spectators",
-		"tr": "Arvesterien"
-	},
-	{
-		"or": "Spectators aren't allowed to start a vote.",
-		"tr": "N'eo ket aotreet an arvesterien da gregiñ ur mouezhiadeg"
-	},
-	{
-		"or": "Standard gametype",
-		"tr": "Doare c'hoari boutin"
-	},
-	{
-		"or": "Standard map",
-		"tr": "Kartenn boutin"
-	},
-	{
-		"or": "Stop record",
-		"tr": "Paouez an enrolladenn"
-	},
-	{
-		"or": "Sudden Death",
-		"tr": "Marv trumm"
-	},
-	{
-		"or": "Switch weapon on pickup",
-		"tr": "Cheñch arm pa vez dastumet"
-	},
-	{
-		"or": "Team",
-		"tr": "Skipailh"
-	},
-	{
-		"or": "Team chat",
-		"tr": "Flap skipailh"
-	},
-	{
-		"or": "Team:",
-		"tr": "Skipailh :"
-	},
-	{
-		"or": "Teams are locked",
-		"tr": "Prennet eo ar skipailhoù"
-	},
-	{
-		"or": "Teams are locked. Time to wait before changing team: %02d:%02d",
-		"tr": "Ar skipailhoù a zo prennet. Amzer a-raok ma vefe tu cheñch skipailh : %02d:%02d"
-	},
-	{
-		"or": "Teams were locked",
-		"tr": "Prennet eo bet ar skipailhoù"
-	},
-	{
-		"or": "Teams were unlocked",
-		"tr": "Dibrennet eo bet ar skipailhoù"
-	},
-	{
-		"or": "Tee",
-		"tr": "Tee"
-	},
-	{
-		"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-		"tr": "Deuet eo er-maez Teeworlds %s ! Pellgargit anezhañ war www.teeworlds.com !"
-	},
-	{
-		"or": "Texture",
-		"tr": "Gwiadezh"
-	},
-	{
-		"or": "Texture Compression",
-		"tr": "Gwaskadur gwiadezh"
-	},
-	{
-		"or": "The audio device couldn't be initialised.",
-		"tr": "N'haller ket deraouekaat an trobarzhel aodio "
-	},
-	{
-		"or": "The server is running a non-standard tuning on a pure game type.",
-		"tr": "Un toniadur divoutin war un doare c'hoari glann a zo gant ar servjer"
-	},
-	{
-		"or": "There's an unsaved map in the editor, you might want to save it before you quit the game.",
-		"tr": "Bez ez eus ur gartenn ha n'eo ket bet savetaet en embanner, gallout a rafec'h kaout c'hoant enrollañ anezhi a-raok kuitaat ar c'hoari."
-	},
-	{
-		"or": "Time limit",
-		"tr": "Bevenn amzer"
-	},
-	{
-		"or": "Time limit: %d min",
-		"tr": "Bevenn amzer : %d mun"
-	},
-	{
-		"or": "Try again",
-		"tr": "Klaskit en-dro"
-	},
-	{
-		"or": "Type",
-		"tr": "Doare"
-	},
-	{
-		"or": "Unable to delete the demo",
-		"tr": "Dic'houest da diverkañ an demo"
-	},
-	{
-		"or": "Unable to delete the skin",
-		"tr": "Dic'houest da diverkañ an neuz"
-	},
-	{
-		"or": "Unable to rename the demo",
-		"tr": "Dic'houest da adenvel an demo"
-	},
-	{
-		"or": "Use sounds",
-		"tr": "Implij ar son"
-	},
-	{
-		"or": "Use team colors for name plates",
-		"tr": "Implij livioù ar skipailh evit ar plakennoù anv"
-	},
-	{
-		"or": "V-Sync",
-		"tr": "V-Sync"
-	},
-	{
-		"or": "Version",
-		"tr": "Handelv"
-	},
-	{
-		"or": "Volume",
-		"tr": "Ampled"
-	},
-	{
-		"or": "Vote aborted",
-		"tr": "Nullet eo bet ar mouezhiadeg"
-	},
-	{
-		"or": "Vote command:",
-		"tr": "Urzh mouezhiañ :"
-	},
-	{
-		"or": "Vote description:",
-		"tr": "Deskrivadur ar mouezhiadeg :"
-	},
-	{
-		"or": "Vote failed",
-		"tr": "Mouezhiadeg c'hwitet"
-	},
-	{
-		"or": "Vote no",
-		"tr": "Mouezhiañ a-enep"
-	},
-	{
-		"or": "Vote passed",
-		"tr": "Trec'het ar mouezhiadeg "
-	},
-	{
-		"or": "Vote yes",
-		"tr": "Mouezhiañ Ya"
-	},
-	{
-		"or": "Voting",
-		"tr": "Mouezhiañ"
-	},
-	{
-		"or": "Wait for current vote to end before calling a new one.",
-		"tr": "Gortozit e vefe echuet ar mouezhiadeg kentañ a-raok kregiñ unan nevez."
-	},
-	{
-		"or": "Wait for next round",
-		"tr": "Gortozit ar c'hrogad o tont"
-	},
-	{
-		"or": "Warmup",
-		"tr": "Gourdoniñ"
-	},
-	{
-		"or": "Weapon",
-		"tr": "Arm"
-	},
-	{
-		"or": "Welcome to Teeworlds",
-		"tr": "Degemer mat war Teewolrds"
-	},
-	{
-		"or": "Yes",
-		"tr": "Ya"
-	},
-	{
-		"context": "With",
-		"or": "Yes",
-		"tr": "Ya"
-	},
-	{
-		"or": "You must restart the game for all settings to take effect.",
-		"tr": "Ret eo deoc'h adloc'hañ ar c'hoari evit kadarnaat an arventennoù."
-	},
-	{
-		"or": "You must wait %d seconds before making another vote",
-		"tr": "Ret eo deoc'h gortoz %d eilenn evit sevel ur mouezhiadeg nevez"
-	},
-	{
-		"or": "locked",
-		"tr": "prennet"
-	},
-	{
-		"context": "server browser message",
-		"or": "no players",
-		"tr": "c'hoarier ebet"
-	},
-	{
-		"or": "wait for more players",
-		"tr": "gortozit evit muioc'h a c'hoarierien"
-	}
-]
+	"authors": {
+		"modified by": [
+			"Gwenn M, 2014-2015 (Transifex)"
+		],
+		"originally created by": "Gwenn M"
+	},
+	"translated strings": [
+		{
+			"or": "Teams were swapped",
+			"tr": ""
+		},
+		{
+			"or": "Teams were shuffled",
+			"tr": ""
+		},
+		{
+			"or": "Teams have been balanced",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the game",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the red team",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the blue team",
+			"tr": ""
+		},
+		{
+			"or": "All players were moved to the spectators",
+			"tr": ""
+		},
+		{
+			"or": "You were moved to the red team due to team balancing",
+			"tr": ""
+		},
+		{
+			"or": "You were moved to the blue team due to team balancing",
+			"tr": ""
+		},
+		{
+			"or": "'%s' initiated a pause",
+			"tr": ""
+		},
+		{
+			"or": "The blue flag was captured by '%s' (%.2f seconds)",
+			"tr": ""
+		},
+		{
+			"or": "The red flag was captured by '%s' (%.2f seconds)",
+			"tr": ""
+		},
+		{
+			"or": "The blue flag was captured by '%s'",
+			"tr": ""
+		},
+		{
+			"or": "The red flag was captured by '%s'",
+			"tr": ""
+		},
+		{
+			"or": "%s is muted by you",
+			"tr": ""
+		},
+		{
+			"or": "Teams were locked",
+			"tr": "Prennet eo bet ar skipailhoù"
+		},
+		{
+			"or": "Teams were unlocked",
+			"tr": "Dibrennet eo bet ar skipailhoù"
+		},
+		{
+			"or": "'%s' entered and joined the game",
+			"tr": ""
+		},
+		{
+			"or": "'%s' entered and joined the red team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' entered and joined the blue team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' entered and joined the spectators",
+			"tr": ""
+		},
+		{
+			"or": "'%s' has left the game (%s)",
+			"tr": "'%s' en/he deus kuitaet ar c'hoari (%s)"
+		},
+		{
+			"or": "'%s' has left the game",
+			"tr": "Kuitaet eo bet ar c'hoari gant '%s'"
+		},
+		{
+			"or": "'%s' joined the game",
+			"tr": ""
+		},
+		{
+			"or": "'%s' joined the red team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' joined the blue team",
+			"tr": ""
+		},
+		{
+			"or": "'%s' joined the spectators",
+			"tr": ""
+		},
+		{
+			"or": "Search:",
+			"tr": "Klask :"
+		},
+		{
+			"or": "key not found",
+			"tr": ""
+		},
+		{
+			"or": "Map changed to '%s'",
+			"tr": ""
+		},
+		{
+			"or": "All",
+			"tr": "Pep tra"
+		},
+		{
+			"or": "Spectators",
+			"tr": "Arvesterien"
+		},
+		{
+			"or": "Team",
+			"tr": "Skipailh"
+		},
+		{
+			"or": "Chat",
+			"tr": "Flap"
+		},
+		{
+			"or": "Press %s to resume chatting",
+			"tr": ""
+		},
+		{
+			"or": "Press Tab to cycle chat recipients",
+			"tr": ""
+		},
+		{
+			"or": "-Page %d/%d-",
+			"tr": ""
+		},
+		{
+			"or": "Press Enter to confirm or Esc to cancel",
+			"tr": ""
+		},
+		{
+			"or": "Press Tab to select or Esc to cancel",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was muted",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was unmuted",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was added as a friend",
+			"tr": ""
+		},
+		{
+			"or": "'%s' was removed as a friend",
+			"tr": ""
+		},
+		{
+			"or": "-Page %d-",
+			"tr": "-Pajenn %d-"
+		},
+		{
+			"or": "Sudden Death",
+			"tr": "Marv trumm"
+		},
+		{
+			"or": "Game paused",
+			"tr": "Ehanet ar c'hoari"
+		},
+		{
+			"or": "%d player not ready",
+			"tr": "%d c'hoarier n'int ket prest"
+		},
+		{
+			"or": "%d players not ready",
+			"tr": "%d c'hoarier n'int ket prest"
+		},
+		{
+			"or": "Game starts in",
+			"tr": "Kregiñ a ra ar c'hoari a-benn"
+		},
+		{
+			"or": "Wait for next round",
+			"tr": "Gortozit ar c'hrogad o tont"
+		},
+		{
+			"or": "%d player left",
+			"tr": "%d c'hoarier o chom"
+		},
+		{
+			"or": "%d players left",
+			"tr": "%d c'hoarier o chom"
+		},
+		{
+			"or": "Warmup",
+			"tr": "Gourdoniñ"
+		},
+		{
+			"or": "waiting for more players",
+			"tr": ""
+		},
+		{
+			"or": "Connection Problems...",
+			"tr": "Kudennoù kennaskañ..."
+		},
+		{
+			"or": "Please balance teams!",
+			"tr": "Kempouezit ar skipailhoù mar plij !"
+		},
+		{
+			"or": "%ds left",
+			"tr": "Kuitaet en deus %ds"
+		},
+		{
+			"or": "Reason:",
+			"tr": "Abegoù :"
+		},
+		{
+			"or": "Vote Yes",
+			"tr": ""
+		},
+		{
+			"or": "Vote No",
+			"tr": ""
+		},
+		{
+			"or": "Spectate",
+			"tr": "Arvestiñ"
+		},
+		{
+			"or": "Free View",
+			"tr": ""
+		},
+		{
+			"or": "Red Flag",
+			"tr": ""
+		},
+		{
+			"or": "Blue Flag",
+			"tr": ""
+		},
+		{
+			"or": "Click on a player or flag to follow it",
+			"tr": ""
+		},
+		{
+			"or": "When ready, press <%s>",
+			"tr": ""
+		},
+		{
+			"or": "'%s' has set a new map record: %s",
+			"tr": ""
+		},
+		{
+			"or": "'%s' has set a new personal record: %s",
+			"tr": ""
+		},
+		{
+			"or": " (%s seconds faster)",
+			"tr": ""
+		},
+		{
+			"or": "'%s' finished in: %s",
+			"tr": ""
+		},
+		{
+			"or": "Game",
+			"tr": "C'hoari"
+		},
+		{
+			"or": "Players",
+			"tr": "C'hoarierien"
+		},
+		{
+			"or": "Server info",
+			"tr": "Titouroù ar servijer"
+		},
+		{
+			"or": "Call vote",
+			"tr": "Goulenn ur mouezhiadeg"
+		},
+		{
+			"or": "Settings",
+			"tr": "Arventennoù"
+		},
+		{
+			"or": "General",
+			"tr": "Hollek"
+		},
+		{
+			"or": "Player",
+			"tr": "C'hoarier"
+		},
+		{
+			"or": "Controls",
+			"tr": "Touchennoù"
+		},
+		{
+			"or": "Graphics",
+			"tr": "Grafegoù"
+		},
+		{
+			"or": "Sound",
+			"tr": "Son"
+		},
+		{
+			"or": "Global",
+			"tr": "Hollek"
+		},
+		{
+			"or": "Local",
+			"tr": "Lec'hel"
+		},
+		{
+			"or": "Demos",
+			"tr": "Demoioù"
+		},
+		{
+			"or": "Back",
+			"tr": "Distro"
+		},
+		{
+			"or": "Sound error",
+			"tr": "Kudenn son"
+		},
+		{
+			"or": "The audio device couldn't be initialised.",
+			"tr": "N'haller ket deraouekaat an trobarzhel aodio "
+		},
+		{
+			"or": "Ok",
+			"tr": "Ok"
+		},
+		{
+			"or": "Connecting to",
+			"tr": "O kennaskañ da"
+		},
+		{
+			"or": "Downloading map",
+			"tr": "O pellgargañ ar gartenn"
+		},
+		{
+			"or": "Loading demo",
+			"tr": ""
+		},
+		{
+			"or": "Language",
+			"tr": "Yezh"
+		},
+		{
+			"or": "Flag",
+			"tr": ""
+		},
+		{
+			"or": "Rename demo",
+			"tr": "Adenvel demo"
+		},
+		{
+			"or": "Save skin",
+			"tr": "Enrollañ an neuz"
+		},
+		{
+			"or": "Password incorrect",
+			"tr": "Ger-tremen direizh"
+		},
+		{
+			"or": "Quit",
+			"tr": "Kuitaat"
+		},
+		{
+			"or": "Welcome to Teeworlds",
+			"tr": "Degemer mat war Teewolrds"
+		},
+		{
+			"or": "There's an unsaved map in the editor; you may want to save it before you quit the game.",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to quit?",
+			"tr": "Ha sur oc'h kaout c'hoant kuitaat ?"
+		},
+		{
+			"or": "No",
+			"tr": "Nann"
+		},
+		{
+			"or": "Yes",
+			"tr": "Ya"
+		},
+		{
+			"or": "Please enter the password.",
+			"tr": ""
+		},
+		{
+			"or": "Password",
+			"tr": "Ger-tremen"
+		},
+		{
+			"or": "Save password",
+			"tr": ""
+		},
+		{
+			"or": "Save password and server as favorite",
+			"tr": ""
+		},
+		{
+			"or": "Abort",
+			"tr": "Dilezel"
+		},
+		{
+			"or": "Try again",
+			"tr": "Klaskit en-dro"
+		},
+		{
+			"or": "%i minute left",
+			"tr": "%i munutenn a chom"
+		},
+		{
+			"or": "%i minutes left",
+			"tr": "%i munutenn a chom"
+		},
+		{
+			"or": "%i second left",
+			"tr": "%i eilenn a chom"
+		},
+		{
+			"or": "%i seconds left",
+			"tr": "%i eilenn a chom"
+		},
+		{
+			"or": "Error loading demo",
+			"tr": "Kudenn en ur gargañ an demo"
+		},
+		{
+			"or": "Cancel",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure you want to rename the demo?",
+			"tr": "Ha sur oc'h e fell deoc'h adenvel an demo ?"
+		},
+		{
+			"or": "Name",
+			"tr": "Anv"
+		},
+		{
+			"or": "Error",
+			"tr": "Kudenn"
+		},
+		{
+			"or": "Unable to rename the demo",
+			"tr": "Dic'houest da adenvel an demo"
+		},
+		{
+			"or": "Are you sure you want to save your skin? If a skin with this name already exists, it will be replaced.",
+			"tr": "Ha sur oc'h kaout c'hoant da saveteiñ ho neuz ? Ma 'z eus un neuz gant an hevelep anv e vo eillec'hiet."
+		},
+		{
+			"or": "Unable to save the skin",
+			"tr": ""
+		},
+		{
+			"or": "Unable to save the skin with a reserved name",
+			"tr": ""
+		},
+		{
+			"or": "As this is the first time you launch the game, please enter your nick name below. It's recommended that you check the settings to adjust them to your liking before joining a server.",
+			"tr": "Dre m'eo ar wech kentañ ma lañsit ar c'hoari, enlakait hoc'h anv mar plij. Aliet eo gwiriekaat an arventennoù evit lakaat anezhe evel m'ho 'peus c'hoant a-raok kennaskañ d'ur servijer."
+		},
+		{
+			"or": "Nickname",
+			"tr": "Lesanv"
+		},
+		{
+			"or": "Enter",
+			"tr": "Mont e-barzh"
+		},
+		{
+			"or": "Nickname is empty.",
+			"tr": "Goulo eo al lesanv"
+		},
+		{
+			"or": "Disconnected",
+			"tr": "Digennasket"
+		},
+		{
+			"or": "The server is running a non-standard tuning on a pure game type.",
+			"tr": "Un toniadur divoutin war un doare c'hoari glann a zo gant ar servjer"
+		},
+		{
+			"or": "Server",
+			"tr": ""
+		},
+		{
+			"or": "Type",
+			"tr": "Doare"
+		},
+		{
+			"or": "Map",
+			"tr": "Kartenn"
+		},
+		{
+			"or": "Ping",
+			"tr": "Ping"
+		},
+		{
+			"or": "Race",
+			"tr": ""
+		},
+		{
+			"or": "Favorites",
+			"tr": "Plijet"
+		},
+		{
+			"or": "This server is protected by a password.",
+			"tr": ""
+		},
+		{
+			"or": "Click to remove server from favorites.",
+			"tr": ""
+		},
+		{
+			"or": "Click to add server to favorites.",
+			"tr": ""
+		},
+		{
+			"or": "Friends are online on this server.",
+			"tr": ""
+		},
+		{
+			"or": "%d servers, %d players",
+			"tr": "%d servijer, %d c'hoarier"
+		},
+		{
+			"or": "Are you sure that you want to remove the filter '%s' from the server browser?",
+			"tr": ""
+		},
+		{
+			"or": "Remove filter",
+			"tr": ""
+		},
+		{
+			"or": "No filter category is selected",
+			"tr": ""
+		},
+		{
+			"or": "Fetching server info",
+			"tr": ""
+		},
+		{
+			"or": "No servers found",
+			"tr": "N'eo bet kavet servijer ebet"
+		},
+		{
+			"or": "No local servers found (ports %d–%d)",
+			"tr": ""
+		},
+		{
+			"or": "No servers match your filter criteria",
+			"tr": "N'eus servijer ebet a glot gant ho sil"
+		},
+		{
+			"or": "Host address:",
+			"tr": "Chomlec'h an herberc'hier :"
+		},
+		{
+			"or": "%d%% loaded",
+			"tr": "%d%% karget"
+		},
+		{
+			"or": "%d servers",
+			"tr": ""
+		},
+		{
+			"or": "%d players",
+			"tr": ""
+		},
+		{
+			"or": "Double click to join your friend.",
+			"tr": ""
+		},
+		{
+			"context": "Playing '(gametype)' on '(map)'",
+			"or": "Playing '%s' on '%s'",
+			"tr": ""
+		},
+		{
+			"context": "Watching '(gametype)' on '(map)'",
+			"or": "Watching '%s' on '%s'",
+			"tr": ""
+		},
+		{
+			"or": "Click to delete this friend.",
+			"tr": ""
+		},
+		{
+			"or": "Online players (%d)",
+			"tr": ""
+		},
+		{
+			"or": "Online clanmates (%d)",
+			"tr": ""
+		},
+		{
+			"context": "friends (server browser)",
+			"or": "Offline (%d)",
+			"tr": ""
+		},
+		{
+			"or": "Clan",
+			"tr": "Meuriad"
+		},
+		{
+			"or": "Add friend/clan",
+			"tr": ""
+		},
+		{
+			"or": "Add friend",
+			"tr": ""
+		},
+		{
+			"or": "Add clan",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to remove the player '%s' from your friends list?",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to remove the clan '%s' from your friends list?",
+			"tr": ""
+		},
+		{
+			"or": "Remove friend",
+			"tr": "Lemel ar mignon"
+		},
+		{
+			"or": "New filter",
+			"tr": ""
+		},
+		{
+			"or": "Server filter",
+			"tr": "Sil servijer"
+		},
+		{
+			"or": "Has people playing",
+			"tr": "Gant tud o c'hoari"
+		},
+		{
+			"or": "Count players only",
+			"tr": "Kontañ ar c'hoarierien nemetken"
+		},
+		{
+			"or": "Server not full",
+			"tr": "N'eo ket leun ar servijer"
+		},
+		{
+			"or": "Show friends only",
+			"tr": "Diskouez ar mignoned hepken"
+		},
+		{
+			"or": "Hide bots",
+			"tr": ""
+		},
+		{
+			"or": "No password",
+			"tr": "Ger-tremen ebet"
+		},
+		{
+			"or": "Compatible version",
+			"tr": "Handelv kenglotus"
+		},
+		{
+			"or": "Standard gametype",
+			"tr": "Doare c'hoari boutin"
+		},
+		{
+			"or": "Standard map",
+			"tr": "Kartenn boutin"
+		},
+		{
+			"or": "Game types:",
+			"tr": "Doareoù c'hoari :"
+		},
+		{
+			"or": "Include servers with this gametype.",
+			"tr": ""
+		},
+		{
+			"or": "Exclude servers with this gametype.",
+			"tr": ""
+		},
+		{
+			"context": "clear gametype filters",
+			"or": "Clear",
+			"tr": ""
+		},
+		{
+			"or": "Maximum ping:",
+			"tr": "Ping uhelañ :"
+		},
+		{
+			"or": "Server address:",
+			"tr": "Chomlec'h servijer :"
+		},
+		{
+			"or": "Flag:",
+			"tr": ""
+		},
+		{
+			"or": "Difficulty:",
+			"tr": ""
+		},
+		{
+			"or": "Reset filter",
+			"tr": "Adderaouekaat ar sil"
+		},
+		{
+			"or": "Server details",
+			"tr": "Munudoù ar servijer"
+		},
+		{
+			"or": "Map:",
+			"tr": ""
+		},
+		{
+			"or": "Game type:",
+			"tr": ""
+		},
+		{
+			"or": "Version:",
+			"tr": ""
+		},
+		{
+			"context": "Server difficulty",
+			"or": "Casual",
+			"tr": ""
+		},
+		{
+			"context": "Server difficulty",
+			"or": "Normal",
+			"tr": ""
+		},
+		{
+			"context": "Server difficulty",
+			"or": "Competitive",
+			"tr": ""
+		},
+		{
+			"or": "Click to remove the player from your friends.",
+			"tr": ""
+		},
+		{
+			"or": "Click to add the player to your friends.",
+			"tr": ""
+		},
+		{
+			"or": "Scoreboard",
+			"tr": "Taolenn ar poentoù"
+		},
+		{
+			"or": "Refresh",
+			"tr": "Adkargañ"
+		},
+		{
+			"or": "Connect",
+			"tr": "Kennaskañ"
+		},
+		{
+			"or": "Move left",
+			"tr": "Fiñval a-gleiz"
+		},
+		{
+			"or": "Move right",
+			"tr": "Fiñval a-zehou"
+		},
+		{
+			"or": "Jump",
+			"tr": "Lammat"
+		},
+		{
+			"or": "Fire",
+			"tr": "Tennañ"
+		},
+		{
+			"or": "Hook",
+			"tr": "Krog"
+		},
+		{
+			"or": "Hammer",
+			"tr": "Morzol "
+		},
+		{
+			"or": "Pistol",
+			"tr": "Pistolenn"
+		},
+		{
+			"or": "Shotgun",
+			"tr": "Fuzuilh bangounell"
+		},
+		{
+			"or": "Grenade",
+			"tr": "Greunadenn"
+		},
+		{
+			"or": "Laser",
+			"tr": "Laser"
+		},
+		{
+			"or": "Next weapon",
+			"tr": "Arm o tont"
+		},
+		{
+			"or": "Prev. weapon",
+			"tr": "Arm a-raok"
+		},
+		{
+			"or": "Vote yes",
+			"tr": "Mouezhiañ Ya"
+		},
+		{
+			"or": "Vote no",
+			"tr": "Mouezhiañ a-enep"
+		},
+		{
+			"or": "Team chat",
+			"tr": "Flap skipailh"
+		},
+		{
+			"or": "Whisper",
+			"tr": ""
+		},
+		{
+			"or": "Show chat",
+			"tr": "Diskouez ar flaperez"
+		},
+		{
+			"or": "Emoticon",
+			"tr": "Fromlun"
+		},
+		{
+			"or": "Spectator mode",
+			"tr": "Doare arvestiñ"
+		},
+		{
+			"or": "Spectate next",
+			"tr": "Arvestiñ ar c'hrogad o tont"
+		},
+		{
+			"or": "Spectate previous",
+			"tr": "Arvestiñ ar c'hrogad kent"
+		},
+		{
+			"or": "Console",
+			"tr": "Koñsolenn"
+		},
+		{
+			"or": "Remote console",
+			"tr": "Koñsolenn a-bell"
+		},
+		{
+			"or": "Screenshot",
+			"tr": "Tapadenn skramm"
+		},
+		{
+			"or": "Statboard",
+			"tr": ""
+		},
+		{
+			"or": "Respawn",
+			"tr": "Advevañ"
+		},
+		{
+			"or": "Ready",
+			"tr": "Prest"
+		},
+		{
+			"or": "Add demo marker",
+			"tr": ""
+		},
+		{
+			"or": "Toggle sounds",
+			"tr": ""
+		},
+		{
+			"or": "Toggle dynamic camera",
+			"tr": ""
+		},
+		{
+			"or": "Use OS mouse acceleration",
+			"tr": ""
+		},
+		{
+			"or": "In-game mouse sens.",
+			"tr": ""
+		},
+		{
+			"or": "Menu mouse sens.",
+			"tr": ""
+		},
+		{
+			"or": "Enable joystick",
+			"tr": ""
+		},
+		{
+			"or": "Click to cycle through all available joysticks.",
+			"tr": ""
+		},
+		{
+			"context": "In-game joystick mode",
+			"or": "Relative",
+			"tr": ""
+		},
+		{
+			"context": "In-game joystick mode",
+			"or": "Absolute",
+			"tr": ""
+		},
+		{
+			"or": "In-game joystick mode",
+			"tr": ""
+		},
+		{
+			"or": "In-game joystick sensitivity",
+			"tr": ""
+		},
+		{
+			"or": "Menu/Editor joystick sensitivity",
+			"tr": ""
+		},
+		{
+			"or": "Joystick jitter tolerance",
+			"tr": ""
+		},
+		{
+			"or": "No joysticks found. Plug in a joystick and restart the game.",
+			"tr": ""
+		},
+		{
+			"or": "Configure statboard",
+			"tr": ""
+		},
+		{
+			"or": "Device",
+			"tr": ""
+		},
+		{
+			"or": "Status",
+			"tr": ""
+		},
+		{
+			"or": "Aim bind",
+			"tr": ""
+		},
+		{
+			"or": "Joystick Axis #%d",
+			"tr": ""
+		},
+		{
+			"or": "Length",
+			"tr": "Hirder"
+		},
+		{
+			"or": "Date",
+			"tr": ""
+		},
+		{
+			"or": "Close",
+			"tr": "Serriñ"
+		},
+		{
+			"or": "Demofile: %s",
+			"tr": "Restr demo : %s"
+		},
+		{
+			"or": "Parent Folder",
+			"tr": "Doser tad"
+		},
+		{
+			"or": "Folder",
+			"tr": "Doser"
+		},
+		{
+			"or": "Invalid Demo",
+			"tr": "Demo direizh"
+		},
+		{
+			"or": "Demo details",
+			"tr": "Munudoù an demo"
+		},
+		{
+			"or": "Recorded",
+			"tr": "Enrollet"
+		},
+		{
+			"or": "Delete",
+			"tr": "Diverkañ"
+		},
+		{
+			"or": "Are you sure that you want to delete the demo '%s'?",
+			"tr": ""
+		},
+		{
+			"or": "Delete demo",
+			"tr": "Diverkañ an demo"
+		},
+		{
+			"or": "Rename",
+			"tr": "Adenvel"
+		},
+		{
+			"or": "Fetch Info",
+			"tr": ""
+		},
+		{
+			"or": "Open",
+			"tr": "Digeriñ"
+		},
+		{
+			"context": "DemoBrowser",
+			"or": "Play",
+			"tr": "C'hoari"
+		},
+		{
+			"or": "Unable to delete the demo",
+			"tr": "Dic'houest da diverkañ an demo"
+		},
+		{
+			"or": "Created",
+			"tr": "Krouet"
+		},
+		{
+			"or": "Version",
+			"tr": "Handelv"
+		},
+		{
+			"or": "Netversion",
+			"tr": "Netstumm"
+		},
+		{
+			"or": "Markers",
+			"tr": ""
+		},
+		{
+			"or": "%.3f KiB",
+			"tr": "%.3f KiB"
+		},
+		{
+			"or": "Size",
+			"tr": "Ment"
+		},
+		{
+			"or": "Crc",
+			"tr": "Crc"
+		},
+		{
+			"or": "Teams are locked",
+			"tr": "Prennet eo ar skipailhoù"
+		},
+		{
+			"or": "Only %d active players are allowed",
+			"tr": "%d c'hoarier aotreet nemetken"
+		},
+		{
+			"or": "Teams are locked. Time to wait before changing team: %02d:%02d",
+			"tr": "Ar skipailhoù a zo prennet. Amzer a-raok ma vefe tu cheñch skipailh : %02d:%02d"
+		},
+		{
+			"or": "Game options",
+			"tr": ""
+		},
+		{
+			"or": "locked",
+			"tr": "prennet"
+		},
+		{
+			"or": "Spectating",
+			"tr": "Oc'h arvestiñ"
+		},
+		{
+			"or": "Join red",
+			"tr": "Mont gant ar re ruz"
+		},
+		{
+			"or": "Joined red",
+			"tr": "Deuet gant ar re ruz"
+		},
+		{
+			"or": "Join blue",
+			"tr": "Mont gant ar re c'hlas"
+		},
+		{
+			"or": "Joined blue",
+			"tr": "Deuet gant ar re c'hlas"
+		},
+		{
+			"or": "Join",
+			"tr": "Mont"
+		},
+		{
+			"or": "Joined",
+			"tr": "Kevreet"
+		},
+		{
+			"or": "Disconnect",
+			"tr": "Digennaskañ"
+		},
+		{
+			"or": "Stop record",
+			"tr": "Paouez an enrolladenn"
+		},
+		{
+			"or": "Record",
+			"tr": "Enrollañ"
+		},
+		{
+			"or": "Player options",
+			"tr": "Arventennoù ar c'hoarier"
+		},
+		{
+			"or": "Address",
+			"tr": "Chomlec'h"
+		},
+		{
+			"context": "With",
+			"or": "Yes",
+			"tr": "Ya"
+		},
+		{
+			"context": "Without/None",
+			"or": "No",
+			"tr": "Nann"
+		},
+		{
+			"or": "Favorite",
+			"tr": "Plijet"
+		},
+		{
+			"or": "Mute broadcasts",
+			"tr": ""
+		},
+		{
+			"or": "Game info",
+			"tr": "Titouroù ar c'hoari"
+		},
+		{
+			"or": "Game type",
+			"tr": "Doare c'hoari"
+		},
+		{
+			"or": "Difficulty",
+			"tr": ""
+		},
+		{
+			"or": "Score limit",
+			"tr": "Bevenn poentoù"
+		},
+		{
+			"or": "Time limit",
+			"tr": "Bevenn amzer"
+		},
+		{
+			"or": "MOTD",
+			"tr": "KAD"
+		},
+		{
+			"or": "Option",
+			"tr": ""
+		},
+		{
+			"or": "Wait for current vote to end before calling a new one.",
+			"tr": "Gortozit e vefe echuet ar mouezhiadeg kentañ a-raok kregiñ unan nevez."
+		},
+		{
+			"or": "You must wait %d seconds before making another vote",
+			"tr": "Ret eo deoc'h gortoz %d eilenn evit sevel ur mouezhiadeg nevez"
+		},
+		{
+			"or": "Spectators aren't allowed to start a vote.",
+			"tr": "N'eo ket aotreet an arvesterien da gregiñ ur mouezhiadeg"
+		},
+		{
+			"or": "Change settings",
+			"tr": "Kemmañ an arventennoù"
+		},
+		{
+			"or": "Kick player",
+			"tr": "Skarzhañ ar c'hoarier"
+		},
+		{
+			"or": "Move player to spectators",
+			"tr": "Lakaat ar c'hoarier e-touez an arvesterien"
+		},
+		{
+			"or": "Server does not allow voting to kick players",
+			"tr": "N'eo ket aotreet mouezhiadegoù evit skarzhañ ur c'hoarier gant ar servijer"
+		},
+		{
+			"or": "Kick voting requires %d players on the server",
+			"tr": "Evit mouezhiañ skarzhadenn ur c'hoarier eo ret kaout %d c'hoarier war ar servijer"
+		},
+		{
+			"or": "Server does not allow voting to move players to spectators",
+			"tr": "N'eo ket aotreet gant ar servijer ar mouezhiadegoù evit lakaat tud da vezañ arvester"
+		},
+		{
+			"or": "Force vote",
+			"tr": "Rediañ ar mouezhiadeg"
+		},
+		{
+			"or": "Remove",
+			"tr": "Tennañ"
+		},
+		{
+			"or": "Vote description:",
+			"tr": "Deskrivadur ar mouezhiadeg :"
+		},
+		{
+			"or": "Vote command:",
+			"tr": "Urzh mouezhiañ :"
+		},
+		{
+			"or": "Add",
+			"tr": "Ouzhpennañ"
+		},
+		{
+			"or": "Hue:",
+			"tr": "Livad :"
+		},
+		{
+			"or": "Sat:",
+			"tr": "Peurvec'h :"
+		},
+		{
+			"or": "Lgt:",
+			"tr": "Gouloù :"
+		},
+		{
+			"or": "Alp:",
+			"tr": "Alfa :"
+		},
+		{
+			"or": "Skins",
+			"tr": "Neuzioù"
+		},
+		{
+			"or": "Theme",
+			"tr": ""
+		},
+		{
+			"or": "Dynamic Camera",
+			"tr": "Kamera dialuskel"
+		},
+		{
+			"or": "Smooth Camera",
+			"tr": ""
+		},
+		{
+			"or": "Switch weapon on pickup",
+			"tr": "Cheñch arm pa vez dastumet"
+		},
+		{
+			"or": "Show name plates",
+			"tr": "Diskouez ar plakennoù anv"
+		},
+		{
+			"or": "Always show name plates",
+			"tr": "Diskouez ar plakennoù anv bepred"
+		},
+		{
+			"or": "Use team colors for name plates",
+			"tr": "Implij livioù ar skipailh evit ar plakennoù anv"
+		},
+		{
+			"or": "Show in-game HUD",
+			"tr": ""
+		},
+		{
+			"or": "Hide player's score",
+			"tr": ""
+		},
+		{
+			"or": "Show user IDs",
+			"tr": ""
+		},
+		{
+			"or": "Show social",
+			"tr": ""
+		},
+		{
+			"context": "Show chat messages from",
+			"or": "everyone",
+			"tr": ""
+		},
+		{
+			"context": "Show chat messages from",
+			"or": "friends only",
+			"tr": ""
+		},
+		{
+			"context": "Show chat messages from",
+			"or": "no one",
+			"tr": ""
+		},
+		{
+			"or": "Show chat messages from",
+			"tr": ""
+		},
+		{
+			"or": "Enable colored server broadcasts",
+			"tr": ""
+		},
+		{
+			"or": "Disable whisper feature",
+			"tr": ""
+		},
+		{
+			"or": "Client",
+			"tr": "Arval"
+		},
+		{
+			"or": "Skip the main menu",
+			"tr": ""
+		},
+		{
+			"or": "Wide menu",
+			"tr": ""
+		},
+		{
+			"or": "Menu background opacity",
+			"tr": ""
+		},
+		{
+			"or": "Automatically record demos",
+			"tr": "Enrollañ an demo ent emgefreek"
+		},
+		{
+			"or": "Max",
+			"tr": "Maks"
+		},
+		{
+			"or": "Automatically take game over screenshot",
+			"tr": "Kemer un tapadenn skramm game over ent emgefreek"
+		},
+		{
+			"or": "Reset",
+			"tr": "Adderaouekaat"
+		},
+		{
+			"or": "Reset general settings",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the general settings to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "Customize",
+			"tr": "Personelaat"
+		},
+		{
+			"or": "Custom colors",
+			"tr": "Livioù personelaet"
+		},
+		{
+			"or": "Tee",
+			"tr": "Tee"
+		},
+		{
+			"or": "Normal:",
+			"tr": "Boutin :"
+		},
+		{
+			"or": "Team:",
+			"tr": "Skipailh :"
+		},
+		{
+			"or": "Personal",
+			"tr": "Personel"
+		},
+		{
+			"or": "Save",
+			"tr": "Saveteiñ"
+		},
+		{
+			"or": "Randomize",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to delete the skin '%s'?",
+			"tr": ""
+		},
+		{
+			"or": "Delete skin",
+			"tr": "Diverkañ an neuz"
+		},
+		{
+			"or": "Basic",
+			"tr": "Simpl"
+		},
+		{
+			"or": "Custom",
+			"tr": "Personelaet"
+		},
+		{
+			"or": "Unable to delete the skin",
+			"tr": "Dic'houest da diverkañ an neuz"
+		},
+		{
+			"or": "Mouse",
+			"tr": ""
+		},
+		{
+			"or": "Joystick",
+			"tr": ""
+		},
+		{
+			"or": "Movement",
+			"tr": "Fiñv"
+		},
+		{
+			"or": "Weapon",
+			"tr": "Arm"
+		},
+		{
+			"or": "Voting",
+			"tr": "Mouezhiañ"
+		},
+		{
+			"or": "Misc",
+			"tr": "Lies."
+		},
+		{
+			"or": "Reset controls",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the controls to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "Kills",
+			"tr": ""
+		},
+		{
+			"or": "Deaths",
+			"tr": ""
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"or": "The ratio of kills to deaths.",
+			"tr": ""
+		},
+		{
+			"or": "Net score",
+			"tr": ""
+		},
+		{
+			"or": "The number of kills minus the number of deaths.",
+			"tr": ""
+		},
+		{
+			"or": "Kills per minute",
+			"tr": ""
+		},
+		{
+			"or": "Current spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"or": "Weapons stats",
+			"tr": ""
+		},
+		{
+			"or": "The proportion of kills gotten with each weapon.",
+			"tr": ""
+		},
+		{
+			"or": "Flag grabs",
+			"tr": ""
+		},
+		{
+			"or": "The number of times that the flag was touched in CTF (1 point).",
+			"tr": ""
+		},
+		{
+			"or": "Flag captures",
+			"tr": ""
+		},
+		{
+			"or": "The number of times that the flag was captured in CTF (100 points).",
+			"tr": ""
+		},
+		{
+			"or": "Screen",
+			"tr": "Skramm"
+		},
+		{
+			"or": "Fullscreen",
+			"tr": "Skramm leun"
+		},
+		{
+			"or": "Borderless window",
+			"tr": "Prenestr hep vord"
+		},
+		{
+			"or": "Screen:",
+			"tr": ""
+		},
+		{
+			"or": "Anti Aliasing",
+			"tr": "Enep Aliasing"
+		},
+		{
+			"or": "V-Sync",
+			"tr": "V-Sync"
+		},
+		{
+			"or": "Limit Fps",
+			"tr": ""
+		},
+		{
+			"or": "Max fps",
+			"tr": ""
+		},
+		{
+			"or": "Texture",
+			"tr": "Gwiadezh"
+		},
+		{
+			"or": "Quality Textures",
+			"tr": "Gwiadezh a galite"
+		},
+		{
+			"or": "Texture Compression",
+			"tr": "Gwaskadur gwiadezh"
+		},
+		{
+			"or": "High Detail",
+			"tr": "Munudoù uhel"
+		},
+		{
+			"or": "Resolution",
+			"tr": ""
+		},
+		{
+			"or": "Recommended",
+			"tr": ""
+		},
+		{
+			"or": "Other",
+			"tr": ""
+		},
+		{
+			"or": "Current: %dx%d (%d:%d)",
+			"tr": ""
+		},
+		{
+			"or": "Reset graphics settings",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the graphics settings to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "Play background music",
+			"tr": "Seniñ sonerezh an drekleur"
+		},
+		{
+			"or": "Mute when window is inactive",
+			"tr": ""
+		},
+		{
+			"or": "Use old style chat sound",
+			"tr": ""
+		},
+		{
+			"or": "Detail",
+			"tr": "Munudoù"
+		},
+		{
+			"or": "Sample rate",
+			"tr": "Feur standilhoniñ"
+		},
+		{
+			"or": "Volume",
+			"tr": "Ampled"
+		},
+		{
+			"or": "Load the sound system",
+			"tr": ""
+		},
+		{
+			"or": "Use sounds",
+			"tr": "Implij ar son"
+		},
+		{
+			"or": "Reset sound settings",
+			"tr": ""
+		},
+		{
+			"or": "Are you sure that you want to reset the sound settings to their defaults?",
+			"tr": ""
+		},
+		{
+			"or": "You must restart the game for all settings to take effect.",
+			"tr": "Ret eo deoc'h adloc'hañ ar c'hoari evit kadarnaat an arventennoù."
+		},
+		{
+			"or": "You must reconnect to change identity.",
+			"tr": ""
+		},
+		{
+			"or": "You have to wait %1.0f seconds to change identity.",
+			"tr": ""
+		},
+		{
+			"or": "Local server",
+			"tr": "Servijer lec'hel"
+		},
+		{
+			"or": "Editor",
+			"tr": "Embanner"
+		},
+		{
+			"or": "Play",
+			"tr": "C'hoari"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Deuet eo er-maez Teeworlds %s ! Pellgargit anezhañ war www.teeworlds.com !"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Bevenn amzer : %d mun"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Krogad"
+		},
+		{
+			"or": "Game over",
+			"tr": "Game over"
+		},
+		{
+			"or": "Round over",
+			"tr": "Krogad echu"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Poentoù"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Skipailh ruz"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Skipailh glas"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "Aet eo ar maout gant %s !"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Rampo !"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Echuet ar c'hrogad!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": ""
+		},
+		{
+			"or": "Free-View",
+			"tr": "Gwel-dieub"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' en deus galvet ur mouezhiadeg evit cheñch an dibarzh servijer '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit skarzhañ '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit lakaat '%s' da vezañ un arvester (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Rediet eo bet an arventenn servijer '%s gant ar merour (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Lakaet eo bet '%s' da vezañ un arvester gant ar merour (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Nullet eo bet ar mouezhiadeg"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Rediet eo bet mouezhiañ ya gant ar merour"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Trec'het ar mouezhiadeg "
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Rediet eo bet mouezhiañ nann gant ar merour"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Mouezhiadeg c'hwitet"
+		},
+		{
+			"or": "Are you sure that you want to delete the demo?",
+			"tr": "Ha sur oc'h kaout c'hoant diverkañ an demo ?"
+		},
+		{
+			"or": "Are you sure that you want to delete the skin?",
+			"tr": "Ha sur oc'h kaout c'hoant diverkañ an neuz ?"
+		},
+		{
+			"or": "Are you sure that you want to remove the player from your friends list?",
+			"tr": "Ha sur oc'h kaout c'hoant skarzhañ ar c'hoarier eus ho listenn mignoned ?"
+		},
+		{
+			"or": "Browser",
+			"tr": "Merdeer"
+		},
+		{
+			"or": "Country",
+			"tr": "Bro"
+		},
+		{
+			"context": "Join a server",
+			"or": "Join",
+			"tr": "Mont"
+		},
+		{
+			"or": "Loading",
+			"tr": "O kargañ"
+		},
+		{
+			"or": "Mute when not active",
+			"tr": "Mut pa n'eo ket gweredekaet"
+		},
+		{
+			"or": "Refreshing master servers",
+			"tr": "Adkargañ ar servijerien mestr"
+		},
+		{
+			"or": "Servers",
+			"tr": "Servijerien"
+		},
+		{
+			"or": "Show ingame HUD",
+			"tr": "Diskouez an etrefas er c'hoari"
+		},
+		{
+			"or": "Skin",
+			"tr": "euz"
+		},
+		{
+			"or": "There's an unsaved map in the editor, you might want to save it before you quit the game.",
+			"tr": "Bez ez eus ur gartenn ha n'eo ket bet savetaet en embanner, gallout a rafec'h kaout c'hoant enrollañ anezhi a-raok kuitaat ar c'hoari."
+		},
+		{
+			"context": "server browser message",
+			"or": "no players",
+			"tr": "c'hoarier ebet"
+		},
+		{
+			"or": "wait for more players",
+			"tr": "gortozit evit muioc'h a c'hoarierien"
+		}
+	]
 }
