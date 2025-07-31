@@ -44,11 +44,11 @@ public:
 		CHN_GLOBAL,
 	};
 
-	virtual int GetInitAmount() const;
-	virtual void OnInit();
-	virtual void OnReset();
-	virtual void OnStateChange(int NewState, int OldState);
-	virtual void OnRender();
+	int GetInitAmount() const override;
+	void OnInit() override;
+	void OnReset() override;
+	void OnStateChange(int NewState, int OldState) override;
+	void OnRender() override;
 
 	void ClearQueue();
 	void Enqueue(int Channel, int SetId);

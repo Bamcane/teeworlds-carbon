@@ -16,26 +16,26 @@ public:
 
 	int Init() override;
 
-	int Update();
+	int Update() override;
 	void Shutdown() override;
 	int AllocID();
 
 	static void RateConvert(int SampleID);
 
-	virtual bool IsSoundEnabled() { return m_SoundEnabled != 0; }
+	bool IsSoundEnabled() override { return m_SoundEnabled != 0; }
 
-	virtual CSampleHandle LoadWV(const char *pFilename);
+	CSampleHandle LoadWV(const char *pFilename) override;
 
-	virtual void SetListenerPos(float x, float y);
-	virtual void SetChannelVolume(int ChannelID, float Vol);
-	virtual void SetMaxDistance(float Distance);
+	void SetListenerPos(float x, float y) override;
+	void SetChannelVolume(int ChannelID, float Vol) override;
+	void SetMaxDistance(float Distance) override;
 
 	int Play(int ChannelID, CSampleHandle SampleID, int Flags, float x, float y);
-	virtual int PlayAt(int ChannelID, CSampleHandle SampleID, int Flags, float x, float y);
-	virtual int Play(int ChannelID, CSampleHandle SampleID, int Flags);
-	virtual void Stop(CSampleHandle SampleID);
-	virtual void StopAll();
-	virtual bool IsPlaying(CSampleHandle SampleID);
+	int PlayAt(int ChannelID, CSampleHandle SampleID, int Flags, float x, float y) override;
+	int Play(int ChannelID, CSampleHandle SampleID, int Flags) override;
+	void Stop(CSampleHandle SampleID) override;
+	void StopAll() override;
+	bool IsPlaying(CSampleHandle SampleID) override;
 };
 
 #endif

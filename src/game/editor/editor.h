@@ -419,7 +419,7 @@ public:
 	void Shift(int Direction);
 
 	void MakePalette();
-	virtual void Render();
+	void Render() override;
 
 	int ConvertX(float x) const;
 	int ConvertY(float y) const;
@@ -427,19 +427,19 @@ public:
 	void Snap(CUIRect *pRect);
 	void Clamp(RECTi *pRect);
 
-	virtual void BrushSelecting(CUIRect Rect);
-	virtual int BrushGrab(CLayerGroup *pBrush, CUIRect Rect);
-	virtual void FillSelection(bool Empty, CLayer *pBrush, CUIRect Rect);
-	virtual void BrushDraw(CLayer *pBrush, float wx, float wy);
-	virtual void BrushFlipX();
-	virtual void BrushFlipY();
-	virtual void BrushRotate(float Amount);
+	void BrushSelecting(CUIRect Rect) override;
+	int BrushGrab(CLayerGroup *pBrush, CUIRect Rect) override;
+	void FillSelection(bool Empty, CLayer *pBrush, CUIRect Rect) override;
+	void BrushDraw(CLayer *pBrush, float wx, float wy) override;
+	void BrushFlipX() override;
+	void BrushFlipY() override;
+	void BrushRotate(float Amount) override;
 
-	virtual void ShowInfo();
-	virtual int RenderProperties(CUIRect *pToolbox);
+	void ShowInfo();
+	int RenderProperties(CUIRect *pToolbox) override;
 
-	virtual void ModifyImageIndex(INDEX_MODIFY_FUNC pfnFunc);
-	virtual void ModifyEnvelopeIndex(INDEX_MODIFY_FUNC pfnFunc);
+	void ModifyImageIndex(INDEX_MODIFY_FUNC pfnFunc) override;
+	void ModifyEnvelopeIndex(INDEX_MODIFY_FUNC pfnFunc) override;
 
 	void PrepareForSave();
 	void ExtractTiles(CTile *pSavedTiles);
@@ -468,20 +468,20 @@ public:
 	CLayerQuads();
 	~CLayerQuads();
 
-	virtual void Render();
+	void Render() override;
 	CQuad *NewQuad();
 
-	virtual void BrushSelecting(CUIRect Rect);
-	virtual int BrushGrab(CLayerGroup *pBrush, CUIRect Rect);
-	virtual void BrushPlace(CLayer *pBrush, float wx, float wy);
-	virtual void BrushFlipX();
-	virtual void BrushFlipY();
-	virtual void BrushRotate(float Amount);
+	void BrushSelecting(CUIRect Rect) override;
+	int BrushGrab(CLayerGroup *pBrush, CUIRect Rect) override;
+	void BrushPlace(CLayer *pBrush, float wx, float wy) override;
+	void BrushFlipX() override;
+	void BrushFlipY() override;
+	void BrushRotate(float Amount) override;
 
-	virtual int RenderProperties(CUIRect *pToolbox);
+	int RenderProperties(CUIRect *pToolbox) override;
 
-	virtual void ModifyImageIndex(INDEX_MODIFY_FUNC pfnFunc);
-	virtual void ModifyEnvelopeIndex(INDEX_MODIFY_FUNC pfnFunc);
+	void ModifyImageIndex(INDEX_MODIFY_FUNC pfnFunc) override;
+	void ModifyEnvelopeIndex(INDEX_MODIFY_FUNC pfnFunc) override;
 
 	void GetSize(float *w, float *h) const;
 
@@ -495,7 +495,7 @@ public:
 	CLayerGame(int w, int h);
 	~CLayerGame();
 
-	virtual int RenderProperties(CUIRect *pToolbox);
+	int RenderProperties(CUIRect *pToolbox) override;
 };
 
 class CEditor : public IEditor
@@ -596,10 +596,10 @@ public:
 		ms_pUiGotContext = 0;
 	}
 
-	virtual void Init();
-	virtual void OnUpdate();
-	virtual void OnRender();
-	virtual bool HasUnsavedData() const { return m_Map.m_Modified; }
+	void Init() override;
+	void OnUpdate() override;
+	void OnRender() override;
+	bool HasUnsavedData() const override { return m_Map.m_Modified; }
 
 	void RefreshFilteredFileList();
 	void FilelistPopulate(int StorageType);

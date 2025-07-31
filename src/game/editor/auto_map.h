@@ -95,11 +95,11 @@ class CTilesetMapper: public IAutoMapper
 public:
 	CTilesetMapper(class CEditor *pEditor) : IAutoMapper(pEditor, TYPE_TILESET) { m_aRuleSets.clear(); }
 
-	virtual void Load(const json_value &rElement);
-	virtual void Proceed(class CLayerTiles *pLayer, int ConfigID, RECTi Area);
+	void Load(const json_value &rElement) override;
+	void Proceed(class CLayerTiles *pLayer, int ConfigID, RECTi Area) override;
 
-	virtual int RuleSetNum() { return m_aRuleSets.size(); }
-	virtual const char* GetRuleSetName(int Index) const;
+	int RuleSetNum() override { return m_aRuleSets.size(); }
+	const char* GetRuleSetName(int Index) const override;
 };
 
 class CDoodadsMapper: public IAutoMapper
@@ -151,12 +151,12 @@ public:
 
 	CDoodadsMapper(class CEditor *pEditor) :  IAutoMapper(pEditor, TYPE_DOODADS) { m_aRuleSets.clear(); }
 
-	virtual void Load(const json_value &rElement);
-	virtual void Proceed(class CLayerTiles *pLayer, int ConfigID, int Amount);
+	void Load(const json_value &rElement) override;
+	void Proceed(class CLayerTiles *pLayer, int ConfigID, int Amount) override;
 	void AnalyzeGameLayer();
 
-	virtual int RuleSetNum() { return m_aRuleSets.size(); }
-	virtual const char* GetRuleSetName(int Index) const;
+	int RuleSetNum() override { return m_aRuleSets.size(); }
+	const char* GetRuleSetName(int Index) const override;
 
 private:
 	void PlaceDoodads(CLayerTiles *pLayer, CRule *pRule, array<array<int> > *pPositions, int Amount, int LeftWall = 0);

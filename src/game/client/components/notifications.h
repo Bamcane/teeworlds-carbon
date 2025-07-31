@@ -14,7 +14,7 @@ class CNotifications : public CComponent
 	static void Con_SndToggle(IConsole::IResult *pResult, void *pUserData);
 public:
 	CNotifications();
-	virtual void OnRender();
+	void OnRender() override;
 };
 
 #endif

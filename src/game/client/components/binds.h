@@ -24,7 +24,7 @@ public:
 	{
 	public:
 		CBinds *m_pBinds;
-		virtual bool OnInput(IInput::CEvent Event);
+		bool OnInput(IInput::CEvent Event) override;
 	};
 
 	enum
@@ -52,8 +52,8 @@ public:
 	static int GetModifierMaskOfKey(int Key);
 	static bool ModifierMatchesKey(int Modifier, int Key);
 
-	virtual void OnConsoleInit();
-	virtual bool OnInput(IInput::CEvent Event);
+	void OnConsoleInit() override;
+	bool OnInput(IInput::CEvent Event) override;
 
 private:
 	char m_aaaKeyBindings[KEY_LAST][MODIFIER_COUNT][BIND_LENGTH];

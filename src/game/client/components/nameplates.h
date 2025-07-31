@@ -13,7 +13,7 @@ class CNamePlates : public CComponent
 	) const;
 
 public:
-	virtual void OnRender();
+	void OnRender() override;
 };
 
 #endif

@@ -45,9 +45,9 @@ public:
 
 	CGraphicsBackend_Threaded();
 
-	virtual void RunBuffer(CCommandBuffer *pBuffer);
-	virtual bool IsIdle() const;
-	virtual void WaitForIdle();
+	void RunBuffer(CCommandBuffer *pBuffer) override;
+	bool IsIdle() const override;
+	void WaitForIdle() override;
 
 protected:
 	void StartProcessor(ICommandProcessor *pProcessor);
@@ -176,8 +176,9 @@ class CCommandProcessor_SDL_OpenGL : public CGraphicsBackend_Threaded::ICommandP
 	CCommandProcessorFragment_OpenGL m_OpenGL;
 	CCommandProcessorFragment_SDL m_SDL;
 	CCommandProcessorFragment_General m_General;
- public:
-	virtual void RunBuffer(CCommandBuffer *pBuffer);
+public:
+	~CCommandProcessor_SDL_OpenGL() override {}
+	void RunBuffer(CCommandBuffer *pBuffer) override;
 };
 
 // graphics backend implemented with SDL and OpenGL
@@ -191,26 +192,26 @@ class CGraphicsBackend_SDL_OpenGL : public CGraphicsBackend_Threaded
 	int m_TextureArraySize;
 	SDL_DisplayID DisplayIDFromIndex(int &Index) const;
 public:
-	virtual int Init(const char *pName, int *pScreen, int *pWindowWidth, int *pWindowHeight, int *pScreenWidth, int *pScreenHeight, int FsaaSamples, int Flags, int *pDesktopWidth, int *pDesktopHeight);
-	virtual int Shutdown();
+	int Init(const char *pName, int *pScreen, int *pWindowWidth, int *pWindowHeight, int *pScreenWidth, int *pScreenHeight, int FsaaSamples, int Flags, int *pDesktopWidth, int *pDesktopHeight) override;
+	int Shutdown() override;
 
-	virtual int MemoryUsage() const;
-	virtual int GetTextureArraySize() const { return m_TextureArraySize; }
+	int MemoryUsage() const override;
+	int GetTextureArraySize() const override { return m_TextureArraySize; }
 
-	virtual int GetNumScreens() const { return m_NumScreens; }
+	int GetNumScreens() const override { return m_NumScreens; }
 
-	virtual void Minimize();
-	virtual void Maximize();
-	virtual bool Fullscreen(bool State);		// on=true/off=false
-	virtual void SetWindowBordered(bool State);	// on=true/off=false
-	virtual bool SetWindowScreen(int Index);
-	virtual int GetWindowScreen();
-	virtual int GetVideoModes(CVideoMode *pModes, int MaxModes, int Screen);
-	virtual bool GetDesktopResolution(int Index, int *pDesktopWidth, int* pDesktopHeight);
-	virtual int WindowActive();
-	virtual int WindowOpen();
+	void Minimize() override;
+	void Maximize() override;
+	bool Fullscreen(bool State) override;		// on=true/off=false
+	void SetWindowBordered(bool State) override;	// on=true/off=false
+	bool SetWindowScreen(int Index) override;
+	int GetWindowScreen() override;
+	int GetVideoModes(CVideoMode *pModes, int MaxModes, int Screen) override;
+	bool GetDesktopResolution(int Index, int *pDesktopWidth, int* pDesktopHeight) override;
+	int WindowActive() override;
+	int WindowOpen() override;
 
-	virtual void *GetWindowHandle() override;
+	void *GetWindowHandle() override;
 };
 
 #endif // ENGINE_CLIENT_BACKEND_SDL_H

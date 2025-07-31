@@ -31,7 +31,7 @@ public:
 	IGraphics::CTextureHandle Get(int Index) const;
 	int Num() const;
 
-	virtual void OnMapLoad();
+	void OnMapLoad() override;
 	void OnMenuMapLoad(class IMap *pMap);
 	
 	IGraphics::CTextureHandle GetEasterTexture();

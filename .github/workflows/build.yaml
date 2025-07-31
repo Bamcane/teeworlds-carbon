@@ -8,7 +8,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macOS-latest]
+        os: [ubuntu-latest, macOS-latest, windows-latest]
         include:
         - os: ubuntu-latest
           cmake-args: -G Ninja
@@ -22,6 +22,13 @@ jobs:
           env:
             CFLAGS: -Wdeclaration-after-statement -Werror
             CXXFLAGS: -Werror
+        - os: windows-latest
+          cmake-args: -A x64
+          package-file: "*-win64.zip"
+          env:
+            CFLAGS: /WX
+            CXXFLAGS: /WX
+            LDFLAGS: /WX
 
     steps:
     - uses: actions/checkout@v4
@@ -33,7 +40,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: libsdl-org/SDL
-        ref: 68bfcb6c5419f51104e74e72ea0f8d405a4615b0
+        ref: release-3.2.18
         path: ./SDL
 
     - name: Prepare Linux
@@ -45,6 +52,14 @@ jobs:
         cd SDL
         cmake . -DCMAKE_BUILD_TYPE=Release
         sudo make install
+
+    - name: Prepare Libraries
+      if: contains(matrix.os, 'windows') || contains(matrix.os, 'macOS')
+      uses: actions/checkout@v4
+      with:
+        repository: NewTeeworldsCN/carbon-libraries
+        ref: main
+        path: ./carbon-libraries
 
     - name: Prepare MacOS
       if: contains(matrix.os, 'macOS')

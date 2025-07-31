@@ -33,7 +33,6 @@
 #endif
 
 #elif defined(CONF_FAMILY_WINDOWS)
-#define WIN32_LEAN_AND_MEAN
 #include <direct.h>
 #include <errno.h>
 #include <fcntl.h>

@@ -25,6 +25,6 @@ public:
 	void Explosion(vec2 Pos);
 	void HammerHit(vec2 Pos);
 
-	virtual void OnRender();
+	void OnRender() override;
 };
 #endif

@@ -35,10 +35,10 @@ class CVoting : public CComponent
 
 public:
 	CVoting();
-	virtual void OnReset();
-	virtual void OnStateChange(int NewState, int OldState);
-	virtual void OnConsoleInit();
-	virtual void OnMessage(int Msgtype, void *pRawMsg);
+	void OnReset() override;
+	void OnStateChange(int NewState, int OldState) override;
+	void OnConsoleInit() override;
+	void OnMessage(int Msgtype, void *pRawMsg) override;
 
 	void AddOption(const char *pDescription);
 	void RenderBars(CUIRect Bars);

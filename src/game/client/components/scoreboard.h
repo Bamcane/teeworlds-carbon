@@ -20,10 +20,10 @@ class CScoreboard : public CComponent
 
 public:
 	CScoreboard();
-	virtual void OnReset();
-	virtual void OnConsoleInit();
-	virtual void OnRender();
-	virtual void OnRelease();
+	void OnReset() override;
+	void OnConsoleInit() override;
+	void OnRender() override;
+	void OnRelease() override;
 
  	bool IsActive() const;
 	void ResetPlayerStats(int ClientID);

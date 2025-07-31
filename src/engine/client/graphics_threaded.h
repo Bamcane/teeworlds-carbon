@@ -399,84 +399,84 @@ class CGraphics_Threaded : public IEngineGraphics
 public:
 	CGraphics_Threaded();
 
-	virtual void ClipEnable(int x, int y, int w, int h);
-	virtual void ClipDisable();
+	void ClipEnable(int x, int y, int w, int h) override;
+	void ClipDisable() override;
 
-	virtual void BlendNone();
-	virtual void BlendNormal();
-	virtual void BlendAdditive();
+	void BlendNone() override;
+	void BlendNormal() override;
+	void BlendAdditive() override;
 
-	virtual void WrapNormal();
-	virtual void WrapClamp();
-	virtual void WrapMode(int WrapU, int WrapV);
+	void WrapNormal() override;
+	void WrapClamp() override;
+	void WrapMode(int WrapU, int WrapV) override;
 
-	virtual int MemoryUsage() const;
+	int MemoryUsage() const override;
 
-	virtual void MapScreen(float TopLeftX, float TopLeftY, float BottomRightX, float BottomRightY);
-	virtual void GetScreen(float *pTopLeftX, float *pTopLeftY, float *pBottomRightX, float *pBottomRightY);
+	void MapScreen(float TopLeftX, float TopLeftY, float BottomRightX, float BottomRightY) override;
+	void GetScreen(float *pTopLeftX, float *pTopLeftY, float *pBottomRightX, float *pBottomRightY) override;
 
-	virtual void LinesBegin();
-	virtual void LinesEnd();
-	virtual void LinesDraw(const CLineItem *pArray, int Num);
+	void LinesBegin() override;
+	void LinesEnd() override;
+	void LinesDraw(const CLineItem *pArray, int Num) override;
 
-	virtual int UnloadTexture(IGraphics::CTextureHandle *pIndex);
-	virtual IGraphics::CTextureHandle LoadTextureRaw(int Width, int Height, int Format, const void *pData, int StoreFormat, int Flags);
-	virtual int LoadTextureRawSub(IGraphics::CTextureHandle TextureID, int x, int y, int Width, int Height, int Format, const void *pData);
+	int UnloadTexture(IGraphics::CTextureHandle *pIndex) override;
+	IGraphics::CTextureHandle LoadTextureRaw(int Width, int Height, int Format, const void *pData, int StoreFormat, int Flags) override;
+	int LoadTextureRawSub(IGraphics::CTextureHandle TextureID, int x, int y, int Width, int Height, int Format, const void *pData) override;
 
 	// simple uncompressed RGBA loaders
-	virtual IGraphics::CTextureHandle LoadTexture(const char *pFilename, int StorageType, int StoreFormat, int Flags);
-	virtual int LoadPNG(CImageInfo *pImg, const char *pFilename, int StorageType);
+	IGraphics::CTextureHandle LoadTexture(const char *pFilename, int StorageType, int StoreFormat, int Flags) override;
+	int LoadPNG(CImageInfo *pImg, const char *pFilename, int StorageType) override;
 
 	void ScreenshotDirect(const char *pFilename);
 
-	virtual void TextureSet(CTextureHandle TextureID);
+	void TextureSet(CTextureHandle TextureID) override;
 
-	virtual void Clear(float r, float g, float b);
+	void Clear(float r, float g, float b) override;
 
-	virtual void QuadsBegin();
-	virtual void QuadsEnd();
-	virtual void QuadsSetRotation(float Angle);
+	void QuadsBegin() override;
+	void QuadsEnd() override;
+	void QuadsSetRotation(float Angle) override;
 
-	virtual void SetColorVertex(const CColorVertex *pArray, int Num);
-	virtual void SetColor(float r, float g, float b, float a);
-	virtual void SetColor4(const vec4 &TopLeft, const vec4 &TopRight, const vec4 &BottomLeft, const vec4 &BottomRight);
+	void SetColorVertex(const CColorVertex *pArray, int Num) override;
+	void SetColor(float r, float g, float b, float a) override;
+	void SetColor4(const vec4 &TopLeft, const vec4 &TopRight, const vec4 &BottomLeft, const vec4 &BottomRight) override;
 
 	void TilesetFallbackSystem(int TextureIndex);
-	virtual void QuadsSetSubset(float TlU, float TlV, float BrU, float BrV, int TextureIndex = -1);
-	virtual void QuadsSetSubsetFree(
+	void QuadsSetSubset(float TlU, float TlV, float BrU, float BrV, int TextureIndex = -1) override;
+	void QuadsSetSubsetFree(
 		float x0, float y0, float x1, float y1,
-		float x2, float y2, float x3, float y3, int TextureIndex = -1);
+		float x2, float y2, float x3, float y3, int TextureIndex = -1) override;
 
-	virtual void QuadsDraw(CQuadItem *pArray, int Num);
-	virtual void QuadsDrawTL(const CQuadItem *pArray, int Num);
-	virtual void QuadsDrawFreeform(const CFreeformItem *pArray, int Num);
-	virtual void QuadsText(float x, float y, float Size, const char *pText);
+	void QuadsDraw(CQuadItem *pArray, int Num) override;
+	void QuadsDrawTL(const CQuadItem *pArray, int Num) override;
+	void QuadsDrawFreeform(const CFreeformItem *pArray, int Num) override;
+	void QuadsText(float x, float y, float Size, const char *pText) override;
 
-	virtual int GetNumScreens() const;
-	virtual void Minimize();
-	virtual void Maximize();
-	virtual bool Fullscreen(bool State);
-	virtual void SetWindowBordered(bool State);
-	virtual bool SetWindowScreen(int Index);
-	virtual int GetWindowScreen();
+	int GetNumScreens() const override;
+	void Minimize() override;
+	void Maximize() override;
+	bool Fullscreen(bool State) override;
+	void SetWindowBordered(bool State) override;
+	bool SetWindowScreen(int Index) override;
+	int GetWindowScreen() override;
 
-	virtual int WindowActive();
-	virtual int WindowOpen();
+	int WindowActive() override;
+	int WindowOpen() override;
 
-	virtual int Init();
-	virtual void Shutdown();
+	int Init() override;
+	void Shutdown() override;
 
-	virtual void ReadBackbuffer(unsigned char **ppPixels, int x, int y, int w, int h);
-	virtual void TakeScreenshot(const char *pFilename);
-	virtual void Swap();
-	virtual bool SetVSync(bool State);
+	void ReadBackbuffer(unsigned char **ppPixels, int x, int y, int w, int h);
+	void TakeScreenshot(const char *pFilename);
+	void Swap();
+	bool SetVSync(bool State);
 
-	virtual int GetVideoModes(CVideoMode *pModes, int MaxModes, int Screen);
+	int GetVideoModes(CVideoMode *pModes, int MaxModes, int Screen) override;
 
 	// syncronization
-	virtual void InsertSignal(semaphore *pSemaphore);
-	virtual bool IsIdle() const;
-	virtual void WaitForIdle();
+	void InsertSignal(semaphore *pSemaphore) override;
+	bool IsIdle() const override;
+	void WaitForIdle() override;
 
 	void *GetWindowHandle() override;
 };

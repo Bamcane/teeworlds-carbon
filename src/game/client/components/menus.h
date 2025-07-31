@@ -32,7 +32,7 @@ public:
 	int m_Modifier;
 	IInput::CEvent m_Key;
 	CMenusKeyBinder();
-	virtual bool OnInput(IInput::CEvent Event);
+	bool OnInput(IInput::CEvent Event) override;
 };
 
 class CMenus : public CComponent
@@ -628,16 +628,16 @@ public:
 
 	bool IsActive() const { return m_MenuActive; }
 
-	virtual int GetInitAmount() const;
-	virtual void OnInit();
+	int GetInitAmount() const override;
+	void OnInit() override;
 
-	virtual void OnConsoleInit();
-	virtual void OnShutdown();
-	virtual void OnStateChange(int NewState, int OldState);
-	virtual void OnReset();
-	virtual void OnRender();
-	virtual bool OnInput(IInput::CEvent Event);
-	virtual bool OnCursorMove(float x, float y, int CursorType);
+	void OnConsoleInit() override;
+	void OnShutdown() override;
+	void OnStateChange(int NewState, int OldState) override;
+	void OnReset() override;
+	void OnRender() override;
+	bool OnInput(IInput::CEvent Event) override;
+	bool OnCursorMove(float x, float y, int CursorType) override;
 
 	static void Con_Play(IConsole::IResult *pResult, void *pUserData);
 };

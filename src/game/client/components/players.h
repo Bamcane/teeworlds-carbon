@@ -21,7 +21,7 @@ class CPlayers : public CComponent
 	) const;
 
 public:
-	virtual void OnRender();
+	void OnRender() override;
 };
 
 #endif

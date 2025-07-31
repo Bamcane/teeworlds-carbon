@@ -181,33 +181,33 @@ class CTextRender : public IEngineTextRender
 public:
 	CTextRender();
 
-	void Init();
-	void Update();
-	void Shutdown();
+	void Init() override;
+	void Update() override;
+	void Shutdown() override;
 
-	void LoadFonts(IStorage *pStorage, IConsole *pConsole);
-	void SetFontLanguageVariant(const char *pLanguageFile);
+	void LoadFonts(IStorage *pStorage, IConsole *pConsole) override;
+	void SetFontLanguageVariant(const char *pLanguageFile) override;
 
-	void TextColor(const vec4 &Color) { m_TextColor = Color; }
-	void TextSecondaryColor(const vec4 &Color) { m_TextSecondaryColor = Color; }
+	void TextColor(const vec4 &Color) override { m_TextColor = Color; }
+	void TextSecondaryColor(const vec4 &Color) override { m_TextSecondaryColor = Color; }
 
-	vec4 GetColor() const { return m_TextColor; }
-	vec4 GetSecondaryColor() const { return m_TextSecondaryColor; }
+	vec4 GetColor() const override { return m_TextColor; }
+	vec4 GetSecondaryColor() const override { return m_TextSecondaryColor; }
 
-	float TextWidth(float FontSize, const char *pText, int Length);
-	void TextDeferred(CTextCursor *pCursor, const char *pText, int Length);
-	void TextNewline(CTextCursor *pCursor);
-	void TextAdvance(CTextCursor *pCursor, float AdvanceX);
-	void TextPlain(CTextCursor *pCursor, const char *pText, int Length);
-	void TextOutlined(CTextCursor *pCursor, const char *pText, int Length);
-	void TextShadowed(CTextCursor *pCursor, const char *pText, int Length, vec2 ShadowOffset);
+	float TextWidth(float FontSize, const char *pText, int Length) override;
+	void TextDeferred(CTextCursor *pCursor, const char *pText, int Length) override;
+	void TextNewline(CTextCursor *pCursor) override;
+	void TextAdvance(CTextCursor *pCursor, float AdvanceX) override;
+	void TextPlain(CTextCursor *pCursor, const char *pText, int Length) override;
+	void TextOutlined(CTextCursor *pCursor, const char *pText, int Length) override;
+	void TextShadowed(CTextCursor *pCursor, const char *pText, int Length, vec2 ShadowOffset) override;
 
-	void DrawTextPlain(CTextCursor *pCursor, float Alpha, int StartGlyph, int NumGlyphs);
-	void DrawTextOutlined(CTextCursor *pCursor, float Alpha, int StartGlyph, int NumGlyphs);
-	void DrawTextShadowed(CTextCursor *pCursor, vec2 ShadowOffset, float Alpha, int StartGlyph, int NumGlyphs);
+	void DrawTextPlain(CTextCursor *pCursor, float Alpha, int StartGlyph, int NumGlyphs) override;
+	void DrawTextOutlined(CTextCursor *pCursor, float Alpha, int StartGlyph, int NumGlyphs) override;
+	void DrawTextShadowed(CTextCursor *pCursor, vec2 ShadowOffset, float Alpha, int StartGlyph, int NumGlyphs) override;
 
-	int CharToGlyph(CTextCursor *pCursor, int NumChars, float *pLineWidth = 0);
-	vec2 CaretPosition(CTextCursor *pCursor, int NumChars);
+	int CharToGlyph(CTextCursor *pCursor, int NumChars, float *pLineWidth = 0) override;
+	vec2 CaretPosition(CTextCursor *pCursor, int NumChars) override;
 };
 
 #endif

@@ -267,31 +267,31 @@ public:
 	void OnReset();
 
 	// hooks
-	virtual void OnConnected();
-	virtual void OnRender();
-	virtual void OnUpdate();
-	virtual void OnRelease();
-	virtual void OnInit();
-	virtual void OnConsoleInit();
-	virtual void OnStateChange(int NewState, int OldState);
-	virtual void OnMessage(int MsgId, CUnpacker *pUnpacker);
-	virtual void OnNewSnapshot();
-	virtual void OnDemoRecSnap();
-	virtual void OnPredict();
-	virtual void OnActivateEditor();
-	virtual int OnSnapInput(int *pData);
-	virtual void OnShutdown();
-	virtual void OnEnterGame();
-	virtual void OnRconLine(const char *pLine);
-	virtual void OnGameOver();
-	virtual void OnStartGame();
+	void OnConnected() override;
+	void OnRender() override;
+	void OnUpdate() override;
+	void OnRelease();
+	void OnInit() override;
+	void OnConsoleInit() override;
+	void OnStateChange(int NewState, int OldState) override;
+	void OnMessage(int MsgId, CUnpacker *pUnpacker) override;
+	void OnNewSnapshot() override;
+	void OnDemoRecSnap() override;
+	void OnPredict() override;
+	void OnActivateEditor() override;
+	int OnSnapInput(int *pData) override;
+	void OnShutdown() override;
+	void OnEnterGame() override;
+	void OnRconLine(const char *pLine) override;
+	void OnGameOver();
+	void OnStartGame();
 
-	virtual const char *GetItemName(int Type) const;
-	virtual const char *Version() const;
-	virtual const char *NetVersion() const;
-	virtual const char *NetVersionHashUsed() const;
-	virtual const char *NetVersionHashReal() const;
-	virtual int ClientVersion() const;
+	const char *GetItemName(int Type) const override;
+	const char *Version() const override;
+	const char *NetVersion() const override;
+	const char *NetVersionHashUsed() const override;
+	const char *NetVersionHashReal() const override;
+	int ClientVersion() const override;
 	void GetPlayerLabel(char* aBuf, int BufferSize, int ClientID, const char* ClientName);
 	void StartRendering();
 

@@ -12,7 +12,7 @@ class CItems : public CComponent
 	void RenderLaser(const struct CNetObj_Laser *pCurrent);
 
 public:
-	virtual void OnRender();
+	void OnRender() override;
 };
 
 #endif
