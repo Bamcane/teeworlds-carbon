@@ -78,9 +78,12 @@ public:
 
 	static CLineInput *GetActiveInput() { return s_pActiveInput; }
 
-	CLineInput() : m_pStr(0) { SetBuffer(0, 0, 0); }
-	CLineInput(char *pStr, int MaxSize) : m_pStr(0) { SetBuffer(pStr, MaxSize, MaxSize); }
-	CLineInput(char *pStr, int MaxSize, int MaxChars) : m_pStr(0) { SetBuffer(pStr, MaxSize, MaxChars); }
+	CLineInput() :
+		m_pStr(0) { SetBuffer(0, 0, 0); }
+	CLineInput(char *pStr, int MaxSize) :
+		m_pStr(0) { SetBuffer(pStr, MaxSize, MaxSize); }
+	CLineInput(char *pStr, int MaxSize, int MaxChars) :
+		m_pStr(0) { SetBuffer(pStr, MaxSize, MaxChars); }
 
 	void SetBuffer(char *pStr, int MaxSize) { SetBuffer(pStr, MaxSize, MaxSize); }
 	void SetBuffer(char *pStr, int MaxSize, int MaxChars);
@@ -121,7 +124,12 @@ public:
 	void SetHidden(bool Hidden) { m_Hidden = Hidden; }
 
 	bool ProcessInput(const IInput::CEvent &Event);
-	bool WasChanged() { bool Changed = m_WasChanged; m_WasChanged = false; return Changed; }
+	bool WasChanged()
+	{
+		bool Changed = m_WasChanged;
+		m_WasChanged = false;
+		return Changed;
+	}
 
 	void Render(bool Changed);
 
@@ -136,7 +144,8 @@ class CLineInputBuffered : public CLineInput
 	char m_aBuffer[MaxSize];
 
 public:
-	CLineInputBuffered() : CLineInput()
+	CLineInputBuffered() :
+		CLineInput()
 	{
 		m_aBuffer[0] = 0;
 		SetBuffer(m_aBuffer, MaxSize, MaxChars);

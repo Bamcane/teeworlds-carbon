@@ -22,6 +22,7 @@ jobs:
           env:
             CFLAGS: -Wdeclaration-after-statement -Werror
             CXXFLAGS: -Werror
+            CMAKE_PREFIX_PATH: /opt/homebrew/include/:$CMAKE_PREFIX_PATH
         - os: windows-latest
           cmake-args: -A x64
           package-file: "*-win64.zip"
@@ -36,7 +37,7 @@ jobs:
         submodules: true
 
     - name: Checkout SDL3
-      if: contains(matrix.os, 'ubuntu') || contains(matrix.os, 'macOS')
+      if: contains(matrix.os, 'ubuntu')
       uses: actions/checkout@v4
       with:
         repository: libsdl-org/SDL
@@ -54,7 +55,7 @@ jobs:
         sudo make install
 
     - name: Prepare Libraries
-      if: contains(matrix.os, 'windows') || contains(matrix.os, 'macOS')
+      if: contains(matrix.os, 'windows')
       uses: actions/checkout@v4
       with:
         repository: NewTeeworldsCN/carbon-libraries
@@ -65,11 +66,8 @@ jobs:
       if: contains(matrix.os, 'macOS')
       run: |
         brew update || true
+        brew install sdl3
         sudo rm -rf /Library/Developer/CommandLineTools
-        cd SDL
-        cmake . -DCMAKE_OSX_DEPLOYMENT_TARGET=10.13
-        cmake --build .
-        sudo cmake --install .
 
     - name: Build in debug mode
       env: ${{ matrix.env }}

@@ -1,16 +1,16 @@
 /* (c) Magnus Auvinen. See licence.txt in the root of the distribution for more information. */
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
-#include "SDL.h"
+
+#include <SDL3/SDL.h>
 
 #include <base/system.h>
-#include <engine/shared/config.h>
 #include <engine/console.h>
 #include <engine/graphics.h>
 #include <engine/input.h>
 #include <engine/keys.h>
+#include <engine/shared/config.h>
 
 #include "input.h"
-
 
 // this header is protected so you don't include it from anywere
 #define KEYS_INCLUDE
@@ -19,16 +19,10 @@
 
 // support older SDL version (pre 2.0.6)
 #ifndef SDL_JOYSTICK_AXIS_MIN
-	#define SDL_JOYSTICK_AXIS_MIN -32768
+#define SDL_JOYSTICK_AXIS_MIN -32768
 #endif
 #ifndef SDL_JOYSTICK_AXIS_MAX
-	#define SDL_JOYSTICK_AXIS_MAX 32767
-#endif
-
-#if defined(CONF_FAMILY_WINDOWS)
-#define WIN32_LEAN_AND_MEAN
-#include <windows.h>
-#include <imm.h>
+#define SDL_JOYSTICK_AXIS_MAX 32767
 #endif
 
 void CInput::AddEvent(const char *pText, int Key, int Flags)
@@ -119,7 +113,7 @@ void CInput::InitJoysticks()
 			CJoystick Joystick(this, ActualIndex, pJoystick);
 			m_aJoysticks.add(Joystick);
 			dbg_msg("joystick", "Opened Joystick %d '%s' (%d axes, %d buttons, %d balls, %d hats)", i, Joystick.GetName(),
-					Joystick.GetNumAxes(), Joystick.GetNumButtons(), Joystick.GetNumBalls(), Joystick.GetNumHats());
+				Joystick.GetNumAxes(), Joystick.GetNumButtons(), Joystick.GetNumBalls(), Joystick.GetNumHats());
 			ActualIndex++;
 		}
 		if(ActualIndex > 0)
@@ -161,7 +155,7 @@ void CInput::ConchainJoystickGuidChanged(IConsole::IResult *pResult, void *pUser
 
 float CInput::GetJoystickDeadzone()
 {
-	return Config()->m_JoystickTolerance/50.0f;
+	return Config()->m_JoystickTolerance / 50.0f;
 }
 
 CInput::CJoystick::CJoystick(CInput *pInput, int Index, SDL_Joystick *pDelegate)
@@ -206,14 +200,14 @@ int CInput::CJoystick::GetJoystickHatKey(int Hat, int HatValue)
 {
 	switch(HatValue)
 	{
-		case SDL_HAT_LEFTUP: return KEY_JOY_HAT0_LEFTUP + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
-		case SDL_HAT_UP: return KEY_JOY_HAT0_UP + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
-		case SDL_HAT_RIGHTUP: return KEY_JOY_HAT0_RIGHTUP + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
-		case SDL_HAT_LEFT: return KEY_JOY_HAT0_LEFT + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
-		case SDL_HAT_RIGHT: return KEY_JOY_HAT0_RIGHT + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
-		case SDL_HAT_LEFTDOWN: return KEY_JOY_HAT0_LEFTDOWN + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
-		case SDL_HAT_DOWN: return KEY_JOY_HAT0_DOWN + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
-		case SDL_HAT_RIGHTDOWN: return KEY_JOY_HAT0_RIGHTDOWN + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_LEFTUP: return KEY_JOY_HAT0_LEFTUP + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_UP: return KEY_JOY_HAT0_UP + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_RIGHTUP: return KEY_JOY_HAT0_RIGHTUP + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_LEFT: return KEY_JOY_HAT0_LEFT + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_RIGHT: return KEY_JOY_HAT0_RIGHT + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_LEFTDOWN: return KEY_JOY_HAT0_LEFTDOWN + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_DOWN: return KEY_JOY_HAT0_DOWN + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
+	case SDL_HAT_RIGHTDOWN: return KEY_JOY_HAT0_RIGHTDOWN + Hat * NUM_JOYSTICK_BUTTONS_PER_HAT;
 	}
 	return -1;
 }
@@ -248,7 +242,7 @@ bool CInput::CJoystick::Absolute(float *pX, float *pY)
 
 	const vec2 RawJoystickPos = vec2(GetAxisValue(Input()->Config()->m_JoystickX), GetAxisValue(Input()->Config()->m_JoystickY));
 	const float DeadZone = Input()->GetJoystickDeadzone();
-	if(dot(RawJoystickPos, RawJoystickPos) > DeadZone*DeadZone)
+	if(dot(RawJoystickPos, RawJoystickPos) > DeadZone * DeadZone)
 	{
 		*pX = RawJoystickPos.x;
 		*pY = RawJoystickPos.y;
@@ -346,23 +340,30 @@ void CInput::Clear()
 
 bool CInput::KeyState(int Key) const
 {
-	return Key >= KEY_FIRST
-		&& Key < KEY_LAST
-		&& m_aInputState[Key>=KEY_MOUSE_1 ? Key : SDL_GetScancodeFromName(SDL_GetKeyName(KeyToKeycode(Key)))];
+	return Key >= KEY_FIRST && Key < KEY_LAST && m_aInputState[Key >= KEY_MOUSE_1 ? Key : SDL_GetScancodeFromName(SDL_GetKeyName(KeyToKeycode(Key)))];
 }
 
 void CInput::UpdateMouseState()
 {
 	int MouseState = SDL_GetMouseState(NULL, NULL);
-	if(MouseState&SDL_BUTTON_MASK(SDL_BUTTON_LEFT)) m_aInputState[KEY_MOUSE_1] = true;
-	if(MouseState&SDL_BUTTON_MASK(SDL_BUTTON_RIGHT)) m_aInputState[KEY_MOUSE_2] = true;
-	if(MouseState&SDL_BUTTON_MASK(SDL_BUTTON_MIDDLE)) m_aInputState[KEY_MOUSE_3] = true;
-	if(MouseState&SDL_BUTTON_MASK(SDL_BUTTON_X1)) m_aInputState[KEY_MOUSE_4] = true;
-	if(MouseState&SDL_BUTTON_MASK(SDL_BUTTON_X2)) m_aInputState[KEY_MOUSE_5] = true;
-	if(MouseState&SDL_BUTTON_MASK(6)) m_aInputState[KEY_MOUSE_6] = true;
-	if(MouseState&SDL_BUTTON_MASK(7)) m_aInputState[KEY_MOUSE_7] = true;
-	if(MouseState&SDL_BUTTON_MASK(8)) m_aInputState[KEY_MOUSE_8] = true;
-	if(MouseState&SDL_BUTTON_MASK(9)) m_aInputState[KEY_MOUSE_9] = true;
+	if(MouseState & SDL_BUTTON_MASK(SDL_BUTTON_LEFT))
+		m_aInputState[KEY_MOUSE_1] = true;
+	if(MouseState & SDL_BUTTON_MASK(SDL_BUTTON_RIGHT))
+		m_aInputState[KEY_MOUSE_2] = true;
+	if(MouseState & SDL_BUTTON_MASK(SDL_BUTTON_MIDDLE))
+		m_aInputState[KEY_MOUSE_3] = true;
+	if(MouseState & SDL_BUTTON_MASK(SDL_BUTTON_X1))
+		m_aInputState[KEY_MOUSE_4] = true;
+	if(MouseState & SDL_BUTTON_MASK(SDL_BUTTON_X2))
+		m_aInputState[KEY_MOUSE_5] = true;
+	if(MouseState & SDL_BUTTON_MASK(6))
+		m_aInputState[KEY_MOUSE_6] = true;
+	if(MouseState & SDL_BUTTON_MASK(7))
+		m_aInputState[KEY_MOUSE_7] = true;
+	if(MouseState & SDL_BUTTON_MASK(8))
+		m_aInputState[KEY_MOUSE_8] = true;
+	if(MouseState & SDL_BUTTON_MASK(9))
+		m_aInputState[KEY_MOUSE_9] = true;
 }
 
 void CInput::UpdateJoystickState()
@@ -497,14 +498,14 @@ void CInput::SetCompositionWindowPosition(float X, float Y, float H)
 int CInput::Update()
 {
 	// keep the counter between 1..0xFFFF, 0 means not pressed
-	m_InputCounter = (m_InputCounter%0xFFFF)+1;
+	m_InputCounter = (m_InputCounter % 0xFFFF) + 1;
 
 	int NumKeyStates;
 	const bool *pState = SDL_GetKeyboardState(&NumKeyStates);
 	if(NumKeyStates >= KEY_MOUSE_1)
 		NumKeyStates = KEY_MOUSE_1;
 	mem_copy(m_aInputState, pState, NumKeyStates);
-	mem_zero(m_aInputState+NumKeyStates, KEY_LAST-NumKeyStates);
+	mem_zero(m_aInputState + NumKeyStates, KEY_LAST - NumKeyStates);
 
 	// these states must always be updated manually because they are not in the SDL_GetKeyboardState from SDL
 	UpdateMouseState();
@@ -518,104 +519,115 @@ int CInput::Update()
 		int Action = IInput::FLAG_PRESS;
 		switch(Event.type)
 		{
-			// handle on the spot text editing
-			case SDL_EVENT_TEXT_EDITING:
+		// handle on the spot text editing
+		case SDL_EVENT_TEXT_EDITING:
+		{
+			m_CompositionLength = str_length(Event.edit.text);
+			if(m_CompositionLength)
 			{
-				m_CompositionLength = str_length(Event.edit.text);
-				if(m_CompositionLength)
-				{
-					str_copy(m_aComposition, Event.edit.text, sizeof(m_aComposition));
-					m_CompositionCursor = 0;
-					for(int i = 0; i < Event.edit.start; i++)
-						m_CompositionCursor = str_utf8_forward(m_aComposition, m_CompositionCursor);
-					int CompositionEnd = m_CompositionCursor;
-					for(int i = 0; i < Event.edit.length; i++)
-						CompositionEnd = str_utf8_forward(m_aComposition, CompositionEnd);
-					m_CompositionSelectedLength = CompositionEnd - m_CompositionCursor;
-					AddEvent(0, 0, IInput::FLAG_TEXT);
-				}
-				else
-				{
-					m_aComposition[0] = '\0';
-					m_CompositionLength = 0;
-					m_CompositionCursor = 0;
-					m_CompositionSelectedLength = 0;
-				}
-				break;
+				str_copy(m_aComposition, Event.edit.text, sizeof(m_aComposition));
+				m_CompositionCursor = 0;
+				for(int i = 0; i < Event.edit.start; i++)
+					m_CompositionCursor = str_utf8_forward(m_aComposition, m_CompositionCursor);
+				int CompositionEnd = m_CompositionCursor;
+				for(int i = 0; i < Event.edit.length; i++)
+					CompositionEnd = str_utf8_forward(m_aComposition, CompositionEnd);
+				m_CompositionSelectedLength = CompositionEnd - m_CompositionCursor;
+				AddEvent(0, 0, IInput::FLAG_TEXT);
 			}
-			case SDL_EVENT_TEXT_INPUT:
-				m_aComposition[0] = 0;
-				m_CompositionLength = COMP_LENGTH_INACTIVE;
+			else
+			{
+				m_aComposition[0] = '\0';
+				m_CompositionLength = 0;
 				m_CompositionCursor = 0;
 				m_CompositionSelectedLength = 0;
-				AddEvent(Event.text.text, 0, IInput::FLAG_TEXT);
+			}
+			break;
+		}
+		case SDL_EVENT_TEXT_INPUT:
+			m_aComposition[0] = 0;
+			m_CompositionLength = COMP_LENGTH_INACTIVE;
+			m_CompositionCursor = 0;
+			m_CompositionSelectedLength = 0;
+			AddEvent(Event.text.text, 0, IInput::FLAG_TEXT);
+			break;
+
+		// handle keys
+		case SDL_EVENT_KEY_UP:
+			Action = IInput::FLAG_RELEASE;
+
+			// fall through
+		case SDL_EVENT_KEY_DOWN:
+			Key = KeycodeToKey(Event.key.key);
+			Scancode = Event.key.scancode;
+			break;
+
+		// handle the joystick events
+		case SDL_EVENT_JOYSTICK_AXIS_MOTION:
+			HandleJoystickAxisMotionEvent(Event);
+			break;
+
+		case SDL_EVENT_JOYSTICK_BUTTON_UP:
+		case SDL_EVENT_JOYSTICK_BUTTON_DOWN:
+			HandleJoystickButtonEvent(Event);
+			break;
+
+		case SDL_EVENT_JOYSTICK_HAT_MOTION:
+			HandleJoystickHatMotionEvent(Event);
+			break;
+
+		// handle mouse buttons
+		case SDL_EVENT_MOUSE_BUTTON_UP:
+			Action = IInput::FLAG_RELEASE;
+
+			// fall through
+		case SDL_EVENT_MOUSE_BUTTON_DOWN:
+			if(Event.button.button == SDL_BUTTON_LEFT)
+			{
+				Key = KEY_MOUSE_1;
+				if(Event.button.clicks % 2 == 0)
+					m_MouseDoubleClick = true;
+				else if(Event.button.clicks == 1)
+					m_MouseDoubleClick = false;
+			}
+			else if(Event.button.button == SDL_BUTTON_RIGHT)
+				Key = KEY_MOUSE_2;
+			else if(Event.button.button == SDL_BUTTON_MIDDLE)
+				Key = KEY_MOUSE_3;
+			else if(Event.button.button == SDL_BUTTON_X1)
+				Key = KEY_MOUSE_4;
+			else if(Event.button.button == SDL_BUTTON_X2)
+				Key = KEY_MOUSE_5;
+			else if(Event.button.button == 6)
+				Key = KEY_MOUSE_6;
+			else if(Event.button.button == 7)
+				Key = KEY_MOUSE_7;
+			else if(Event.button.button == 8)
+				Key = KEY_MOUSE_8;
+			else if(Event.button.button == 9)
+				Key = KEY_MOUSE_9;
+			Scancode = Key;
+			break;
+
+		case SDL_EVENT_MOUSE_WHEEL:
+			if(Event.wheel.y > 0)
+				Key = KEY_MOUSE_WHEEL_UP;
+			else if(Event.wheel.y < 0)
+				Key = KEY_MOUSE_WHEEL_DOWN;
+			else
 				break;
+			Action |= IInput::FLAG_RELEASE;
+			Scancode = Key;
+			break;
 
-			// handle keys
-			case SDL_EVENT_KEY_UP:
-				Action = IInput::FLAG_RELEASE;
-
-				// fall through
-			case SDL_EVENT_KEY_DOWN:
-				Key = KeycodeToKey(Event.key.key);
-				Scancode = Event.key.scancode;
-				break;
-
-			// handle the joystick events
-			case SDL_EVENT_JOYSTICK_AXIS_MOTION:
-				HandleJoystickAxisMotionEvent(Event);
-				break;
-
-			case SDL_EVENT_JOYSTICK_BUTTON_UP:
-			case SDL_EVENT_JOYSTICK_BUTTON_DOWN:
-				HandleJoystickButtonEvent(Event);
-				break;
-
-			case SDL_EVENT_JOYSTICK_HAT_MOTION:
-				HandleJoystickHatMotionEvent(Event);
-				break;
-
-			// handle mouse buttons
-			case SDL_EVENT_MOUSE_BUTTON_UP:
-				Action = IInput::FLAG_RELEASE;
-
-				// fall through
-			case SDL_EVENT_MOUSE_BUTTON_DOWN:
-				if(Event.button.button == SDL_BUTTON_LEFT)
-				{
-					Key = KEY_MOUSE_1;
-					if(Event.button.clicks%2 == 0)
-						m_MouseDoubleClick = true;
-					else if(Event.button.clicks == 1)
-						m_MouseDoubleClick = false;
-				}
-				else if(Event.button.button == SDL_BUTTON_RIGHT) Key = KEY_MOUSE_2;
-				else if(Event.button.button == SDL_BUTTON_MIDDLE) Key = KEY_MOUSE_3;
-				else if(Event.button.button == SDL_BUTTON_X1) Key = KEY_MOUSE_4;
-				else if(Event.button.button == SDL_BUTTON_X2) Key = KEY_MOUSE_5;
-				else if(Event.button.button == 6) Key = KEY_MOUSE_6;
-				else if(Event.button.button == 7) Key = KEY_MOUSE_7;
-				else if(Event.button.button == 8) Key = KEY_MOUSE_8;
-				else if(Event.button.button == 9) Key = KEY_MOUSE_9;
-				Scancode = Key;
-				break;
-
-			case SDL_EVENT_MOUSE_WHEEL:
-				if(Event.wheel.y > 0) Key = KEY_MOUSE_WHEEL_UP;
-				else if(Event.wheel.y < 0) Key = KEY_MOUSE_WHEEL_DOWN;
-				else break;
-				Action |= IInput::FLAG_RELEASE;
-				Scancode = Key;
-				break;
-
-			// other messages
-			case SDL_EVENT_QUIT:
-				return 1;
+		// other messages
+		case SDL_EVENT_QUIT:
+			return 1;
 		}
 
 		if(Key >= 0 && !HasComposition())
 		{
-			if((Action&IInput::FLAG_PRESS) && Key < g_MaxKeys && Scancode >= 0 && Scancode < g_MaxKeys)
+			if((Action & IInput::FLAG_PRESS) && Key < g_MaxKeys && Scancode >= 0 && Scancode < g_MaxKeys)
 			{
 				m_aInputState[Scancode] = true;
 				m_aInputCount[Key] = m_InputCounter;

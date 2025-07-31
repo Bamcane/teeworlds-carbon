@@ -12,8 +12,10 @@ public:
 	class CJob : public IJob
 	{
 		CHostLookup *m_pParent;
+
 	public:
-		CJob(CHostLookup *pParent) : m_pParent(pParent) {}
+		CJob(CHostLookup *pParent) :
+			m_pParent(pParent) {}
 
 		void Run() override;
 	};

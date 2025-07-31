@@ -9,7 +9,7 @@
 static bool IsAllowedHex(char c)
 {
 	static const char ALLOWED[] = "0123456789abcdefABCDEF";
-	for(int i = 0; i < (int)sizeof(ALLOWED) - 1; i++)
+	for(int i = 0; i < (int) sizeof(ALLOWED) - 1; i++)
 	{
 		if(c == ALLOWED[i])
 		{
@@ -131,12 +131,13 @@ bool CServerInfo2::FromJsonRaw(CServerInfo2 *pOut, const json_value *pJson)
 			pClient->m_Country = Country["code"].u.integer;
 			pClient->m_Score = Score.u.integer;
 			pClient->m_IsPlayer = IsPlayer.u.boolean;
-			
+
 			if(pClient->m_IsPlayer)
 				pOut->m_NumPlayers++;
 			pOut->m_NumClients++;
 		}
-		else break;
+		else
+			break;
 	}
 	return false;
 }

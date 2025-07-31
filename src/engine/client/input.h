@@ -44,6 +44,7 @@ public:
 
 		static int GetJoystickHatKey(int Hat, int HatValue);
 	};
+
 private:
 	IEngineGraphics *m_pGraphics;
 	CConfig *m_pConfig;
@@ -77,8 +78,8 @@ private:
 	int m_CandidateSelectedIndex;
 
 	void AddEvent(const char *pText, int Key, int Flags);
-	void Clear();
-	bool IsEventValid(CEvent *pEvent) const { return pEvent->m_InputCount == m_InputCounter; }
+	void Clear() override;
+	bool IsEventValid(CEvent *pEvent) const override { return pEvent->m_InputCount == m_InputCounter; }
 
 	// quick access to input
 	unsigned short m_aInputCount[g_MaxKeys];

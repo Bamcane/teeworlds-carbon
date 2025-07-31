@@ -11,11 +11,10 @@
 
 #include <engine/config.h>
 #include <engine/console.h>
-#include <engine/engine.h>
 #include <engine/contacts.h>
+#include <engine/engine.h>
 
 #include "serverbrowser_fav.h"
-
 
 CServerBrowserFavorites::CServerBrowserFavorites()
 {
@@ -132,7 +131,7 @@ CServerBrowserFavorites::CFavoriteServer *CServerBrowserFavorites::FindFavoriteB
 
 void CServerBrowserFavorites::RemoveFavoriteEntry(int Index)
 {
-	mem_move(&m_aFavoriteServers[Index], &m_aFavoriteServers[Index+1], sizeof(CFavoriteServer)*(m_NumFavoriteServers-(Index+1)));
+	mem_move(&m_aFavoriteServers[Index], &m_aFavoriteServers[Index + 1], sizeof(CFavoriteServer) * (m_NumFavoriteServers - (Index + 1)));
 	m_NumFavoriteServers--;
 }
 
@@ -255,7 +254,7 @@ void CServerBrowserFavorites::ConRemoveFavorite(IConsole::IResult *pResult, void
 
 void CServerBrowserFavorites::ConfigSaveCallback(IConfigManager *pConfigManager, void *pUserData)
 {
-	CServerBrowserFavorites *pSelf = (CServerBrowserFavorites *)pUserData;
+	CServerBrowserFavorites *pSelf = (CServerBrowserFavorites *) pUserData;
 
 	char aBuffer[320];
 	for(int i = 0; i < pSelf->m_NumFavoriteServers; i++)

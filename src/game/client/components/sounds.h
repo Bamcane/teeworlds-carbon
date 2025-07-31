@@ -3,9 +3,9 @@
 #ifndef GAME_CLIENT_COMPONENTS_SOUNDS_H
 #define GAME_CLIENT_COMPONENTS_SOUNDS_H
 
+#include <engine/shared/jobs.h>
 #include <engine/sound.h>
 #include <game/client/component.h>
-#include <engine/shared/jobs.h>
 
 class CSounds : public CComponent
 {
@@ -23,22 +23,25 @@ class CSounds : public CComponent
 	class CJob : public IJob
 	{
 		struct CUserData *m_pData;
+
 	public:
-		CJob(struct CUserData *pData) : m_pData(pData) {}
+		CJob(struct CUserData *pData) :
+			m_pData(pData) {}
 
 		void Run() override;
 	};
 	std::shared_ptr<CJob> m_pSoundJob;
 	bool m_WaitForSoundJob;
-	
+
 	ISound::CSampleHandle GetSampleId(int SetId);
 
 	friend class CSounds::CJob;
+
 public:
 	// sound channels
 	enum
 	{
-		CHN_GUI=0,
+		CHN_GUI = 0,
 		CHN_MUSIC,
 		CHN_WORLD,
 		CHN_GLOBAL,
@@ -57,6 +60,5 @@ public:
 	void Stop(int SetId);
 	bool IsPlaying(int SetId);
 };
-
 
 #endif

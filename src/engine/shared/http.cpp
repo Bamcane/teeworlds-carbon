@@ -7,7 +7,7 @@
 #include <engine/storage.h>
 #include <game/version.h>
 
-#include <limits>
+#include <climits>
 #include <thread>
 
 #if !defined(CONF_FAMILY_WINDOWS)
@@ -646,7 +646,7 @@ void CHttp::RunLoop()
 
 	while(m_State == CHttp::RUNNING)
 	{
-		static int s_NextTimeout = std::numeric_limits<int>::max();
+		static int s_NextTimeout = INT_MAX;
 		int Events = 0;
 		const CURLMcode PollCode = curl_multi_poll(m_pMultiH, nullptr, 0, s_NextTimeout, &Events);
 

@@ -20,11 +20,15 @@ find_library(SDL3_LIBRARY
   PATHS ${PATHS_SDL3_LIBDIR}
   ${CROSSCOMPILING_NO_CMAKE_SYSTEM_PATH}
 )
-set(CMAKE_FIND_FRAMEWORK FIRST)
+if(PREFER_BUNDLED_LIBS)
+  set(CMAKE_FIND_FRAMEWORK FIRST)
+else()
+  set(CMAKE_FIND_FRAMEWORK LAST)
+endif()
 set_extra_dirs_include(SDL3 sdl3 "${SDL3_LIBRARY}")
 # Looking for 'SDL.h' directly might accidentally find a SDL 1 instead of SDL 3
 # installation. Look for a header file only present in SDL 3 instead.
-find_path(SDL3_INCLUDEDIR SDL_assert.h
+find_path(SDL3_INCLUDEDIR SDL3/SDL_assert.h
   PATH_SUFFIXES SDL3
   HINTS ${HINTS_SDL3_INCLUDEDIR} ${PC_SDL3_INCLUDEDIR} ${PC_SDL3_INCLUDE_DIRS}
   PATHS ${PATHS_SDL3_INCLUDEDIR}
@@ -41,9 +45,18 @@ if(SDL3_FOUND)
   set(SDL3_INCLUDE_DIRS ${SDL3_INCLUDEDIR})
 
   is_bundled(SDL3_BUNDLED "${SDL3_LIBRARY}")
-  if(SDL3_BUNDLED AND TARGET_OS STREQUAL "windows")
-    set(SDL3_COPY_FILES "${EXTRA_SDL3_LIBDIR}/SDL3.dll")
-  else()
-    set(SDL3_COPY_FILES)
+  set(SDL3_COPY_FILES)
+  set(SDL3_COPY_DIRS)
+  if(SDL3_BUNDLED)
+    if(TARGET_OS STREQUAL "windows")
+      set(SDL3_COPY_FILES "${EXTRA_SDL3_LIBDIR}/SDL3.dll")
+      if(TARGET_BITS EQUAL 32)
+        list(APPEND OPUSFILE_COPY_FILES
+          "${EXTRA_SDL3_LIBDIR}/libgcc_s_dw2-1.dll"
+        )
+      endif()
+    elseif(TARGET_OS STREQUAL "mac")
+      set(SDL3_COPY_DIRS "${EXTRA_SDL3_LIBDIR}/SDL3.framework")
+    endif()
   endif()
 endif()

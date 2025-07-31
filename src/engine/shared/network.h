@@ -4,8 +4,8 @@
 #define ENGINE_SHARED_NETWORK_H
 
 #include "huffman.h"
-#include "ringbuffer.h"
 #include "protocol.h"
+#include "ringbuffer.h"
 
 /*
 

@@ -63,7 +63,7 @@ public:
 	void SetColor4(const vec4 &TopLeft, const vec4 &TopRight, const vec4 &BottomLeft, const vec4 &BottomRight) override {};
 
 	void QuadsSetSubset(float TlU, float TlV, float BrU, float BrV, int TextureIndex = -1) override {};
-	void QuadsSetSubsetFree (
+	void QuadsSetSubsetFree(
 		float x0, float y0, float x1, float y1,
 		float x2, float y2, float x3, float y3, int TextureIndex = -1) override {};
 
@@ -98,7 +98,7 @@ public:
 	bool IsIdle() const override { return false; }
 	void WaitForIdle() override {};
 
-	void *GetWindowHandle() { return nullptr; }
+	void *GetWindowHandle() override { return nullptr; }
 };
 
 #endif // ENGINE_CLIENT_GRAPHICS_THREADED_NULL_H

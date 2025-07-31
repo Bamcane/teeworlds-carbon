@@ -74,7 +74,7 @@ class CChat : public CComponent
 		char m_aText[1];
 	};
 	CHistoryEntry *m_pHistoryEntry;
-	TStaticRingBuffer<CHistoryEntry, 64*1024, CRingBufferBase::FLAG_RECYCLE> m_History;
+	TStaticRingBuffer<CHistoryEntry, 64 * 1024, CRingBufferBase::FLAG_RECYCLE> m_History;
 	int m_PendingChatCounter;
 	int64 m_LastChatSend;
 	int64 m_aLastSoundPlayed[CHAT_NUM];
@@ -138,6 +138,6 @@ public:
 	void OnRender() override;
 	void OnRelease() override;
 	void OnMessage(int MsgType, void *pRawMsg) override;
-	bool OnInput(IInput::CEvent Event);
+	bool OnInput(IInput::CEvent Event) override;
 };
 #endif

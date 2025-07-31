@@ -33,16 +33,19 @@
 #endif
 
 #elif defined(CONF_FAMILY_WINDOWS)
-#include <direct.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <process.h>
-#include <share.h>
-#include <shellapi.h>
-#include <wincrypt.h>
 #include <windows.h>
 #include <winsock2.h>
 #include <ws2tcpip.h>
+
+#include <fcntl.h>
+
+#include <direct.h>
+#include <errno.h>
+#include <process.h>
+#include <wincrypt.h>
+
+#include <share.h>
+#include <shellapi.h>
 #else
 #error NOT IMPLEMENTED
 #endif
