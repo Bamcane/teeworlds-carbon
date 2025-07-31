@@ -28,17 +28,33 @@ jobs:
       with:
         submodules: true
 
+    - name: Checkout SDL3
+      if: contains(matrix.os, 'ubuntu') || contains(matrix.os, 'macOS')
+      uses: actions/checkout@v4
+      with:
+        repository: libsdl-org/SDL
+        ref: 68bfcb6c5419f51104e74e72ea0f8d405a4615b0
+        path: ./SDL
+
     - name: Prepare Linux
       if: contains(matrix.os, 'ubuntu')
       run: |
-        sudo apt-get update -y
-        sudo apt-get install pkg-config libcurl4-openssl-dev cmake ninja-build -y
+        sudo apt-get update -yy
+        sudo apt-get install build-essential git cmake libasound2-dev libpulse-dev libaudio-dev libjack-dev libsndio-dev libx11-dev libxext-dev libxrandr-dev libxcursor-dev libxfixes-dev libxi-dev libxss-dev libwayland-dev libxkbcommon-dev libdrm-dev libgbm-dev libgl1-mesa-dev libgles2-mesa-dev libegl1-mesa-dev libibus-1.0-dev libdbus-1-dev libudev-dev libinput-dev libts-dev libjpeg-dev libwebp-dev -y
+        sudo apt-get install pkg-config libcurl4-openssl-dev libfreetype6-dev cmake ninja-build -y
+        cd SDL
+        cmake . -DCMAKE_BUILD_TYPE=Release
+        sudo make install
 
     - name: Prepare MacOS
       if: contains(matrix.os, 'macOS')
       run: |
         brew update || true
         sudo rm -rf /Library/Developer/CommandLineTools
+        cd SDL
+        cmake . -DCMAKE_OSX_DEPLOYMENT_TARGET=10.13
+        cmake --build .
+        sudo cmake --install .
 
     - name: Build in debug mode
       env: ${{ matrix.env }}
