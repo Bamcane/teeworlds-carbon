@@ -13,7 +13,7 @@
 #include "laser.h"
 #include "projectile.h"
 
-MACRO_ALLOC_POOL_ID_IMPL(CCharacter, )
+MACRO_ALLOC_POOL_ID_IMPL(CCharacter, SERVER_MAX_CLIENTS)
 
 // Character, "physical" player's part
 CCharacter::CCharacter(CGameWorld *pWorld) :

@@ -507,11 +507,11 @@ void CGameContext::OnTick()
 			if(m_VoteUpdate)
 			{
 				// count votes
-				char aaBuf[][NETADDR_MAXSTRSIZE] = {{0}};
+				char aaBuf[SERVER_MAX_CLIENTS][NETADDR_MAXSTRSIZE] = {{0}};
 				for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 					if(m_apPlayers[i])
 						Server()->GetClientAddr(i, aaBuf[i], NETADDR_MAXSTRSIZE);
-				bool aVoteChecked[] = {0};
+				bool aVoteChecked[SERVER_MAX_CLIENTS] = {0};
 				for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 				{
 					if(!m_apPlayers[i] || m_apPlayers[i]->GetTeam() == TEAM_SPECTATORS || aVoteChecked[i]) // don't count in votes by spectators
@@ -1547,7 +1547,7 @@ void CGameContext::OnInit()
 	if(Config()->m_DbgDummies)
 	{
 		for(int i = 0; i < Config()->m_DbgDummies; i++)
-			OnClientConnected( - i - 1, true, false);
+			OnClientConnected(SERVER_MAX_CLIENTS - i - 1, true, false);
 	}
 #endif
 }
