@@ -2,6 +2,7 @@
 /* If you are missing that file, acquire a complete release at teeworlds.com.                */
 #include <game/server/gamecontext.h>
 #include <game/server/player.h>
+#include <game/server/weapons.h>
 #include <generated/server_data.h>
 
 #include "character.h"
@@ -66,30 +67,39 @@ void CPickup::Tick()
 			break;
 
 		case PICKUP_GRENADE:
-			if(pChr->GiveWeapon(WEAPON_GRENADE, g_pData->m_Weapons.m_aId[WEAPON_GRENADE].m_Maxammo))
 			{
-				Picked = true;
-				GameServer()->CreateSound(m_Pos, SOUND_PICKUP_GRENADE);
-				if(pChr->GetPlayer())
-					GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_GRENADE);
+				Uuid WeaponID = CalculateUuid("Grenade");
+				if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
+				{
+					Picked = true;
+					GameServer()->CreateSound(m_Pos, SOUND_PICKUP_GRENADE);
+					if(pChr->GetPlayer())
+						GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_GRENADE);
+				}
 			}
 			break;
 		case PICKUP_SHOTGUN:
-			if(pChr->GiveWeapon(WEAPON_SHOTGUN, g_pData->m_Weapons.m_aId[WEAPON_SHOTGUN].m_Maxammo))
 			{
-				Picked = true;
-				GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
-				if(pChr->GetPlayer())
-					GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_SHOTGUN);
+				Uuid WeaponID = CalculateUuid("Shotgun");
+				if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
+				{
+					Picked = true;
+					GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
+					if(pChr->GetPlayer())
+						GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_SHOTGUN);
+				}
 			}
 			break;
 		case PICKUP_LASER:
-			if(pChr->GiveWeapon(WEAPON_LASER, g_pData->m_Weapons.m_aId[WEAPON_LASER].m_Maxammo))
 			{
-				Picked = true;
-				GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
-				if(pChr->GetPlayer())
-					GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_LASER);
+				Uuid WeaponID = CalculateUuid("Laser");
+				if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
+				{
+					Picked = true;
+					GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
+					if(pChr->GetPlayer())
+						GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_LASER);
+				}
 			}
 			break;
 

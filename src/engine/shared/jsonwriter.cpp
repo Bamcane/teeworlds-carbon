@@ -230,10 +230,10 @@ void CJsonFileWriter::WriteInternal(const char *pStr, int Length)
 void CJsonStringWriter::WriteInternal(const char *pStr, int Length)
 {
 	dbg_assert(!m_RetrievedOutput, "Writer output has already been retrieved");
-	m_OutputString += Length < 0 ? pStr : std::string(pStr, Length);
+	m_OutputString += Length <= 0 ? string(pStr) : string(pStr, Length);
 }
 
-std::string &&CJsonStringWriter::GetOutputString()
+string &&CJsonStringWriter::GetOutputString()
 {
 	// Ensure newline at the end. Modify member variable so we can move it when returning.
 	WriteInternal(LINE_ENDING);

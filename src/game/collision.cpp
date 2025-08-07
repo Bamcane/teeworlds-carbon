@@ -46,7 +46,8 @@ void CCollision::Init(class CLayers *pLayers)
 			m_pTiles[i].m_Index = TILE_BENCH;
 			break;
 		default:
-			m_pTiles[i].m_Index = 0;
+			if(m_pTiles[i].m_Index < ENTITY_OFFSET)
+				m_pTiles[i].m_Index = 0;
 		}
 	}
 }

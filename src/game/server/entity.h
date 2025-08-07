@@ -149,19 +149,19 @@ public:
 template<class IBaseEntity>
 class COwnerEntity : public IBaseEntity
 {
-	int m_Owner;
+	CEntity *m_pOwner;
 
 protected:
-	void SetOwner(int Owner) { m_Owner = Owner; }
+	void SetOwner(CEntity *pOwner) { m_pOwner = pOwner; }
 
 public:
 	COwnerEntity(CGameWorld *pGameWorld, int Objtype, vec2 Pos, int ProximityRadius = 0);
 
-	int GetOwner() const { return m_Owner; }
+	CEntity *GetOwner() const { return m_pOwner; }
 };
 
 template<class IBaseEntity>
-class CDamageEntity : public IBaseEntity
+class CHealthEntity : public IBaseEntity
 {
 protected:
 	bool m_Alive;
@@ -173,9 +173,9 @@ protected:
 	int m_MaxArmor;
 
 public:
-	CDamageEntity(CGameWorld *pGameWorld, int Objtype, vec2 Pos, int ProximityRadius = 0);
+	CHealthEntity(CGameWorld *pGameWorld, int Objtype, vec2 Pos, int ProximityRadius = 0);
 
-	virtual ~CDamageEntity();
+	virtual ~CHealthEntity();
 
 	virtual void Die(CEntity *pKiller, int Weapon);
 	virtual bool IsFriendlyDamage(CEntity *pFrom);
@@ -213,11 +213,11 @@ public:
 	void SetMaxArmor(int Amount) { m_MaxArmor = Amount; }
 };
 
-extern template class CDamageEntity<CEntity>;
+extern template class CHealthEntity<CEntity>;
 extern template class COwnerEntity<CEntity>;
-extern template class CDamageEntity<COwnerEntity<CEntity>>;
+extern template class CHealthEntity<COwnerEntity<CEntity>>;
 
 using CBaseOwnerEntity = COwnerEntity<CEntity>;
-using CBaseDamageEntity = CDamageEntity<CEntity>;
+using CBaseHealthEntity = CHealthEntity<CEntity>;
 
 #endif

@@ -4,7 +4,7 @@
 #define GAME_CLIENT_COMPONENTS_MENUS_H
 
 #include <base/tl/sorted_array.h>
-#include <base/tl/string.h>
+#include <base/tl/string_apocalypse.h>
 #include <base/vmath.h>
 
 #include <engine/config.h>

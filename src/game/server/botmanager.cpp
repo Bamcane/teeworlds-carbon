@@ -38,7 +38,7 @@ void CBotManager::ClearPlayerMap(int ClientID)
 {
 	if(ClientID == -1)
 	{
-		for(int i = 0; i < MAX_CLIENTS; i++)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		{
 			ClearPlayerMap(i);
 		}
@@ -132,7 +132,7 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 			if(!SendDrop || aLastMap[i] != UUID_ZEROED)
 			{
 				CNetMsg_Sv_ClientDrop DropInfo;
-				DropInfo.m_ClientID = i + MAX_CLIENTS;
+				DropInfo.m_ClientID = i + SERVER_MAX_CLIENTS;
 				DropInfo.m_pReason = "";
 				DropInfo.m_Silent = true;
 
@@ -147,7 +147,7 @@ void CBotManager::UpdatePlayerMap(int ClientID)
 			CBotEntity *pBot = m_vpBots[pMap[i]];
 
 			CNetMsg_Sv_ClientInfo NewInfo;
-			NewInfo.m_ClientID = i + MAX_CLIENTS;
+			NewInfo.m_ClientID = i + SERVER_MAX_CLIENTS;
 			NewInfo.m_Local = 0;
 			// do not show bot
 			NewInfo.m_Team = TEAM_BLUE;
@@ -199,7 +199,7 @@ void CBotManager::Tick()
 
 void CBotManager::CreateDamage(vec2 Pos, Uuid BotID, vec2 Source, int HealthAmount, int ArmorAmount, bool Self)
 {
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		int ClientID = FindClientID(i, BotID);
 		if(ClientID == -1)
@@ -211,7 +211,7 @@ void CBotManager::CreateDamage(vec2 Pos, Uuid BotID, vec2 Source, int HealthAmou
 
 void CBotManager::CreateDeath(vec2 Pos, Uuid BotID)
 {
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		int ClientID = FindClientID(i, BotID);
 		if(ClientID == -1)
@@ -225,7 +225,7 @@ int CBotManager::FindClientID(int ClientID, Uuid BotID)
 {
 	dbg_assert(ClientID >= 0, "Server demo is hard-coded disabled now.");
 
-	int FindID = -1 - MAX_CLIENTS;
+	int FindID = -1 - SERVER_MAX_CLIENTS;
 	for(int i = 0; i < MAX_BOTS; i++)
 	{
 		if(m_aaBotIDMaps[ClientID][i] == BotID)
@@ -234,7 +234,7 @@ int CBotManager::FindClientID(int ClientID, Uuid BotID)
 			break;
 		}
 	}
-	return FindID + MAX_CLIENTS;
+	return FindID + SERVER_MAX_CLIENTS;
 }
 
 void CBotManager::OnBotDeath(Uuid BotID)
@@ -261,7 +261,7 @@ void CBotManager::PostSnap()
 		}
 		m_vMarkedAsDestroy.clear();
 	}
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(Server()->ClientIngame(i) && GameServer()->m_apPlayers[i])
 			UpdatePlayerMap(i);

@@ -127,14 +127,14 @@ MACRO_CONFIG_INT(SvStrictSpectateMode, sv_strict_spectate_mode, 0, 0, 1, CFGFLAG
 MACRO_CONFIG_INT(SvVoteSpectate, sv_vote_spectate, 1, 0, 1, CFGFLAG_SAVE | CFGFLAG_SERVER, "Allow voting to move players to spectators")
 MACRO_CONFIG_INT(SvVoteSpectateRejoindelay, sv_vote_spectate_rejoindelay, 3, 0, 1000, CFGFLAG_SAVE | CFGFLAG_SERVER, "How many minutes to wait before a player can rejoin after being moved to spectators by vote")
 MACRO_CONFIG_INT(SvVoteKick, sv_vote_kick, 1, 0, 1, CFGFLAG_SAVE | CFGFLAG_SERVER, "Allow voting to kick players")
-MACRO_CONFIG_INT(SvVoteKickMin, sv_vote_kick_min, 0, 0, MAX_CLIENTS, CFGFLAG_SAVE | CFGFLAG_SERVER, "Minimum number of players required to start a kick vote")
+MACRO_CONFIG_INT(SvVoteKickMin, sv_vote_kick_min, 0, 0, SERVER_MAX_CLIENTS, CFGFLAG_SAVE | CFGFLAG_SERVER, "Minimum number of players required to start a kick vote")
 MACRO_CONFIG_INT(SvVoteKickBantime, sv_vote_kick_bantime, 5, 0, 1440, CFGFLAG_SAVE | CFGFLAG_SERVER, "The time to ban a player if kicked by vote. 0 makes it just use kick")
 
 MACRO_CONFIG_INT(SvHealthRegenTime, sv_health_regen_time, 500, 200, 10000, CFGFLAG_SAVE | CFGFLAG_SERVER, "The time of health regen (on the bench, in ms)")
 
 // debug
 #ifdef CONF_DEBUG // this one can crash the server if not used correctly
-MACRO_CONFIG_INT(DbgDummies, dbg_dummies, 0, 0, MAX_CLIENTS, CFGFLAG_SERVER, "")
+MACRO_CONFIG_INT(DbgDummies, dbg_dummies, 0, 0, SERVER_MAX_CLIENTS, CFGFLAG_SERVER, "")
 #endif
 
 #endif

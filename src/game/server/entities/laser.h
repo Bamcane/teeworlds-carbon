@@ -8,7 +8,7 @@
 class CLaser : public CBaseOwnerEntity
 {
 public:
-	CLaser(CGameWorld *pGameWorld, vec2 Pos, vec2 Direction, float StartEnergy, int Owner);
+	CLaser(CGameWorld *pGameWorld, vec2 Pos, vec2 Direction, float StartEnergy, CEntity *pOwner);
 
 	virtual void Reset();
 	virtual void Tick();

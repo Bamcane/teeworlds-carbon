@@ -4,13 +4,15 @@
 #include <game/server/gamecontext.h>
 #include <game/server/gamecontroller.h>
 #include <game/server/player.h>
+#include <game/server/weapons.h>
 
 #include <generated/server_data.h>
 
 #include "botentity.h"
+#include "character.h"
 
 CBotEntity::CBotEntity(CGameWorld *pWorld, vec2 Pos, Uuid BotID, STeeInfo TeeInfos) :
-	CDamageEntity(pWorld, CGameWorld::ENTTYPE_BOTENTITY, Pos, ms_PhysSize)
+	CHealthEntity(pWorld, CGameWorld::ENTTYPE_BOTENTITY, Pos, ms_PhysSize)
 {
 	m_BotID = BotID;
 	m_Emote = random_int() % NUM_EMOTES;
@@ -219,7 +221,7 @@ void CBotEntity::Die(CEntity *pKiller, int Weapon)
 	// a nice sound
 	GameServer()->CreateSound(m_Pos, SOUND_PLAYER_DIE);
 
-	CDamageEntity::Die(pKiller, Weapon);
+	CHealthEntity::Die(pKiller, Weapon);
 	GameServer()->BotManager()->CreateDeath(m_Pos, GetBotID());
 
 	if(GameServer()->BotManager())
@@ -237,26 +239,23 @@ bool CBotEntity::IsFriendlyDamage(CEntity *pFrom)
 bool CBotEntity::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon)
 {
 	m_Core.m_Vel += Force;
-	int Owner = -1;
-	if(pFrom && (pFrom->GetObjFlag() & EEntityFlag::ENTFLAG_OWNER))
-		Owner = ((CBaseOwnerEntity *) pFrom)->GetOwner();
-
 	int OldHealth = m_Health, OldArmor = m_Armor;
-	bool Return = CDamageEntity::TakeDamage(Force, Source, Dmg, pFrom, Weapon);
+	bool Return = CHealthEntity::TakeDamage(Force, Source, Dmg, pFrom, Weapon);
 	// create healthmod indicator
 	GameServer()->BotManager()->CreateDamage(m_Pos, m_BotID, Source, OldHealth - m_Health, OldArmor - m_Armor, pFrom == this);
 
 	// do damage Hit sound
-	if(pFrom && pFrom != this && Owner > -1 && GameServer()->m_apPlayers[Owner])
+	if(pFrom && pFrom->GetObjType() == CGameWorld::ENTTYPE_CHARACTER)
 	{
-		int64 Mask = CmaskOne(Owner);
-		for(int i = 0; i < MAX_CLIENTS; i++)
+		CCharacter *pChr = (CCharacter *) pFrom;
+		int64 Mask = CmaskOne(pChr->GetCID());
+		for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		{
 			if(GameServer()->m_apPlayers[i] && (GameServer()->m_apPlayers[i]->GetTeam() == TEAM_SPECTATORS || GameServer()->m_apPlayers[i]->m_DeadSpecMode) &&
-				GameServer()->m_apPlayers[i]->GetSpectatorID() == Owner)
+				GameServer()->m_apPlayers[i]->GetSpectatorID() == pChr->GetCID())
 				Mask |= CmaskOne(i);
 		}
-		GameServer()->CreateSound(GameServer()->m_apPlayers[Owner]->m_ViewPos, SOUND_HIT, Mask);
+		GameServer()->CreateSound(GameServer()->m_apPlayers[pChr->GetCID()]->m_ViewPos, SOUND_HIT, Mask);
 	}
 
 	if(Dmg > 2)
@@ -282,7 +281,7 @@ void CBotEntity::RandomAction()
 	}
 }
 
-void CBotEntity::TargetAction(CDamageEntity *pTarget)
+void CBotEntity::TargetAction(CHealthEntity *pTarget)
 {
 	vec2 MoveTo = pTarget->GetPos();
 	if(abs(MoveTo.x - m_Pos.x) > 48.f)
@@ -308,7 +307,7 @@ void CBotEntity::Action()
 	m_Input.m_Jump = 0;
 	m_Input.m_Fire = 0;
 
-	CDamageEntity *pTarget = (CDamageEntity *) GameWorld()->ClosestEntity(GetPos(), 320.f, EEntityFlag::ENTFLAG_DAMAGE, this);
+	CHealthEntity *pTarget = (CHealthEntity *) GameWorld()->ClosestEntity(GetPos(), 320.f, EEntityFlag::ENTFLAG_DAMAGE, this);
 	if(pTarget && GameServer()->Collision()->IntersectLine(GetPos(), pTarget->GetPos(), nullptr, nullptr))
 		pTarget = nullptr;
 
@@ -350,43 +349,12 @@ void CBotEntity::DoWeapon()
 
 	vec2 ProjStartPos = m_Pos + Direction * GetProximityRadius() * 0.75f;
 
-	GameServer()->CreateSound(m_Pos, SOUND_HAMMER_FIRE);
+	static Uuid HammerUuid = CalculateUuid("Hammer");
 
-	CDamageEntity *apEnts[MAX_CHECK_ENTITY];
-	int Hits = 0;
-	int Num = GameWorld()->FindEntities(ProjStartPos, GetProximityRadius() * 0.5f, (CEntity **) apEnts,
-		MAX_CHECK_ENTITY, EEntityFlag::ENTFLAG_DAMAGE);
-
-	for(int i = 0; i < Num; ++i)
-	{
-		CDamageEntity *pTarget = apEnts[i];
-
-		if((pTarget == this) || GameServer()->Collision()->IntersectLine(ProjStartPos, pTarget->GetPos(), NULL, NULL))
-			continue;
-
-		// set his velocity to fast upward (for now)
-		if(length(pTarget->GetPos() - ProjStartPos) > 0.0f)
-			GameServer()->CreateHammerHit(pTarget->GetPos() - normalize(pTarget->GetPos() - ProjStartPos) * GetProximityRadius() * 0.5f);
-		else
-			GameServer()->CreateHammerHit(ProjStartPos);
-
-		vec2 Dir;
-		if(length(pTarget->GetPos() - GetPos()) > 0.0f)
-			Dir = normalize(pTarget->GetPos() - GetPos());
-		else
-			Dir = vec2(0.f, -1.f);
-
-		pTarget->TakeDamage(vec2(0.f, -1.f) + normalize(Dir + vec2(0.f, -1.1f)) * 10.0f, Dir * -1, g_pData->m_Weapons.m_Hammer.m_pBase->m_Damage,
-			this, WEAPON_HAMMER);
-		Hits++;
-	}
-
-	// if we Hit anything, we have to wait for the reload
-	if(Hits)
-		m_ReloadTimer = Server()->TickSpeed() / 3;
+	WeaponManager()->GetWeapon(HammerUuid)->OnFire(this, GameWorld(), ProjStartPos, Direction, &m_ReloadTimer);
 
 	m_AttackTick = Server()->Tick();
 
 	if(!m_ReloadTimer)
-		m_ReloadTimer = g_pData->m_Weapons.m_aId[WEAPON_HAMMER].m_Firedelay * Server()->TickSpeed() / 1000;
+		m_ReloadTimer = WeaponManager()->GetWeapon(HammerUuid)->FireDelay() * Server()->TickSpeed() / 1000;
 }

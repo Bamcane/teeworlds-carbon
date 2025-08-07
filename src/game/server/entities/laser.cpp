@@ -6,10 +6,10 @@
 #include "character.h"
 #include "laser.h"
 
-CLaser::CLaser(CGameWorld *pGameWorld, vec2 Pos, vec2 Direction, float StartEnergy, int Owner) :
+CLaser::CLaser(CGameWorld *pGameWorld, vec2 Pos, vec2 Direction, float StartEnergy, CEntity *pOwner) :
 	COwnerEntity(pGameWorld, CGameWorld::ENTTYPE_LASER, Pos)
 {
-	SetOwner(Owner);
+	SetOwner(pOwner);
 	m_Energy = StartEnergy;
 	m_Dir = Direction;
 	m_Bounces = 0;
@@ -21,15 +21,14 @@ CLaser::CLaser(CGameWorld *pGameWorld, vec2 Pos, vec2 Direction, float StartEner
 bool CLaser::Hit(vec2 From, vec2 To)
 {
 	vec2 At;
-	CCharacter *pOwnerChar = GameServer()->GetPlayerChar(GetOwner());
-	CBaseDamageEntity *pHit = (CBaseDamageEntity *) GameWorld()->IntersectEntity(m_Pos, To, 0.f, EEntityFlag::ENTFLAG_DAMAGE, At, pOwnerChar);
+	CBaseHealthEntity *pHit = (CBaseHealthEntity *) GameWorld()->IntersectEntity(m_Pos, To, 0.f, EEntityFlag::ENTFLAG_DAMAGE, At, GetOwner());
 	if(!pHit)
 		return false;
 
 	m_From = From;
 	m_Pos = At;
 	m_Energy = -1;
-	pHit->TakeDamage(vec2(0.f, 0.f), normalize(To - From), g_pData->m_Weapons.m_aId[WEAPON_LASER].m_Damage, this, WEAPON_LASER);
+	pHit->TakeDamage(vec2(0.f, 0.f), normalize(To - From), g_pData->m_Weapons.m_aId[WEAPON_LASER].m_Damage, GetOwner(), WEAPON_LASER);
 	return true;
 }
 

@@ -149,7 +149,7 @@ public:
 		void Reset();
 	};
 
-	CClient m_aClients[MAX_CLIENTS];
+	CClient m_aClients[SERVER_MAX_CLIENTS];
 
 	CSnapshotDelta m_SnapshotDelta;
 	CSnapshotBuilder m_SnapshotBuilder;

@@ -45,7 +45,7 @@ void CGameMenu::OnClientEntered(int ClientID)
 
 void CGameMenu::OnMenuVote(int ClientID, SCallVoteStatus &VoteStatus, bool Sound)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS)
 		return;
 
 	if(VoteStatus.m_Force && !Server()->IsAuthed(ClientID))
@@ -122,7 +122,7 @@ void CGameMenu::SendMenuChat(int ClientID, const char *pChat)
 {
 	if(ClientID == -1)
 	{
-		for(int i = 0; i < MAX_CLIENTS; i++)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		{
 			if(Server()->ClientIngame(i))
 				SendMenuChat(ClientID, pChat);
@@ -147,7 +147,7 @@ void CGameMenu::ClearOptions(int ClientID)
 
 void CGameMenu::SetPlayerPage(int ClientID, Uuid Page)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS)
 		return;
 	m_aPlayerData[ClientID].m_CurrentPage = Page;
 	SCallVoteStatus VoteStatus;
@@ -271,7 +271,7 @@ bool CGameMenu::MenuLanguage(int ClientID, SCallVoteStatus &VoteStatus, class CG
 
 void CGameMenu::AddPageTitle()
 {
-	if(m_CurrentClientID < 0 || m_CurrentClientID >= MAX_CLIENTS)
+	if(m_CurrentClientID < 0 || m_CurrentClientID >= SERVER_MAX_CLIENTS)
 		return;
 	if(!m_vpMenuPages.count(m_aPlayerData[m_CurrentClientID].m_CurrentPage))
 		return;
@@ -293,7 +293,7 @@ void CGameMenu::AddHorizontalRule()
 
 void CGameMenu::AddOption(const char *pDesc, const char *pCommand, const char *pPrefix)
 {
-	if(m_CurrentClientID < 0 || m_CurrentClientID >= MAX_CLIENTS)
+	if(m_CurrentClientID < 0 || m_CurrentClientID >= SERVER_MAX_CLIENTS)
 		return;
 	if(!pDesc || !pCommand)
 		return;
@@ -321,7 +321,7 @@ void CGameMenu::AddOption(const char *pDesc, const char *pCommand, const char *p
 
 void CGameMenu::AddTranslatedOption(const char *pDesc, const char *pCommand, const char *pPrefix)
 {
-	if(m_CurrentClientID < 0 || m_CurrentClientID >= MAX_CLIENTS)
+	if(m_CurrentClientID < 0 || m_CurrentClientID >= SERVER_MAX_CLIENTS)
 		return;
 	if(!pDesc || !pCommand)
 		return;

@@ -16,7 +16,7 @@ class CBotManager
 {
 	CGameContext *m_pGameServer;
 	class CWorldCore *m_pWorldCore;
-	Uuid m_aaBotIDMaps[MAX_CLIENTS][MAX_BOTS];
+	Uuid m_aaBotIDMaps[SERVER_MAX_CLIENTS][MAX_BOTS];
 
 	std::vector<Uuid> m_vMarkedAsDestroy;
 	std::unordered_map<Uuid, class CBotEntity *> m_vpBots;

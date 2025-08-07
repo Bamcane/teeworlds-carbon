@@ -780,13 +780,13 @@ void CMenus::RenderThemeSelection(CUIRect MainView, bool Header)
 		else if(str_comp(Theme.m_Name, "auto") == 0)
 			str_copy(aName, "(automatic)", sizeof(aName));
 		else if(Theme.m_HasDay && Theme.m_HasNight)
-			str_format(aName, sizeof(aName), "%s", Theme.m_Name.cstr());
+			str_format(aName, sizeof(aName), "%s", Theme.m_Name.c_str());
 		else if(Theme.m_HasDay && !Theme.m_HasNight)
-			str_format(aName, sizeof(aName), "%s (day)", Theme.m_Name.cstr());
+			str_format(aName, sizeof(aName), "%s (day)", Theme.m_Name.c_str());
 		else if(!Theme.m_HasDay && Theme.m_HasNight)
-			str_format(aName, sizeof(aName), "%s (night)", Theme.m_Name.cstr());
+			str_format(aName, sizeof(aName), "%s (night)", Theme.m_Name.c_str());
 		else // generic
-			str_format(aName, sizeof(aName), "%s", Theme.m_Name.cstr());
+			str_format(aName, sizeof(aName), "%s", Theme.m_Name.c_str());
 
 		UI()->DoLabelSelected(&Item.m_Rect, aName, Item.m_Selected, Item.m_Rect.h * CUI::ms_FontmodHeight * 0.8f, TEXTALIGN_ML);
 	}

@@ -6,17 +6,16 @@
 #include "character.h"
 #include "projectile.h"
 
-CProjectile::CProjectile(CGameWorld *pGameWorld, int Type, int Owner, vec2 Pos, vec2 Dir, int Span,
+CProjectile::CProjectile(CGameWorld *pGameWorld, int Type, CEntity *pOwner, vec2 Pos, vec2 Dir, int Span,
 	int Damage, bool Explosive, float Force, int SoundImpact, int Weapon) :
 	COwnerEntity(pGameWorld, CGameWorld::ENTTYPE_PROJECTILE, vec2(round_to_int(Pos.x), round_to_int(Pos.y)))
 {
-	SetOwner(Owner);
+	SetOwner(pOwner);
 
 	m_Type = Type;
 	m_Direction.x = round_to_int(Dir.x * 100.0f) / 100.0f;
 	m_Direction.y = round_to_int(Dir.y * 100.0f) / 100.0f;
 	m_LifeSpan = Span;
-	m_OwnerTeam = GameServer()->m_apPlayers[Owner]->GetTeam();
 	m_Force = Force;
 	m_Damage = Damage;
 	m_SoundImpact = SoundImpact;
@@ -34,10 +33,7 @@ void CProjectile::Reset()
 
 void CProjectile::LoseOwner()
 {
-	if(m_OwnerTeam == TEAM_BLUE)
-		SetOwner(PLAYER_TEAM_BLUE);
-	else
-		SetOwner(PLAYER_TEAM_RED);
+	SetOwner(nullptr);
 }
 
 vec2 CProjectile::GetPos(float Time)
@@ -73,8 +69,7 @@ void CProjectile::Tick()
 	vec2 PrevPos = GetPos(Pt);
 	vec2 CurPos = GetPos(Ct);
 	int Collide = GameServer()->Collision()->IntersectLine(PrevPos, CurPos, &CurPos, 0);
-	CCharacter *OwnerChar = GameServer()->GetPlayerChar(GetOwner());
-	CBaseDamageEntity *TargetEnt = (CBaseDamageEntity *) GameWorld()->IntersectEntity(PrevPos, CurPos, 6.0f, EEntityFlag::ENTFLAG_DAMAGE, CurPos, OwnerChar);
+	CBaseHealthEntity *TargetEnt = (CBaseHealthEntity *) GameWorld()->IntersectEntity(PrevPos, CurPos, 6.0f, EEntityFlag::ENTFLAG_DAMAGE, CurPos, GetOwner());
 
 	m_LifeSpan--;
 
@@ -87,7 +82,7 @@ void CProjectile::Tick()
 			GameServer()->CreateExplosion(CurPos, this, m_Weapon, m_Damage);
 
 		else if(TargetEnt)
-			TargetEnt->TakeDamage(m_Direction * maximum(0.001f, m_Force), m_Direction * -1, m_Damage, this, m_Weapon);
+			TargetEnt->TakeDamage(m_Direction * maximum(0.001f, m_Force), m_Direction * -1, m_Damage, GetOwner(), m_Weapon);
 
 		GameWorld()->DestroyEntity(this);
 	}

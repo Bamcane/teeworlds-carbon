@@ -69,6 +69,6 @@ public:
 };
 
 /* normal allocated string */
-typedef string_base<allocator_default<char>> string;
+typedef string_base<allocator_default<char>> stringTws;
 
 #endif // BASE_TL_STRING_H

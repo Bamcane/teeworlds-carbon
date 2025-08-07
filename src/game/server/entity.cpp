@@ -48,12 +48,12 @@ template<class IBaseEntity>
 COwnerEntity<IBaseEntity>::COwnerEntity(CGameWorld *pGameWorld, int Objtype, vec2 Pos, int ProximityRadius) :
 	IBaseEntity(pGameWorld, Objtype, Pos, ProximityRadius)
 {
-	m_Owner = -1;
+	m_pOwner = nullptr;
 	IBaseEntity::m_ObjFlag = EEntityFlag::ENTFLAG_OWNER | IBaseEntity::m_ObjFlag;
 }
 
 template<class IBaseEntity>
-CDamageEntity<IBaseEntity>::CDamageEntity(CGameWorld *pGameWorld, int ObjType, vec2 Pos, int ProximityRadius) :
+CHealthEntity<IBaseEntity>::CHealthEntity(CGameWorld *pGameWorld, int ObjType, vec2 Pos, int ProximityRadius) :
 	IBaseEntity(pGameWorld, ObjType, Pos, ProximityRadius)
 {
 	m_Health = 0;
@@ -64,19 +64,19 @@ CDamageEntity<IBaseEntity>::CDamageEntity(CGameWorld *pGameWorld, int ObjType, v
 }
 
 template<class IBaseEntity>
-CDamageEntity<IBaseEntity>::~CDamageEntity()
+CHealthEntity<IBaseEntity>::~CHealthEntity()
 {
 }
 
 template<class IBaseEntity>
-void CDamageEntity<IBaseEntity>::Die(CEntity *pKiller, int Weapon)
+void CHealthEntity<IBaseEntity>::Die(CEntity *pKiller, int Weapon)
 {
 	m_Alive = false;
 	(IBaseEntity::GameWorld())->DestroyEntity(this);
 }
 
 template<class IBaseEntity>
-bool CDamageEntity<IBaseEntity>::IsFriendlyDamage(CEntity *pFrom)
+bool CHealthEntity<IBaseEntity>::IsFriendlyDamage(CEntity *pFrom)
 {
 	if(!pFrom)
 		return false;
@@ -84,7 +84,7 @@ bool CDamageEntity<IBaseEntity>::IsFriendlyDamage(CEntity *pFrom)
 }
 
 template<class IBaseEntity>
-bool CDamageEntity<IBaseEntity>::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon)
+bool CHealthEntity<IBaseEntity>::TakeDamage(vec2 Force, vec2 Source, int Dmg, CEntity *pFrom, int Weapon)
 {
 	if(IsFriendlyDamage(pFrom))
 		return false;
@@ -126,6 +126,6 @@ bool CDamageEntity<IBaseEntity>::TakeDamage(vec2 Force, vec2 Source, int Dmg, CE
 	return true;
 }
 
-template class CDamageEntity<CEntity>;
+template class CHealthEntity<CEntity>;
 template class COwnerEntity<CEntity>;
-template class CDamageEntity<COwnerEntity<CEntity>>;
+template class CHealthEntity<COwnerEntity<CEntity>>;

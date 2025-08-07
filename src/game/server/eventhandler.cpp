@@ -38,22 +38,18 @@ void CEventHandler::Create(void *pData, int Type, int Size, int ClientID)
 
 void CEventHandler::Create(void *pData, int Type, int Size, int64 Mask)
 {
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(CmaskIsSet(Mask, i))
 		{
 			Create(pData, Type, Size, i);
 		}
 	}
-	if(Mask == -1LL)
-	{
-		Create(pData, Type, Size, MAX_CLIENTS);
-	}
 }
 
 void CEventHandler::Clear()
 {
-	for(int i = 0; i < MAX_CLIENTS + 1; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		m_aNumEvents[i] = 0;
 		m_aCurrentOffset[i] = 0;
@@ -63,7 +59,7 @@ void CEventHandler::Clear()
 void CEventHandler::Snap(int SnappingClient)
 {
 	if(SnappingClient == -1)
-		SnappingClient = MAX_CLIENTS;
+		return;
 
 	for(int i = 0; i < m_aNumEvents[SnappingClient]; i++)
 	{

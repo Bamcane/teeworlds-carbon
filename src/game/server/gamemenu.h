@@ -94,7 +94,7 @@ private:
 		CPlayerData();
 		~CPlayerData();
 	};
-	CPlayerData m_aPlayerData[MAX_CLIENTS];
+	CPlayerData m_aPlayerData[SERVER_MAX_CLIENTS];
 };
 
 #endif

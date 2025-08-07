@@ -44,7 +44,7 @@ public:
 	int m_PlayerFlags;
 
 	// used for snapping to just update latency if the scoreboard is active
-	int m_aActLatency[MAX_CLIENTS];
+	int m_aActLatency[SERVER_MAX_CLIENTS];
 
 	// used for spectator mode
 	int GetSpectatorID() const { return m_SpectatorID; }

@@ -14,7 +14,7 @@ enum
 class CProjectile : public CBaseOwnerEntity
 {
 public:
-	CProjectile(CGameWorld *pGameWorld, int Type, int Owner, vec2 Pos, vec2 Dir, int Span,
+	CProjectile(CGameWorld *pGameWorld, int Type, CEntity *pFrom, vec2 Pos, vec2 Dir, int Span,
 		int Damage, bool Explosive, float Force, int SoundImpact, int Weapon);
 
 	vec2 GetPos(float Time);
@@ -30,7 +30,6 @@ public:
 private:
 	vec2 m_Direction;
 	int m_LifeSpan;
-	int m_OwnerTeam;
 	int m_Type;
 	int m_Damage;
 	int m_SoundImpact;

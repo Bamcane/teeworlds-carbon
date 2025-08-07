@@ -3,12 +3,23 @@
 #ifndef GAME_SERVER_ENTITIES_CHARACTER_H
 #define GAME_SERVER_ENTITIES_CHARACTER_H
 
+#include <base/uuid.h>
 #include <generated/protocol.h>
 
 #include <game/gamecore.h>
 #include <game/server/entity.h>
 
-class CCharacter : public CDamageEntity<CBaseOwnerEntity>
+struct SNinja
+{
+	CEntity *m_apHitObjects[64];
+	int m_NumObjectsHit;
+	vec2 m_ActivationDir;
+	int m_ActivationTick;
+	int m_CurrentMoveTime;
+	int m_OldVelAmount;
+};
+
+class CCharacter : public CHealthEntity<CEntity>
 {
 	MACRO_ALLOC_POOL_ID()
 
@@ -46,7 +57,8 @@ public:
 
 	bool Spawn(class CPlayer *pPlayer, vec2 Pos);
 
-	bool GiveWeapon(int Weapon, int Ammo);
+	bool GiveWeapon(Uuid WeaponID, int Ammo);
+	void SetWeapon(int Place, Uuid WeaponID, int Ammo);
 	void GiveNinja();
 
 	void SetEmote(int Emote, int Tick);
@@ -57,13 +69,11 @@ private:
 	// player controlling this character
 	class CPlayer *m_pPlayer;
 	// weapon info
-	CEntity *m_apHitObjects[MAX_CLIENTS];
-	int m_NumObjectsHit;
-
 	struct WeaponStat
 	{
 		int m_AmmoRegenStart;
 		int m_Ammo;
+		Uuid m_Weapon;
 		bool m_Got;
 
 	} m_aWeapons[NUM_WEAPONS];
@@ -93,13 +103,7 @@ private:
 	int m_TriggeredEvents;
 
 	// ninja
-	struct
-	{
-		vec2 m_ActivationDir;
-		int m_ActivationTick;
-		int m_CurrentMoveTime;
-		int m_OldVelAmount;
-	} m_Ninja;
+	SNinja m_Ninja;
 
 	// the player core for the physics
 	CCharacterCore m_Core;
@@ -117,6 +121,12 @@ public:
 	inline bool IsSitting() { return m_IsSitting; }
 	void SetSitting(bool Flag) { m_IsSitting = Flag; }
 	void SetSitPos(vec2 Pos) { m_SitPos = Pos; }
+	int GetCID() const;
+
+	SNinja *Ninja() { return &m_Ninja; }
+	
+	vec2 GetVel() const;
+	void SetVel(vec2 Vel);
 };
 
 #endif

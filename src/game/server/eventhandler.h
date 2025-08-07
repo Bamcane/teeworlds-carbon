@@ -11,15 +11,15 @@ class CEventHandler
 	static const int MAX_DATASIZE = 32 * 64;
 
 	// extra 1 is server demo snap.
-	int m_aaTypes[MAX_CLIENTS + 1][MAX_EVENTS];
-	int m_aaOffsets[MAX_CLIENTS + 1][MAX_EVENTS];
-	int m_aaSizes[MAX_CLIENTS + 1][MAX_EVENTS];
-	char m_aaData[MAX_CLIENTS + 1][MAX_DATASIZE];
+	int m_aaTypes[SERVER_MAX_CLIENTS][MAX_EVENTS];
+	int m_aaOffsets[SERVER_MAX_CLIENTS][MAX_EVENTS];
+	int m_aaSizes[SERVER_MAX_CLIENTS][MAX_EVENTS];
+	char m_aaData[SERVER_MAX_CLIENTS][MAX_DATASIZE];
 
 	class CGameContext *m_pGameServer;
 
-	int m_aCurrentOffset[MAX_CLIENTS + 1];
-	int m_aNumEvents[MAX_CLIENTS + 1];
+	int m_aCurrentOffset[SERVER_MAX_CLIENTS];
+	int m_aNumEvents[SERVER_MAX_CLIENTS];
 
 	void Create(void *pData, int Type, int Size, int ClientID);
 

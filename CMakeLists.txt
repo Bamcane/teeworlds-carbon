@@ -585,6 +585,7 @@ set_src(BASE GLOB_RECURSE src/base
   tl/range.h
   tl/sorted_array.h
   tl/string.h
+  tl/string_apocalypse.h
   tl/threading.h
   uuid.cpp
   uuid.h
@@ -947,6 +948,14 @@ set_src(GAME_SERVER GLOB_RECURSE src/game/server
   player.h
   teeinfo.cpp
   teeinfo.h
+  weapons.cpp
+  weapons.h
+  weapons/grenade.cpp
+  weapons/gun.cpp
+  weapons/hammer.cpp
+  weapons/laser.cpp
+  weapons/ninja.cpp
+  weapons/shotgun.cpp
 )
 set(GAME_GENERATED_SERVER
   src/generated/server_data.cpp

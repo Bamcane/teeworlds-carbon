@@ -134,7 +134,7 @@ template<class T>
 int CServerBan::BanExt(T *pBanPool, const typename T::CDataType *pData, int Seconds, const char *pReason)
 {
 	// validate address
-	if(Server()->m_RconClientID >= 0 && Server()->m_RconClientID < MAX_CLIENTS &&
+	if(Server()->m_RconClientID >= 0 && Server()->m_RconClientID < SERVER_MAX_CLIENTS &&
 		Server()->m_aClients[Server()->m_RconClientID].m_State != CServer::CClient::STATE_EMPTY)
 	{
 		if(NetMatch(pData, Server()->m_NetServer.ClientAddr(Server()->m_RconClientID)))
@@ -143,7 +143,7 @@ int CServerBan::BanExt(T *pBanPool, const typename T::CDataType *pData, int Seco
 			return -1;
 		}
 
-		for(int i = 0; i < MAX_CLIENTS; ++i)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 		{
 			if(i == Server()->m_RconClientID || Server()->m_aClients[i].m_State == CServer::CClient::STATE_EMPTY)
 				continue;
@@ -157,7 +157,7 @@ int CServerBan::BanExt(T *pBanPool, const typename T::CDataType *pData, int Seco
 	}
 	else if(Server()->m_RconClientID == IServer::RCON_CID_VOTE)
 	{
-		for(int i = 0; i < MAX_CLIENTS; ++i)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 		{
 			if(Server()->m_aClients[i].m_State == CServer::CClient::STATE_EMPTY)
 				continue;
@@ -176,7 +176,7 @@ int CServerBan::BanExt(T *pBanPool, const typename T::CDataType *pData, int Seco
 
 	// drop banned clients
 	typename T::CDataType Data = *pData;
-	for(int i = 0; i < MAX_CLIENTS; ++i)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 	{
 		if(Server()->m_aClients[i].m_State == CServer::CClient::STATE_EMPTY)
 			continue;
@@ -218,7 +218,7 @@ void CServerBan::ConBanExt(IConsole::IResult *pResult, void *pUser)
 	if(!str_is_number(pStr))
 	{
 		int ClientID = str_toint(pStr);
-		if(ClientID < 0 || ClientID >= MAX_CLIENTS || pThis->Server()->m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+		if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || pThis->Server()->m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
 			pThis->Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "net_ban", "ban error (invalid client id)");
 		else
 			pThis->BanAddr(pThis->Server()->m_NetServer.ClientAddr(ClientID), Minutes * 60, pReason);
@@ -275,14 +275,14 @@ CServer::CServer() :
 
 void CServer::SetClientLanguage(int ClientID, const char *pLanguage)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY || !pLanguage)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY || !pLanguage)
 		return;
 	str_copy(m_aClients[ClientID].m_aLanguage, pLanguage, sizeof(m_aClients[ClientID].m_aLanguage, pLanguage));
 }
 
 void CServer::SetClientName(int ClientID, const char *pName)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY || !pName)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY || !pName)
 		return;
 
 	const char *pDefaultName = "(1)";
@@ -292,7 +292,7 @@ void CServer::SetClientName(int ClientID, const char *pName)
 
 void CServer::SetClientClan(int ClientID, const char *pClan)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY || !pClan)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY || !pClan)
 		return;
 
 	str_utf8_copy_num(m_aClients[ClientID].m_aClan, pClan, sizeof(m_aClients[ClientID].m_aClan), MAX_CLAN_LENGTH);
@@ -300,7 +300,7 @@ void CServer::SetClientClan(int ClientID, const char *pClan)
 
 void CServer::SetClientCountry(int ClientID, int Country)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY)
 		return;
 
 	m_aClients[ClientID].m_Country = Country;
@@ -308,7 +308,7 @@ void CServer::SetClientCountry(int ClientID, int Country)
 
 void CServer::SetClientScore(int ClientID, int Score)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State < CClient::STATE_READY)
 		return;
 	if(m_aClients[ClientID].m_Score != Score)
 		ExpireServerInfo();
@@ -317,7 +317,7 @@ void CServer::SetClientScore(int ClientID, int Score)
 
 void CServer::Kick(int ClientID, const char *pReason)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CClient::STATE_EMPTY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CClient::STATE_EMPTY)
 	{
 		Console()->Print(IConsole::OUTPUT_LEVEL_STANDARD, "server", "invalid client id to kick");
 		return;
@@ -343,7 +343,7 @@ int64 CServer::TickStartTime(int Tick)
 
 int CServer::Init()
 {
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		m_aClients[i].m_State = CClient::STATE_EMPTY;
 		m_aClients[i].m_aName[0] = 0;
@@ -374,7 +374,7 @@ bool CServer::IsBanned(int ClientID)
 
 int CServer::GetClientInfo(int ClientID, CClientInfo *pInfo) const
 {
-	dbg_assert(ClientID >= 0 && ClientID < MAX_CLIENTS, "client_id is not valid");
+	dbg_assert(ClientID >= 0 && ClientID < SERVER_MAX_CLIENTS, "client_id is not valid");
 	dbg_assert(pInfo != 0, "info can not be null");
 
 	if(m_aClients[ClientID].m_State == CClient::STATE_INGAME)
@@ -388,20 +388,20 @@ int CServer::GetClientInfo(int ClientID, CClientInfo *pInfo) const
 
 void CServer::GetClientAddr(int ClientID, char *pAddrStr, int Size) const
 {
-	if(ClientID >= 0 && ClientID < MAX_CLIENTS && m_aClients[ClientID].m_State == CClient::STATE_INGAME)
+	if(ClientID >= 0 && ClientID < SERVER_MAX_CLIENTS && m_aClients[ClientID].m_State == CClient::STATE_INGAME)
 		net_addr_str(m_NetServer.ClientAddr(ClientID), pAddrStr, Size, false);
 }
 
 int CServer::GetClientVersion(int ClientID) const
 {
-	if(ClientID >= 0 && ClientID < MAX_CLIENTS && m_aClients[ClientID].m_State == CClient::STATE_INGAME)
+	if(ClientID >= 0 && ClientID < SERVER_MAX_CLIENTS && m_aClients[ClientID].m_State == CClient::STATE_INGAME)
 		return m_aClients[ClientID].m_Version;
 	return 0;
 }
 
 const char *CServer::ClientLanguage(int ClientID) const
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
 		return Config()->m_SvDefaultLanguage;
 	if(m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME)
 		return m_aClients[ClientID].m_aLanguage;
@@ -411,7 +411,7 @@ const char *CServer::ClientLanguage(int ClientID) const
 
 const char *CServer::ClientName(int ClientID) const
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
 		return "(invalid)";
 	if(m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME)
 		return m_aClients[ClientID].m_aName;
@@ -421,7 +421,7 @@ const char *CServer::ClientName(int ClientID) const
 
 const char *CServer::ClientClan(int ClientID) const
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
 		return "";
 	if(m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME)
 		return m_aClients[ClientID].m_aClan;
@@ -431,7 +431,7 @@ const char *CServer::ClientClan(int ClientID) const
 
 int CServer::ClientCountry(int ClientID) const
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
 		return -1;
 	if(m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME)
 		return m_aClients[ClientID].m_Country;
@@ -441,7 +441,7 @@ int CServer::ClientCountry(int ClientID) const
 
 int CServer::ClientScore(int ClientID) const
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
 		return 0;
 	if(m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME)
 		return m_aClients[ClientID].m_Score;
@@ -451,7 +451,7 @@ int CServer::ClientScore(int ClientID) const
 
 bool CServer::ClientIngame(int ClientID) const
 {
-	return ClientID >= 0 && ClientID < MAX_CLIENTS && m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME;
+	return ClientID >= 0 && ClientID < SERVER_MAX_CLIENTS && m_aClients[ClientID].m_State == CServer::CClient::STATE_INGAME;
 }
 
 void CServer::InitRconPasswordIfUnset()
@@ -491,7 +491,7 @@ int CServer::SendMsg(CMsgPacker *pMsg, int Flags, int ClientID)
 		return -1;
 
 	// drop invalid packet
-	if(ClientID != -1 && (ClientID < 0 || ClientID >= MAX_CLIENTS || m_aClients[ClientID].m_State == CClient::STATE_EMPTY || m_aClients[ClientID].m_Quitting))
+	if(ClientID != -1 && (ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CClient::STATE_EMPTY || m_aClients[ClientID].m_Quitting))
 		return 0;
 
 	mem_zero(&Packet, sizeof(CNetChunk));
@@ -514,7 +514,7 @@ int CServer::SendMsg(CMsgPacker *pMsg, int Flags, int ClientID)
 		{
 			// broadcast
 			int i;
-			for(i = 0; i < MAX_CLIENTS; i++)
+			for(i = 0; i < SERVER_MAX_CLIENTS; i++)
 				if(m_aClients[i].m_State == CClient::STATE_INGAME && !m_aClients[i].m_Quitting)
 				{
 					Packet.m_ClientID = i;
@@ -547,7 +547,7 @@ void CServer::DoSnapshot()
 	}
 
 	// create snapshots for all clients
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		// client must be ingame to receive snapshots
 		if(m_aClients[i].m_State != CClient::STATE_INGAME)
@@ -758,7 +758,7 @@ void CServer::SendRconLineAuthed(const char *pLine, void *pUser, bool Highlighte
 	s_ReentryGuard = true;
 
 	CServer *pThis = (CServer *) pUser;
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(pThis->m_aClients[i].m_State != CClient::STATE_EMPTY && pThis->m_aClients[i].m_Authed >= pThis->m_RconAuthLevel)
 			pThis->SendRconLine(i, pLine);
@@ -785,7 +785,7 @@ void CServer::SendRconCmdRem(const IConsole::CCommandInfo *pCommandInfo, int Cli
 
 void CServer::UpdateClientRconCommands()
 {
-	for(int ClientID = Tick() % MAX_RCONCMD_RATIO; ClientID < MAX_CLIENTS; ClientID += MAX_RCONCMD_RATIO)
+	for(int ClientID = Tick() % MAX_RCONCMD_RATIO; ClientID < SERVER_MAX_CLIENTS; ClientID += MAX_RCONCMD_RATIO)
 	{
 		if(m_aClients[ClientID].m_State != CClient::STATE_EMPTY && m_aClients[ClientID].m_Authed)
 		{
@@ -815,7 +815,7 @@ void CServer::SendMapListEntryRem(const CMapListEntry *pMapListEntry, int Client
 
 void CServer::UpdateClientMapListEntries()
 {
-	for(int ClientID = Tick() % MAX_RCONCMD_RATIO; ClientID < MAX_CLIENTS; ClientID += MAX_RCONCMD_RATIO)
+	for(int ClientID = Tick() % MAX_RCONCMD_RATIO; ClientID < SERVER_MAX_CLIENTS; ClientID += MAX_RCONCMD_RATIO)
 	{
 		if(m_aClients[ClientID].m_State != CClient::STATE_EMPTY && m_aClients[ClientID].m_Authed && m_aClients[ClientID].m_MapListEntryToSend >= 0)
 		{
@@ -1103,7 +1103,7 @@ void CServer::GenerateServerInfo(CPacker *pPacker, bool IncludeClientInfo)
 {
 	// count the players
 	int PlayerCount = 0, ClientCount = 0;
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(m_aClients[i].m_State != CClient::STATE_EMPTY)
 		{
@@ -1138,7 +1138,7 @@ void CServer::GenerateServerInfo(CPacker *pPacker, bool IncludeClientInfo)
 
 	if(IncludeClientInfo)
 	{
-		for(int i = 0; i < MAX_CLIENTS; i++)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		{
 			if(m_aClients[i].m_State != CClient::STATE_EMPTY)
 			{
@@ -1158,13 +1158,13 @@ void CServer::SendServerInfo(int ClientID)
 	GenerateServerInfo(&Msg, false);
 	if(ClientID == -1)
 	{
-		for(int i = 0; i < MAX_CLIENTS; i++)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		{
 			if(m_aClients[i].m_State != CClient::STATE_EMPTY)
 				SendMsg(&Msg, MSGFLAG_VITAL | MSGFLAG_FLUSH, i);
 		}
 	}
-	else if(ClientID >= 0 && ClientID < MAX_CLIENTS && m_aClients[ClientID].m_State != CClient::STATE_EMPTY)
+	else if(ClientID >= 0 && ClientID < SERVER_MAX_CLIENTS && m_aClients[ClientID].m_State != CClient::STATE_EMPTY)
 		SendMsg(&Msg, MSGFLAG_VITAL | MSGFLAG_FLUSH, ClientID);
 }
 
@@ -1177,7 +1177,7 @@ void CServer::UpdateRegisterServerInfo()
 {
 	// count the players
 	int PlayerCount = 0, ClientCount = 0;
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(m_aClients[i].IncludedInServerInfo())
 		{
@@ -1234,7 +1234,7 @@ void CServer::UpdateRegisterServerInfo()
 	JsonWriter.WriteAttribute("clients");
 	JsonWriter.BeginArray();
 
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(m_aClients[i].IncludedInServerInfo())
 		{
@@ -1270,6 +1270,8 @@ void CServer::UpdateRegisterServerInfo()
 void CServer::UpdateServerInfo(bool Resend)
 {
 	if(m_RunServer == false)
+		return;
+	if(!m_pRegister)
 		return;
 
 	UpdateRegisterServerInfo();
@@ -1493,13 +1495,13 @@ int CServer::Run()
 				if(LoadMap(Config()->m_SvMap))
 				{
 					// new map loaded
-					bool aSpecs[MAX_CLIENTS];
-					for(int c = 0; c < MAX_CLIENTS; c++)
+					bool aSpecs[SERVER_MAX_CLIENTS];
+					for(int c = 0; c < SERVER_MAX_CLIENTS; c++)
 						aSpecs[c] = GameServer()->IsClientSpectator(c);
 
 					GameServer()->OnShutdown();
 
-					for(int c = 0; c < MAX_CLIENTS; c++)
+					for(int c = 0; c < SERVER_MAX_CLIENTS; c++)
 					{
 						if(m_aClients[c].m_State <= CClient::STATE_AUTH)
 							continue;
@@ -1534,7 +1536,7 @@ int CServer::Run()
 					ShouldSnap = true;
 
 				// apply new input
-				for(int c = 0; c < MAX_CLIENTS; c++)
+				for(int c = 0; c < SERVER_MAX_CLIENTS; c++)
 				{
 					if(m_aClients[c].m_State == CClient::STATE_EMPTY)
 						continue;
@@ -1688,7 +1690,7 @@ void CServer::ConStatus(IConsole::IResult *pResult, void *pUser)
 	char aAddrStr[NETADDR_MAXSTRSIZE];
 	CServer *pThis = static_cast<CServer *>(pUser);
 
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(pThis->m_aClients[i].m_State != CClient::STATE_EMPTY)
 		{
@@ -1773,7 +1775,7 @@ void CServer::ConLogout(IConsole::IResult *pResult, void *pUser)
 {
 	CServer *pServer = (CServer *) pUser;
 
-	if(pServer->m_RconClientID >= 0 && pServer->m_RconClientID < MAX_CLIENTS &&
+	if(pServer->m_RconClientID >= 0 && pServer->m_RconClientID < SERVER_MAX_CLIENTS &&
 		pServer->m_aClients[pServer->m_RconClientID].m_State != CServer::CClient::STATE_EMPTY)
 	{
 		CMsgPacker Msg(NETMSG_RCON_AUTH_OFF, true);
@@ -1830,7 +1832,7 @@ void CServer::ConchainModCommandUpdate(IConsole::IResult *pResult, void *pUserDa
 		pfnCallback(pResult, pCallbackUserData);
 		if(pInfo && OldAccessLevel != pInfo->GetAccessLevel())
 		{
-			for(int i = 0; i < MAX_CLIENTS; ++i)
+			for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 			{
 				if(pThis->m_aClients[i].m_State == CServer::CClient::STATE_EMPTY || pThis->m_aClients[i].m_Authed != CServer::AUTHED_MOD ||
 					(pThis->m_aClients[i].m_pRconCmdToSend && str_comp(pResult->GetString(0), pThis->m_aClients[i].m_pRconCmdToSend->m_pName) >= 0))

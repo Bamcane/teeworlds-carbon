@@ -19,6 +19,7 @@
 #include "gamecontext.h"
 #include "gamecontroller.h"
 #include "player.h"
+#include "weapons.h"
 
 enum
 {
@@ -31,7 +32,7 @@ void CGameContext::Construct(int Resetting)
 	m_Resetting = 0;
 	m_pServer = 0;
 
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		m_apPlayers[i] = 0;
 
 	m_pBotManager = nullptr;
@@ -63,7 +64,7 @@ CGameContext::CGameContext()
 
 CGameContext::~CGameContext()
 {
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		delete m_apPlayers[i];
 	if(!m_Resetting)
 	{
@@ -96,7 +97,7 @@ void CGameContext::Clear()
 
 class CCharacter *CGameContext::GetPlayerChar(int ClientID)
 {
-	if(ClientID < 0 || ClientID >= MAX_CLIENTS || !m_apPlayers[ClientID])
+	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || !m_apPlayers[ClientID])
 		return 0;
 	return m_apPlayers[ClientID]->GetCharacter();
 }
@@ -133,7 +134,7 @@ void CGameContext::CreateExplosion(vec2 Pos, CEntity *pFrom, int Weapon, int Max
 	m_Events.Create(&Event, NETEVENTTYPE_EXPLOSION, sizeof(CNetEvent_Explosion), Mask);
 
 	// deal damage
-	CBaseDamageEntity *apEnts[MAX_CHECK_ENTITY];
+	CBaseHealthEntity *apEnts[MAX_CHECK_ENTITY];
 	float Radius = g_pData->m_Explosion.m_Radius;
 	float InnerRadius = 48.0f;
 	float MaxForce = g_pData->m_Explosion.m_MaxForce;
@@ -183,7 +184,7 @@ void CGameContext::CreateSound(vec2 Pos, int Sound, int64 Mask)
 void CGameContext::SendChat(int ChatterClientID, int Mode, int To, const char *pText)
 {
 	char aBuf[256];
-	if(ChatterClientID >= 0 && ChatterClientID < MAX_CLIENTS)
+	if(ChatterClientID >= 0 && ChatterClientID < SERVER_MAX_CLIENTS)
 	{
 		if(Mode == CHAT_TEAM)
 		{
@@ -225,7 +226,7 @@ void CGameContext::SendChat(int ChatterClientID, int Mode, int To, const char *p
 		To = m_apPlayers[ChatterClientID]->GetTeam();
 
 		// send to the clients
-		for(int i = 0; i < MAX_CLIENTS; i++)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 		{
 			if(m_apPlayers[i] && m_apPlayers[i]->GetTeam() == To)
 				Server()->SendPackMsg(&Msg, MSGFLAG_VITAL | MSGFLAG_NORECORD, i);
@@ -354,7 +355,7 @@ void CGameContext::StartVote(const char *pDesc, const char *pCommand, const char
 
 	// reset votes
 	m_VoteEnforce = VOTE_CHOICE_PASS;
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(m_apPlayers[i])
 		{
@@ -485,7 +486,7 @@ void CGameContext::OnTick()
 	// if(world.paused) // make sure that the game object always updates
 	GameController()->Tick();
 
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(m_apPlayers[i])
 		{
@@ -506,12 +507,12 @@ void CGameContext::OnTick()
 			if(m_VoteUpdate)
 			{
 				// count votes
-				char aaBuf[MAX_CLIENTS][NETADDR_MAXSTRSIZE] = {{0}};
-				for(int i = 0; i < MAX_CLIENTS; i++)
+				char aaBuf[][NETADDR_MAXSTRSIZE] = {{0}};
+				for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 					if(m_apPlayers[i])
 						Server()->GetClientAddr(i, aaBuf[i], NETADDR_MAXSTRSIZE);
-				bool aVoteChecked[MAX_CLIENTS] = {0};
-				for(int i = 0; i < MAX_CLIENTS; i++)
+				bool aVoteChecked[] = {0};
+				for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 				{
 					if(!m_apPlayers[i] || m_apPlayers[i]->GetTeam() == TEAM_SPECTATORS || aVoteChecked[i]) // don't count in votes by spectators
 						continue;
@@ -520,7 +521,7 @@ void CGameContext::OnTick()
 					int ActVotePos = m_apPlayers[i]->m_VotePos;
 
 					// check for more players with the same ip (only use the vote of the one who voted first)
-					for(int j = i + 1; j < MAX_CLIENTS; ++j)
+					for(int j = i + 1; j < SERVER_MAX_CLIENTS; ++j)
 					{
 						if(!m_apPlayers[j] || aVoteChecked[j] || str_comp(aaBuf[j], aaBuf[i]))
 							continue;
@@ -562,7 +563,7 @@ void CGameContext::OnTick()
 	}
 
 #ifdef CONF_DEBUG
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(m_apPlayers[i] && m_apPlayers[i]->IsDummy())
 		{
@@ -642,7 +643,7 @@ void CGameContext::OnClientEnter(int ClientID)
 		NewClientInfoMsg.m_aSkinPartColors[p] = m_apPlayers[ClientID]->m_TeeInfos.m_aSkinPartColors[p];
 	}
 
-	for(int i = 0; i < MAX_CLIENTS; ++i)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 	{
 		if(i == ClientID || !m_apPlayers[i] || (!Server()->ClientIngame(i) && !m_apPlayers[i]->IsDummy()))
 			continue;
@@ -714,7 +715,7 @@ void CGameContext::OnClientTeamChange(int ClientID)
 	CProjectile *p = (CProjectile *) m_World.FindFirst(CGameWorld::ENTTYPE_PROJECTILE);
 	for(; p; p = (CProjectile *) p->TypeNext())
 	{
-		if(p->GetOwner() == ClientID)
+		if(p->GetOwner() == m_apPlayers[ClientID]->GetCharacter())
 			p->LoseOwner();
 	}
 }
@@ -750,7 +751,7 @@ void CGameContext::OnClientDrop(int ClientID, const char *pReason)
 	CProjectile *p = (CProjectile *) m_World.FindFirst(CGameWorld::ENTTYPE_PROJECTILE);
 	for(; p; p = (CProjectile *) p->TypeNext())
 	{
-		if(p->GetOwner() == ClientID)
+		if(p->GetOwner() == m_apPlayers[ClientID]->GetCharacter())
 			p->LoseOwner();
 	}
 
@@ -876,7 +877,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 					return;
 
 				int KickID = str_toint(pMsg->m_Value);
-				if(KickID < 0 || KickID >= MAX_CLIENTS || !m_apPlayers[KickID] || KickID == ClientID || Server()->IsAuthed(KickID))
+				if(KickID < 0 || KickID >= SERVER_MAX_CLIENTS || !m_apPlayers[KickID] || KickID == ClientID || Server()->IsAuthed(KickID))
 					return;
 
 				str_format(aDesc, sizeof(aDesc), "%2d: %s", KickID, Server()->ClientName(KickID));
@@ -910,7 +911,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 					return;
 
 				int SpectateID = str_toint(pMsg->m_Value);
-				if(SpectateID < 0 || SpectateID >= MAX_CLIENTS || !m_apPlayers[SpectateID] || m_apPlayers[SpectateID]->GetTeam() == TEAM_SPECTATORS || SpectateID == ClientID)
+				if(SpectateID < 0 || SpectateID >= SERVER_MAX_CLIENTS || !m_apPlayers[SpectateID] || m_apPlayers[SpectateID]->GetTeam() == TEAM_SPECTATORS || SpectateID == ClientID)
 					return;
 
 				str_format(aDesc, sizeof(aDesc), "%2d: %s", SpectateID, Server()->ClientName(SpectateID));
@@ -1042,7 +1043,7 @@ void CGameContext::OnMessage(int MsgID, CUnpacker *pUnpacker, int ClientID)
 			}
 
 			// update all clients
-			for(int i = 0; i < MAX_CLIENTS; ++i)
+			for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 			{
 				if(!m_apPlayers[i] || (!Server()->ClientIngame(i) && !m_apPlayers[i]->IsDummy()) || Server()->GetClientVersion(i) < MIN_SKINCHANGE_CLIENTVERSION)
 					continue;
@@ -1182,7 +1183,7 @@ void CGameContext::ConBroadcast(IConsole::IResult *pResult, void *pUserData)
 void CGameContext::ConSetTeam(IConsole::IResult *pResult, void *pUserData)
 {
 	CGameContext *pSelf = (CGameContext *) pUserData;
-	int ClientID = clamp(pResult->GetInteger(0), 0, (int) MAX_CLIENTS - 1);
+	int ClientID = clamp(pResult->GetInteger(0), 0, (int) SERVER_MAX_CLIENTS - 1);
 	int Team = clamp(pResult->GetInteger(1), -1, 1);
 	int Delay = pResult->NumArguments() > 2 ? pResult->GetInteger(2) : 0;
 	if(!pSelf->m_apPlayers[ClientID] || !pSelf->GameController()->CanJoinTeam(Team, ClientID))
@@ -1203,7 +1204,7 @@ void CGameContext::ConSetTeamAll(IConsole::IResult *pResult, void *pUserData)
 
 	pSelf->SendGameMsg(GAMEMSG_TEAM_ALL, Team, -1);
 
-	for(int i = 0; i < MAX_CLIENTS; ++i)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 		if(pSelf->m_apPlayers[i] && pSelf->GameController()->CanJoinTeam(Team, i))
 			pSelf->GameController()->DoTeamChange(pSelf->m_apPlayers[i], Team, false);
 }
@@ -1530,6 +1531,8 @@ void CGameContext::OnInit()
 		}
 	}
 
+	WeaponManager()->OutputRegisteredWeapons();
+
 	Console()->Chain("sv_motd", ConchainSpecialMotdupdate, this);
 
 	Console()->Chain("sv_vote_kick", ConchainSettingUpdate, this);
@@ -1538,13 +1541,13 @@ void CGameContext::OnInit()
 	Console()->Chain("sv_max_clients", ConchainSettingUpdate, this);
 
 #ifdef CONF_DEBUG
-	// clamp dbg_dummies to 0..MAX_CLIENTS-1
-	if(MAX_CLIENTS <= Config()->m_DbgDummies)
-		Config()->m_DbgDummies = MAX_CLIENTS;
+	// clamp dbg_dummies to 0..-1
+	if(SERVER_MAX_CLIENTS <= Config()->m_DbgDummies)
+		Config()->m_DbgDummies = SERVER_MAX_CLIENTS;
 	if(Config()->m_DbgDummies)
 	{
 		for(int i = 0; i < Config()->m_DbgDummies; i++)
-			OnClientConnected(MAX_CLIENTS - i - 1, true, false);
+			OnClientConnected( - i - 1, true, false);
 	}
 #endif
 }
@@ -1576,7 +1579,7 @@ void CGameContext::OnSnap(int ClientID)
 	GameController()->Snap(ClientID);
 	m_Events.Snap(ClientID);
 
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(m_apPlayers[i])
 			m_apPlayers[i]->Snap(ClientID);

@@ -4,9 +4,9 @@
 #define ENGINE_SHARED_JSONWRITER_H
 
 #include <base/system.h>
+#include <base/tl/string_apocalypse.h>
 
 #include <stack>
-#include <string>
 
 /**
  * JSON writer with abstract writing function.
@@ -99,11 +99,11 @@ public:
 };
 
 /**
- * Writes JSON to an std::string.
+ * Writes JSON to a string.
  */
 class CJsonStringWriter : public CJsonWriter
 {
-	std::string m_OutputString;
+	string m_OutputString;
 	bool m_RetrievedOutput = false;
 
 protected:
@@ -112,7 +112,7 @@ protected:
 public:
 	CJsonStringWriter() = default;
 	~CJsonStringWriter() = default;
-	std::string &&GetOutputString();
+	string &&GetOutputString();
 };
 
 #endif

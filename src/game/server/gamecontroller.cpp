@@ -36,7 +36,7 @@ void CGameController::DoActivityCheck()
 	if(Config()->m_SvInactiveKickTime == 0)
 		return;
 
-	for(int i = 0; i < MAX_CLIENTS; ++i)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 	{
 		if(GameServer()->m_apPlayers[i] && !GameServer()->m_apPlayers[i]->IsDummy() && (GameServer()->m_apPlayers[i]->GetTeam() != TEAM_SPECTATORS || Config()->m_SvInactiveKick > 0) &&
 			!Server()->IsAuthed(i) && (GameServer()->m_apPlayers[i]->m_InactivityTickCounter > Config()->m_SvInactiveKickTime * Server()->TickSpeed() * 60))
@@ -61,7 +61,7 @@ void CGameController::DoActivityCheck()
 					/*
 					// move player to spectator if the reserved slots aren't filled yet, kick him otherwise
 					int Spectators = 0;
-					for(int j = 0; j < MAX_CLIENTS; ++j)
+					for(int j = 0; j < SERVER_MAX_CLIENTS; ++j)
 						if(GameServer()->m_apPlayers[j] && GameServer()->m_apPlayers[j]->GetTeam() == TEAM_SPECTATORS)
 							++Spectators;
 					if(Spectators >= Config()->m_SvMaxClients)
@@ -84,7 +84,7 @@ void CGameController::DoActivityCheck()
 
 bool CGameController::GetPlayersReadyState(int WithoutID)
 {
-	for(int i = 0; i < MAX_CLIENTS; ++i)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 	{
 		if(i == WithoutID)
 			continue; // skip
@@ -97,7 +97,7 @@ bool CGameController::GetPlayersReadyState(int WithoutID)
 
 void CGameController::SetPlayersReadyState(bool ReadyState)
 {
-	for(int i = 0; i < MAX_CLIENTS; ++i)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 	{
 		if(GameServer()->m_apPlayers[i] && GameServer()->m_apPlayers[i]->GetTeam() != TEAM_SPECTATORS && (ReadyState || !GameServer()->m_apPlayers[i]->m_DeadSpecMode))
 			GameServer()->m_apPlayers[i]->m_IsReadyToPlay = ReadyState;
@@ -117,7 +117,7 @@ int CGameController::OnCharacterDeath(CCharacter *pVictim, CPlayer *pKiller, int
 	// update spectator modes for dead players in survival
 	if(m_GameFlags & GAMEFLAG_SURVIVAL)
 	{
-		for(int i = 0; i < MAX_CLIENTS; ++i)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 			if(GameServer()->m_apPlayers[i] && GameServer()->m_apPlayers[i]->m_DeadSpecMode)
 				GameServer()->m_apPlayers[i]->UpdateDeadSpecMode();
 	}
@@ -131,8 +131,8 @@ void CGameController::OnCharacterSpawn(CCharacter *pChr)
 	pChr->IncreaseHealth(10);
 
 	// give default weapons
-	pChr->GiveWeapon(WEAPON_HAMMER, -1);
-	pChr->GiveWeapon(WEAPON_GUN, 10);
+	pChr->SetWeapon(WEAPON_HAMMER, CalculateUuid("Hammer"), -1);
+	pChr->SetWeapon(WEAPON_GUN, CalculateUuid("Gun"), 10);
 }
 
 void CGameController::OnFlagReturn(CFlag *pFlag)
@@ -269,7 +269,7 @@ void CGameController::OnPlayerSendEmoticon(int Emoticon, CPlayer *pPlayer)
 
 void CGameController::OnReset()
 {
-	for(int i = 0; i < MAX_CLIENTS; i++)
+	for(int i = 0; i < SERVER_MAX_CLIENTS; i++)
 	{
 		if(GameServer()->m_apPlayers[i])
 		{
@@ -369,7 +369,7 @@ void CGameController::SendGameInfo(int ClientID)
 
 	if(ClientID == -1)
 	{
-		for(int i = 0; i < MAX_CLIENTS; ++i)
+		for(int i = 0; i < SERVER_MAX_CLIENTS; ++i)
 		{
 			if(!GameServer()->m_apPlayers[i] || !Server()->ClientIngame(i))
 				continue;
@@ -433,7 +433,7 @@ void CGameController::EvaluateSpawnType(CSpawnEval *pEval, int Type) const
 	for(unsigned i = 0; i < m_aNumSpawnPoints[Type]; i++)
 	{
 		// check if the position is occupado
-		CBaseDamageEntity *apEnts[MAX_CHECK_ENTITY];
+		CBaseHealthEntity *apEnts[MAX_CHECK_ENTITY];
 		int Num = GameServer()->m_World.FindEntities(m_aaSpawnPoints[Type][i], 64, (CEntity **) apEnts, MAX_CHECK_ENTITY, EEntityFlag::ENTFLAG_DAMAGE);
 		vec2 Positions[5] = {vec2(0.0f, 0.0f), vec2(-32.0f, 0.0f), vec2(0.0f, -32.0f), vec2(32.0f, 0.0f), vec2(0.0f, 32.0f)}; // start, left, up, right, down
 		int Result = -1;
