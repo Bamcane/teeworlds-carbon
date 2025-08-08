@@ -66,7 +66,10 @@ void CHud::RenderGameTimer()
 	s_Cursor.Reset(Time);
 
 	char aBuf[32];
-	str_format(aBuf, sizeof(aBuf), "%d:%02d", Time / 60, Time % 60);
+	if(Time / 60 < 60)
+		str_format(aBuf, sizeof(aBuf), "%02d:%02d", Time / 60, Time % 60);
+	else
+		str_format(aBuf, sizeof(aBuf), "%d:%02d:%02d", Time / 3600, (Time / 60) % 60, Time % 60);
 
 	// last 60 sec red, last 10 sec blink
 	float Alpha = 1.0f;
@@ -868,11 +871,11 @@ void CHud::RenderRaceTime(const CNetObj_PlayerInfoRace *pRaceInfo)
 
 	char aBuf[32];
 
-	FormatTime(aBuf, sizeof(aBuf), 0, minimum(m_pClient->RacePrecision(), 1));
+	FormatTime(aBuf, sizeof(aBuf), 0, minimum(m_pClient->RacePrecision(), 2));
 	float TimeWidth = TextRender()->TextWidth(12, aBuf, -1);
 
 	int RaceTime = (Client()->GameTick() - pRaceInfo->m_RaceStartTick) * 1000 / Client()->GameTickSpeed();
-	FormatTime(aBuf, sizeof(aBuf), RaceTime, minimum(m_pClient->RacePrecision(), 1));
+	FormatTime(aBuf, sizeof(aBuf), RaceTime, minimum(m_pClient->RacePrecision(), 2));
 
 	float Half = 300.0f * Graphics()->ScreenAspect() / 2.0f;
 

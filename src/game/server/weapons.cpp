@@ -11,7 +11,7 @@ public:
 	CWeaponHand() = default;
 
 	//
-	void OnFire(class CEntity *pFrom, class CGameWorld *pWorld, vec2 Pos, vec2 Direction, int *pReloadTimer = nullptr) {};
+	void OnFire(class CEntity *pFrom, class CGameWorld *pWorld, vec2 Pos, vec2 Direction, int *pReloadTimer = nullptr) override {};
     const char *Name() override {return _("Hand"); }
 	bool FullAuto() override { return false; }
 	int FireDelay() override { return 0; }

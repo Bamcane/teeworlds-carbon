@@ -73,7 +73,9 @@ inline void AppendDecimals(char *pBuf, int Size, int Time, int Precision)
 void FormatTime(char *pBuf, int Size, int Time, int Precision)
 {
 	if(Time < 0)
-		str_copy(pBuf, "-:--", Size);
+		str_copy(pBuf, "--:--", Size);
+	else if(Time / (60 * 60 * 1000))
+		str_format(pBuf, Size, "%02d:%02d:%02d", Time / (60 * 60 * 1000), (Time / (60 * 1000)) % 60, (Time / 1000) % 60);
 	else
 		str_format(pBuf, Size, "%02d:%02d", Time / (60 * 1000), (Time / 1000) % 60);
 	AppendDecimals(pBuf, Size, Time, Precision);
