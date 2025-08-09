@@ -56,9 +56,12 @@ public:
 			m_pNamespace = (const Uuid *) GetRaw(sizeof(*m_pNamespace));
 			if(m_Error)
 			{
-				m_System = false;
-				m_Type = 0;
 				m_pNamespace = nullptr;
+				m_Error = false;
+				Reset(pData, Size);
+				GetInt();
+				m_System = Msg & 1;
+				m_Type = Msg >> 1;
 				return;
 			}
 		}
