@@ -11,7 +11,6 @@ class CMsgPacker : public CPacker
 public:
 	CMsgPacker(int Type, bool System = false, bool Carbon = false)
 	{
-
 		Reset();
 		if(Type < 0 || Type > 0x3FFFFFFF)
 		{
@@ -34,6 +33,7 @@ class CMsgUnpacker : public CUnpacker
 	int m_Type;
 	bool m_System;
 	const Uuid *m_pNamespace;
+
 public:
 	CMsgUnpacker() = default;
 

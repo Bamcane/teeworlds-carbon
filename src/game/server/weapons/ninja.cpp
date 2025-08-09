@@ -12,7 +12,7 @@ public:
 
 	//
 	void OnFire(class CEntity *pFrom, class CGameWorld *pWorld, vec2 Pos, vec2 Direction, int *pReloadTimer = nullptr) override;
-    const char *Name() override {return _("Ninja"); }
+	const char *Name() override { return _("Ninja"); }
 	bool FullAuto() override { return false; }
 	int FireDelay() override { return g_pData->m_Weapons.m_Ninja.m_pBase->m_Firedelay; }
 	int SnapStyle() override { return WEAPON_NINJA; }
@@ -25,16 +25,16 @@ public:
 
 void CNinja::OnFire(CEntity *pFrom, CGameWorld *pWorld, vec2 Pos, vec2 Direction, int *pReloadTimer)
 {
-    if(pFrom->GetObjType() != CGameWorld::ENTTYPE_CHARACTER)
-        return;
-    CCharacter *pCharacter = static_cast<CCharacter *>(pFrom);
-    pCharacter->Ninja()->m_NumObjectsHit = 0;
+	if(pFrom->GetObjType() != CGameWorld::ENTTYPE_CHARACTER)
+		return;
+	CCharacter *pCharacter = static_cast<CCharacter *>(pFrom);
+	pCharacter->Ninja()->m_NumObjectsHit = 0;
 
-    pCharacter->Ninja()->m_ActivationDir = Direction;
-    pCharacter->Ninja()->m_CurrentMoveTime = g_pData->m_Weapons.m_Ninja.m_Movetime * pWorld->Server()->TickSpeed() / 1000;
-    pCharacter->Ninja()->m_OldVelAmount = length(pCharacter->GetVel());
+	pCharacter->Ninja()->m_ActivationDir = Direction;
+	pCharacter->Ninja()->m_CurrentMoveTime = g_pData->m_Weapons.m_Ninja.m_Movetime * pWorld->Server()->TickSpeed() / 1000;
+	pCharacter->Ninja()->m_OldVelAmount = length(pCharacter->GetVel());
 
-    pWorld->GameServer()->CreateSound(Pos, SOUND_NINJA_FIRE);
+	pWorld->GameServer()->CreateSound(Pos, SOUND_NINJA_FIRE);
 }
 
 static CNinja gs_WeaponNinja;

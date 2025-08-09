@@ -1,8 +1,8 @@
 #ifndef GAME_SERVER_WEAPONS_H
 #define GAME_SERVER_WEAPONS_H
 
-#include <base/vmath.h>
 #include <base/uuid.h>
+#include <base/vmath.h>
 #include <condition_variable>
 
 class IWeaponInterface

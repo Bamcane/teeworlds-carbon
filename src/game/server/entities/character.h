@@ -124,7 +124,7 @@ public:
 	int GetCID() const;
 
 	SNinja *Ninja() { return &m_Ninja; }
-	
+
 	vec2 GetVel() const;
 	void SetVel(vec2 Vel);
 };

@@ -67,41 +67,41 @@ void CPickup::Tick()
 			break;
 
 		case PICKUP_GRENADE:
+		{
+			Uuid WeaponID = CalculateUuid("Grenade");
+			if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
 			{
-				Uuid WeaponID = CalculateUuid("Grenade");
-				if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
-				{
-					Picked = true;
-					GameServer()->CreateSound(m_Pos, SOUND_PICKUP_GRENADE);
-					if(pChr->GetPlayer())
-						GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_GRENADE);
-				}
+				Picked = true;
+				GameServer()->CreateSound(m_Pos, SOUND_PICKUP_GRENADE);
+				if(pChr->GetPlayer())
+					GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_GRENADE);
 			}
-			break;
+		}
+		break;
 		case PICKUP_SHOTGUN:
+		{
+			Uuid WeaponID = CalculateUuid("Shotgun");
+			if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
 			{
-				Uuid WeaponID = CalculateUuid("Shotgun");
-				if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
-				{
-					Picked = true;
-					GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
-					if(pChr->GetPlayer())
-						GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_SHOTGUN);
-				}
+				Picked = true;
+				GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
+				if(pChr->GetPlayer())
+					GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_SHOTGUN);
 			}
-			break;
+		}
+		break;
 		case PICKUP_LASER:
+		{
+			Uuid WeaponID = CalculateUuid("Laser");
+			if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
 			{
-				Uuid WeaponID = CalculateUuid("Laser");
-				if(pChr->GiveWeapon(WeaponID, WeaponManager()->GetWeapon(WeaponID)->MaxAmmo()))
-				{
-					Picked = true;
-					GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
-					if(pChr->GetPlayer())
-						GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_LASER);
-				}
+				Picked = true;
+				GameServer()->CreateSound(m_Pos, SOUND_PICKUP_SHOTGUN);
+				if(pChr->GetPlayer())
+					GameServer()->SendWeaponPickup(pChr->GetPlayer()->GetCID(), WEAPON_LASER);
 			}
-			break;
+		}
+		break;
 
 		case PICKUP_NINJA:
 		{

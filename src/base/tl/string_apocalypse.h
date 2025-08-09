@@ -74,7 +74,7 @@ public:
 
 	string &operator+=(const string &other)
 	{
-		if (this == &other || other.length == 0)
+		if(this == &other || other.length == 0)
 			return *this;
 
 		size_t newLength = length + other.length;

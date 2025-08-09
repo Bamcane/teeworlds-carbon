@@ -12,7 +12,7 @@ public:
 
 	//
 	void OnFire(class CEntity *pFrom, class CGameWorld *pWorld, vec2 Pos, vec2 Direction, int *pReloadTimer = nullptr) override;
-    const char *Name() override {return _("Laser"); }
+	const char *Name() override { return _("Laser"); }
 	bool FullAuto() override { return true; }
 	int FireDelay() override { return g_pData->m_Weapons.m_Gun.m_pBase->m_Firedelay; }
 	int SnapStyle() override { return WEAPON_LASER; }
@@ -25,8 +25,8 @@ public:
 
 void CLaserWeapon::OnFire(CEntity *pFrom, CGameWorld *pWorld, vec2 Pos, vec2 Direction, int *pReloadTimer)
 {
-    new CLaser(pWorld, Pos, Direction, pWorld->GameServer()->Tuning()->m_LaserReach, pFrom);
-    pWorld->GameServer()->CreateSound(Pos, SOUND_LASER_FIRE);
+	new CLaser(pWorld, Pos, Direction, pWorld->GameServer()->Tuning()->m_LaserReach, pFrom);
+	pWorld->GameServer()->CreateSound(Pos, SOUND_LASER_FIRE);
 }
 
 static CLaserWeapon gs_WeaponLaser;

@@ -841,7 +841,7 @@ void CServer::UpdateClientMapListEntries()
 static void UnpackPacketWithNamespace(CMsgUnpacker *pUnpacker, const void *pData, int Size)
 {
 	*pUnpacker = CMsgUnpacker(pData, Size);
-	
+
 	if(!pUnpacker->Namespace())
 		return;
 	if(*pUnpacker->Namespace() == UUID_CARBON_NAMESPACE)
