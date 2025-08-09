@@ -132,6 +132,7 @@ const char *CGameClient::NetVersion() const { return GAME_NETVERSION; }
 const char *CGameClient::NetVersionHashUsed() const { return GAME_NETVERSION_HASH_FORCED; }
 const char *CGameClient::NetVersionHashReal() const { return GAME_NETVERSION_HASH; }
 int CGameClient::ClientVersion() const { return CLIENT_VERSION; }
+int CGameClient::CarbonClientVersion() const { return MOD_CLIENT_VERSION; }
 const char *CGameClient::GetItemName(int Type) const { return m_NetObjHandler.GetObjName(Type); }
 bool CGameClient::IsXmas() const { return Config()->m_ClShowXmasHats == 2 || (Config()->m_ClShowXmasHats == 1 && m_IsXmasDay); }
 bool CGameClient::IsEaster() const { return Config()->m_ClShowEasterEggs == 2 || (Config()->m_ClShowEasterEggs == 1 && m_IsEasterDay); }
@@ -1314,8 +1315,7 @@ void CGameClient::OnNewSnapshot()
 						m_aClients[Item.m_ID].m_Evolved = m_Snap.m_aCharacters[Item.m_ID].m_Cur;
 					}
 
-					if(Item.m_ID != m_LocalClientID || Client()->State() == IClient::STATE_DEMOPLAYBACK)
-						ProcessTriggeredEvents(pCharInfo->m_Cur.m_TriggeredEvents, vec2(pCharInfo->m_Cur.m_X, pCharInfo->m_Cur.m_Y));
+					ProcessTriggeredEvents(pCharInfo->m_Cur.m_TriggeredEvents, vec2(pCharInfo->m_Cur.m_X, pCharInfo->m_Cur.m_Y));
 				}
 			}
 			else if(Item.m_Type == NETOBJTYPE_SPECTATORINFO)
@@ -1615,6 +1615,7 @@ void CGameClient::OnPredict()
 		{
 			m_LastNewPredictedTick = Tick;
 
+			/*
 			// Only trigger effects for the local character here. Effects for
 			// non-local characters are triggered in `OnNewSnapshot`. Since we
 			// don't apply any inputs to non-local characters, it's not
@@ -1627,6 +1628,7 @@ void CGameClient::OnPredict()
 					World.m_apCharacters[m_LocalClientID]->m_TriggeredEvents,
 					World.m_apCharacters[m_LocalClientID]->m_Pos);
 			}
+			*/
 		}
 	}
 

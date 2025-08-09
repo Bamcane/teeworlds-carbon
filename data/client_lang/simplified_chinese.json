@@ -794,6 +794,10 @@
 			"tr": "连接"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": "服务器列表来自status.tw"
+		},
+		{
 			"or": "Move left",
 			"tr": "向左移动"
 		},
@@ -1251,6 +1255,183 @@
 			"tr": "添加"
 		},
 		{
+			"or": "Local server",
+			"tr": "本地服务器"
+		},
+		{
+			"or": "Editor",
+			"tr": "地图编辑器"
+		},
+		{
+			"or": "Play",
+			"tr": "开始游戏"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s已经发布！请访问 www.teeworlds.com 下载最新版本！"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "规定时限：%d分钟"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "比赛"
+		},
+		{
+			"or": "Game over",
+			"tr": "游戏结束"
+		},
+		{
+			"or": "Round over",
+			"tr": "回合结束"
+		},
+		{
+			"or": "Map record",
+			"tr": "地图最高记录"
+		},
+		{
+			"or": "Time",
+			"tr": "用时"
+		},
+		{
+			"or": "Score",
+			"tr": "分数"
+		},
+		{
+			"or": "%d other players",
+			"tr": "另有%d名玩家"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "红队"
+		},
+		{
+			"or": "Blue team",
+			"tr": "蓝队"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s胜利!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "平局！"
+		},
+		{
+			"or": "Round over!",
+			"tr": "回合结束！"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "身体"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "印记"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "装饰"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "手"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "脚"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "眼睛"
+		},
+		{
+			"or": "Free-View",
+			"tr": "自由视角"
+		},
+		{
+			"or": "Suicides",
+			"tr": "自杀数"
+		},
+		{
+			"or": "Ratio",
+			"tr": "击杀死亡比"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "净击杀"
+		},
+		{
+			"or": "KPM",
+			"tr": "击杀/分钟"
+		},
+		{
+			"or": "Spree",
+			"tr": "连杀数"
+		},
+		{
+			"or": "Best spree",
+			"tr": "最高连杀数"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "得旗数"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' 发起投票想要改变服务器设置 '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' 发起投票想要踢除 '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' 发起投票想要将 '%s' 移至旁观位 (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "管理员强制修改了服务器设置 '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "管理员将 '%s' 移至了旁观位 (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "投票被取消"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "管理员强制通过了投票"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "投票已通过"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "管理员强制否决了投票"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "投票被否决"
+		},
+		{
 			"or": "Hue:",
 			"tr": "色调："
 		},
@@ -1474,14 +1655,6 @@
 			"tr": "死亡数"
 		},
 		{
-			"or": "Suicides",
-			"tr": "自杀数"
-		},
-		{
-			"or": "Ratio",
-			"tr": "击杀死亡比"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": "击杀死亡比"
 		},
@@ -1500,10 +1673,6 @@
 		{
 			"or": "Current spree",
 			"tr": "当前连杀数"
-		},
-		{
-			"or": "Best spree",
-			"tr": "最高连杀数"
 		},
 		{
 			"or": "Weapons stats",
@@ -1652,171 +1821,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "你需要等待 %1.0f 秒才能修改身份"
-		},
-		{
-			"or": "Local server",
-			"tr": "本地服务器"
-		},
-		{
-			"or": "Editor",
-			"tr": "地图编辑器"
-		},
-		{
-			"or": "Play",
-			"tr": "开始游戏"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s已经发布！请访问 www.teeworlds.com 下载最新版本！"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "规定时限：%d分钟"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "比赛"
-		},
-		{
-			"or": "Game over",
-			"tr": "游戏结束"
-		},
-		{
-			"or": "Round over",
-			"tr": "回合结束"
-		},
-		{
-			"or": "Map record",
-			"tr": "地图最高记录"
-		},
-		{
-			"or": "Time",
-			"tr": "用时"
-		},
-		{
-			"or": "Score",
-			"tr": "分数"
-		},
-		{
-			"or": "%d other players",
-			"tr": "另有%d名玩家"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "红队"
-		},
-		{
-			"or": "Blue team",
-			"tr": "蓝队"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s胜利!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "平局！"
-		},
-		{
-			"or": "Round over!",
-			"tr": "回合结束！"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "身体"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "印记"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "装饰"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "手"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "脚"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "眼睛"
-		},
-		{
-			"or": "Free-View",
-			"tr": "自由视角"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "净击杀"
-		},
-		{
-			"or": "KPM",
-			"tr": "击杀/分钟"
-		},
-		{
-			"or": "Spree",
-			"tr": "连杀数"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "得旗数"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' 发起投票想要改变服务器设置 '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' 发起投票想要踢除 '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' 发起投票想要将 '%s' 移至旁观位 (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "管理员强制修改了服务器设置 '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "管理员将 '%s' 移至了旁观位 (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "投票被取消"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "管理员强制通过了投票"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "投票已通过"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "管理员强制否决了投票"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "投票被否决"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

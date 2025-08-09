@@ -506,7 +506,7 @@ int CMenus::DoBrowserEntry(const void *pID, CUIRect View, const CServerInfo *pEn
 			Rect.VSplitLeft(Rect.h, &Icon, &Rect);
 			Icon.Margin(2.0f, &Icon);
 			DoIcon(IMAGE_LEVELICONS, s_aDifficultySpriteIds[pEntry->m_ServerLevel], &Icon);
-			UI()->DoTooltip(&pEntry->m_ServerLevel, &Icon, s_aDifficultyLabels[pEntry->m_ServerLevel]);
+			UI()->DoTooltip(&pEntry->m_ServerLevel, &Icon, Localize(s_aDifficultyLabels[pEntry->m_ServerLevel], "Server difficulty"));
 
 			Rect.VSplitLeft(Rect.h, &Icon, &Rect);
 			Icon.Margin(2.0f, &Icon);
@@ -2033,7 +2033,7 @@ void CMenus::RenderDetailScoreboard(CUIRect View, const CServerInfo *pInfo, int 
 			DoIcon(IMAGE_BROWSEICONS, SPRITE_BROWSE_HEART_A, &Icon);
 
 		Name.VSplitLeft(2.0f, 0, &Name);
-		Name.VSplitLeft(25.0f, &Score, &Name);
+		Name.VSplitLeft(12.0f, &Score, &Name);
 		Name.VSplitRight(2 * (Name.h - 8.0f), &Name, &Flag);
 		Name.HSplitTop(LineHeight * 0.5f, &Name, &Clan);
 
@@ -2043,7 +2043,7 @@ void CMenus::RenderDetailScoreboard(CUIRect View, const CServerInfo *pInfo, int 
 			Score.y += (Score.h - FontSize / CUI::ms_FontmodHeight) / 2.0f;
 			char aTemp[16];
 			FormatScore(aTemp, sizeof(aTemp), pInfo->m_Flags & IServerBrowser::FLAG_TIMESCORE, &pInfo->m_aClients[i]);
-			UI()->DoLabel(&Score, aTemp, FontSize, TEXTALIGN_LEFT);
+			UI()->DoLabel(&Score, aTemp, FontSize, TEXTALIGN_RIGHT);
 		}
 
 		// name
@@ -2223,6 +2223,11 @@ void CMenus::RenderServerbrowser(CUIRect MainView)
 	BottomBox.VSplitRight(ButtonWidth * 2.0f + Spacing, 0, &BottomBox);
 
 	RenderServerbrowserBottomBox(BottomBox);
+
+	// render data source
+	CUIRect Source;
+	MainView.HSplitBottom(12.0f, 0, &Source);
+	UI()->DoLabel(&Source, Localize("Server list from status.tw"), 14.0f, TEXTALIGN_BL);
 }
 
 void CMenus::UpdateServerBrowserAddress()

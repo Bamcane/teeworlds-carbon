@@ -790,6 +790,10 @@
 			"tr": "Connectar"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Moure's a l'esquerra"
 		},
@@ -1247,6 +1251,183 @@
 			"tr": "Afegir"
 		},
 		{
+			"or": "Local server",
+			"tr": "Servidor local"
+		},
+		{
+			"or": "Editor",
+			"tr": "Editor"
+		},
+		{
+			"or": "Play",
+			"tr": "Jugar"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s ha sortit! Descarga-la a www.teeworlds.com !"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Temps límit: %d min"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Partida"
+		},
+		{
+			"or": "Game over",
+			"tr": "El joc s'ha acabat"
+		},
+		{
+			"or": "Round over",
+			"tr": "S'ha acabat la ronda"
+		},
+		{
+			"or": "Map record",
+			"tr": "Rècord del mapa"
+		},
+		{
+			"or": "Time",
+			"tr": "Temps"
+		},
+		{
+			"or": "Score",
+			"tr": "Puntuació"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d altres jugadors"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Equip vermell"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Equip blau"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s ha guanyat!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Dibuixa!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Ronda acabada!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "cos"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "marques"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "decoració"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "mans"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "peus"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "ulls"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Càmera lliure"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Suïcidis"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Proporció"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Net"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Spree"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Millor spree"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Agafades"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "%s' a votat per canviar una opció del servidor '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' ha votat per expulsar a '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' ha creat una votació per moure '%s' als espectadors (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Un administrador a forçat una opció del servidor: '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Un administrador ha mogut '%s' als espectadors (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Votació cancelada"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Un administrador a forçat votar si"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Votació acceptada"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Un administrador a forçat no"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Votació fallida"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Hue:"
 		},
@@ -1470,14 +1651,6 @@
 			"tr": "Morts"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Suïcidis"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Proporció"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1496,10 +1669,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Spree actual"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Millor spree"
 		},
 		{
 			"or": "Weapons stats",
@@ -1648,171 +1817,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Has d'esperar %1.0f segons per canviar d'identitat."
-		},
-		{
-			"or": "Local server",
-			"tr": "Servidor local"
-		},
-		{
-			"or": "Editor",
-			"tr": "Editor"
-		},
-		{
-			"or": "Play",
-			"tr": "Jugar"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s ha sortit! Descarga-la a www.teeworlds.com !"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Temps límit: %d min"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Partida"
-		},
-		{
-			"or": "Game over",
-			"tr": "El joc s'ha acabat"
-		},
-		{
-			"or": "Round over",
-			"tr": "S'ha acabat la ronda"
-		},
-		{
-			"or": "Map record",
-			"tr": "Rècord del mapa"
-		},
-		{
-			"or": "Time",
-			"tr": "Temps"
-		},
-		{
-			"or": "Score",
-			"tr": "Puntuació"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d altres jugadors"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Equip vermell"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Equip blau"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s ha guanyat!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Dibuixa!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Ronda acabada!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "cos"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "marques"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "decoració"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "mans"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "peus"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "ulls"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Càmera lliure"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Net"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Spree"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Agafades"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "%s' a votat per canviar una opció del servidor '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' ha votat per expulsar a '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' ha creat una votació per moure '%s' als espectadors (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Un administrador a forçat una opció del servidor: '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Un administrador ha mogut '%s' als espectadors (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Votació cancelada"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Un administrador a forçat votar si"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Votació acceptada"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Un administrador a forçat no"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Votació fallida"
 		},
 		{
 			"or": "'%s' has set a new record: %s",

@@ -836,7 +836,7 @@ void CHud::RenderSpectatorNotification()
 		if(NumPlayers > 0)
 		{
 			const char *pText = Localize("Click on a player or flag to follow it");
-			static CTextCursor s_Cursor(16.0f);
+			static CTextCursor s_Cursor(12.0f);
 			s_Cursor.MoveTo(150 * Graphics()->ScreenAspect(), 30);
 			s_Cursor.m_Align = TEXTALIGN_TC;
 			s_Cursor.Reset(g_Localization.Version());
@@ -849,7 +849,7 @@ void CHud::RenderReadyUpNotification()
 {
 	if(m_pClient->m_LocalClientID != -1 && !(m_pClient->m_Snap.m_apPlayerInfos[m_pClient->m_LocalClientID]->m_PlayerFlags & PLAYERFLAG_READY))
 	{
-		static CTextCursor s_Cursor(16.0f);
+		static CTextCursor s_Cursor(12.0f);
 
 		char aKey[64], aText[128];
 		int KeyID, Modifier;

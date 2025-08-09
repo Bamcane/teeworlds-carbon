@@ -793,6 +793,10 @@
 			"tr": "Konektuj"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Levo"
 		},
@@ -1250,6 +1254,183 @@
 			"tr": "Dodaj"
 		},
 		{
+			"or": "Local server",
+			"tr": "Lokalni server"
+		},
+		{
+			"or": "Editor",
+			"tr": "Urednik"
+		},
+		{
+			"or": "Play",
+			"tr": "Igraj"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworld %s je objavljen! Preuzmi ga na www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Vremensko ograničenje: %d min."
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Meč"
+		},
+		{
+			"or": "Game over",
+			"tr": "Igra je završena"
+		},
+		{
+			"or": "Round over",
+			"tr": "Runda završena"
+		},
+		{
+			"or": "Map record",
+			"tr": "Rekord mape"
+		},
+		{
+			"or": "Time",
+			"tr": "Vreme"
+		},
+		{
+			"or": "Score",
+			"tr": "Rezultat"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d drugih igrača"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Crveni tim"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Plavi tim"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s je pobedio!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Nerešeno!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Runda završena!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "telo"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "oznake"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "dekoracija"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "ruke"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "stopala"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "oči"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Slobodan pregled"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Samoubistva"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Razmera"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Neto"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Niz"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Najbolji niz"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Uhvaćene"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' glasa za opciju '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' glasa da se izbaci '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' glasa da se '%s' premesti u posmatrače (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Admin izglasao za opciju '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Admin je premestio '%s' u posmatrače (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Glasanje prekinuto"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Admin izglasao za"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Glasanje uspešno"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Admin izglasao protiv"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Glasanje neuspelo"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Nijansa:"
 		},
@@ -1473,14 +1654,6 @@
 			"tr": "Smrti"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Samoubistva"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Razmera"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1499,10 +1672,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Trenutan niz"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Najbolji niz"
 		},
 		{
 			"or": "Weapons stats",
@@ -1651,171 +1820,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Morate čekati %1.0f sekundi da promenite identitet."
-		},
-		{
-			"or": "Local server",
-			"tr": "Lokalni server"
-		},
-		{
-			"or": "Editor",
-			"tr": "Urednik"
-		},
-		{
-			"or": "Play",
-			"tr": "Igraj"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworld %s je objavljen! Preuzmi ga na www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Vremensko ograničenje: %d min."
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Meč"
-		},
-		{
-			"or": "Game over",
-			"tr": "Igra je završena"
-		},
-		{
-			"or": "Round over",
-			"tr": "Runda završena"
-		},
-		{
-			"or": "Map record",
-			"tr": "Rekord mape"
-		},
-		{
-			"or": "Time",
-			"tr": "Vreme"
-		},
-		{
-			"or": "Score",
-			"tr": "Rezultat"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d drugih igrača"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Crveni tim"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Plavi tim"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s je pobedio!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Nerešeno!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Runda završena!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "telo"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "oznake"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "dekoracija"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "ruke"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "stopala"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "oči"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Slobodan pregled"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Neto"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Niz"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Uhvaćene"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' glasa za opciju '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' glasa da se izbaci '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' glasa da se '%s' premesti u posmatrače (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Admin izglasao za opciju '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Admin je premestio '%s' u posmatrače (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Glasanje prekinuto"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Admin izglasao za"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Glasanje uspešno"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Admin izglasao protiv"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Glasanje neuspelo"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

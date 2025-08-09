@@ -791,6 +791,10 @@
 			"tr": "Jungtis"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Judėti kairėn"
 		},
@@ -1248,6 +1252,183 @@
 			"tr": "Pridėti"
 		},
 		{
+			"or": "Local server",
+			"tr": "Lokalus serveris"
+		},
+		{
+			"or": "Editor",
+			"tr": "Kūrėjas"
+		},
+		{
+			"or": "Play",
+			"tr": "Žaisti"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworld nauja versija %s .Atsisiūskite iš www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Laiko limitas: %d min"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Varžybos"
+		},
+		{
+			"or": "Game over",
+			"tr": "Žaidimas baigtas"
+		},
+		{
+			"or": "Round over",
+			"tr": "Raundas"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Taškai"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%dkiti žaidėjai"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Raudona komanda"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Mėlyna komanda"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s laimėjo!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Lygiosios!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Raundas Baigtas!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "kūnas"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "žymėjimas"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "dekoracijos"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "rankos"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "kojos"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "akys"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Laisvas vaizdas"
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' kviečia balsuoti kad pakeistų serverio nustatymą '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' kviečia balsuoti kad išspirtų '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' kviečia balsuoti, kad perkeltų '%s' į žiūrovus (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Administratorius pakeitė serverio nustatymą \"%s\" (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Administratorius perkėlė '%s' į žiūrovus (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Balsavimas atšauktas"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Administratorius privertė balsuoti taip"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Balsavimas pavyko"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Administratorius priverstinai balsavo ne"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Balsavimas nepavyko"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Atspalvis:"
 		},
@@ -1471,14 +1652,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": ""
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1496,10 +1669,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1649,171 +1818,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Jūs turi palaukti %1.0f sekundžių, kad pakeistumėte tapatybę."
-		},
-		{
-			"or": "Local server",
-			"tr": "Lokalus serveris"
-		},
-		{
-			"or": "Editor",
-			"tr": "Kūrėjas"
-		},
-		{
-			"or": "Play",
-			"tr": "Žaisti"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworld nauja versija %s .Atsisiūskite iš www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Laiko limitas: %d min"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Varžybos"
-		},
-		{
-			"or": "Game over",
-			"tr": "Žaidimas baigtas"
-		},
-		{
-			"or": "Round over",
-			"tr": "Raundas"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Taškai"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%dkiti žaidėjai"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Raudona komanda"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Mėlyna komanda"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s laimėjo!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Lygiosios!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Raundas Baigtas!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "kūnas"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "žymėjimas"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "dekoracijos"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "rankos"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "kojos"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "akys"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Laisvas vaizdas"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' kviečia balsuoti kad pakeistų serverio nustatymą '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' kviečia balsuoti kad išspirtų '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' kviečia balsuoti, kad perkeltų '%s' į žiūrovus (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Administratorius pakeitė serverio nustatymą \"%s\" (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Administratorius perkėlė '%s' į žiūrovus (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Balsavimas atšauktas"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Administratorius privertė balsuoti taip"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Balsavimas pavyko"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Administratorius priverstinai balsavo ne"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Balsavimas nepavyko"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

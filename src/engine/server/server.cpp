@@ -26,6 +26,8 @@
 #include <engine/shared/protocol.h>
 #include <engine/shared/snapshot.h>
 
+#include <generated/protocol.h> // for NUM_GAMEMSGS
+
 #include "register.h"
 #include "server.h"
 
@@ -399,6 +401,13 @@ int CServer::GetClientVersion(int ClientID) const
 	return 0;
 }
 
+int CServer::GetCarbonClientVersion(int ClientID) const
+{
+	if(ClientID >= 0 && ClientID < SERVER_MAX_CLIENTS && m_aClients[ClientID].m_State == CClient::STATE_INGAME)
+		return m_aClients[ClientID].m_CarbonVersion;
+	return 0;
+}
+
 const char *CServer::ClientLanguage(int ClientID) const
 {
 	if(ClientID < 0 || ClientID >= SERVER_MAX_CLIENTS || m_aClients[ClientID].m_State == CServer::CClient::STATE_EMPTY)
@@ -687,6 +696,7 @@ int CServer::NewClientCallback(int ClientID, void *pUser)
 	pThis->m_aClients[ClientID].m_NoRconNote = false;
 	pThis->m_aClients[ClientID].m_Quitting = false;
 	pThis->m_aClients[ClientID].m_Latency = 0;
+	pThis->m_aClients[ClientID].m_CarbonVersion = 0;
 	pThis->m_aClients[ClientID].Reset();
 
 	str_copy(pThis->m_aClients[ClientID].m_aLanguage, pThis->Config()->m_SvDefaultLanguage, sizeof(pThis->m_aClients[ClientID].m_aLanguage));
@@ -828,9 +838,25 @@ void CServer::UpdateClientMapListEntries()
 	}
 }
 
+static void UnpackPacketWithNamespace(CMsgUnpacker *pUnpacker, const void *pData, int Size)
+{
+	*pUnpacker = CMsgUnpacker(pData, Size);
+	
+	if(!pUnpacker->Namespace())
+		return;
+	if(*pUnpacker->Namespace() == UUID_CARBON_NAMESPACE)
+	{
+		int CarbonMsgID = pUnpacker->GetInt();
+		if(pUnpacker->Error())
+			return;
+		pUnpacker->ModifyType(CarbonMsgID + (pUnpacker->System() ? (int) NUM_VANILLA_NET_MSG : (int) NUM_GAMEMSGS));
+	}
+}
+
 void CServer::ProcessClientPacket(CNetChunk *pPacket)
 {
-	CMsgUnpacker Unpacker(pPacket->m_pData, pPacket->m_DataSize);
+	CMsgUnpacker Unpacker;
+	UnpackPacketWithNamespace(&Unpacker, pPacket->m_pData, pPacket->m_DataSize);
 	if(Unpacker.Error())
 		return;
 
@@ -838,7 +864,19 @@ void CServer::ProcessClientPacket(CNetChunk *pPacket)
 	if(Unpacker.System())
 	{
 		// system message
-		if(Unpacker.Type() == NETMSG_INFO)
+		if(Unpacker.Type() == CarbonSystemMsgID(CARBONMSG_INFO))
+		{
+			if((pPacket->m_Flags & NET_CHUNKFLAG_VITAL) != 0 && m_aClients[ClientID].m_State == CClient::STATE_AUTH)
+			{
+				m_aClients[ClientID].m_CarbonVersion = Unpacker.GetInt();
+				if(Unpacker.Error())
+					return;
+				char aBuf[64];
+				str_format(aBuf, sizeof(aBuf), "carbon client connected, cid=%d carbon_version=0x%x", ClientID, m_aClients[ClientID].m_CarbonVersion);
+				Console()->Print(IConsole::OUTPUT_LEVEL_DEBUG, "server", aBuf);
+			}
+		}
+		else if(Unpacker.Type() == NETMSG_INFO)
 		{
 			if((pPacket->m_Flags & NET_CHUNKFLAG_VITAL) != 0 && m_aClients[ClientID].m_State == CClient::STATE_AUTH)
 			{

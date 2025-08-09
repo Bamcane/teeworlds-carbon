@@ -793,6 +793,10 @@
 			"tr": "Під’єднатись"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Рух ліворуч"
 		},
@@ -1250,6 +1254,183 @@
 			"tr": "Додати"
 		},
 		{
+			"or": "Local server",
+			"tr": "Локальний сервер"
+		},
+		{
+			"or": "Editor",
+			"tr": "Редактор"
+		},
+		{
+			"or": "Play",
+			"tr": "Грати"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Вийшла Teeworlds %s! Завантажуйте на www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Ліміт часу: %d хв"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Матч"
+		},
+		{
+			"or": "Game over",
+			"tr": "Гра закінчена"
+		},
+		{
+			"or": "Round over",
+			"tr": "Раунд завершено"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Очки"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d інші гравці"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Червоні"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Сині"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s перемогли!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Нічия!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Кінець раунду!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "Тіло"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "Забарвлення"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "Оздоблення"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "Руки"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "Ноги"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "Очі"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Вільний перегляд"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Самовбивства"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Співвідношення"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Головне"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Серія"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Найкраща серія"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Підбирання"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' проголосував за зміну серверного параметру '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' закликав голосуванням штурхнути з гри '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' закликав голосуванням перемістити '%s' до спостерегачів (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Адміністратор змінив опцію сервера '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Адмін перемістив гравця '%s' в спостерагачі (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Голосування скасовано"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Адмін примусово проголосував так"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Голосування успішне"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Адміністратор примусово проголосував ні"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Голосування провалено"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Відтінок:"
 		},
@@ -1473,14 +1654,6 @@
 			"tr": "Смерті"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Самовбивства"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Співвідношення"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1499,10 +1672,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Поточна серія"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Найкраща серія"
 		},
 		{
 			"or": "Weapons stats",
@@ -1651,171 +1820,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Зачекайте %1.0f секунд перед зміною особистості."
-		},
-		{
-			"or": "Local server",
-			"tr": "Локальний сервер"
-		},
-		{
-			"or": "Editor",
-			"tr": "Редактор"
-		},
-		{
-			"or": "Play",
-			"tr": "Грати"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Вийшла Teeworlds %s! Завантажуйте на www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Ліміт часу: %d хв"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Матч"
-		},
-		{
-			"or": "Game over",
-			"tr": "Гра закінчена"
-		},
-		{
-			"or": "Round over",
-			"tr": "Раунд завершено"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Очки"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d інші гравці"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Червоні"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Сині"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s перемогли!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Нічия!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Кінець раунду!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "Тіло"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "Забарвлення"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "Оздоблення"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "Руки"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "Ноги"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "Очі"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Вільний перегляд"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Головне"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Серія"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Підбирання"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' проголосував за зміну серверного параметру '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' закликав голосуванням штурхнути з гри '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' закликав голосуванням перемістити '%s' до спостерегачів (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Адміністратор змінив опцію сервера '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Адмін перемістив гравця '%s' в спостерагачі (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Голосування скасовано"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Адмін примусово проголосував так"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Голосування успішне"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Адміністратор примусово проголосував ні"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Голосування провалено"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

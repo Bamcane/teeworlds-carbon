@@ -792,6 +792,10 @@
 			"tr": "Кошулуу"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Солго басуу"
 		},
@@ -1249,6 +1253,183 @@
 			"tr": "Кошуу"
 		},
 		{
+			"or": "Local server",
+			"tr": "Жергиликтүү сервер"
+		},
+		{
+			"or": "Editor",
+			"tr": "Редактор"
+		},
+		{
+			"or": "Play",
+			"tr": "Ойнотуу"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s чыкты! www.teeworlds.com -дон жүктөп алыңыздар!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Убакыттын чеги: %d мин."
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Матч"
+		},
+		{
+			"or": "Game over",
+			"tr": "Оюн бүттү"
+		},
+		{
+			"or": "Round over",
+			"tr": "Раунд бүттү"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Упайлар"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Кызыл командасы"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Көк командасы"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s жеңди!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Тең чыгуу!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Раунд бүттү!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": ""
+		},
+		{
+			"or": "Free-View",
+			"tr": "Эркин кароо"
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' '%s' сервер параметрин өзгөртүү максатында добушту баштады (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' '%s' -ны серверден кетирүү максатында добушту баштады (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' '%s' -ны көрүүчүлөргө которуу максатында добушту баштады (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Админ '%s' сервер параметрин мажбур кылды (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Админ '%s' -ны көрүүчүлөргө которду (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Добуш берүү токтотулду"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Админ \"макул\" деген добушту мажбурлады"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Добуш кабыл алынды"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Админ \"каршы\" деген добушту мажбурлады"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Добуш кабыл алынбады"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Түсү:"
 		},
@@ -1472,14 +1653,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": ""
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1497,10 +1670,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1650,171 +1819,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": ""
-		},
-		{
-			"or": "Local server",
-			"tr": "Жергиликтүү сервер"
-		},
-		{
-			"or": "Editor",
-			"tr": "Редактор"
-		},
-		{
-			"or": "Play",
-			"tr": "Ойнотуу"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s чыкты! www.teeworlds.com -дон жүктөп алыңыздар!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Убакыттын чеги: %d мин."
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Матч"
-		},
-		{
-			"or": "Game over",
-			"tr": "Оюн бүттү"
-		},
-		{
-			"or": "Round over",
-			"tr": "Раунд бүттү"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Упайлар"
-		},
-		{
-			"or": "%d other players",
-			"tr": ""
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Кызыл командасы"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Көк командасы"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s жеңди!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Тең чыгуу!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Раунд бүттү!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": ""
-		},
-		{
-			"or": "Free-View",
-			"tr": "Эркин кароо"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' '%s' сервер параметрин өзгөртүү максатында добушту баштады (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' '%s' -ны серверден кетирүү максатында добушту баштады (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' '%s' -ны көрүүчүлөргө которуу максатында добушту баштады (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Админ '%s' сервер параметрин мажбур кылды (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Админ '%s' -ны көрүүчүлөргө которду (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Добуш берүү токтотулду"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Админ \"макул\" деген добушту мажбурлады"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Добуш кабыл алынды"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Админ \"каршы\" деген добушту мажбурлады"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Добуш кабыл алынбады"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

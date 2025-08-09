@@ -803,6 +803,10 @@
 			"tr": "Conectar"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Esquerda"
 		},
@@ -1260,6 +1264,183 @@
 			"tr": "Adicionar"
 		},
 		{
+			"or": "Local server",
+			"tr": "Servidor local"
+		},
+		{
+			"or": "Editor",
+			"tr": "Editor"
+		},
+		{
+			"or": "Play",
+			"tr": "Jogar"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s está disponível! Baixe-o em www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Limite de tempo: %d minutos"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Partida"
+		},
+		{
+			"or": "Game over",
+			"tr": "Fim do jogo"
+		},
+		{
+			"or": "Round over",
+			"tr": "Acabar rodada"
+		},
+		{
+			"or": "Map record",
+			"tr": "Recorde do mapa"
+		},
+		{
+			"or": "Time",
+			"tr": "Tempo"
+		},
+		{
+			"or": "Score",
+			"tr": "Pontos"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d outros jogadores"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Time vermelho"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Time azul"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "Vitória de %s!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Empate!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Rodada acabou!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "corpo"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "marcas"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "decoração"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "mãos"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "pés"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "olhos"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Visualização livre"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Suicídios"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Taxa"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Média"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Sequência"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Melhor sequência"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Capturas"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' convocou votação para mudar opção '%s' do observador (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' convocou votação para expulsar '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' convocou votação para mover '%s' para observador (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Administrador forçou a opção '%s' do servidor (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Administrador moveu '%s' para observador (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Votação cancelada"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Administrador forçou votação sim"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Votação passou"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Administrador forçou votação não"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Votação falhou"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Matiz:"
 		},
@@ -1483,14 +1664,6 @@
 			"tr": "Mortes"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Suicídios"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Taxa"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1509,10 +1682,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Sequência atual"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Melhor sequência"
 		},
 		{
 			"or": "Weapons stats",
@@ -1661,171 +1830,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Você tem que aguardar %1.0f segundos para alterar a identidade."
-		},
-		{
-			"or": "Local server",
-			"tr": "Servidor local"
-		},
-		{
-			"or": "Editor",
-			"tr": "Editor"
-		},
-		{
-			"or": "Play",
-			"tr": "Jogar"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s está disponível! Baixe-o em www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Limite de tempo: %d minutos"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Partida"
-		},
-		{
-			"or": "Game over",
-			"tr": "Fim do jogo"
-		},
-		{
-			"or": "Round over",
-			"tr": "Acabar rodada"
-		},
-		{
-			"or": "Map record",
-			"tr": "Recorde do mapa"
-		},
-		{
-			"or": "Time",
-			"tr": "Tempo"
-		},
-		{
-			"or": "Score",
-			"tr": "Pontos"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d outros jogadores"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Time vermelho"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Time azul"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "Vitória de %s!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Empate!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Rodada acabou!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "corpo"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "marcas"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "decoração"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "mãos"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "pés"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "olhos"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Visualização livre"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Média"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Sequência"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Capturas"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' convocou votação para mudar opção '%s' do observador (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' convocou votação para expulsar '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' convocou votação para mover '%s' para observador (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Administrador forçou a opção '%s' do servidor (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Administrador moveu '%s' para observador (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Votação cancelada"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Administrador forçou votação sim"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Votação passou"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Administrador forçou votação não"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Votação falhou"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

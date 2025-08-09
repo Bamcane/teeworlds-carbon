@@ -192,6 +192,7 @@ public:
 	int SendMsg(CMsgPacker *pMsg, int Flags) override;
 
 	void SendInfo();
+	void SendCarbonInfo();
 	void SendEnterGame();
 	void SendReady();
 	void SendInput();

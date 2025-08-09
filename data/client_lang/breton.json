@@ -790,6 +790,10 @@
 			"tr": "Kennaskañ"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Fiñval a-gleiz"
 		},
@@ -1247,6 +1251,183 @@
 			"tr": "Ouzhpennañ"
 		},
 		{
+			"or": "Local server",
+			"tr": "Servijer lec'hel"
+		},
+		{
+			"or": "Editor",
+			"tr": "Embanner"
+		},
+		{
+			"or": "Play",
+			"tr": "C'hoari"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Deuet eo er-maez Teeworlds %s ! Pellgargit anezhañ war www.teeworlds.com !"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Bevenn amzer : %d mun"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Krogad"
+		},
+		{
+			"or": "Game over",
+			"tr": "Game over"
+		},
+		{
+			"or": "Round over",
+			"tr": "Krogad echu"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Poentoù"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Skipailh ruz"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Skipailh glas"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "Aet eo ar maout gant %s !"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Rampo !"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Echuet ar c'hrogad!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": ""
+		},
+		{
+			"or": "Free-View",
+			"tr": "Gwel-dieub"
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' en deus galvet ur mouezhiadeg evit cheñch an dibarzh servijer '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit skarzhañ '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit lakaat '%s' da vezañ un arvester (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Rediet eo bet an arventenn servijer '%s gant ar merour (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Lakaet eo bet '%s' da vezañ un arvester gant ar merour (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Nullet eo bet ar mouezhiadeg"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Rediet eo bet mouezhiañ ya gant ar merour"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Trec'het ar mouezhiadeg "
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Rediet eo bet mouezhiañ nann gant ar merour"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Mouezhiadeg c'hwitet"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Livad :"
 		},
@@ -1470,14 +1651,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": ""
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1495,10 +1668,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1648,171 +1817,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": ""
-		},
-		{
-			"or": "Local server",
-			"tr": "Servijer lec'hel"
-		},
-		{
-			"or": "Editor",
-			"tr": "Embanner"
-		},
-		{
-			"or": "Play",
-			"tr": "C'hoari"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Deuet eo er-maez Teeworlds %s ! Pellgargit anezhañ war www.teeworlds.com !"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Bevenn amzer : %d mun"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Krogad"
-		},
-		{
-			"or": "Game over",
-			"tr": "Game over"
-		},
-		{
-			"or": "Round over",
-			"tr": "Krogad echu"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Poentoù"
-		},
-		{
-			"or": "%d other players",
-			"tr": ""
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Skipailh ruz"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Skipailh glas"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "Aet eo ar maout gant %s !"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Rampo !"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Echuet ar c'hrogad!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": ""
-		},
-		{
-			"or": "Free-View",
-			"tr": "Gwel-dieub"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' en deus galvet ur mouezhiadeg evit cheñch an dibarzh servijer '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit skarzhañ '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "Galvet eo bet ur mouezhiadeg gant '%s' evit lakaat '%s' da vezañ un arvester (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Rediet eo bet an arventenn servijer '%s gant ar merour (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Lakaet eo bet '%s' da vezañ un arvester gant ar merour (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Nullet eo bet ar mouezhiadeg"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Rediet eo bet mouezhiañ ya gant ar merour"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Trec'het ar mouezhiadeg "
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Rediet eo bet mouezhiañ nann gant ar merour"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Mouezhiadeg c'hwitet"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

@@ -808,6 +808,10 @@
 			"tr": "Verbinden"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Naar links verplaatsen"
 		},
@@ -1265,6 +1269,183 @@
 			"tr": "Toevoegen"
 		},
 		{
+			"or": "Local server",
+			"tr": "Lokale server"
+		},
+		{
+			"or": "Editor",
+			"tr": "Bewerker"
+		},
+		{
+			"or": "Play",
+			"tr": "Spelen"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s is uitgebracht! Download het op www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Tijdslimiet: %d minuten"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Wedstrijd"
+		},
+		{
+			"or": "Game over",
+			"tr": "Spel afgelopen"
+		},
+		{
+			"or": "Round over",
+			"tr": "Ronde voorbij"
+		},
+		{
+			"or": "Map record",
+			"tr": "Kaartrecord"
+		},
+		{
+			"or": "Time",
+			"tr": "Tijd"
+		},
+		{
+			"or": "Score",
+			"tr": "Score"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d overige spelers"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Rode team"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Blauwe team"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s heeft gewonnen!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Gelijkspel!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Ronde voorbij!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "lichaam"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "markering"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "decoratie"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "handen"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "voeten"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "ogen"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Vrij bewegen"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Zelfdoden"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Verhouding"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Net"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Moordaanslag"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Beste moordaanslag"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Gepakt"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' heeft een stemming geopend om de serveroptie '%s' (%s) aan te passen"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' heeft een stemming geopend over het verbannen van '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' heeft een stemming geopend over het verplaatsen van '%s' naar toeschouwers (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Admin heeft de serveroptie '%s' (%s) afgedwongen"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Admin heeft '%s' verplaatst naar de toeschouwers (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Stemmen afgebroken"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Admin heeft de 'ja'-stem afgedwongen"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Stem toegestaan"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Administrator dwong 'nee'-stem af"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Stemmen mislukt"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Kleurverloop:"
 		},
@@ -1488,14 +1669,6 @@
 			"tr": "Doden"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Zelfdoden"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Verhouding"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1514,10 +1687,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Huidige moordaanslag"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Beste moordaanslag"
 		},
 		{
 			"or": "Weapons stats",
@@ -1666,171 +1835,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Je moet %1.0f seconden wachten voordat je je identiteit kunt wijzigen."
-		},
-		{
-			"or": "Local server",
-			"tr": "Lokale server"
-		},
-		{
-			"or": "Editor",
-			"tr": "Bewerker"
-		},
-		{
-			"or": "Play",
-			"tr": "Spelen"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s is uitgebracht! Download het op www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Tijdslimiet: %d minuten"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Wedstrijd"
-		},
-		{
-			"or": "Game over",
-			"tr": "Spel afgelopen"
-		},
-		{
-			"or": "Round over",
-			"tr": "Ronde voorbij"
-		},
-		{
-			"or": "Map record",
-			"tr": "Kaartrecord"
-		},
-		{
-			"or": "Time",
-			"tr": "Tijd"
-		},
-		{
-			"or": "Score",
-			"tr": "Score"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d overige spelers"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Rode team"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Blauwe team"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s heeft gewonnen!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Gelijkspel!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Ronde voorbij!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "lichaam"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "markering"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "decoratie"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "handen"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "voeten"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "ogen"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Vrij bewegen"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Net"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Moordaanslag"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Gepakt"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' heeft een stemming geopend om de serveroptie '%s' (%s) aan te passen"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' heeft een stemming geopend over het verbannen van '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' heeft een stemming geopend over het verplaatsen van '%s' naar toeschouwers (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Admin heeft de serveroptie '%s' (%s) afgedwongen"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Admin heeft '%s' verplaatst naar de toeschouwers (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Stemmen afgebroken"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Admin heeft de 'ja'-stem afgedwongen"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Stem toegestaan"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Administrator dwong 'nee'-stem af"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Stemmen mislukt"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

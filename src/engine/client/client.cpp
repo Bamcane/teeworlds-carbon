@@ -36,6 +36,7 @@
 #include <engine/shared/snapshot.h>
 
 #include <game/version.h>
+#include <generated/protocol.h> // for NUM_GAMEMSGS
 
 #include "contacts.h"
 #include "serverbrowser.h"
@@ -338,6 +339,13 @@ void CClient::SendInfo()
 	Msg.AddString(GameClient()->NetVersion(), 128);
 	Msg.AddString(m_aServerPassword, 128);
 	Msg.AddInt(GameClient()->ClientVersion());
+	SendMsg(&Msg, MSGFLAG_VITAL | MSGFLAG_FLUSH);
+}
+
+void CClient::SendCarbonInfo()
+{
+	CMsgPacker Msg(CARBONMSG_INFO, true, true);
+	Msg.AddInt(GameClient()->CarbonClientVersion());
 	SendMsg(&Msg, MSGFLAG_VITAL | MSGFLAG_FLUSH);
 }
 
@@ -1012,9 +1020,26 @@ void CClient::ProcessConnlessPacket(CNetChunk *pPacket)
 	}
 }
 
+static void UnpackPacketWithNamespace(CMsgUnpacker *pUnpacker, const void *pData, int Size)
+{
+	*pUnpacker = CMsgUnpacker(pData, Size);
+	
+	if(!pUnpacker->Namespace())
+		return;
+	if(*pUnpacker->Namespace() == UUID_CARBON_NAMESPACE)
+	{
+		int CarbonMsgID = pUnpacker->GetInt();
+		if(pUnpacker->Error())
+			return;
+		pUnpacker->ModifyType(CarbonMsgID + (pUnpacker->System() ? (int) NUM_VANILLA_NET_MSG : (int) NUM_GAMEMSGS));
+	}
+}
+
 void CClient::ProcessServerPacket(CNetChunk *pPacket)
 {
-	CMsgUnpacker Unpacker(pPacket->m_pData, pPacket->m_DataSize);
+	CMsgUnpacker Unpacker;
+	UnpackPacketWithNamespace(&Unpacker, pPacket->m_pData, pPacket->m_DataSize);
+
 	if(Unpacker.Error())
 		return;
 
@@ -1460,6 +1485,7 @@ void CClient::PumpNetwork()
 			// we switched to online
 			m_pConsole->Print(IConsole::OUTPUT_LEVEL_STANDARD, "client", "connected, sending info");
 			SetState(IClient::STATE_LOADING);
+			SendCarbonInfo();
 			SendInfo();
 		}
 	}

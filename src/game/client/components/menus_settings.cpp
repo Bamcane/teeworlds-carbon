@@ -1813,7 +1813,7 @@ void CMenus::RenderSettingsSound(CUIRect MainView)
 	CUIRect Label, Button, Sound, Detail, BottomView, Background;
 
 	// render sound menu background
-	int NumOptions = Config()->m_SndEnable ? 3 : 2;
+	int NumOptions = Config()->m_SndEnable ? 4 : 3;
 	float ButtonHeight = 20.0f;
 	float Spacing = 2.0f;
 	float BackgroundHeight = (float) (NumOptions + 1) * ButtonHeight + (float) NumOptions * Spacing;

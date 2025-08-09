@@ -792,6 +792,10 @@
 			"tr": "Konekti"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Moviĝi maldekstren"
 		},
@@ -1249,6 +1253,183 @@
 			"tr": "Aldoni"
 		},
 		{
+			"or": "Local server",
+			"tr": "Loka servilo"
+		},
+		{
+			"or": "Editor",
+			"tr": "Redaktilo"
+		},
+		{
+			"or": "Play",
+			"tr": "Ludi"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Tejmondo %s estas ellasita! Elŝutu ĝin al www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Templimito: %d minutojn"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Ludbatalo"
+		},
+		{
+			"or": "Game over",
+			"tr": "Ludo finita"
+		},
+		{
+			"or": "Round over",
+			"tr": "La raŭndo finiĝis"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Rezulto"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REG %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Ruĝa teamo"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Blua teamo"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s venkas!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Remiso!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Fino de la raŭndo!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": ""
+		},
+		{
+			"or": "Free-View",
+			"tr": "Libera-Vido"
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' volas voĉdoni por ŝanĝi la servilagordo '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "%s' volas forigi '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' volas forigi '%s' al la spektantoj (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Administranto trudis servilagordon '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "La administranto movis '%s' al spektanto (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Voĉdonado estis nuligita"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "La administranto trudis \"jes\" en la voĉdonado"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Voĉdonado pasis"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "La administranto eldevigis la voĉrezulton \"ne\""
+		},
+		{
+			"or": "Vote failed",
+			"tr": "La voĉdonado fiaskis"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Koloro"
 		},
@@ -1472,14 +1653,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": ""
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1497,10 +1670,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1650,171 +1819,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": ""
-		},
-		{
-			"or": "Local server",
-			"tr": "Loka servilo"
-		},
-		{
-			"or": "Editor",
-			"tr": "Redaktilo"
-		},
-		{
-			"or": "Play",
-			"tr": "Ludi"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Tejmondo %s estas ellasita! Elŝutu ĝin al www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Templimito: %d minutojn"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Ludbatalo"
-		},
-		{
-			"or": "Game over",
-			"tr": "Ludo finita"
-		},
-		{
-			"or": "Round over",
-			"tr": "La raŭndo finiĝis"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Rezulto"
-		},
-		{
-			"or": "%d other players",
-			"tr": ""
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REG %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Ruĝa teamo"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Blua teamo"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s venkas!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Remiso!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Fino de la raŭndo!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": ""
-		},
-		{
-			"or": "Free-View",
-			"tr": "Libera-Vido"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' volas voĉdoni por ŝanĝi la servilagordo '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "%s' volas forigi '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' volas forigi '%s' al la spektantoj (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Administranto trudis servilagordon '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "La administranto movis '%s' al spektanto (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Voĉdonado estis nuligita"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "La administranto trudis \"jes\" en la voĉdonado"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Voĉdonado pasis"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "La administranto eldevigis la voĉrezulton \"ne\""
-		},
-		{
-			"or": "Vote failed",
-			"tr": "La voĉdonado fiaskis"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

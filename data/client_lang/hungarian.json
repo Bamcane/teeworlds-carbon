@@ -791,6 +791,10 @@
 			"tr": "Csatlakozás"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Balra lépés"
 		},
@@ -1248,6 +1252,183 @@
 			"tr": "Hozzáad"
 		},
 		{
+			"or": "Local server",
+			"tr": "Helyi szerver"
+		},
+		{
+			"or": "Editor",
+			"tr": "Szerkesztő"
+		},
+		{
+			"or": "Play",
+			"tr": "Játék"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s kijött! Töltsd le a www.teeworlds.com oldalon!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Időhatár: %d perc"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Meccs"
+		},
+		{
+			"or": "Game over",
+			"tr": "Játék vége"
+		},
+		{
+			"or": "Round over",
+			"tr": "Kör vége"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Pont"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d másik játékos"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "FELVÉTEL %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Piros csapat"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Kék csapat"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s nyert!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Döntetlen!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Kör vége!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "test"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "mintázat"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "dekoráció"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "kezek"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "lábak"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "szemek"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Szabad-nézet"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Öngyilkosságok"
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "%s szavazást indított hogy megváltoztassa a szerver beállításait '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "%s szavazást indított %s kirúgása érdekében (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "%s szavazást indított %s nézők közé helyezése érdekében (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Admin átállította a szerver beállításait %s (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Admin %s-t a nézők közé helyezte (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Szavazás megszakítva"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Admin igennel zárta a szavazást"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Szavazás sikeres"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Admin nemmel zárta a szavazást"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "A szavazás elbukott"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Árnyalat"
 		},
@@ -1471,14 +1652,6 @@
 			"tr": "Halálok"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Öngyilkosságok"
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1496,10 +1669,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1649,171 +1818,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Identitás megváltoztatásához várnod kell %1.0f másodpercet."
-		},
-		{
-			"or": "Local server",
-			"tr": "Helyi szerver"
-		},
-		{
-			"or": "Editor",
-			"tr": "Szerkesztő"
-		},
-		{
-			"or": "Play",
-			"tr": "Játék"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s kijött! Töltsd le a www.teeworlds.com oldalon!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Időhatár: %d perc"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Meccs"
-		},
-		{
-			"or": "Game over",
-			"tr": "Játék vége"
-		},
-		{
-			"or": "Round over",
-			"tr": "Kör vége"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Pont"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d másik játékos"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "FELVÉTEL %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Piros csapat"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Kék csapat"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s nyert!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Döntetlen!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Kör vége!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "test"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "mintázat"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "dekoráció"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "kezek"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "lábak"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "szemek"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Szabad-nézet"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "%s szavazást indított hogy megváltoztassa a szerver beállításait '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "%s szavazást indított %s kirúgása érdekében (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "%s szavazást indított %s nézők közé helyezése érdekében (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Admin átállította a szerver beállításait %s (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Admin %s-t a nézők közé helyezte (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Szavazás megszakítva"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Admin igennel zárta a szavazást"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Szavazás sikeres"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Admin nemmel zárta a szavazást"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "A szavazás elbukott"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

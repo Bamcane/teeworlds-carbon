@@ -72,6 +72,13 @@ enum
 
 	NETMSG_MAPLIST_ENTRY_ADD, // todo 0.8: move up
 	NETMSG_MAPLIST_ENTRY_REM,
+
+	NUM_VANILLA_NET_MSG,
+};
+
+enum
+{
+	CARBONMSG_INFO = 0,
 };
 
 // this should be revised
@@ -83,10 +90,11 @@ enum
 	SERVERINFO_LEVEL_MIN = 0,
 	SERVERINFO_LEVEL_MAX = 2,
 
-	MAX_CLIENTS = 64,
+	MAX_CLIENTS = 128,
+	VANILLA_MAX_CLIENTS = 64,
 	// which means the max number of bots display together, isn't the max number of bots.
 	MAX_BOTS = 32,
-	SERVER_MAX_CLIENTS = MAX_CLIENTS - MAX_BOTS,
+	SERVER_MAX_CLIENTS = VANILLA_MAX_CLIENTS - MAX_BOTS,
 
 	MAX_INPUT_SIZE = 128,
 	MAX_SNAPSHOT_PACKSIZE = 900,
@@ -105,5 +113,7 @@ enum
 	MSGFLAG_RECORD = 8,
 	MSGFLAG_NOSEND = 16
 };
+
+inline int CarbonSystemMsgID(int OriginMsg) { return OriginMsg + NUM_VANILLA_NET_MSG; }
 
 #endif

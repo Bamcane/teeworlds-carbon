@@ -168,8 +168,7 @@ void CServerBrowser::Set(const NETADDR &Addr, int SetType, int Token, const CSer
 		// set info
 		if(pEntry)
 		{
-			if(!pEntry->m_Info.m_InfoGotByHttp)
-				SetInfo(Type, pEntry, *pInfo);
+			SetInfo(Type, pEntry, *pInfo);
 			if(Type == IServerBrowser::TYPE_LAN)
 				pEntry->m_Info.m_Latency = minimum(static_cast<int>((time_get() - m_BroadcastTime) * 1000 / time_freq()), 999);
 			else
@@ -586,16 +585,24 @@ void CServerBrowser::RequestImpl(const NETADDR &Addr, CServerEntry *pEntry)
 
 void CServerBrowser::SetInfo(int ServerlistType, CServerEntry *pEntry, const CServerInfo &Info)
 {
-	bool Fav = pEntry->m_Info.m_Favorite;
-	pEntry->m_Info = Info;
-	pEntry->m_Info.m_Flags &= FLAG_PASSWORD | FLAG_TIMESCORE;
-	if(str_comp(pEntry->m_Info.m_aGameType, "DM") == 0 || str_comp(pEntry->m_Info.m_aGameType, "TDM") == 0 || str_comp(pEntry->m_Info.m_aGameType, "CTF") == 0 ||
-		str_comp(pEntry->m_Info.m_aGameType, "LTS") == 0 || str_comp(pEntry->m_Info.m_aGameType, "LMS") == 0)
-		pEntry->m_Info.m_Flags |= FLAG_PURE;
+	if(pEntry->m_Info.m_InfoGotByHttp)
+	{
+		pEntry->m_Info.m_ServerLevel = Info.m_ServerLevel;
+		pEntry->m_Info.m_NumBotPlayers = Info.m_NumBotPlayers;
+		pEntry->m_Info.m_NumBotSpectators = Info.m_NumBotSpectators;
+	}
+	else
+	{
+		bool Fav = pEntry->m_Info.m_Favorite;
+		pEntry->m_Info = Info;
+		pEntry->m_Info.m_Flags &= FLAG_PASSWORD | FLAG_TIMESCORE;
+		if(str_comp(pEntry->m_Info.m_aGameType, "DM") == 0 || str_comp(pEntry->m_Info.m_aGameType, "TDM") == 0 || str_comp(pEntry->m_Info.m_aGameType, "CTF") == 0 ||
+			str_comp(pEntry->m_Info.m_aGameType, "LTS") == 0 || str_comp(pEntry->m_Info.m_aGameType, "LMS") == 0)
+			pEntry->m_Info.m_Flags |= FLAG_PURE;
 
-	pEntry->m_Info.m_Favorite = Fav;
-	pEntry->m_Info.m_NetAddr = pEntry->m_Addr;
-
+		pEntry->m_Info.m_Favorite = Fav;
+		pEntry->m_Info.m_NetAddr = pEntry->m_Addr;
+	}
 	m_aServerlist[ServerlistType].m_NumPlayers += pEntry->m_Info.m_NumPlayers;
 	m_aServerlist[ServerlistType].m_NumClients += pEntry->m_Info.m_NumClients;
 

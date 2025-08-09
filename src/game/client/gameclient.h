@@ -291,6 +291,7 @@ public:
 	const char *NetVersionHashUsed() const override;
 	const char *NetVersionHashReal() const override;
 	int ClientVersion() const override;
+	int CarbonClientVersion() const override;
 	void GetPlayerLabel(char *aBuf, int BufferSize, int ClientID, const char *ClientName);
 	void StartRendering();
 

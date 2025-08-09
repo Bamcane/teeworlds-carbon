@@ -793,6 +793,10 @@
 			"tr": "Свързване"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Наляво"
 		},
@@ -1250,6 +1254,183 @@
 			"tr": "Добавяне"
 		},
 		{
+			"or": "Local server",
+			"tr": "Местен сървър"
+		},
+		{
+			"or": "Editor",
+			"tr": "Редактор"
+		},
+		{
+			"or": "Play",
+			"tr": "Играене"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Излезе Teeworlds %s! Изтеглете я от www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Ограничение на времето: %d мин"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Мач"
+		},
+		{
+			"or": "Game over",
+			"tr": "Край на играта"
+		},
+		{
+			"or": "Round over",
+			"tr": "Край на рунда"
+		},
+		{
+			"or": "Map record",
+			"tr": "Рекорд на картата"
+		},
+		{
+			"or": "Time",
+			"tr": "Време"
+		},
+		{
+			"or": "Score",
+			"tr": "Резултат"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%dдруги играчи"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "Записани %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Червен отбор"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Син отбор"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s печели!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Равенство!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Край на рунда!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "тяло"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "оцветяване"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "украса"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "ръце"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "крака"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "очи"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Свободен изглед"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Самоубийства"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Съотношение"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Разлика"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Серия"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Най-добра серия"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Вземания"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "„%s“ поиска гласуване за промяна на сървърния параметър „%s“ (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "„%s“ поиска гласуване за изритване на „%s“ (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "„%s“ поиска гласуване за прехвърляне на „%s“ към наблюдателите (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Администраторът насили сървърния параметър „%s“ (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Администраторът направи „%s“ наблюдател (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Гласуването е отменено"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Администраторът насили гласуването със „за“"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Гласуването мина"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Администраторът насили гласуването с „против“"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Гласуването не мина"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Тон:"
 		},
@@ -1473,14 +1654,6 @@
 			"tr": "Умирания"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Самоубийства"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Съотношение"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1499,10 +1672,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Текуща серия"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Най-добра серия"
 		},
 		{
 			"or": "Weapons stats",
@@ -1651,171 +1820,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Трябва да изчакате %1.0f секунди, за да промените идентичността си."
-		},
-		{
-			"or": "Local server",
-			"tr": "Местен сървър"
-		},
-		{
-			"or": "Editor",
-			"tr": "Редактор"
-		},
-		{
-			"or": "Play",
-			"tr": "Играене"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Излезе Teeworlds %s! Изтеглете я от www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Ограничение на времето: %d мин"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Мач"
-		},
-		{
-			"or": "Game over",
-			"tr": "Край на играта"
-		},
-		{
-			"or": "Round over",
-			"tr": "Край на рунда"
-		},
-		{
-			"or": "Map record",
-			"tr": "Рекорд на картата"
-		},
-		{
-			"or": "Time",
-			"tr": "Време"
-		},
-		{
-			"or": "Score",
-			"tr": "Резултат"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%dдруги играчи"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "Записани %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Червен отбор"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Син отбор"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s печели!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Равенство!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Край на рунда!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "тяло"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "оцветяване"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "украса"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "ръце"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "крака"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "очи"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Свободен изглед"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Разлика"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Серия"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Вземания"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "„%s“ поиска гласуване за промяна на сървърния параметър „%s“ (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "„%s“ поиска гласуване за изритване на „%s“ (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "„%s“ поиска гласуване за прехвърляне на „%s“ към наблюдателите (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Администраторът насили сървърния параметър „%s“ (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Администраторът направи „%s“ наблюдател (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Гласуването е отменено"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Администраторът насили гласуването със „за“"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Гласуването мина"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Администраторът насили гласуването с „против“"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Гласуването не мина"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

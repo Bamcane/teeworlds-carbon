@@ -790,6 +790,10 @@
 			"tr": "Ceangail"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Gluais dhan taobh chlì"
 		},
@@ -1247,6 +1251,183 @@
 			"tr": "Cuir ris"
 		},
 		{
+			"or": "Local server",
+			"tr": "Frithealaiche ionadail"
+		},
+		{
+			"or": "Editor",
+			"tr": "Deasaiche"
+		},
+		{
+			"or": "Play",
+			"tr": "Cluich"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Chaidh Teeworlds %s fhoillseachadh! Luchdaich a-nuas e air www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Crìoch-ama: %d mion"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Maids"
+		},
+		{
+			"or": "Game over",
+			"tr": "Crìoch a’ gheama"
+		},
+		{
+			"or": "Round over",
+			"tr": "Tha a’ chuairt seachad"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Sgòr"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d cluicheadair(ean) eile"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "As luaithe %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "An sgioba dearg"
+		},
+		{
+			"or": "Blue team",
+			"tr": "An sgioba gorm"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "Bhuannaich %s!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Geama co-ionnann!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Tha a’ chuairt seachad!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "bodhaig"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "comharradh"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "sgeadachadh"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "làmhan"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "casan"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "sùilean"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Sealladh saor"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Fèin-mhurt"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Co-mheas"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Lom"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Splaoid"
+		},
+		{
+			"or": "Best spree",
+			"tr": "An splaoid as fheàrr"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Togail"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "Leig “%s” atharrachadh air roghainn “%s” an fhrithealaiche gu bhòt (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "Leig “%s” toirt a’ bhròg air “%s” gu bhòt (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "Leig “%s” gluasad “%s” dha na h-amhairc gu bhòt (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Dh’èignich an rianaire roghainn “%s” an fhrithealaiche (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Ghluais an rianaire “%s” dha na h-amhairc (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Chaidh sgur dhen bhòtadh"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Dh’èignich rianaire aontachadh a’ bhòtaidh"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Shoirbhich leis a’ bhòt"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Dh’èignich rianaire àicheadh a’ bhòtaidh"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Cha deach leis a’ bhòt"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Tuar:"
 		},
@@ -1470,14 +1651,6 @@
 			"tr": "Bàs"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Fèin-mhurt"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Co-mheas"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1496,10 +1669,6 @@
 		{
 			"or": "Current spree",
 			"tr": "An splaoid làithreach"
-		},
-		{
-			"or": "Best spree",
-			"tr": "An splaoid as fheàrr"
 		},
 		{
 			"or": "Weapons stats",
@@ -1648,171 +1817,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Feumaidh tu feitheamh fad %1.0f diog(an) mus atharraich thu d’ aithne."
-		},
-		{
-			"or": "Local server",
-			"tr": "Frithealaiche ionadail"
-		},
-		{
-			"or": "Editor",
-			"tr": "Deasaiche"
-		},
-		{
-			"or": "Play",
-			"tr": "Cluich"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Chaidh Teeworlds %s fhoillseachadh! Luchdaich a-nuas e air www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Crìoch-ama: %d mion"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Maids"
-		},
-		{
-			"or": "Game over",
-			"tr": "Crìoch a’ gheama"
-		},
-		{
-			"or": "Round over",
-			"tr": "Tha a’ chuairt seachad"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Sgòr"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d cluicheadair(ean) eile"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "As luaithe %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "An sgioba dearg"
-		},
-		{
-			"or": "Blue team",
-			"tr": "An sgioba gorm"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "Bhuannaich %s!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Geama co-ionnann!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Tha a’ chuairt seachad!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "bodhaig"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "comharradh"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "sgeadachadh"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "làmhan"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "casan"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "sùilean"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Sealladh saor"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Lom"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Splaoid"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Togail"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "Leig “%s” atharrachadh air roghainn “%s” an fhrithealaiche gu bhòt (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "Leig “%s” toirt a’ bhròg air “%s” gu bhòt (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "Leig “%s” gluasad “%s” dha na h-amhairc gu bhòt (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Dh’èignich an rianaire roghainn “%s” an fhrithealaiche (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Ghluais an rianaire “%s” dha na h-amhairc (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Chaidh sgur dhen bhòtadh"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Dh’èignich rianaire aontachadh a’ bhòtaidh"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Shoirbhich leis a’ bhòt"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Dh’èignich rianaire àicheadh a’ bhòtaidh"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Cha deach leis a’ bhòt"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

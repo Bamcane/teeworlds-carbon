@@ -184,6 +184,7 @@ public:
 	virtual const char *NetVersionHashUsed() const = 0;
 	virtual const char *NetVersionHashReal() const = 0;
 	virtual int ClientVersion() const = 0;
+	virtual int CarbonClientVersion() const = 0;
 };
 
 extern IGameClient *CreateGameClient();

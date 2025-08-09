@@ -797,6 +797,10 @@
 			"tr": "Bağlan"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Sola git"
 		},
@@ -1254,6 +1258,183 @@
 			"tr": "Ekle"
 		},
 		{
+			"or": "Local server",
+			"tr": "Yerel Sunucu"
+		},
+		{
+			"or": "Editor",
+			"tr": "Editör"
+		},
+		{
+			"or": "Play",
+			"tr": "Oyna"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s çıktı! www.teeworlds.com dan indir!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Süre limiti: %d dakika"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Maç"
+		},
+		{
+			"or": "Game over",
+			"tr": "Oyun sonu"
+		},
+		{
+			"or": "Round over",
+			"tr": "Tur bitti"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Skor"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%dbaşka oyuncu"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "Kayıt %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Kırmızı takım"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Mavi takım"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s kazandı!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Berabere!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Tur bitti!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "gövde"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "damga"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "Dekorasyon"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "eller"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "ayak"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "gözler"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Serbest Görüntü"
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' sunucu ayarlarını değiştirmek için oylama başlattı '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s', '%s' adlı kişiyi oyundan atmak için oylama başlattı (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s', '%s' adlı kişiyi izleyici yapmak için oylama başlattı (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Yönetici '%s' sunucu ayarını değistirmeye zorladı (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Yönetici '%s' adlı kişiyi izleyici yaptı (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Oylama iptal edildi"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Yönetici oylamayı \"olumlu\" olarak zorladı"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Oylama başarılı"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Yönetici oylamayı 'olumsuz' olarak zorladı"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Oylama başarısız"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Renk:"
 		},
@@ -1477,14 +1658,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": ""
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1502,10 +1675,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1655,171 +1824,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Kimlik değiştirmek için %1.0f saniye beklemelisiniz."
-		},
-		{
-			"or": "Local server",
-			"tr": "Yerel Sunucu"
-		},
-		{
-			"or": "Editor",
-			"tr": "Editör"
-		},
-		{
-			"or": "Play",
-			"tr": "Oyna"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s çıktı! www.teeworlds.com dan indir!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Süre limiti: %d dakika"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Maç"
-		},
-		{
-			"or": "Game over",
-			"tr": "Oyun sonu"
-		},
-		{
-			"or": "Round over",
-			"tr": "Tur bitti"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Skor"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%dbaşka oyuncu"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "Kayıt %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Kırmızı takım"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Mavi takım"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s kazandı!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Berabere!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Tur bitti!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "gövde"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "damga"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "Dekorasyon"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "eller"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "ayak"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "gözler"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Serbest Görüntü"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' sunucu ayarlarını değiştirmek için oylama başlattı '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s', '%s' adlı kişiyi oyundan atmak için oylama başlattı (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s', '%s' adlı kişiyi izleyici yapmak için oylama başlattı (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Yönetici '%s' sunucu ayarını değistirmeye zorladı (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Yönetici '%s' adlı kişiyi izleyici yaptı (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Oylama iptal edildi"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Yönetici oylamayı \"olumlu\" olarak zorladı"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Oylama başarılı"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Yönetici oylamayı 'olumsuz' olarak zorladı"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Oylama başarısız"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

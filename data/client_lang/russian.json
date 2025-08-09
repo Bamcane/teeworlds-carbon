@@ -803,6 +803,10 @@
 			"tr": "Войти"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Влево"
 		},
@@ -1260,6 +1264,183 @@
 			"tr": "Добавить"
 		},
 		{
+			"or": "Local server",
+			"tr": "Локальный сервер"
+		},
+		{
+			"or": "Editor",
+			"tr": "Редактор"
+		},
+		{
+			"or": "Play",
+			"tr": "Играть"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Вышла Teeworlds %s! Скачайте на www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Лимит времени: %d мин."
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Матч"
+		},
+		{
+			"or": "Game over",
+			"tr": "Игра окончена"
+		},
+		{
+			"or": "Round over",
+			"tr": "Раунд закончен"
+		},
+		{
+			"or": "Map record",
+			"tr": "Запись карты"
+		},
+		{
+			"or": "Time",
+			"tr": "Время"
+		},
+		{
+			"or": "Score",
+			"tr": "Счет"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d других игроков"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Красные"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Синие"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s победили!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Ничья!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Конец раунда!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "тело"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "окрас"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "украшение"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "руки"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "ноги"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "глаза"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Свободный обзор"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Самоубийств"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Соотношение"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Сеть"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Серия"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Лучшая серия"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Захвачено"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' голосует за смену параметра сервера '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' голосует за изгнание игрока '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' голосует за перемещение '%s' в наблюдатели (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Администратор изменил параметр '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Администратор перенес '%s' в наблюдатели (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Голосование прервано"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Администратор проголосовал за"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Голосование окончено"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Администратор проголосовал против"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Голосование не состоялось"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Оттенок:"
 		},
@@ -1483,14 +1664,6 @@
 			"tr": "Смертей"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Самоубийств"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Соотношение"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1509,10 +1682,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Текущая серия"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Лучшая серия"
 		},
 		{
 			"or": "Weapons stats",
@@ -1661,171 +1830,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Подождите %1.0f сек. перед применением настроек."
-		},
-		{
-			"or": "Local server",
-			"tr": "Локальный сервер"
-		},
-		{
-			"or": "Editor",
-			"tr": "Редактор"
-		},
-		{
-			"or": "Play",
-			"tr": "Играть"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Вышла Teeworlds %s! Скачайте на www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Лимит времени: %d мин."
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Матч"
-		},
-		{
-			"or": "Game over",
-			"tr": "Игра окончена"
-		},
-		{
-			"or": "Round over",
-			"tr": "Раунд закончен"
-		},
-		{
-			"or": "Map record",
-			"tr": "Запись карты"
-		},
-		{
-			"or": "Time",
-			"tr": "Время"
-		},
-		{
-			"or": "Score",
-			"tr": "Счет"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d других игроков"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Красные"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Синие"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s победили!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Ничья!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Конец раунда!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "тело"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "окрас"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "украшение"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "руки"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "ноги"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "глаза"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Свободный обзор"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Сеть"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Серия"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Захвачено"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' голосует за смену параметра сервера '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' голосует за изгнание игрока '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' голосует за перемещение '%s' в наблюдатели (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Администратор изменил параметр '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Администратор перенес '%s' в наблюдатели (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Голосование прервано"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Администратор проголосовал за"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Голосование окончено"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Администратор проголосовал против"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Голосование не состоялось"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

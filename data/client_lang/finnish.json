@@ -794,6 +794,10 @@
 			"tr": "Yhdistä"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Liiku vasemmalle"
 		},
@@ -1251,6 +1255,183 @@
 			"tr": "Lisää"
 		},
 		{
+			"or": "Local server",
+			"tr": "Paikallinen palvelin"
+		},
+		{
+			"or": "Editor",
+			"tr": "Muokkaaja"
+		},
+		{
+			"or": "Play",
+			"tr": "Pelaa"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s on julkaistu! Lataa se osoitteesta www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Aikaraja: %d min"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Ottelu"
+		},
+		{
+			"or": "Game over",
+			"tr": "Peli loppui"
+		},
+		{
+			"or": "Round over",
+			"tr": "Kierros ohi"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Pisteet"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Punainen joukkue"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Sininen joukkue"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s voitti!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Tasapeli!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Kierros ohi!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "vartalo"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "tunnus"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "koristeet"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "kädet"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "jalat"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "silmät"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Vapaa näkymä"
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' aloitti äänestyksen vaihtaa serverin asetusta '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' aloitti äänestyksen potkaista pelaaja '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' aloitti äänestyksen siirtää pelaaja '%s' katsojiin (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Ylläpitäjä pakotti palvelimen asetukset '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Ylläpitäjä siirsi pelaajan '%s' katsojiin (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Äänestys peruttu"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Ylläpitäjä pakotti äänestämään kyllä"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Äänestys onnistui"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Ylläpitäjä pakotti äänestämään ei"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Äänestys epäonnistui"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Hue:"
 		},
@@ -1474,14 +1655,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": ""
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1499,10 +1672,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1652,171 +1821,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": ""
-		},
-		{
-			"or": "Local server",
-			"tr": "Paikallinen palvelin"
-		},
-		{
-			"or": "Editor",
-			"tr": "Muokkaaja"
-		},
-		{
-			"or": "Play",
-			"tr": "Pelaa"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s on julkaistu! Lataa se osoitteesta www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Aikaraja: %d min"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Ottelu"
-		},
-		{
-			"or": "Game over",
-			"tr": "Peli loppui"
-		},
-		{
-			"or": "Round over",
-			"tr": "Kierros ohi"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Pisteet"
-		},
-		{
-			"or": "%d other players",
-			"tr": ""
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Punainen joukkue"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Sininen joukkue"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s voitti!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Tasapeli!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Kierros ohi!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "vartalo"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "tunnus"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "koristeet"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "kädet"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "jalat"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "silmät"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Vapaa näkymä"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' aloitti äänestyksen vaihtaa serverin asetusta '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' aloitti äänestyksen potkaista pelaaja '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' aloitti äänestyksen siirtää pelaaja '%s' katsojiin (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Ylläpitäjä pakotti palvelimen asetukset '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Ylläpitäjä siirsi pelaajan '%s' katsojiin (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Äänestys peruttu"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Ylläpitäjä pakotti äänestämään kyllä"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Äänestys onnistui"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Ylläpitäjä pakotti äänestämään ei"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Äänestys epäonnistui"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

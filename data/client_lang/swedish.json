@@ -792,6 +792,10 @@
 			"tr": "Anslut"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Gå vänster"
 		},
@@ -1249,6 +1253,183 @@
 			"tr": "Lägg till"
 		},
 		{
+			"or": "Local server",
+			"tr": "Lokal server"
+		},
+		{
+			"or": "Editor",
+			"tr": ""
+		},
+		{
+			"or": "Play",
+			"tr": "Spela"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s är ute nu! Ladda ner det från www.teeworlds.com."
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Tidsgräns: %d min"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": ""
+		},
+		{
+			"or": "Game over",
+			"tr": "Slutspelat"
+		},
+		{
+			"or": "Round over",
+			"tr": ""
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Poäng"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Röda laget"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Blå laget"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s vinner!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Oavgjort!"
+		},
+		{
+			"or": "Round over!",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "märkning"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": ""
+		},
+		{
+			"or": "Free-View",
+			"tr": "Friläge"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Självmord"
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": ""
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": ""
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Admin flyttade '%s' till åskådare (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Röstning avbruten"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": ""
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Röstning passerad"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": ""
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Röstning misslyckades"
+		},
+		{
 			"or": "Hue:",
 			"tr": ""
 		},
@@ -1472,14 +1653,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": "Självmord"
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1497,10 +1670,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1650,171 +1819,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Du måste vänta %1.0f sekunder för att kunna byta identitet."
-		},
-		{
-			"or": "Local server",
-			"tr": "Lokal server"
-		},
-		{
-			"or": "Editor",
-			"tr": ""
-		},
-		{
-			"or": "Play",
-			"tr": "Spela"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s är ute nu! Ladda ner det från www.teeworlds.com."
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Tidsgräns: %d min"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": ""
-		},
-		{
-			"or": "Game over",
-			"tr": "Slutspelat"
-		},
-		{
-			"or": "Round over",
-			"tr": ""
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Poäng"
-		},
-		{
-			"or": "%d other players",
-			"tr": ""
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Röda laget"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Blå laget"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s vinner!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Oavgjort!"
-		},
-		{
-			"or": "Round over!",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "märkning"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": ""
-		},
-		{
-			"or": "Free-View",
-			"tr": "Friläge"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": ""
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": ""
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Admin flyttade '%s' till åskådare (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Röstning avbruten"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": ""
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Röstning passerad"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": ""
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Röstning misslyckades"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

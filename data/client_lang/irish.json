@@ -790,6 +790,10 @@
 			"tr": "Ceangail"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Ar chlé"
 		},
@@ -1247,6 +1251,183 @@
 			"tr": "Cuir Vóta Leis"
 		},
 		{
+			"or": "Local server",
+			"tr": "Freastalaí áitiúil"
+		},
+		{
+			"or": "Editor",
+			"tr": "Eagarthóir"
+		},
+		{
+			"or": "Play",
+			"tr": "Imi"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Tá Teeworlds %s ar fáil! Íoslódáil ó www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Teorainn ama: %d nóim"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Comórtas"
+		},
+		{
+			"or": "Game over",
+			"tr": "Cluiche thart"
+		},
+		{
+			"or": "Round over",
+			"tr": "Tá an babhta thart"
+		},
+		{
+			"or": "Map record",
+			"tr": ""
+		},
+		{
+			"or": "Time",
+			"tr": ""
+		},
+		{
+			"or": "Score",
+			"tr": "Scór"
+		},
+		{
+			"or": "%d other players",
+			"tr": ""
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "TAIF %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Foireann dhearg"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Foireann ghorm"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "Tá an bua ag %s!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Comhbhua!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Tá an babhta thart!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": ""
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": ""
+		},
+		{
+			"or": "Free-View",
+			"tr": "Saoramharc"
+		},
+		{
+			"or": "Suicides",
+			"tr": ""
+		},
+		{
+			"or": "Ratio",
+			"tr": ""
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": ""
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": ""
+		},
+		{
+			"or": "Best spree",
+			"tr": ""
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": ""
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "D'iarr '%s' vóta chun rogha '%s' a athrú ar an bhfreastalaí (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "D'iarr '%s' vóta ar ruaigeadh '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "D'iarr '%s' vóta ar '%s' a dhíbirt go dtí an lucht féachana (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Chuir riarthóir an rogha '%s' i bhfeidhm le lámh láidir (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Rinne riarthóir breathnóir as '%s' (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Cuireadh stopadh leis an vóta"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Réitigh riarthóir an vóta 'is ea' le lámh láidir"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Glacadh leis an vóta"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Réitigh riarthóir an vóta 'ní hea' le lámh láidir"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Theip ar an vóta"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Lí:"
 		},
@@ -1470,14 +1651,6 @@
 			"tr": ""
 		},
 		{
-			"or": "Suicides",
-			"tr": ""
-		},
-		{
-			"or": "Ratio",
-			"tr": ""
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1495,10 +1668,6 @@
 		},
 		{
 			"or": "Current spree",
-			"tr": ""
-		},
-		{
-			"or": "Best spree",
 			"tr": ""
 		},
 		{
@@ -1648,171 +1817,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": ""
-		},
-		{
-			"or": "Local server",
-			"tr": "Freastalaí áitiúil"
-		},
-		{
-			"or": "Editor",
-			"tr": "Eagarthóir"
-		},
-		{
-			"or": "Play",
-			"tr": "Imi"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Tá Teeworlds %s ar fáil! Íoslódáil ó www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Teorainn ama: %d nóim"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Comórtas"
-		},
-		{
-			"or": "Game over",
-			"tr": "Cluiche thart"
-		},
-		{
-			"or": "Round over",
-			"tr": "Tá an babhta thart"
-		},
-		{
-			"or": "Map record",
-			"tr": ""
-		},
-		{
-			"or": "Time",
-			"tr": ""
-		},
-		{
-			"or": "Score",
-			"tr": "Scór"
-		},
-		{
-			"or": "%d other players",
-			"tr": ""
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "TAIF %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Foireann dhearg"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Foireann ghorm"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "Tá an bua ag %s!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Comhbhua!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Tá an babhta thart!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": ""
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": ""
-		},
-		{
-			"or": "Free-View",
-			"tr": "Saoramharc"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": ""
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": ""
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": ""
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "D'iarr '%s' vóta chun rogha '%s' a athrú ar an bhfreastalaí (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "D'iarr '%s' vóta ar ruaigeadh '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "D'iarr '%s' vóta ar '%s' a dhíbirt go dtí an lucht féachana (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Chuir riarthóir an rogha '%s' i bhfeidhm le lámh láidir (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Rinne riarthóir breathnóir as '%s' (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Cuireadh stopadh leis an vóta"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Réitigh riarthóir an vóta 'is ea' le lámh láidir"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Glacadh leis an vóta"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Réitigh riarthóir an vóta 'ní hea' le lámh láidir"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Theip ar an vóta"
 		},
 		{
 			"or": "Are you sure that you want to delete the demo?",

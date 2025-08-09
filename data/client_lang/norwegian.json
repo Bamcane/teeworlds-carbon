@@ -794,6 +794,10 @@
 			"tr": "Koble til"
 		},
 		{
+			"or": "Server list from status.tw",
+			"tr": ""
+		},
+		{
 			"or": "Move left",
 			"tr": "Beveg til venstre"
 		},
@@ -1251,6 +1255,183 @@
 			"tr": "Legg til"
 		},
 		{
+			"or": "Local server",
+			"tr": "Lokal server"
+		},
+		{
+			"or": "Editor",
+			"tr": "Editor"
+		},
+		{
+			"or": "Play",
+			"tr": "Spill"
+		},
+		{
+			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
+			"tr": "Teeworlds %s er ute! Last den ned på www.teeworlds.com!"
+		},
+		{
+			"or": "Time limit: %d min",
+			"tr": "Tidsgrense: %d min"
+		},
+		{
+			"context": "rounds (scoreboard)",
+			"or": "Match",
+			"tr": "Kamp"
+		},
+		{
+			"or": "Game over",
+			"tr": "Game over"
+		},
+		{
+			"or": "Round over",
+			"tr": "Runde over"
+		},
+		{
+			"or": "Map record",
+			"tr": "Bane opptak"
+		},
+		{
+			"or": "Time",
+			"tr": "Tid"
+		},
+		{
+			"or": "Score",
+			"tr": "Poeng"
+		},
+		{
+			"or": "%d other players",
+			"tr": "%d Andre spillere"
+		},
+		{
+			"or": "REC %3d:%02d",
+			"tr": "REC %3d:%02d"
+		},
+		{
+			"or": "Red team",
+			"tr": "Rødt lag"
+		},
+		{
+			"or": "Blue team",
+			"tr": "Blått lag"
+		},
+		{
+			"or": "%s wins!",
+			"tr": "%s vant!"
+		},
+		{
+			"or": "Draw!",
+			"tr": "Uavgjort!"
+		},
+		{
+			"or": "Round over!",
+			"tr": "Runde over!"
+		},
+		{
+			"context": "skins",
+			"or": "body",
+			"tr": "kropp"
+		},
+		{
+			"context": "skins",
+			"or": "marking",
+			"tr": "mønster"
+		},
+		{
+			"context": "skins",
+			"or": "decoration",
+			"tr": "dekorering"
+		},
+		{
+			"context": "skins",
+			"or": "hands",
+			"tr": "hender"
+		},
+		{
+			"context": "skins",
+			"or": "feet",
+			"tr": "føtter"
+		},
+		{
+			"context": "skins",
+			"or": "eyes",
+			"tr": "øyne"
+		},
+		{
+			"or": "Free-View",
+			"tr": "Fri visning"
+		},
+		{
+			"or": "Suicides",
+			"tr": "Selvmord"
+		},
+		{
+			"or": "Ratio",
+			"tr": "Ratio"
+		},
+		{
+			"context": "Net score",
+			"or": "Net",
+			"tr": "Total"
+		},
+		{
+			"or": "KPM",
+			"tr": ""
+		},
+		{
+			"or": "Spree",
+			"tr": "Spree"
+		},
+		{
+			"or": "Best spree",
+			"tr": "Beste spree"
+		},
+		{
+			"context": "Flag grabs",
+			"or": "Grabs",
+			"tr": "Kapringer"
+		},
+		{
+			"or": "'%s' called vote to change server option '%s' (%s)",
+			"tr": "'%s' stemte for å endre server innstilling '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to kick '%s' (%s)",
+			"tr": "'%s' stemmet for å sparke ut '%s' (%s)"
+		},
+		{
+			"or": "'%s' called for vote to move '%s' to spectators (%s)",
+			"tr": "'%s' stemte for å gjøre '%s' til tilskuer (%s)"
+		},
+		{
+			"or": "Admin forced server option '%s' (%s)",
+			"tr": "Admin tvang server alternativ '%s' (%s)"
+		},
+		{
+			"or": "Admin moved '%s' to spectator (%s)",
+			"tr": "Admin gjorde '%s' til tilskuer (%s)"
+		},
+		{
+			"or": "Vote aborted",
+			"tr": "Avstemning avbrutt"
+		},
+		{
+			"or": "Admin forced vote yes",
+			"tr": "Admin tvunget stemme ja"
+		},
+		{
+			"or": "Vote passed",
+			"tr": "Stemme passert"
+		},
+		{
+			"or": "Admin forced vote no",
+			"tr": "Admin tvunget stemme nei"
+		},
+		{
+			"or": "Vote failed",
+			"tr": "Stemme mislyktes"
+		},
+		{
 			"or": "Hue:",
 			"tr": "Hue:"
 		},
@@ -1474,14 +1655,6 @@
 			"tr": "Død"
 		},
 		{
-			"or": "Suicides",
-			"tr": "Selvmord"
-		},
-		{
-			"or": "Ratio",
-			"tr": "Ratio"
-		},
-		{
 			"or": "The ratio of kills to deaths.",
 			"tr": ""
 		},
@@ -1500,10 +1673,6 @@
 		{
 			"or": "Current spree",
 			"tr": "Nåværende spree"
-		},
-		{
-			"or": "Best spree",
-			"tr": "Beste spree"
 		},
 		{
 			"or": "Weapons stats",
@@ -1652,171 +1821,6 @@
 		{
 			"or": "You have to wait %1.0f seconds to change identity.",
 			"tr": "Du må vente %1.0f sekunder for og endre identitet."
-		},
-		{
-			"or": "Local server",
-			"tr": "Lokal server"
-		},
-		{
-			"or": "Editor",
-			"tr": "Editor"
-		},
-		{
-			"or": "Play",
-			"tr": "Spill"
-		},
-		{
-			"or": "Teeworlds %s is out! Download it at www.teeworlds.com!",
-			"tr": "Teeworlds %s er ute! Last den ned på www.teeworlds.com!"
-		},
-		{
-			"or": "Time limit: %d min",
-			"tr": "Tidsgrense: %d min"
-		},
-		{
-			"context": "rounds (scoreboard)",
-			"or": "Match",
-			"tr": "Kamp"
-		},
-		{
-			"or": "Game over",
-			"tr": "Game over"
-		},
-		{
-			"or": "Round over",
-			"tr": "Runde over"
-		},
-		{
-			"or": "Map record",
-			"tr": "Bane opptak"
-		},
-		{
-			"or": "Time",
-			"tr": "Tid"
-		},
-		{
-			"or": "Score",
-			"tr": "Poeng"
-		},
-		{
-			"or": "%d other players",
-			"tr": "%d Andre spillere"
-		},
-		{
-			"or": "REC %3d:%02d",
-			"tr": "REC %3d:%02d"
-		},
-		{
-			"or": "Red team",
-			"tr": "Rødt lag"
-		},
-		{
-			"or": "Blue team",
-			"tr": "Blått lag"
-		},
-		{
-			"or": "%s wins!",
-			"tr": "%s vant!"
-		},
-		{
-			"or": "Draw!",
-			"tr": "Uavgjort!"
-		},
-		{
-			"or": "Round over!",
-			"tr": "Runde over!"
-		},
-		{
-			"context": "skins",
-			"or": "body",
-			"tr": "kropp"
-		},
-		{
-			"context": "skins",
-			"or": "marking",
-			"tr": "mønster"
-		},
-		{
-			"context": "skins",
-			"or": "decoration",
-			"tr": "dekorering"
-		},
-		{
-			"context": "skins",
-			"or": "hands",
-			"tr": "hender"
-		},
-		{
-			"context": "skins",
-			"or": "feet",
-			"tr": "føtter"
-		},
-		{
-			"context": "skins",
-			"or": "eyes",
-			"tr": "øyne"
-		},
-		{
-			"or": "Free-View",
-			"tr": "Fri visning"
-		},
-		{
-			"context": "Net score",
-			"or": "Net",
-			"tr": "Total"
-		},
-		{
-			"or": "KPM",
-			"tr": ""
-		},
-		{
-			"or": "Spree",
-			"tr": "Spree"
-		},
-		{
-			"context": "Flag grabs",
-			"or": "Grabs",
-			"tr": "Kapringer"
-		},
-		{
-			"or": "'%s' called vote to change server option '%s' (%s)",
-			"tr": "'%s' stemte for å endre server innstilling '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to kick '%s' (%s)",
-			"tr": "'%s' stemmet for å sparke ut '%s' (%s)"
-		},
-		{
-			"or": "'%s' called for vote to move '%s' to spectators (%s)",
-			"tr": "'%s' stemte for å gjøre '%s' til tilskuer (%s)"
-		},
-		{
-			"or": "Admin forced server option '%s' (%s)",
-			"tr": "Admin tvang server alternativ '%s' (%s)"
-		},
-		{
-			"or": "Admin moved '%s' to spectator (%s)",
-			"tr": "Admin gjorde '%s' til tilskuer (%s)"
-		},
-		{
-			"or": "Vote aborted",
-			"tr": "Avstemning avbrutt"
-		},
-		{
-			"or": "Admin forced vote yes",
-			"tr": "Admin tvunget stemme ja"
-		},
-		{
-			"or": "Vote passed",
-			"tr": "Stemme passert"
-		},
-		{
-			"or": "Admin forced vote no",
-			"tr": "Admin tvunget stemme nei"
-		},
-		{
-			"or": "Vote failed",
-			"tr": "Stemme mislyktes"
 		},
 		{
 			"or": "'%s' has set a new record: %s",

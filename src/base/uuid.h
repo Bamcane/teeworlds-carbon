@@ -23,6 +23,7 @@ struct Uuid
 };
 
 extern const Uuid UUID_ZEROED;
+extern const Uuid UUID_CARBON_NAMESPACE;
 
 Uuid RandomUuid();
 Uuid CalculateUuid(const char *pName);

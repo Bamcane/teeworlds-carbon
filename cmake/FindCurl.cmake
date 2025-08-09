@@ -35,6 +35,7 @@ if(CURL_FOUND)
     set(CURL_COPY_FILES
       "${EXTRA_CURL_LIBDIR}/libcurl.dll"
       "${EXTRA_CURL_LIBDIR}/zlib1.dll"
+      "${EXTRA_CURL_LIBDIR}/libwinpthread-1.dll"
     )
   else()
     set(CURL_COPY_FILES)
